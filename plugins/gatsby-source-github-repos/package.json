@@ -1,0 +1,9 @@
+{
+    "name": "gatsby-source-github-repos",
+    "version": "1.0.0",
+    "description": "Gatsby plugin to source repositories from Github API",
+    "author": "Theo Lepage <theo@theolepage.com>",
+    "dependencies": {
+        "graphql-fetch": "^1.0.1"
+    }
+}
