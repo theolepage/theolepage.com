@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 
+import SEO from "../../components/seo"
+
 const Container = styled.div`
     width: 900px;
     margin: 80px auto;
@@ -13,6 +15,8 @@ export default (props) => {
 
     return (
         <Container>
+            <SEO title={repository.name} />
+
             <div dangerouslySetInnerHTML={{ __html: readme }} />
         </Container>
     )
@@ -21,21 +25,7 @@ export default (props) => {
 export const query = graphql`
     query($name: String!) {
         repository(name: { eq: $name }) {
-            id
-            name
-            url
-            homepageUrl
-            description
-            pushedAt
-            repositoryTopics {
-                edges {
-                    node {
-                        topic {
-                            name
-                        }
-                    }
-                }
-            }
+            ...ProjectInformation
             childReadme {
                 childMarkdownRemark {
                     html

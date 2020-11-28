@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "@emotion/styled"
 
+import SEO from "../components/seo"
 import Project from "../components/project"
 
 const Container = styled.div`
@@ -48,6 +49,8 @@ const Avatar = styled.img`
 export default ({ data }) => {
     return (
         <Container>
+            <SEO title="Home" />
+
             <h1>Theo Lepage</h1>
 
             <h2>About</h2>
@@ -103,21 +106,7 @@ export const query = graphql`
     {
         projects: allRepository {
             nodes {
-                id
-                name
-                url
-                homepageUrl
-                description
-                pushedAt
-                repositoryTopics {
-                    edges {
-                        node {
-                            topic {
-                                name
-                            }
-                        }
-                    }
-                }
+                ...ProjectInformation
             }
         }
     }

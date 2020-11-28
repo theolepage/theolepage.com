@@ -11,9 +11,23 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         title: `Theo Lepage`,
+        description: 'Learn more about me and my projects.',
         author: `Theo Lepage`
     },
     plugins: [
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Theo Lepage · Website`,
+                short_name: `Theo Lepage`,
+                start_url: `/`,
+                background_color: `#1e77e3`,
+                theme_color: `#1e77e3`,
+                display: `standalone`,
+                icon: `static/favicon.png`,
+            },
+        },
+        `gatsby-plugin-offline`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-emotion`,
         {

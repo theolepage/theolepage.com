@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import styled from "@emotion/styled"
 
 const BlockLink = styled(Link)`
@@ -138,3 +138,37 @@ export default function Project({ project }) {
         </BlockLink>
     )
 }
+
+export const query = graphql`
+    fragment ProjectInformation on Repository {
+        id
+        name
+        url
+        homepageUrl
+        description
+        pushedAt
+        repositoryTopics {
+            edges {
+                node {
+                    topic {
+                        name
+                    }
+                }
+            }
+        }id
+        name
+        url
+        homepageUrl
+        description
+        pushedAt
+        repositoryTopics {
+            edges {
+                node {
+                    topic {
+                        name
+                    }
+                }
+            }
+        }
+    }
+`

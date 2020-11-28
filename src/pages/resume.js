@@ -2,9 +2,12 @@ import React from "react"
 
 import "../styles/resume.css"
 
+import SEO from "../components/seo"
+
 export default () => {
     return (
         <div class="resume">
+            <SEO title="Resume" />
 
             <div class="resume-header">
 
