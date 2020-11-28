@@ -1,0 +1,297 @@
+import React from "react"
+
+import "../styles/resume.css"
+
+export default () => {
+    return (
+        <div class="resume">
+
+            <div class="resume-header">
+
+                <div class="resume-header-content">
+                    <div class="resume-name">Theo Lepage</div>
+                    <div class="resume-description">Looking for an internship in Computer Vision or Machine Learning starting in January 2022.</div>
+                    <div class="resume-contact">
+                        <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219">
+                            <img class="resume-icon" src="/images/icons/icon-map_blue.svg" alt="icon-map" />
+                            Paris, France
+                        </a>
+
+                        <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="/">
+                            <img class="resume-icon" src="/images/icons/icon-website.svg" alt="icon-website" />
+                            theolepage.com
+                        </a>
+
+                        <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="mailto:theo@theolepage.com">
+                            <img class="resume-icon" src="/images/icons/icon-email.svg" alt="icon-email" />
+                            theo@theolepage.com
+                        </a>
+
+                        <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="tel:+33670097066">
+                            <img class="resume-icon" src="/images/icons/icon-phone.svg" alt="icon-phone" />
+                            +33 6 70 09 70 66
+                        </a>
+
+                        <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="https://www.linkedin.com/in/theolepage/">
+                            <img class="resume-icon" src="/images/icons/icon-linkedin.svg" alt="icon-linkedin" />
+                            Theo Lepage
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-section resume-section_experience">
+                <div class="resume-title">Professional experience</div>
+
+                <div class="resume-experience">
+                    <div class="resume-experience-content">
+                        <div class="resume-experience-header">
+                            <div class="resume-subtitle">
+                                <span class="resume-emphasize">Software Developer Intern (Computational Imaging)</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.cnrs.fr/en">CNRS</a>
+                            </div>
+                            <div class="resume-experience-icons">
+                                <div class="resume-location">
+                                    <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                                    Paris, France
+                                </div>
+                                <div class="resume-date">
+                                    <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                                    Sep. 2020 (5 months)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-text">
+                            Contributing to <a target="_blank" rel="nofollow noopener noreferrer" href="http://holovibes.com/">Holovibes</a> a software to create holograms from interferograms for medical purpose.<br />
+                        </div>
+                    </div>
+                    <div class="resume-experience-image">
+                        <img src="/images/cnrs.png" alt="logo-cnrs" />
+                    </div>
+                </div>
+
+                <div class="resume-experience">
+                    <div class="resume-experience-content">
+                        <div class="resume-experience-header">
+                            <div class="resume-subtitle">
+                                <span class="resume-emphasize">Research Student (Machine Learning)</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.lse.epita.fr/">LSE</a>
+                            </div>
+                            <div class="resume-experience-icons">
+                                <div class="resume-location">
+                                    <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                                    Paris, France
+                                    </div>
+                                <div class="resume-date">
+                                    <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                                    Jan. 2020 (9 months)
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="resume-text">
+                            Worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> every month.<br />
+                            Reading and implementing new methods and papers in the field of artificial intelligence.
+                        </div>
+                    </div>
+                    <div class="resume-experience-image">
+                        <img src="/images/lse.png" alt="icon-lse" />
+                    </div>
+                </div>
+
+                <div class="resume-experience">
+                    <div class="resume-experience-content">
+                        <div class="resume-experience-header">
+                            <div class="resume-subtitle">
+                                <span class="resume-emphasize">Teaching Assistant</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.epita.fr/en">EPITA</a>
+                            </div>
+                            <div class="resume-experience-icons">
+                                <div class="resume-location">
+                                    <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                                    Paris, France
+                                </div>
+                                <div class="resume-date">
+                                    <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                                    Sep. 2019 (10 months)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-text">
+                            Taught C programming language to second year students through weekly graded practicals.<br />
+                            Worked on a web app to let other assistants test and evaluate student projects.
+                        </div>
+                    </div>
+                    <div class="resume-experience-image">
+                        <img src="/images/epita.png" alt="icon-epita" />
+                    </div>
+                </div>
+            </div >
+
+            <div class="resume-section resume-education">
+                <div class="resume-title">Education</div>
+
+                <div class="resume-item">
+                    <div class="resume-subtitle">
+                        <span class="resume-emphasize"><a target="_blank" rel="nofollow noopener noreferrer" href="https://www.epita.fr/en">EPITA - École Pour l'Informatique et les Techniques Avancées</a></span>
+                        &nbsp;(Engineering school)
+                    </div>
+                    <div class="resume-education-icons">
+                        <div class="resume-location">
+                            <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                            Paris, France
+                        </div>
+                        <div class="resume-date">
+                            <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                            Sep. 2017 - Sep. 2022
+                        </div>
+                    </div>
+                    <div class="resume-text">
+                        Developed a deep interest in computer science through various challenging projects in small groups.<br />
+                        First three years of the program taught in English as I am part of the international section.<br />
+                        Courses: Linear algebra, Formal language, Programming, Computer architecture/networks, Probabilities, Statistics, ...
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-subtitle">
+                        <span class="resume-emphasize"><a target="_blank" rel="nofollow noopener noreferrer" href="https://csumb.edu/">CSUMB - California State University, Monterey Bay</a></span>
+                        &nbsp;(Semester abroad)
+                    </div>
+                    <div class="resume-education-icons">
+                        <div class="resume-location">
+                            <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                            Northern California, USA
+                        </div>
+                        <div class="resume-date">
+                            <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                            Jan. 2019 - Jun. 2019
+                        </div>
+                    </div>
+                    <div class="resume-text">
+                        Courses: Discrete mathematics, Software design, Graphics programming, Computer networks.<br />
+                        Joined a startup during a Techstars Startup Weekend and worked on a web app matching users with health providers.
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-section resume-projects">
+                <div class="resume-title">Projects</div>
+
+                <div class="resume-cols">
+                    <div class="resume-col">
+                        <div class="resume-item">
+                            <div class="resume-subtitle resume-emphasize">
+                                <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/prophecy">Prophecy - a neural network framework</a>
+                            </div>
+                            <div class="resume-text">Implemented n-dimensional arrays, dense and convolution from scratch in C++ and Cuda. Offering some of Keras features and handles MNIST dataset.</div>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-subtitle resume-emphasize">
+                                <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/cant-stop-driving">Can't Stop Driving</a>
+                            </div>
+                            <div class="resume-text">
+                                Led a team, for a 4 months school project, to create a 3D multiplayer game built with Unity and C#. It was chosen by a jury to be presented during open days.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-col">
+                        <div class="resume-item">
+                            <div class="resume-subtitle resume-emphasize">
+                                <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/ember-classification">Classification of EMBER dataset</a>
+                            </div>
+                            <div class="resume-text">
+                                Developed machine learning methods (k-means, deep neural networks, ...) to classify a dataset of malware programs.
+                                Ranked second out of 15 participants.
+                            </div>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-subtitle resume-emphasize">
+                                <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/42sh">42sh - a POSIX shell</a>
+                            </div>
+                            <div class="resume-text">
+                                Made a shell in C complying with SCL standard and Bash grammar. The lexer, LL(1) parser and AST is fully documented and supported by a test suite.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="resume-section resume-interests-skills">
+                <div class="resume-title">Interests and skills</div>
+
+                <div class="resume-cols">
+                    <div class="resume-col">
+                        <div class="resume-item">
+                            <div class="resume-subsubtitle">Programming languages / technologies</div>
+                            <div class="resume-label">C</div>
+                            <div class="resume-label">C++</div>
+                            <div class="resume-label">C#</div>
+                            <div class="resume-label">Java</div>
+                            <div class="resume-label">Python</div>
+                            <div class="resume-label">OCaml/Haskell</div>
+                            <div class="resume-label">HTML/CSS</div>
+                            <div class="resume-label">PHP</div>
+                            <div class="resume-label">JavaScript</div>
+                            <div class="resume-label">SQL</div>
+                            <div class="resume-label">Git</div>
+                            <div class="resume-label">Linux/Bash</div>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-subsubtitle">Miscellaneous</div>
+                            <div class="resume-label">Algorithmics</div>
+                            <div class="resume-label">Machine Learning</div>
+                            <div class="resume-label">Software Engineering</div>
+                            <div class="resume-label">Project Management</div>
+                            <div class="resume-label">LaTex</div>
+                        </div>
+                    </div>
+
+                    <div class="resume-col">
+                        <div class="resume-item">
+                            <div class="resume-subsubtitle">Certificates</div>
+                            <div class="resume-label">Driving license</div>
+                            <div class="resume-label">Sailing instructor diploma</div>
+                        </div>
+
+                        <div class="resume-item resume-floating">
+                            <div class="resume-subsubtitle">Languages</div>
+                            <div class="resume-label">English (TOEIC 905)</div>
+                            <div class="resume-label">French</div>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-subsubtitle">Passions and interests</div>
+                            <div class="resume-passion">
+                                <img class="resume-icon resume-passion-icon" src="/images/icons/icon-science.svg" alt="icon-science" />
+                                Science and AI
+                            </div>
+                            <div class="resume-passion">
+                                <img class="resume-icon resume-passion-icon" src="/images/icons/icon-wave.svg" alt="icon-wave" />
+                                Sailing and windsurf
+                            </div>
+                            <div class="resume-passion">
+                                <img class="resume-icon resume-passion-icon" src="/images/icons/icon-ecology.svg" alt="icon-ecology" />
+                                Sustainable development
+                            </div>
+                            <div class="resume-passion">
+                                <img class="resume-icon resume-passion-icon" src="/images/icons/icon-travel.svg" alt="icon-travel" />
+                                Traveling (+10 countries)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-footer">
+                An up-to-date version of this document is available at <a target="_blank" rel="nofollow noopener noreferrer" href="/resume">theolepage.com/resume</a>.
+            </div>
+
+        </div >
+    )
+}
