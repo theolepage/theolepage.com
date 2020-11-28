@@ -13,6 +13,16 @@ const typography = new Typography({
     bodyFontFamily: ['Open Sans', 'sans-serif'],
     bodyColor: 'rgb(60, 60, 60)',
     headerColor: 'rgb(0, 0, 0)',
+    googleFonts: [
+        {
+            name: 'Open Sans',
+            styles: ['400', '600'],
+        },
+        {
+            name: 'Questrial',
+            styles: ['400'],
+        },
+    ],
     overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => {
         const linkColor = "#1e77e3"
         return {
