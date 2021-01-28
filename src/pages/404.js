@@ -12,24 +12,24 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
-    font-size: 45px;
+    font-size: 36px;
     font-weight: 600;
-    color: #ff6363;
+    color: #377DFF;
 `
 
 const Subtitle = styled.div`
     margin-top: 24px;
 
-    font-size: 28px;
+    font-size: 22px;
     color: rgb(30, 30, 30);
 `
 
 const GoBackHome = styled(Link)`
     display: inline-block;
 
-    margin-top: 80px;
+    margin-top: 20px;
 
-    font-size: 24px;
+    font-size: 20px;
     color: rgb(100, 100, 100);
 `
 

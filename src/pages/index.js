@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 import SEO from "../components/seo"
@@ -7,7 +8,11 @@ import Project from "../components/project"
 
 const Container = styled.div`
     width: 900px;
-    margin: 80px auto;
+    margin: 40px auto 80px auto;
+
+    @media (max-width: 1000px) {
+        width: 80%;
+    }
 `
 
 const Projects = styled.div`
@@ -15,15 +20,18 @@ const Projects = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 
-    margin: 40px 0;
+    margin: 0px 0;
 `
 
 const Alert = styled.div`
-    margin: 40px 0 0 0;
-    padding: 18px 20px;
+    display: inline-block;
+    display: none;
+
+    margin: 30px 0 0 0;
+    padding: 14px 32px;
 
     color: rgb(30, 30, 30);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.75;
     text-align: center;
 
@@ -32,71 +40,66 @@ const Alert = styled.div`
     border-radius: 6px;
 `
 
-const About = styled.div`
-    position: relative;
-`
+const button = css`
+    display: inline-block;
 
-const Avatar = styled.img`
-    position: absolute;
-    top: 5px;
-    left: -170px;
+    margin: 16px 22px 0 0;
+    padding: 12px 16px;
 
-    width: 110px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
 
-    border-radius: 100%;
+    background: rgb(255, 255, 255);
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.03), 0px 1px 2px rgba(47, 55, 71, 0.1);
+
+    border: 1px solid rgb(245, 245, 245);
+
+    transition: 0.2s background, 0.2s box-shadow, 0.4s transform;
+
+    &:hover {
+        text-decoration: none;
+
+        background: rgb(245, 245, 245);
+        box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.06), 0px 1px 2px rgba(47, 55, 71, 0.1);
+    }
+
+    &:active {
+        transform: scaleX(0.97) scaleY(0.94);
+    }
 `
 
 export default ({ data }) => {
     return (
         <Container>
-            <SEO title="Home" />
+            <SEO />
 
             <h1>Theo Lepage</h1>
 
-            <h2>About</h2>
-            <About>
-                <Avatar src="/images/portrait.jpg" />
-                <p>
-                    I am <b>Theo Lepage</b>, a computer engineering student at <b>EPITA</b> based in Paris, France.
-                    I work on tons of projects as I am driven by experimentation and by understanding everything that computer science covers.
-                    I tend to include mainly <b>image processing and artificial intelligence</b> to my research fields as it is starting to be anchored in our daily lives.
-                </p>
-            </About>
-
             <Alert>
-                I am seeking an internship in Computer Vision
-                or Machine Learning starting in January 2022.
+                I am seeking an internship in Computer Vision or Machine Learning starting in January 2022.
             </Alert>
 
-            <h2>Professional experience</h2>
-            <ul>
-                <li>
-                    This year I had the chance to work on <b>Holovibes</b>, a software to reconstruct holograms from interferograms through the GPU.
-                    This project currently used in a medical setting to map the blood vessels composing the retina.
-                </li>
-                <li>
-                    Starting from January 2020, I will be supervised by my school research laboratory to work on speaker recognition techniques.
-                </li>
-            </ul>
-            <p>
+            <h2>About</h2>
+            <div>
+                <p>
+                    I am <b>Theo Lepage</b>, a computer engineering student at <b>EPITA</b> based in Paris, France.
+                    I am driven by experimentation and by understanding everything that computer science covers.
+                    I am mainly motivated by the applications of <b>image processing and machine learning</b> in real world projects.
+                </p>
 
-            </p>
-            <Link to="/resume">Read my resume</Link>
+                <Link to="/resume" css={button}>Read my resume</Link>
+                or reach me at <a href="mailto:theo@theolepage.com">theo[at]theolepage.com</a>.
+            </div>
 
             <h2>Personal projects</h2>
-            <p>
-                A selection of the most significant projects I have worked on is presented below.
-                Although, I encourage you to explore the others which are mostly open source.
-                &nbsp;<Link to="/projects">See more projects &rarr;</Link>
-            </p>
             <Projects>
                 {data.projects.nodes.map(repo => <Project key={repo.id} project={repo} />)}
             </Projects>
-
-            <h2>Contact</h2>
-            <p>
-                Do not hesitate to reach me at <u>theo[at]theolepage.com</u>.
-            </p>
+            <a href="https://github.com/theolepage" css={button} target="_blank" rel="nofollow noopener noreferrer">
+                See all projects on GitHub
+                {/* <img src="/images/icons/icon-github.svg" alt="github" /> */}
+            </a>
 
         </Container>
     )

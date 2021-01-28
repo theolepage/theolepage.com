@@ -13,6 +13,7 @@ const GRAPHQL_QUERY = `
                         url
                         homepageUrl
                         description
+                        createdAt
                         pushedAt
                         repositoryTopics(first: $limit) {
                             edges {

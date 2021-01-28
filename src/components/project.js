@@ -9,14 +9,16 @@ const BlockLink = styled(Link)`
 `
 
 const Block = styled.div`
+    box-sizing: border-box;
+
     display: block;
     position: relative;
 
-    margin: 16px 0;
-    padding: 26px 22px;
+    margin: 10px 0 10px 0;
+    padding: 24px 22px;
 
     width: 280px;
-    height: 160px;
+    height: 150px;
 
     border-radius: 6px;
     background: #fff;
@@ -147,20 +149,7 @@ export const query = graphql`
         homepageUrl
         description
         pushedAt
-        repositoryTopics {
-            edges {
-                node {
-                    topic {
-                        name
-                    }
-                }
-            }
-        }id
-        name
-        url
-        homepageUrl
-        description
-        pushedAt
+        createdAt
         repositoryTopics {
             edges {
                 node {

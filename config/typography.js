@@ -5,9 +5,9 @@ import "fontsource-open-sans/600.css"
 import "fontsource-questrial"
 
 const typography = new Typography({
-    baseFontSize: '20px',
+    baseFontSize: '18px',
     baseLineHeight: 1.6,
-    scaleRatio: 1.5,
+    scaleRatio: 1.4,
     headerFontFamily: ['Questrial', 'sans-serif'],
     headerWeight: 'normal',
     bodyFontFamily: ['Open Sans', 'sans-serif'],
