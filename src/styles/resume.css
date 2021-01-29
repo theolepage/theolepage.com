@@ -194,19 +194,15 @@ a:hover {
 }
 
 .resume-experience-image {
-    width: 36px;
+    width: 46px;
 
-    margin-left: 14px;
+    margin-left: 32px;
 }
 
 .resume-experience-header {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-}
-
-.resume-experience .resume-subtitle {
-    /* width: 380px; */
+    justify-content: space-between;
 }
 
 .resume-experience-icons {

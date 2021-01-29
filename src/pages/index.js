@@ -98,7 +98,7 @@ export default ({ data }) => {
             </Projects>
             <a href="https://github.com/theolepage" css={button} target="_blank" rel="nofollow noopener noreferrer">
                 See all projects on GitHub
-                {/* <img src="/images/icons/icon-github.svg" alt="github" /> */}
+                <img src="/images/icons/icon-github.svg" alt="github" />
             </a>
 
         </Container>

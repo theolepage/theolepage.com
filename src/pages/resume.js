@@ -50,6 +50,33 @@ export default () => {
                     <div class="resume-experience-content">
                         <div class="resume-experience-header">
                             <div class="resume-subtitle">
+                                <span class="resume-emphasize">Research Student (Machine Learning)</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.lse.epita.fr/">LSE</a>
+                            </div>
+                            <div class="resume-experience-icons">
+                                <div class="resume-location">
+                                    <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
+                                    Paris, France
+                                    </div>
+                                <div class="resume-date">
+                                    <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
+                                    Started Jan. 2020
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="resume-text">
+                            Worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> every month.
+                            Reading and implementing new methods and papers in the field of artificial intelligence.
+                        </div>
+                    </div>
+                    <div class="resume-experience-image">
+                        <img src="/images/lse.png" alt="icon-lse" />
+                    </div>
+                </div>
+
+                <div class="resume-experience">
+                    <div class="resume-experience-content">
+                        <div class="resume-experience-header">
+                            <div class="resume-subtitle">
                                 <span class="resume-emphasize">Software Developer Intern (Computational Imaging)</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.cnrs.fr/en">CNRS</a>
                             </div>
                             <div class="resume-experience-icons">
@@ -64,38 +91,13 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Contributing to <a target="_blank" rel="nofollow noopener noreferrer" href="http://holovibes.com/">Holovibes</a> a software to create holograms from interferograms for medical purpose.<br />
+                            Contributed to <a target="_blank" rel="nofollow noopener noreferrer" href="http://holovibes.com/">Holovibes</a>,
+                            a fast real time renderer of holograms for medical purpose.
+                            Our work resulted in a substantial speedup (500 to 5000 frames per second handled) described in this article.
                         </div>
                     </div>
                     <div class="resume-experience-image">
                         <img src="/images/cnrs.png" alt="logo-cnrs" />
-                    </div>
-                </div>
-
-                <div class="resume-experience">
-                    <div class="resume-experience-content">
-                        <div class="resume-experience-header">
-                            <div class="resume-subtitle">
-                                <span class="resume-emphasize">Research Student (Machine Learning)</span> at <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.lse.epita.fr/">LSE</a>
-                            </div>
-                            <div class="resume-experience-icons">
-                                <div class="resume-location">
-                                    <img class="resume-icon" src="/images/icons/icon-map.svg" alt="icon-map" />
-                                    Paris, France
-                                    </div>
-                                <div class="resume-date">
-                                    <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
-                                    Jan. 2020 (9 months)
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="resume-text">
-                            Worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> every month.<br />
-                            Reading and implementing new methods and papers in the field of artificial intelligence.
-                        </div>
-                    </div>
-                    <div class="resume-experience-image">
-                        <img src="/images/lse.png" alt="icon-lse" />
                     </div>
                 </div>
 
@@ -117,7 +119,7 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Taught C programming language to second year students through weekly graded practicals.<br />
+                            Taught C programming language to second year students through weekly graded practicals.
                             Worked on a web app to let other assistants test and evaluate student projects.
                         </div>
                     </div>
@@ -146,9 +148,10 @@ export default () => {
                         </div>
                     </div>
                     <div class="resume-text">
-                        Developed a deep interest in computer science through various challenging projects in small groups.<br />
-                        First three years of the program taught in English as I am part of the international section.<br />
-                        Courses: Linear algebra, Formal language, Programming, Computer architecture/networks, Probabilities, Statistics, ...
+                        Specialization in image processing and synthesis.
+                        Developed a complete knowledge in computer science through theoretical courses taught in English
+                        (Linear algebra, Formal language, Probabilities, Statistics, ...)
+                        and various challenging group projects.
                     </div>
                 </div>
 
@@ -166,10 +169,6 @@ export default () => {
                             <img class="resume-icon" src="/images/icons/icon-calendar.svg" alt="icon-calendar" />
                             Jan. 2019 - Jun. 2019
                         </div>
-                    </div>
-                    <div class="resume-text">
-                        Courses: Discrete mathematics, Software design, Graphics programming, Computer networks.<br />
-                        Joined a startup during a Techstars Startup Weekend and worked on a web app matching users with health providers.
                     </div>
                 </div>
             </div>
