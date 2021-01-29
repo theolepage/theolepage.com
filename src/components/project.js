@@ -9,15 +9,13 @@ const BlockLink = styled(Link)`
 `
 
 const Block = styled.div`
-    box-sizing: border-box;
-
     display: block;
     position: relative;
 
-    margin: 10px 0 10px 0;
     padding: 24px 22px;
 
-    width: 280px;
+    max-width: 400px;
+    min-width: 300px;
     height: 150px;
 
     border-radius: 6px;
@@ -101,9 +99,13 @@ const parseProjectData = (project) => {
     // Determine color
     let color = ''
     project.repositoryTopics.edges.forEach(topic => {
-        let parts = topic.node.topic.name.split('-')
-        if (parts.length === 3 && parts[1] === 'color')
-            color = '#' + parts[2]
+        let value = topic.node.topic.name
+        if (value.startsWith('meta-project-color'))
+        {
+            let parts = value.split('-')
+            if (parts.length === 4)
+                color = '#' + parts[3]
+        }
     })
 
     // Determine if project is under development
@@ -114,23 +116,21 @@ const parseProjectData = (project) => {
     const isUnderDevelopment = diffDays < 30
 
     return {
-        name: project.name,
-        description: project.description,
         color: color,
         underDevelopment: isUnderDevelopment
     }
 }
 
 export default function Project({ project }) {
-    const data = parseProjectData(project)
+    const { color, underDevelopment } = parseProjectData(project)
 
     return (
-        <BlockLink to={'/projects/' + data.name}>
+        <BlockLink to={project.url} target="_blank" rel="nofollow noopener noreferrer">
             <Block>
-                <Header style={{ background: data.color }} />
+                <Header style={{ background: color }} />
 
                 <Icons>
-                    {data.underDevelopment && <UnderDevelopment />}
+                    {underDevelopment && <UnderDevelopment />}
                 </Icons>
 
                 <Title>{project.name}</Title>

@@ -61,7 +61,7 @@ module.exports = {
             resolve: `gatsby-source-github-repos`,
             options: {
                 token: process.env.GITHUB_API_TOKEN,
-                query: "user:theolepage topic:theoworldcom-show fork:true",
+                query: "user:theolepage topic:meta-project-show fork:true sort:updated-desc",
                 limit: 10
             },
         }

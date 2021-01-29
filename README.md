@@ -6,10 +6,9 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ### To-Do
 
-- [ ] Resume: update content (detail pro experiences)
-- [ ] Redesign home page (github icon, buttons)
-- [ ] Reponsive: mobile
-- [ ] Update projects repos (my-fast-kmeans, chess, cppa, prpa, jpeg, lzw, salesman)
+- [ ] Resume: update content (detail pro experiences) [1h]
+- [ ] Update projects repos (kmeans, chess, cppa, prpa, jpeg/lzw, salesman) [1h]
+- [ ] Deploy on netlify, link domains, clean lab.theolepage.com [1h]
 
 ---
 
