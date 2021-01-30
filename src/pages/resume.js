@@ -64,8 +64,9 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> every month.
-                            Reading and implementing new methods and papers in the field of artificial intelligence.
+                            Focusing my research on self learning methods and their applications to speaker recognition while doing monthly talks about my progress.
+                            Previously worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> organized by Renault.
+                            Reading and implementing recent papers in the field of machine learning and computer vision.
                         </div>
                     </div>
                     <div class="resume-experience-image">
@@ -91,9 +92,10 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Contributed to <a target="_blank" rel="nofollow noopener noreferrer" href="http://holovibes.com/">Holovibes</a>,
-                            a fast real time renderer of holograms for medical purpose.
-                            Our work resulted in a substantial speedup (500 to 5000 frames per second handled) described in this article.
+                            Contributed to a fast real time renderer of holograms for medical purpose written in C++/CUDA.
+                            Our work resulted in a 5x speedup which improved substantially output images contrast.
+                            The addition of test suites and the refactoring of main components increased significantly the stability
+                            and allowed the project to become open source.
                         </div>
                     </div>
                     <div class="resume-experience-image">
@@ -119,8 +121,8 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Taught C programming language to second year students through weekly graded practicals.
-                            Worked on a web app to let other assistants test and evaluate student projects.
+                            Taught C programming language and concepts, such as networking and multithreading, to second year students through weekly graded practicals.
+                            Worked on a web app to let other assistants evaluate automatically student projects.
                         </div>
                     </div>
                     <div class="resume-experience-image">
@@ -183,7 +185,9 @@ export default () => {
                                 <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
                                 <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/prophecy">Prophecy - a neural network framework</a>
                             </div>
-                            <div class="resume-text">Implemented n-dimensional arrays, dense and convolution from scratch in C++ and Cuda. Offering some of Keras features and handles MNIST dataset.</div>
+                            <div class="resume-text">
+                                Deep neural networks framework similar to Keras and made from scratch in C++ and CUDA. Offering state-of-the-art accuracy on MNIST dataset for AlexNet and VGG models.
+                            </div>
                         </div>
 
                         <div class="resume-item">
@@ -192,7 +196,7 @@ export default () => {
                                 <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/cant-stop-driving">Can't Stop Driving</a>
                             </div>
                             <div class="resume-text">
-                                Led a team, for a 4 months school project, to create a 3D multiplayer game built with Unity and C#. It was chosen by a jury to be presented during open days.
+                                Led a team, for a 4 months school project, to create a 3D multiplayer game built with Unity and C#. It was chosen by a jury to be presented to new students during open days.
                             </div>
                         </div>
                     </div>
@@ -204,7 +208,7 @@ export default () => {
                                 <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/ember-classification">Classification of EMBER dataset</a>
                             </div>
                             <div class="resume-text">
-                                Developed machine learning methods (k-means, deep neural networks, ...) to classify a dataset of malware programs.
+                                Machine learning methods (k-means, classifier, deep neural network and siamese network) to classify a dataset of malware programs.
                                 Ranked second out of 15 participants.
                             </div>
                         </div>
@@ -215,7 +219,7 @@ export default () => {
                                 <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/42sh">42sh - a POSIX shell</a>
                             </div>
                             <div class="resume-text">
-                                Made a shell in C complying with SCL standard and Bash grammar. The lexer, LL(1) parser and AST is fully documented and supported by a test suite.
+                                Worked on a shell in C complying with SCL standard and Bash grammar. The lexer, LL(1) parser and AST is fully documented and supported by a test suite.
                             </div>
                         </div>
                     </div>

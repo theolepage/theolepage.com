@@ -21,6 +21,10 @@ const ProjectsGrid = styled.div`
     }
 `
 
+const Buttons = styled.div`
+    display: flex;
+`
+
 const GithubIcon = styled.div`
     display: inline-block;
 
@@ -48,10 +52,12 @@ export default ({data}) => {
                 {projects.map(repo => <Project key={repo.id} project={repo} />)}
             </ProjectsGrid>
 
-            <Button to={'https://github.com/theolepage'} external>
-                See all projects on GitHub
-                <GithubIcon />
-            </Button>
+            <Buttons>
+                <Button to={'https://github.com/theolepage'} external>
+                    See all projects on GitHub
+                    <GithubIcon />
+                </Button>
+            </Buttons>
         </div>
     )
 }

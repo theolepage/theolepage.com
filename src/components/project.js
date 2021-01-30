@@ -12,7 +12,7 @@ const Block = styled.div`
     display: block;
     position: relative;
 
-    padding: 22px 22px;
+    padding: 20px 22px;
 
     min-width: 250px;
     height: 130px;
@@ -47,7 +47,7 @@ const Header = styled.div`
 `
 
 const Title = styled.div`
-    font-size: 15px;
+    font-size: 14px;
     color: rgb(30, 30, 30);
 `
 
@@ -67,7 +67,7 @@ const Icons = styled.div`
     width: 16px;
     height: 16px;
     position: absolute;
-    bottom: 24px; right: 22px;
+    bottom: 14px; right: 14px;
 `
 
 const UnderDevelopment = styled.div`

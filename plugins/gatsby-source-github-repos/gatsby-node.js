@@ -33,20 +33,22 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest },
                 }
                 createNode(repo)
 
-                const readme = {
-                    id: createNodeId(`Readme-${data.id}`),
-                    parent: repo.id,
-                    children: [],
-                    internal: {
-                        type: "Readme",
-                        content: data.readme.text,
-                        contentDigest: createContentDigest(data.readme.text),
-                        mediaType: "text/markdown"
-                    },
+                if (data.readme)
+                {
+                    const readme = {
+                        id: createNodeId(`Readme-${data.id}`),
+                        parent: repo.id,
+                        children: [],
+                        internal: {
+                            type: "Readme",
+                            content: data.readme.text,
+                            contentDigest: createContentDigest(data.readme.text),
+                            mediaType: "text/markdown"
+                        },
+                    }
+                    createNode(readme)
+                    createParentChildLink({ parent: repo, child: readme })
                 }
-                createNode(readme)
-
-                createParentChildLink({ parent: repo, child: readme })
             })
             resolve()
         })

@@ -12,12 +12,12 @@ const ABOUT_TEXT = `
     that computer science covers.
     I am mainly motivated by the applications of <b>image processing and
     machine learning</b> in real world projects.
-`;
+`
 
 const ALERT_TEXT = `
     I am seeking an internship in Computer Vision or
     Machine Learning starting in January 2022.
-`;
+`
 
 const Alert = styled.div`
     display: inline-block;
@@ -39,13 +39,16 @@ const Alert = styled.div`
 const Actions = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: baseline;
 
     text-align: center;
 
     div {
         margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+        justify-content: center;
     }
 `
 

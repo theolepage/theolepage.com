@@ -1,6 +1,6 @@
-const fetcher = require("graphql-fetch");
+const fetcher = require("graphql-fetch")
 
-const GITHUB_URL = "https://api.github.com/graphql";
+const GITHUB_URL = "https://api.github.com/graphql"
 
 const GRAPHQL_QUERY = `
     query ($query: String = "", $limit: Int = 0) {
