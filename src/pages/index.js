@@ -7,10 +7,10 @@ import About from "../components/about"
 import Projects from "../components/projects"
 
 const Container = styled.div`
-    width: 900px;
+    width: 800px;
     margin: 40px auto 80px auto;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 900px) {
         width: 80%;
     }
 `

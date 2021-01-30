@@ -8,7 +8,7 @@ const button = css`
     margin: 16px 22px 0 0;
     padding: 12px 16px;
 
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(60, 60, 60);
 
     background: rgb(255, 255, 255);

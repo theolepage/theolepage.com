@@ -12,11 +12,10 @@ const Block = styled.div`
     display: block;
     position: relative;
 
-    padding: 24px 22px;
+    padding: 22px 22px;
 
-    max-width: 400px;
-    min-width: 300px;
-    height: 150px;
+    min-width: 250px;
+    height: 130px;
 
     border-radius: 6px;
     background: #fff;
@@ -48,16 +47,16 @@ const Header = styled.div`
 `
 
 const Title = styled.div`
-    font-size: 16px;
+    font-size: 15px;
     color: rgb(30, 30, 30);
 `
 
 const Description = styled.div`
     margin-top: 8px;
 
-    font-size: 14px;
+    font-size: 12px;
     color: rgb(100, 100, 100);
-    line-height: 1.6em;
+    line-height: 1.5em;
 
     opacity: 1;
 

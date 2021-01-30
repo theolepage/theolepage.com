@@ -44,10 +44,8 @@ const Actions = styled.div`
 
     text-align: center;
 
-    @media (max-width: 760px) {
-        div {
-            margin-top: 16px;
-        }
+    div {
+        margin-top: 16px;
     }
 `
 

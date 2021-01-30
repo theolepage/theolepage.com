@@ -6,17 +6,17 @@ import Button from "./button"
 
 const ProjectsGrid = styled.div`
     display: grid;
-    grid-template-rows: repeat(1, 150px);
+    grid-template-rows: repeat(1, 130px);
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
 
-    margin: 30px 0 20px 0;
+    margin: 30px 0 16px 0;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 900px) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 680px) {
         grid-template-columns: repeat(1, 1fr);
     }
 `
@@ -25,12 +25,12 @@ const GithubIcon = styled.div`
     display: inline-block;
 
     position: relative;
-    top: 3px;
+    top: 2px;
 
-    margin: 0 0 0 10px;
+    margin: 0 0 0 8px;
 
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
 
     background-color: rgb(60, 60, 60);
 
