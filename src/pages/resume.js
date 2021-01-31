@@ -121,8 +121,8 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Taught C programming language and concepts, such as networking and multithreading, to second year students through weekly graded practicals.
-                            Worked on a web app to let other assistants evaluate automatically student projects.
+                            Taught C and Rust programming languages, focusing on networking and multithreading low-level concepts, to second year students through weekly graded practicals.
+                            Developed an intranet to let other assistants evaluate student projects.
                         </div>
                     </div>
                     <div class="resume-experience-image">
