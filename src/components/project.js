@@ -64,10 +64,10 @@ const Description = styled.div`
 `
 
 const Icons = styled.div`
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     position: absolute;
-    bottom: 14px; right: 14px;
+    bottom: 10px; right: 10px;
 `
 
 const UnderDevelopment = styled.div`
@@ -75,7 +75,7 @@ const UnderDevelopment = styled.div`
     height: 100%;
 
     border-radius: 100%;
-    border: 4px solid rgb(240, 240, 240);
+    border: 3px solid rgb(245, 245, 245);
 
     &:after {
         position: absolute;
@@ -83,8 +83,9 @@ const UnderDevelopment = styled.div`
         content: '';
 
         border-radius: 100%;
-        border: 4px solid transparent;
-        border-top-color: rgba(55, 125, 255, 0.8);
+        border: 3px solid transparent;
+        border-top-color: rgb(200, 200, 200);
+
         animation: spin 2s infinite;
     }
 
@@ -99,8 +100,7 @@ const parseProjectData = (project) => {
     let color = ''
     project.repositoryTopics.edges.forEach(topic => {
         let value = topic.node.topic.name
-        if (value.startsWith('meta-project-color'))
-        {
+        if (value.startsWith('meta-project-color')) {
             let parts = value.split('-')
             if (parts.length === 4)
                 color = '#' + parts[3]
