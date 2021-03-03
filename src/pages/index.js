@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 
 import SEO from "../components/seo"
 import About from "../components/about"
+import Research from "../components/research"
 import Projects from "../components/projects"
 
 const Container = styled.div`
@@ -23,6 +24,7 @@ export default ({ data }) => {
             <h1>Theo Lepage</h1>
 
             <About />
+            <Research />
             <Projects data={data} />
         </Container>
     )

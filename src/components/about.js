@@ -46,26 +46,22 @@ const Actions = styled.div`
     div {
         margin-top: 16px;
     }
-
-    @media (max-width: 600px) {
-        justify-content: center;
-    }
 `
 
 export default () => {
     return (
         <div>
-            <Alert dangerouslySetInnerHTML={{__html: ALERT_TEXT}} />
+            <Alert dangerouslySetInnerHTML={{ __html: ALERT_TEXT }} />
 
             <h2>About</h2>
             <div>
-                <p dangerouslySetInnerHTML={{__html: ABOUT_TEXT}} />
+                <p dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }} />
 
                 <Actions>
                     <Button to="/resume">Read my resume</Button>
                     <div>
                         or reach me at <a href={'mailto:' + EMAIL_ADDRESS}>
-                            {EMAIL_ADDRESS.replace('@', '[at]')}</a>
+                            {EMAIL_ADDRESS.replace('@', '[at]')}</a>.
                     </div>
                 </Actions>
             </div>

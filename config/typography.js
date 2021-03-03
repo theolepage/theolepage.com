@@ -33,8 +33,12 @@ const typography = new Typography({
             "a:hover, a:active": {
                 textDecoration: "underline",
             },
-            "h1, h2, h3, h4, h5, h6": {
-                marginTop: rhythm(2.5),
+            "h1, h2": {
+                marginTop: rhythm(2.8),
+                marginBottom: rhythm(0.8),
+            },
+            "h3": {
+                marginTop: rhythm(1),
                 marginBottom: rhythm(0.8),
             },
             p: {

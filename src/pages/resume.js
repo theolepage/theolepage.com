@@ -64,7 +64,7 @@ export default () => {
                             </div>
                         </div>
                         <div class="resume-text">
-                            Focusing my research on self learning methods and their applications to speaker recognition while doing monthly talks about my progress.
+                            Focusing my research on self-supervised methods applied to speaker and language recognition while doing monthly talks about my progress.
                             Previously worked on a prototype of a self-driving car to compete the French <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.roboracingleague.com/">DIY Robocars</a> organized by Renault.
                             Reading and implementing recent papers in the field of machine learning and computer vision.
                         </div>
@@ -93,7 +93,7 @@ export default () => {
                         </div>
                         <div class="resume-text">
                             Contributed to a fast real time renderer of holograms for medical purpose written in C++/CUDA.
-                            Our work resulted in a 5x speedup which improved substantially output images contrast.
+                            Our work resulted in a 10x speedup which improved substantially output images contrast.
                             The addition of test suites and the refactoring of main components increased significantly the stability
                             and allowed the project to become open source.
                         </div>
