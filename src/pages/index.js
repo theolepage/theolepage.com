@@ -24,8 +24,8 @@ export default ({ data }) => {
             <h1>Theo Lepage</h1>
 
             <About />
-            <Research />
             <Projects data={data} />
+            {/* <Research /> */}
         </Container>
     )
 }

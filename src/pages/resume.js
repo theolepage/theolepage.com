@@ -183,7 +183,7 @@ export default () => {
                         <div class="resume-item">
                             <div class="resume-subtitle resume-emphasize">
                                 <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
-                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/prophecy">Prophecy - a neural network framework</a>
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/prophecy">Prophecy - a neural network framework</a>
                             </div>
                             <div class="resume-text">
                                 Deep neural networks framework similar to Keras and made from scratch in C++ and CUDA. Offering state-of-the-art accuracy on MNIST dataset for AlexNet and VGG models.
@@ -193,7 +193,7 @@ export default () => {
                         <div class="resume-item">
                             <div class="resume-subtitle resume-emphasize">
                                 <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
-                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/cant-stop-driving">Can't Stop Driving</a>
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/cant-stop-driving">Can't Stop Driving</a>
                             </div>
                             <div class="resume-text">
                                 Led a team, for a 4 months school project, to create a 3D multiplayer game built with Unity and C#. It was chosen by a jury to be presented to new students during open days.
@@ -205,7 +205,7 @@ export default () => {
                         <div class="resume-item">
                             <div class="resume-subtitle resume-emphasize">
                                 <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
-                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/ember-classification">Classification of EMBER dataset</a>
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/ember-classification">Classification of EMBER dataset</a>
                             </div>
                             <div class="resume-text">
                                 Machine learning methods (k-means, classifier, deep neural network and siamese network) to classify a dataset of malware programs.
@@ -216,7 +216,7 @@ export default () => {
                         <div class="resume-item">
                             <div class="resume-subtitle resume-emphasize">
                                 <img class="resume-icon" src="/images/icons/icon-project.svg" alt="icon-project" />
-                                <a target="_blank" rel="nofollow noopener noreferrer" href="/projects/42sh">42sh - a POSIX shell</a>
+                                <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/42sh">42sh - a POSIX shell</a>
                             </div>
                             <div class="resume-text">
                                 Worked on a shell in C complying with SCL standard and Bash grammar. The lexer, LL(1) parser and AST is fully documented and supported by a test suite.
