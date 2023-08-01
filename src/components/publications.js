@@ -5,6 +5,17 @@ import Block from "./block"
 
 const PUBLICATIONS = [
     {
+        name: 'Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification',
+        authors: 'Theo Lepage, and Reda Dehak',
+        journal: 'INTERSPEECH 2023',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2306.03664' },
+            // { name: 'Slides', url: '/uploads/lepage_interspeech_2022_slides.pdf' },
+            // { name: 'Video', url: 'https://youtu.be/Ndhzm6Krj7Q' },
+            { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
+        ]
+    },
+    {
         name: 'Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning',
         authors: 'Theo Lepage, and Reda Dehak',
         journal: 'INTERSPEECH 2022',

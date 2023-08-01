@@ -217,6 +217,19 @@ const ResumePage = () => {
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2306.03664">Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            INTERSPEECH 2023
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <u>Theo Lepage</u>, and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
                             <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2207.05506">Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
@@ -227,7 +240,7 @@ const ResumePage = () => {
                         </div>
                     </div>
 
-                    <div class="resume-item">
+                    {/* <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
                             <a target="_blank" rel="nofollow noopener noreferrer" href="/uploads/lepage_lrde_2021_report.pdf">Self-supervised learning applied to speaker and language recognition</a>
@@ -238,7 +251,7 @@ const ResumePage = () => {
                         <div class="resume-publication-authors resume-text_shift">
                             <u>Theo Lepage</u>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
