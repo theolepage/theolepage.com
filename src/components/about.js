@@ -25,12 +25,6 @@ const Photo = styled.img`
 
     border-radius: 100%;
 
-    transition: transform 0.5s;
-
-    &:hover {
-        transform: rotateZ(-15deg);
-    }
-
     @media (max-width: 800px) {
         margin: 0 auto 32px auto;
     }

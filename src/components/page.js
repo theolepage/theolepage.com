@@ -40,28 +40,6 @@ const SiteTitle = styled(Link)`
     font-family: 'Questrial', sans-serif;
 `
 
-const FirstnameAnimated = styled.span`
-    color: transparent;
-
-    background: linear-gradient(-45deg, #4057c9, #0c1645, #324cdb, #2754cf);
-    background-size: 400% 400%;
-    background-clip: text;
-
-    animation: gradient 7s ease infinite alternate;
-    
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-`
-
 const HomepageLink = styled(Link)`
     color: rgb(120, 120, 120);
 
@@ -104,7 +82,7 @@ const Page = ({ title, children }) => {
             <Header top={offset === 0}>
                 <HeaderWrapper>
                     <SiteTitle to="/" invisible>
-                        <FirstnameAnimated>Theo</FirstnameAnimated> Lepage
+                        Theo Lepage
                     </SiteTitle>
                     <HomepageLink
                         to="/"
