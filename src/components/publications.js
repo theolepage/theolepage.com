@@ -5,13 +5,29 @@ import Block from "./block"
 
 const PUBLICATIONS = [
     {
+        name: 'Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models',
+        authors: 'Victor Miara, Theo Lepage, and Reda Dehak',
+        journal: 'INTERSPEECH 2024',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2406.02285' },
+            { name: 'Code', url: 'https://github.com/theolepage/wavlm_ssl_sv' }
+        ]
+    },
+    {
+        name: 'Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations',
+        authors: 'Theo Lepage, and Reda Dehak',
+        journal: 'Odyssey 2024',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2404.14913' },
+            { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
+        ]
+    },
+    {
         name: 'Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification',
         authors: 'Theo Lepage, and Reda Dehak',
         journal: 'INTERSPEECH 2023',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2306.03664' },
-            // { name: 'Slides', url: '/uploads/lepage_interspeech_2022_slides.pdf' },
-            // { name: 'Video', url: 'https://youtu.be/Ndhzm6Krj7Q' },
             { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
         ]
     },
@@ -33,7 +49,7 @@ const PUBLICATIONS = [
         actions: [
             { name: 'Report', url: '/uploads/lepage_lrde_2021_report.pdf' },
             { name: 'Slides', url: '/uploads/lepage_lrde_2021_slides.pdf' },
-            { name: 'Video',  url: 'https://youtu.be/7txwJlIrKO0' }
+            { name: 'Video', url: 'https://youtu.be/7txwJlIrKO0' }
         ]
     }
 ]

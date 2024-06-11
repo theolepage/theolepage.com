@@ -8,22 +8,22 @@ import Contact from "../components/contact"
 import Publications from "../components/publications"
 // import Posts from "../components/posts"
 import Talks from "../components/talks"
-// import Teaching from "../components/teaching"
+import Teaching from "../components/teaching"
 import Projects from "../components/projects"
 
 const IndexPage = ({ data }) => {
-    return (
-        <Page>
-            {/* <Alert /> */}
-            <About />
-            <Contact />
-            <Publications />
-            {/* <Posts data={data} /> */}
-            <Talks />
-            {/* <Teaching /> */}
-            <Projects data={data} />
-        </Page>
-    )
+  return (
+    <Page>
+      {/* <Alert /> */}
+      <About />
+      <Contact />
+      <Publications />
+      {/* <Posts data={data} /> */}
+      <Talks />
+      <Teaching />
+      <Projects data={data} />
+    </Page>
+  )
 }
 
 export default IndexPage
