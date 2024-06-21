@@ -11,7 +11,7 @@ const TEACHING = [
         date: 'Spring 2023-2024'
     },
     {
-        name: 'Python for Big Data',
+        name: 'Python for Data Science',
         location: 'EPITA',
         date: 'Spring 2023-2024'
     },

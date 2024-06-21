@@ -19,6 +19,7 @@ const PUBLICATIONS = [
         journal: 'Odyssey 2024',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2404.14913' },
+            { name: 'Slides', url: '/uploads/lepage_odyssey_2024_slides.pdf' },
             { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
         ]
     },
@@ -28,6 +29,7 @@ const PUBLICATIONS = [
         journal: 'INTERSPEECH 2023',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2306.03664' },
+            { name: 'Slides', url: '/uploads/lepage_interspeech_2023_slides.pdf' },
             { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
         ]
     },
