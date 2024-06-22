@@ -8,12 +8,12 @@ const TEACHING = [
     {
         name: 'Introduction to Deep Neural Networks',
         location: 'EPITA',
-        date: 'Spring 2023-2024'
+        date: 'Spring 2023 - 2024'
     },
     {
         name: 'Python for Data Science',
         location: 'EPITA',
-        date: 'Spring 2023-2024'
+        date: 'Spring 2023 - 2024'
     },
     {
         name: 'Rust Programming',
@@ -48,7 +48,7 @@ const Teaching = () => {
                     <Block
                         key={teaching.name}
                         title={teaching.name}
-                        description={teaching.location + ' / ' + teaching.date}
+                        description={teaching.date + ' @ ' + teaching.location}
                     />
                 )}
             </BlocksGrid>

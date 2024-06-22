@@ -7,9 +7,9 @@ import Link from "./link"
 const EMAIL_ADDRESS = 'theo@theolepage.com'
 
 const SOCIALS = [
-    { name: 'twitter',  url: 'https://twitter.com/thdoteo' },
-    { name: 'github',   url: 'https://github.com/theolepage/' },
-    { name: 'scholar',  url: 'https://scholar.google.com/citations?user=q1MqhVgAAAAJ&hl=en&oi=ao' },
+    { name: 'twitter', url: 'https://twitter.com/thdoteo' },
+    { name: 'github', url: 'https://github.com/theolepage/' },
+    { name: 'scholar', url: 'https://scholar.google.com/citations?user=q1MqhVgAAAAJ&hl=en&oi=ao' },
     { name: 'linkedin', url: 'https://www.linkedin.com/in/theolepage/' }
 ]
 
@@ -18,7 +18,7 @@ const ContactBox = styled.p`
 
     text-align: center;
 
-    border: 1px solid rgb(230, 230, 230);
+    border: 1px dashed rgb(210, 210, 210);
     background: rgb(252, 252, 252);
     border-radius: 6px;
 `
@@ -50,7 +50,7 @@ const SocialIcon = styled.img`
     }
 `
 
-const Social = ({name, url}) => {
+const Social = ({ name, url }) => {
     return (
         <SocialLink to={url}>
             <SocialIcon alt={'icon-' + name} src={'/images/icon-' + name + '.png'} />

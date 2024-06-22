@@ -16,7 +16,7 @@ const PUBLICATIONS = [
     {
         name: 'Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations',
         authors: 'Theo Lepage, and Reda Dehak',
-        journal: 'Odyssey 2024',
+        journal: 'Odyssey 2024: The Speaker and Language Recognition Workshop',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2404.14913' },
             { name: 'Slides', url: '/uploads/lepage_odyssey_2024_slides.pdf' },

@@ -7,7 +7,7 @@ const TALKS = [
     {
         name: 'Lightning Talks on SSL applied to Speaker and Language Recognition',
         location: 'LRDE',
-        date: 'Spring 2021',
+        date: 'Jan. - Sep. 2021',
         link: 'https://www.youtube.com/watch?v=_zBMZ22n6Lk&list=PLi4WQQO33eqU22Le1MFwgqRUtjdptCm6h'
     }
 ]
@@ -16,10 +16,10 @@ const Talks = () => {
     return (
         <Section title="Talks">
             {TALKS.map(talk =>
-                <Block 
+                <Block
                     key={talk.name}
                     title={talk.name}
-                    info={talk.location + ' / ' + talk.date}
+                    info={talk.date + ' @ ' + talk.location}
                     url={talk.link}
                 />
             )}

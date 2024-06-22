@@ -26,22 +26,23 @@ const Photo = styled.img`
     border-radius: 100%;
 
     @media (max-width: 800px) {
+        display: none;
         margin: 0 auto 32px auto;
     }
 `
 
 const AboutPage = () => {
     return (
-        <Section title="About">
+        <Section title="">
             <Container>
                 <Content>
                     <p>
-                        I am Theo Lepage, a <b>Ph.D. student</b> in <b>Machine Learning</b> at
+                        I am Theo Lepage, a <b>Ph.D. student</b> in <b>Artificial Intelligence</b> at
                         {' '}<Link to="https://www.sorbonne-universite.fr/en">Sorbonne University</Link> and
                         {' '}<Link to="https://www.lre.epita.fr/">EPITA Research Laboratory</Link>, based in Paris, France.
-    
-                        My research focuses on <b>self-supervised learning</b> for producing attack-agnostic representations
-                        for <b>speaker and language recognition</b>. Through artificial intelligence, my aim is to enable computers to understand our world.
+
+                        My research focuses on <b>self-supervised learning</b> for producing robust representations
+                        for <b>speaker and language recognition</b>. Through machine learning and speech processing, my aim is to improve communications between humans and computers.
                     </p>
                     <Button to="/resume">Read my resume</Button>
                 </Content>

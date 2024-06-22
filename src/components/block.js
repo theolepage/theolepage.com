@@ -49,6 +49,7 @@ const Title = styled.div`
 
 const Info = styled.div`
     min-width: 120px;
+    max-width: 190px;
 
     margin-left: 20px;
 
@@ -76,11 +77,11 @@ const Actions = styled.div`
 const Action = styled.div`
     display: inline-block;
 `
-    
+
 const ActionLink = styled(Link)`
     
 `
-    
+
 const ActionSeparator = styled.div`
     display: inline-block;
 
@@ -102,14 +103,14 @@ const Block = ({ title, info, description, url, actions, corner, children }) => 
 
             {description && <Description dangerouslySetInnerHTML={{ __html: description }} />}
 
-            { actions &&
+            {actions &&
                 <Actions>
                     {actions.map((action, i) =>
                         <Action>
                             <ActionLink
                                 key={action.name}
                                 to={action.url}>
-                                    {action.name}
+                                {action.name}
                             </ActionLink>
                             {i !== actions.length - 1 && <ActionSeparator>/</ActionSeparator>}
                         </Action>
