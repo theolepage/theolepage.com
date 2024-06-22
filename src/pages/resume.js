@@ -178,7 +178,7 @@ const ResumePage = () => {
                             </div>
                         </div>
                         <div class="resume-experience-image">
-                            <img style={{width: '75%'}} src="/images/resume/cnrs.png" alt="logo-cnrs" />
+                            <img style={{ width: '75%' }} src="/images/resume/cnrs.png" alt="logo-cnrs" />
                         </div>
                     </div>
 
@@ -217,6 +217,40 @@ const ResumePage = () => {
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2306.03664">Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            INTERSPEECH 2024
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            Victor Miara, <u>Theo Lepage</u>, and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2404.14913">Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            Odyssey 2024: The Speaker and Language Recognition Workshop
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <u>Theo Lepage</u>, and Reda Dehak
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="resume-page">
+
+                <div class="resume-section resume-publications">
+                    {/* <div class="resume-title">Publications</div> */}
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
                             <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2306.03664">Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
@@ -239,24 +273,7 @@ const ResumePage = () => {
                             <u>Theo Lepage</u>, and Reda Dehak
                         </div>
                     </div>
-
-                    {/* <div class="resume-item">
-                        <div class="resume-subtitle resume-emphasize">
-                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="/uploads/lepage_lrde_2021_report.pdf">Self-supervised learning applied to speaker and language recognition</a>
-                        </div>
-                        <div class="resume-publication-journal resume-text_shift">
-                            LRDE Students Seminar 2021
-                        </div>
-                        <div class="resume-publication-authors resume-text_shift">
-                            <u>Theo Lepage</u>
-                        </div>
-                    </div> */}
                 </div>
-
-            </div>
-
-            <div class="resume-page">
 
                 <div class="resume-section resume-projects">
                     <div class="resume-title">Projects</div>
@@ -291,7 +308,7 @@ const ResumePage = () => {
                                     <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/tensorflood">TensorFlood</a>
                                 </div>
                                 <div class="resume-text resume-text_shift">
-                                    Tiny automatic differentiation (autodiff) engine for NumPy tensors implemented in Python. 
+                                    Tiny automatic differentiation (autodiff) engine for NumPy tensors implemented in Python.
                                 </div>
                             </div>
 
@@ -347,7 +364,7 @@ const ResumePage = () => {
                                 <div class="resume-label">NumPy</div>
                                 <div class="resume-label">Pandas</div>
                             </div>
-                            
+
                             <div class="resume-item">
                                 <div class="resume-subsubtitle">Passions and interests</div>
                                 <div class="resume-passion">
