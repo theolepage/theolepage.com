@@ -5,18 +5,30 @@ import Block from "./block"
 
 const PUBLICATIONS = [
     {
+        name: 'Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection',
+        authors: 'Theophile Stourbe, Victor Miara, Theo Lepage, and Reda Dehak',
+        journal: 'ASVspoof 2024',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2409.05032' },
+            { name: 'Slides', url: '/uploads/stourbe_asvspoof_2024_slides.pdf' },
+            { name: 'Video', url: 'https://youtu.be/R_U41bzRKSg' }
+        ]
+    },
+    {
         name: 'Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models',
         authors: 'Victor Miara, Theo Lepage, and Reda Dehak',
         journal: 'INTERSPEECH 2024',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2406.02285' },
+            { name: 'Slides', url: '/uploads/miara_interspeech_2024_slides.pdf' },
             { name: 'Code', url: 'https://github.com/theolepage/wavlm_ssl_sv' }
         ]
     },
     {
         name: 'Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations',
         authors: 'Theo Lepage, and Reda Dehak',
-        journal: 'Odyssey 2024: The Speaker and Language Recognition Workshop',
+        journal: 'Odyssey 2024',
+        // journal: 'Odyssey 2024: The Speaker and Language Recognition Workshop',
         actions: [
             { name: 'Article', url: 'https://arxiv.org/abs/2404.14913' },
             { name: 'Slides', url: '/uploads/lepage_odyssey_2024_slides.pdf' },
