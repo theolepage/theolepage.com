@@ -14,7 +14,7 @@ const ResumePage = () => {
                 <div class="resume-section resume-header">
                     <div class="resume-name">Theo Lepage</div>
                     <div class="resume-description">
-                        Ph.D. student in <span class="resume-description-emphasize">Machine Learning</span> → learning <span class="resume-description-emphasize">robust representations</span> for <span class="resume-description-emphasize">speaker & language recognition</span></div>
+                        <span class="resume-description-emphasize">Ph.D. student</span> in <span class="resume-description-emphasize">A.I.</span> → <span class="resume-description-emphasize">Self-Supervised Learning</span> for <span class="resume-description-emphasize">Speaker Recognition</span></div>
                     <div class="resume-contact">
                         <a class="resume-contact-item" target="_blank" rel="nofollow noopener noreferrer" href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219">
                             <img class="resume-icon" src="/images/resume/icon-map_blue.svg" alt="icon-map" />
@@ -182,7 +182,7 @@ const ResumePage = () => {
                         </div>
                     </div>
 
-                    <div class="resume-experience">
+                    {/* <div class="resume-experience">
                         <div class="resume-experience-content">
                             <div class="resume-experience-header">
                                 <div class="resume-subtitle">
@@ -208,11 +208,24 @@ const ResumePage = () => {
                         <div class="resume-experience-image">
                             <img src="/images/resume/epita.png" alt="icon-epita" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div class="resume-section resume-publications">
                     <div class="resume-title">Publications</div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2409.05032">Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            Theophile Stourbe, Victor Miara, <u>Theo Lepage</u>, and Reda Dehak
+                        </div>
+                    </div>
 
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
@@ -233,7 +246,7 @@ const ResumePage = () => {
                             <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2404.14913">Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
-                            Odyssey 2024: The Speaker and Language Recognition Workshop
+                            The Speaker and Language Recognition Workshop (Odyssey 2024)
                         </div>
                         <div class="resume-publication-authors resume-text_shift">
                             <u>Theo Lepage</u>, and Reda Dehak
@@ -283,14 +296,14 @@ const ResumePage = () => {
                             <div class="resume-item">
                                 <div class="resume-subtitle resume-emphasize">
                                     <img class="resume-icon" src="/images/resume/icon-project.svg" alt="icon-project" />
-                                    <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">SSLSV</a>
+                                    <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">sslsv</a>
                                 </div>
                                 <div class="resume-text resume-text_shift">
                                     Framework for training and evaluating self-supervised learning methods for speaker verification.
                                 </div>
                             </div>
 
-                            <div class="resume-item">
+                            {/* <div class="resume-item">
                                 <div class="resume-subtitle resume-emphasize">
                                     <img class="resume-icon" src="/images/resume/icon-project.svg" alt="icon-project" />
                                     <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/prophecy">Prophecy</a>
@@ -298,21 +311,21 @@ const ResumePage = () => {
                                 <div class="resume-text resume-text_shift">
                                     A tiny deep neural network framework developed from scratch in C++ and CUDA.
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div class="resume-col">
                             <div class="resume-item">
                                 <div class="resume-subtitle resume-emphasize">
                                     <img class="resume-icon" src="/images/resume/icon-project.svg" alt="icon-project" />
-                                    <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/tensorflood">TensorFlood</a>
+                                    <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/wavlm_ssl_sv">wavlm_ssl_sv</a>
                                 </div>
                                 <div class="resume-text resume-text_shift">
-                                    Tiny automatic differentiation (autodiff) engine for NumPy tensors implemented in Python.
+                                    SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model.
                                 </div>
                             </div>
 
-                            <div class="resume-item">
+                            {/* <div class="resume-item">
                                 <div class="resume-subtitle resume-emphasize">
                                     <img class="resume-icon" src="/images/resume/icon-project.svg" alt="icon-project" />
                                     <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/NoneOfAllOfTheAbove/ocr">OCR</a>
@@ -320,7 +333,7 @@ const ResumePage = () => {
                                 <div class="resume-text resume-text_shift">
                                     An Optical Character Recognition software based on a simple neural network created from scratch in C.
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

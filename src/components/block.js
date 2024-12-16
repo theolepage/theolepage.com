@@ -49,7 +49,7 @@ const Title = styled.div`
 
 const Info = styled.div`
     min-width: 120px;
-    max-width: 190px;
+    max-width: 250px;
 
     margin-left: 20px;
 
