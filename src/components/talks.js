@@ -5,6 +5,11 @@ import Block from "./block"
 
 const TALKS = [
     {
+        name: 'Self-Supervised Learning for Speaker Recognition',
+        location: 'Callyope',
+        date: 'Dec. 2024',
+    },
+    {
         name: 'Lightning Talks on SSL applied to Speaker and Language Recognition',
         location: 'LRDE',
         date: 'Jan. - Sep. 2021',
