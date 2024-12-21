@@ -48,14 +48,17 @@ const Title = styled.div`
 `
 
 const Info = styled.div`
-    min-width: 120px;
-    max-width: 250px;
+    min-width: 250px;
 
     margin-left: 20px;
 
     text-align: right;
     font-size: 12px;
     color: rgb(100, 100, 100);
+
+    @media (max-width: 800px) {
+        min-width: 120px;
+    }
 `
 
 const Description = styled.div`
@@ -64,7 +67,7 @@ const Description = styled.div`
     margin-top: 6px;
     margin-bottom: 2px;
 
-    color: rgb(60, 60, 60);
+    color: rgb(80, 80, 80);
     font-size: 14px;
 `
 

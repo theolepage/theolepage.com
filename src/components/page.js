@@ -55,7 +55,7 @@ const Body = styled.div`
 `
 
 const BodyWrapper = styled.div`
-    width: 890px;
+    width: 990px;
 
     margin: auto;
 

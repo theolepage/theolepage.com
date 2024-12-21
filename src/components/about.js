@@ -41,8 +41,8 @@ const AboutPage = () => {
                         {' '}<Link to="https://www.sorbonne-universite.fr/en">Sorbonne University</Link> and
                         {' '}<Link to="https://www.lre.epita.fr/">EPITA Research Laboratory</Link>, based in Paris, France.
 
-                        My research focuses on <b>self-supervised learning</b> for producing robust representations
-                        for <b>speaker and language recognition</b>. Through machine learning and speech processing, my aim is to improve communications between humans and computers.
+                        My research focuses on <b>self-supervised learning</b> frameworks to develop robust representations
+                        for <b>speaker and language recognition</b>. Through machine learning and speech processing, my aim is to enhance communications between humans and computers.
                     </p>
                     <Button to="/resume">Read my resume</Button>
                 </Content>
