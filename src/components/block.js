@@ -41,6 +41,10 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    @media (max-width: 800px) {
+        flex-direction: column-reverse;
+    }
 `
 
 const Title = styled.div`
@@ -48,7 +52,7 @@ const Title = styled.div`
 `
 
 const Info = styled.div`
-    min-width: 250px;
+    min-width: 220px;
 
     margin-left: 20px;
 
@@ -56,8 +60,16 @@ const Info = styled.div`
     font-size: 12px;
     color: rgb(100, 100, 100);
 
+    ${(props) =>
+        props.wide && css`
+            min-width: 320px;
+    `}
+
     @media (max-width: 800px) {
-        min-width: 120px;
+        margin-left: 0;
+        margin-bottom: 6px;
+
+        text-align: left;
     }
 `
 
@@ -94,14 +106,14 @@ const ActionSeparator = styled.div`
     color: rgba(55, 125, 255, 0.6);
 `
 
-const Block = ({ title, info, description, url, actions, corner, children }) => {
+const Block = ({ title, info, wide_info, description, url, actions, corner, children }) => {
     const body = (
         <BlockElement css={url && BlockElement_hover}>
             {corner && <Corner style={{ background: corner }} />}
 
             <Header>
                 <Title>{title}</Title>
-                {info && <Info>{info}</Info>}
+                {info && <Info wide={wide_info}>{info}</Info>}
             </Header>
 
             {description && <Description dangerouslySetInnerHTML={{ __html: description }} />}

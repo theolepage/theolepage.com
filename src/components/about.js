@@ -27,6 +27,8 @@ const Photo = styled.img`
 
     @media (max-width: 800px) {
         // display: none;
+        width: 90px;
+
         margin: 0 auto 32px auto;
     }
 `

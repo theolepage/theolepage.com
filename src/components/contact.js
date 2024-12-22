@@ -23,6 +23,12 @@ const ContactBox = styled.p`
     border-radius: 6px;
 `
 
+const Socials = styled.span`
+    @media (max-width: 800px) {
+        display: block;
+    }
+`
+
 const SocialLink = styled(Link)`
     position: relative;
     top: 4px;
@@ -62,8 +68,11 @@ const Contact = () => {
     return (
         <Section>
             <ContactBox>
-                Send me an email at <Link to={'mailto:' + EMAIL_ADDRESS}>{EMAIL_ADDRESS}</Link> or reach me on
-                {SOCIALS.map(s => <Social key={s.name} name={s.name} url={s.url} />)}.
+                Send me an email at <Link to={'mailto:' + EMAIL_ADDRESS}>{EMAIL_ADDRESS}</Link>
+                {" "}
+                <Socials>
+                    or reach me on {SOCIALS.map(s => <Social key={s.name} name={s.name} url={s.url} />)}.
+                </Socials>
             </ContactBox>
         </Section>
     )
