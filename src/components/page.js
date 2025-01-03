@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styled from "@emotion/styled"
 
 import Link from "../components/link"
@@ -8,35 +8,32 @@ const Container = styled.div`
 `
 
 const Header = styled.div`
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-
-    background: #fff;
-    border-bottom: 1px solid rgba(235, 235, 235, ${props => (props.top ? '0' : '1')});
-
-    transition: border-bottom 0.3s;
 `
 
 const HeaderWrapper = styled.div`
+    width: 1250px;
+
+    margin: auto;
+
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 
-    padding: 16px 48px;
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+
+    padding: 16px 0;
+
+    @media (max-width: 1300px) {
+        width: 950px;
+    }
 
     @media (max-width: 1000px) {
         width: 90%;
-
-        margin: auto;
-        padding-left: 0;
-        padding-right: 0;
     }
 `
 
 const SiteTitle = styled(Link)`
     font-size: 22px;
-    color: #000;
     font-family: 'Questrial', sans-serif;
 `
 
@@ -51,35 +48,46 @@ const HomepageLink = styled(Link)`
 `
 
 const Body = styled.div`
-    padding-top: 120px;
 `
 
 const BodyWrapper = styled.div`
     width: 950px;
 
     margin: auto;
+    padding-top: 60px;
 
     @media (max-width: 1000px) {
         width: 90%;
     }
 `
 
-const Page = ({ title, children }) => {
-    const [offset, setOffset] = useState(0)
+const Footer = styled.div`
+`
 
-    useEffect(() => {
-        const onScroll = () => setOffset(window.pageYOffset)
-        setOffset(window.pageYOffset)
-        window.removeEventListener('scroll', onScroll)
-        window.addEventListener('scroll', onScroll, { passive: true })
-        return () => window.removeEventListener('scroll', onScroll)
-    }, [])
+const FooterWrapper = styled.div`
+    width: 950px;
 
+    margin: auto;
+    padding: 16px 0 26px 0;
+
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+
+    border-top: 1px solid rgba(230, 230, 230, 1);
+
+    @media (max-width: 1000px) {
+        width: 90%;
+    }
+
+    // background: #eee;
+`
+
+const Page = ({ title, description, children }) => {
     return (
         <Container>
-            <SEO title={title} />
+            <SEO title={title} description={description} />
 
-            <Header top={offset === 0}>
+            <Header>
                 <HeaderWrapper>
                     <SiteTitle to="/" invisible>
                         Theo Lepage
@@ -89,7 +97,7 @@ const Page = ({ title, children }) => {
                         activeStyle={{ display: 'none' }}
                         invisible
                     >
-                        ← Homepage
+                        About
                     </HomepageLink>
                 </HeaderWrapper>
             </Header>
@@ -99,6 +107,12 @@ const Page = ({ title, children }) => {
                     {children}
                 </BodyWrapper>
             </Body>
+
+            <Footer>
+                <FooterWrapper>
+                    © {new Date().getFullYear()} Theo Lepage
+                </FooterWrapper>
+            </Footer>
         </Container>
     )
 }

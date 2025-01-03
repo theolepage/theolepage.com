@@ -11,10 +11,15 @@ const SEO = ({ description, lang, meta, title }) => {
           title
           description
           author
+          siteUrl
         }
       }
     }
     `)
+
+    const siteUrl = site.siteMetadata.siteUrl
+
+    const imageUrl = `${siteUrl}/favicon.png`
 
     const metaDescription = description || site.siteMetadata.description
 
@@ -46,6 +51,10 @@ const SEO = ({ description, lang, meta, title }) => {
                     content: metaDescription,
                 },
                 {
+                    property: `og:image`,
+                    content: imageUrl,
+                },
+                {
                     property: `og:type`,
                     content: `website`,
                 },
@@ -64,6 +73,10 @@ const SEO = ({ description, lang, meta, title }) => {
                 {
                     name: `twitter:description`,
                     content: metaDescription,
+                },
+                {
+                    property: `twitter:image`,
+                    content: imageUrl,
                 },
             ].concat(meta)}
         />

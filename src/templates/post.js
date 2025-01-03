@@ -10,6 +10,8 @@ const ArticleHeader = styled.div`
 
 const ArticleTitle = styled.h1`
     margin-bottom: 8px;
+
+    font-size: 36px;
 `
 
 const ArticleDate = styled.p`
@@ -21,8 +23,7 @@ const ArticleBody = styled.section`
 `
 
 const Navigation = styled.div`
-    display: none;
-    // display: flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 
@@ -35,11 +36,11 @@ const NavigationElement = styled.div`
 
 const PostTemplate = ({data: { previous, next, markdownRemark: post }}) => {
     return (
-        <Page title={post.frontmatter.title}>
+        <Page title={post.frontmatter.title} description={post.excerpt}>
             <article className="post">
                 <ArticleHeader>
                     <ArticleTitle>{post.frontmatter.title}</ArticleTitle>
-                    <ArticleDate>{post.frontmatter.date}</ArticleDate>
+                    <ArticleDate>{post.frontmatter.date} — {post.fields.readingTime.text}</ArticleDate>
                 </ArticleHeader>
             
                 <ArticleBody dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -86,6 +87,11 @@ query BlogPostBySlug(
       title
       date(formatString: "MMMM DD, YYYY")
       color
+    }
+    fields {
+      readingTime {
+        text
+      }
     }
   }
   previous: markdownRemark(id: { eq: $previousPostId }) {
