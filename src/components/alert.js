@@ -5,8 +5,6 @@ import Section from "./section"
 import Link from "./link"
 
 const AlertElement = styled.div`
-    width: 90%;
-
     margin: 0 auto;
     padding: 16px 32px;
 
@@ -24,7 +22,7 @@ const Alert = () => {
         <Section>
             <AlertElement>
                 I am seeking an internship in Computer Vision or Machine Learning starting in January 2022.
-                {' '}<Link to="/">Read my resume →</Link>
+                {' '}<Link to="/resume">Read my resume →</Link>
             </AlertElement>
         </Section>
     )

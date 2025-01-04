@@ -4,28 +4,7 @@ import styled from "@emotion/styled"
 import Section from "./section"
 import Block from "./block"
 
-const TEACHING = [
-    {
-        name: 'Introduction to Deep Neural Networks',
-        location: 'EPITA',
-        date: 'Spring 2023 - 2024'
-    },
-    {
-        name: 'Python for Data Science',
-        location: 'EPITA',
-        date: 'Spring 2023 - 2024'
-    },
-    {
-        name: 'Rust Programming',
-        location: 'EPITA',
-        date: 'Spring 2020'
-    },
-    {
-        name: 'Unix / C Programming',
-        location: 'EPITA',
-        date: 'Fall 2019'
-    },
-]
+import { TEACHING } from "../../config/teaching"
 
 const BlocksGrid = styled.div`
     display: grid;

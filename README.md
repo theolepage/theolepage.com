@@ -6,11 +6,16 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ### To-Do
 
-- [ ] CSS consistency: typography -> review scale / margins / font size, text colors
-- [ ] CSS refactoring: CSS in js / resume.css / post.css
-
----
-
-- [ ] Dynamic grid of blocks
-- [ ] Source alert, publications, projects, talks, teaching from static files
-- [ ] 404 page: redesign, easter eggs
+- [ ] Blog: comments
+- [ ] Blog: improve posts
+    - [ ] Code
+        - [ ] Copy to clipboard button
+        - [ ] Header with title and language
+        - [ ] Show line numbers
+    - [ ] Sidenotes
+    - [ ] Blockquotes
+    - [ ] Captions for figures and tables
+    - https://annarossetti.com/
+- [ ] CSS: Typography -> review scale/margins/fs/colors (use variables)
+- [ ] CSS: Use React components for Resume
+- [ ] Source alert, publications, projects, talks, teaching from files

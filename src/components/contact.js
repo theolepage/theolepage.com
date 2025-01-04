@@ -4,14 +4,7 @@ import styled from "@emotion/styled"
 import Section from "./section"
 import Link from "./link"
 
-const EMAIL_ADDRESS = 'theo@theolepage.com'
-
-const SOCIALS = [
-    { name: 'twitter', url: 'https://twitter.com/thdoteo' },
-    { name: 'github', url: 'https://github.com/theolepage/' },
-    { name: 'scholar', url: 'https://scholar.google.com/citations?user=q1MqhVgAAAAJ&hl=en&oi=ao' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/theolepage/' }
-]
+import { EMAIL_ADDRESS, SOCIALS } from "../../config/contact"
 
 const ContactBox = styled.p`
     padding: 32px;
