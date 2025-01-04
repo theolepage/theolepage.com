@@ -11,7 +11,7 @@ const ArticleHeader = styled.div`
 const ArticleTitle = styled.h1`
     margin-bottom: 8px;
 
-    font-size: 36px;
+    font-size: 32px;
 `
 
 const ArticleDate = styled.p`

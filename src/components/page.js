@@ -78,8 +78,6 @@ const FooterWrapper = styled.div`
     @media (max-width: 1000px) {
         width: 90%;
     }
-
-    // background: #eee;
 `
 
 const Page = ({ title, description, children }) => {

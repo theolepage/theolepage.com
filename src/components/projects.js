@@ -25,10 +25,10 @@ const GithubIcon = styled.div`
     position: relative;
     top: 2px;
 
-    margin: 0 0 0 8px;
+    margin: 0 8px 0 0px;
 
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
 
     background-color: rgb(60, 60, 60);
 
@@ -71,8 +71,8 @@ const Projects = ({data}) => {
             </ProjectsGrid>
 
             <Button to={'https://github.com/theolepage'}>
-                See all projects on GitHub
                 <GithubIcon />
+                See all projects on GitHub
             </Button>
         </Section>
     )
