@@ -121,9 +121,8 @@ const Block = ({ title, info, wide_info, description, url, actions, corner, chil
             {actions &&
                 <Actions>
                     {actions.map((action, i) =>
-                        <Action>
+                        <Action key={action.name}>
                             <ActionLink
-                                key={action.name}
                                 to={action.url}>
                                 {action.name}
                             </ActionLink>
