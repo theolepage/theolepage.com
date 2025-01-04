@@ -2,6 +2,7 @@
 title: "sslsv: A PyTorch Toolkit for Self-Supervised Learning applied to Speaker Verification"
 date: "2025-01-10T12:00:00"
 color: "#6ee5c7"
+tags: ["Self-Supervised Learning", "Speaker Recognition", "PyTorch"]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet magna sagittis, volutpat felis at, porttitor tellus. Nam ut ligula porta, consectetur mauris vel, accumsan augue. Maecenas purus odio, aliquet ac facilisis vitae, tristique vitae neque. Duis ut commodo augue. Ut cursus tortor ex, in sollicitudin dolor maximus vel. Curabitur quis metus eget nunc tempus interdum ut quis nisi. Cras vel ex a nisi auctor eleifend eu quis odio. Integer eleifend arcu vel orci auctor, sit amet bibendum quam viverra. Curabitur sagittis laoreet velit eu ornare. Phasellus eget dolor ultricies, ullamcorper nibh at, finibus lectus. Mauris justo nisl, suscipit nec fringilla quis, viverra eget nunc. Vivamus vel interdum nisl. Nunc sollicitudin eget sapien vel aliquet. Aliquam sed enim in risus mattis elementum. Sed ac velit ac dolor fermentum fermentum. Maecenas scelerisque euismod ullamcorper.

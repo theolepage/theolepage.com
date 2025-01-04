@@ -35,8 +35,6 @@ const Content = styled.div`
 
 const Title = styled.h2`
     margin-bottom: 10px;
-
-    font-weight: 600;
 `
 
 const Description = styled.p`

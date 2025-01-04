@@ -9,9 +9,28 @@ const ArticleHeader = styled.div`
 `
 
 const ArticleTitle = styled.h1`
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 
     font-size: 32px;
+`
+
+const ArticleTags = styled.div`
+    display: flex;
+
+    margin-top: 20px;
+    margin-bottom: 16px;
+`
+
+const ArticleTag = styled.div`
+    margin-right: 8px;
+    padding: 4px 6px;
+
+    font-size: 14px;
+    color: rgb(40, 40, 40);
+
+    background: rgb(242, 247, 255);
+    border: 1px solid rgb(218, 232, 255);
+    border-radius: 4px;
 `
 
 const ArticleDate = styled.p`
@@ -40,6 +59,13 @@ const PostTemplate = ({data: { previous, next, markdownRemark: post }}) => {
             <article className="post">
                 <ArticleHeader>
                     <ArticleTitle>{post.frontmatter.title}</ArticleTitle>
+                    {post.frontmatter.tags && (
+                      <ArticleTags>
+                        {post.frontmatter.tags.map((tag, index) => (
+                          <ArticleTag key={index}>{tag}</ArticleTag>
+                        ))}
+                      </ArticleTags>
+                    )}
                     <ArticleDate>{post.frontmatter.date} — {post.fields.readingTime.text}</ArticleDate>
                 </ArticleHeader>
             
@@ -87,6 +113,7 @@ query BlogPostBySlug(
       title
       date(formatString: "MMMM DD, YYYY")
       color
+      tags
     }
     fields {
       readingTime {

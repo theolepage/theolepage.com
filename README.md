@@ -18,4 +18,4 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - https://annarossetti.com/
 - [ ] CSS: Typography -> review scale/margins/fs/colors (use variables)
 - [ ] CSS: Use React components for Resume
-- [ ] Source alert, publications, projects, talks, teaching from files
+- [ ] Source alert, about, contact, publications, projects, talks, teaching from files
