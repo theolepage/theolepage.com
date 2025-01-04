@@ -12,21 +12,22 @@ const button = css`
 
     background: rgb(255, 255, 255);
     border-radius: 6px;
-    box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.03), 0px 1px 2px rgba(47, 55, 71, 0.1);
+    box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.01), 0px 1px 3px rgba(47, 55, 71, 0.05);
 
-    border: 1px solid rgb(245, 245, 245);
+    border: 1px solid rgb(235, 235, 235);
 
-    transition: 0.3s color, 0.2s background, 0.2s box-shadow, 0.4s transform;
+    transition: 0.3s color, 0.2s background, 0.2s box-shadow, 0.3s transform;
 
     &:hover {
         color: rgb(0, 0, 0);
         
-        background: rgb(245, 245, 245);
-        box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.06), 0px 1px 2px rgba(47, 55, 71, 0.1);
+        background: rgb(248, 248, 248);
+        box-shadow: 0px 4px 8px rgba(47, 55, 71, 0.02), 0px 1px 3px rgba(47, 55, 71, 0.1);
+        // transform: translateY(-2px);
     }
 
     &:active {
-        transform: scaleX(0.97) scaleY(0.94);
+        transform: scaleX(0.97) scaleY(0.95);
     }
 `
 
