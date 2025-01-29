@@ -2,12 +2,12 @@ export const TEACHING = [
     {
         name: 'Introduction to Deep Neural Networks',
         location: 'EPITA',
-        date: 'Spring 2023 - 2024'
+        date: 'Spring 2023 - 2025'
     },
     {
         name: 'Python for Data Science',
         location: 'EPITA',
-        date: 'Spring 2023 - 2024'
+        date: 'Spring 2023 - 2025'
     },
     {
         name: 'Rust Programming',

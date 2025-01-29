@@ -11,12 +11,12 @@ export const TALKS = [
     },
     {
         name: 'Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification',
-        location: 'INTERSPEECH — Dublin, Ireland',
+        location: 'Interspeech — Dublin, Ireland',
         date: 'Aug. 2023',
     },
     {
         name: 'Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning',
-        location: 'INTERSPEECH — Incheon, South Korea',
+        location: 'Interspeech — Incheon, South Korea',
         date: 'Sep. 2022',
     },
     {

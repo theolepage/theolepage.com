@@ -123,7 +123,9 @@ const Block = ({ title, info, wide_info, description, url, actions, corner, chil
                     {actions.map((action, i) =>
                         <Action key={action.name}>
                             <ActionLink
-                                to={action.url}>
+                                onClick={action.do ? action.do : undefined}
+                                to={action.url}
+                            >
                                 {action.name}
                             </ActionLink>
                             {i !== actions.length - 1 && <ActionSeparator>/</ActionSeparator>}
