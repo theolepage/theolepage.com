@@ -1,3 +1,13 @@
+const lepage2025SSLSVBootstrappedPositiveSampling = `
+@Article{lepage2025SSLSVBootstrappedPositiveSampling,
+    title     = {Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling},
+    author    = {Lepage, Theo and Dehak, Reda},
+    year      = {2025},
+    journal   = {arXiv preprint library},
+    url       = {https://arxiv.org/abs/2501.17772},
+}
+`
+
 const stourbe2024ExploringWavLMBackendsSpoofing = `
 @InProceedings{stourbe2024ExploringWavLMBackendsSpoofing,
     title     = {Exploring WavLM back-ends for speech spoofing and deepfake detection},
@@ -59,6 +69,16 @@ const lepage2022LabelEfficientSelfSupervisedSV = `
 `
 
 export const PUBLICATIONS = [
+    {
+        name: 'Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling',
+        authors: 'Theo Lepage, and Reda Dehak',
+        journal: 'Preprint (submitted to IEEE TASLP)',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2501.17772' },
+            { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
+        ],
+        bib: lepage2025SSLSVBootstrappedPositiveSampling
+    },
     {
         name: 'Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection',
         authors: 'Theophile Stourbe, Victor Miara, Theo Lepage, and Reda Dehak',
