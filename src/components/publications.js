@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 
 import Section from "./section"
 import Block from "./block"
@@ -23,25 +23,28 @@ const downloadBibFile = (publication) => {
 }
 
 const Publications = () => {
+    const publications = useMemo(() => {
+        return PUBLICATIONS.map(publication => {
+            if (publication.bib && !publication.actions.some(action => action.name === "Cite")) {
+                publication.actions.push({
+                    name: "Cite",
+                    do: () => downloadBibFile(publication),
+                });
+            }
+            return publication;
+        });
+    }, []);
+
     return (
         <Section title="Publications">
-            {PUBLICATIONS.map(publication => {
-                if (publication.bib) {
-                    publication.actions.push({
-                        'name': 'Cite',
-                        'do': () => downloadBibFile(publication)
-                    })
-                }
-                return (
-                    <Block
-                        key={publication.name}
-                        title={publication.name}
-                        info={publication.journal}
-                        description={underlineCurrentAuthor(publication.authors)}
-                        actions={publication.actions}
-                    />
-                )
-            }
+            {publications.map(publication =>
+                <Block
+                    key={publication.name}
+                    title={publication.name}
+                    info={publication.journal}
+                    description={underlineCurrentAuthor(publication.authors)}
+                    actions={publication.actions}
+                />
             )}
         </Section>
     )
