@@ -43,6 +43,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.20",
+    "recharts": "^2.15.1",
     "typography": "^0.16.21"
   }
 }
