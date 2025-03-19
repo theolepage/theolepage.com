@@ -1,6 +1,11 @@
 export const TALKS = [
     {
         name: 'Self-Supervised Learning for Speaker Recognition',
+        location: 'Inria — Paris, France',
+        date: 'Mar. 2025',
+    },
+    {
+        name: 'Self-Supervised Learning for Speaker Recognition',
         location: 'Callyope — Paris, France',
         date: 'Dec. 2024',
     },
