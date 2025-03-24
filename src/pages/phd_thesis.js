@@ -45,62 +45,89 @@ const generateMonthTicks = (startDate, endDate) => {
     return ticks
 }
 
-const generateDataWithObjective = (dataMap) => {
+const linearRegression = (data) => {
+    if (data.length === 0) return { m: 0, b: 0 }
+    
+    const n = data.length
+    const sumX = data.reduce((sum, point) => sum + point.x, 0)
+    const sumY = data.reduce((sum, point) => sum + point.y, 0)
+    const sumXY = data.reduce((sum, point) => sum + point.x * point.y, 0)
+    const sumX2 = data.reduce((sum, point) => sum + point.x * point.x, 0)
+    
+    const denominator = n * sumX2 - sumX * sumX
+    if (denominator === 0) return { m: 0, b: sumY / n } // Prevent division by zero
+    
+    const m = (n * sumXY - sumX * sumY) / denominator
+    const b = (sumY - m * sumX) / n
+
+    return { m, b }
+}
+
+const generateData = (data) => {
     const startDate = new Date(START_DATE)
     const endDate = new Date(END_DATE)
 
-    const startTime = startDate.getTime();
-
-    const totalDaysInYear = (endDate - startTime) / (1000 * 60 * 60 * 24); // Total days from Jan 1 to Sep 1
-
-    const m = PAGE_COUNT_OBJECTIVE / totalDaysInYear; // Slope of the line
-
-    const data = [];
-    let lastCount = 0;
-
-    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-        const dateString = d.toISOString().split("T")[0]
-        const timestamp = d.getTime()
-
-        let count = dataMap[dateString]?.page_count ?? null
-        let estimation = null
-
-        // If count is missing but before the last recorded date, use the last known count
-        if (count === null) {
-            if (timestamp < Math.max(...Array.from(Object.keys(dataMap)).map(date => new Date(date).getTime()))) {
-                count = lastCount
-            } else {
-                // estimation = 50
-            }
+    const objective_alpha = PAGE_COUNT_OBJECTIVE / (
+        (endDate - startDate.getTime()) /
+        (1000 * 60 * 60 * 24)
+    )
+    
+    const res = []
+    let lastCount = 0
+    let regressionData = []
+    
+    for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
+        let count = data[date.toISOString().split("T")[0]]?.page_count ?? null
+        
+        if (count === null && date < new Date(Object.keys(data).at(-1))) {
+            count = lastCount
         }
-
+        
         if (count !== null) {
             lastCount = count
+            if (count !== 0) {
+                regressionData.push({
+                    x: (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
+                    y: count
+                })
+            }
         }
+        
+        const objective = objective_alpha * (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
 
-        const objective = m * ((timestamp - startTime) / (1000 * 60 * 60 * 24))
-
-        data.push({
-            date: timestamp,
+        res.push({
+            date: new Date(date),
             Current: count,
-            Estimation: estimation,
             Objective: objective,
         })
     }
 
-    return data;
+    const { m, b } = linearRegression(regressionData)
+
+    const ETA = new Date(startDate)
+    ETA.setDate(startDate.getDate() + Math.round((PAGE_COUNT_OBJECTIVE - b) / m))
+
+    res.forEach((entry) => {
+        const daysElapsed = (entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+        entry.Estimation = Math.max(0, m * daysElapsed + b)
+    })
+
+    return { res, ETA }
 }
 
 const PhdThesisPage = () => {
     const monthTicks = generateMonthTicks(START_DATE, END_DATE)
 
     const [data, setData] = useState([])
+    const [ETA, setETA] = useState([])
 
     useEffect(() => {
         fetch(API_ENDPOINT)
             .then((response) => response.json())
             .then((jsonData) => {
-                setData(generateDataWithObjective(jsonData))
+                const { res, ETA } = generateData(jsonData)
+                setData(res)
+                setETA(ETA)
             })
             .catch((error) => console.error("Error fetching data:", error))
     }, []) 
@@ -108,6 +135,7 @@ const PhdThesisPage = () => {
     return (
         <Page title="Ph.D. Thesis">
             <Section title="Ph.D. Thesis — Progress">
+                <b>Estimated end date:</b> {dateFormatterDayMonthYear(ETA)}
 
                 {data.length > 0 ? (
                     <ResponsiveContainer height={550}>
@@ -130,14 +158,14 @@ const PhdThesisPage = () => {
                                 dot={false}
                             />
 
-                            {/* <Line
+                            <Line
                                 type="monotone"
                                 dataKey="Estimation"
-                                stroke="#92b6f7"
+                                stroke="#acc5f2"
                                 strokeWidth={2}
                                 dot={false}
                                 strokeDasharray="5 5"
-                            /> */}
+                            />
 
                             <Line
                                 type="monotone"
@@ -145,7 +173,6 @@ const PhdThesisPage = () => {
                                 stroke="#fc9090"
                                 strokeWidth={2}
                                 dot={false}
-                                // strokeDasharray="5 5"
                             />
 
                             <Legend />
