@@ -134,77 +134,81 @@ const PhdThesisPage = () => {
 
     return (
         <Page title="Ph.D. Thesis">
-            <Section title="Ph.D. Thesis — Progress">
-                <b>Estimated end date:</b> {dateFormatterDayMonthYear(ETA)}
-
+            <Section title="Ph.D. Thesis">
                 {data.length > 0 ? (
-                    <ResponsiveContainer height={550}>
-                        <LineChart
-                            margin={{
-                                top: 25,
-                                right: 0,
-                                left: -25,
-                                bottom: 25,
-                            }}
-                            data={data}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-
-                            <Line
-                                type="monotone"
-                                dataKey="Current"
-                                stroke="#5d95fc"
-                                strokeWidth={2}
-                                dot={false}
-                            />
-
-                            <Line
-                                type="monotone"
-                                dataKey="Estimation"
-                                stroke="#acc5f2"
-                                strokeWidth={2}
-                                dot={false}
-                                strokeDasharray="5 5"
-                            />
-
-                            <Line
-                                type="monotone"
-                                dataKey="Objective"
-                                stroke="#fc9090"
-                                strokeWidth={2}
-                                dot={false}
-                            />
-
-                            <Legend />
-
-                            <XAxis
-                                dataKey={'date'}
-                                domain={[monthTicks[0], monthTicks[monthTicks.length - 1]]}
-                                scale="time"
-                                type="number"
-                                tickFormatter={dateFormatterMonth}
-                                padding={{ left: 10, right: 10 }}
-                                ticks={monthTicks}
+                    <div>
+                        <p>
+                            <b>Number of pages:</b> {data.findLast(item => item.Current !== null).Current} / {PAGE_COUNT_OBJECTIVE} <br />
+                            <b>Estimated end date:</b> {dateFormatterDayMonthYear(ETA)}
+                        </p>
+                        <ResponsiveContainer height={550}>
+                            <LineChart
+                                margin={{
+                                    top: 25,
+                                    right: 0,
+                                    left: -25,
+                                    bottom: 25,
+                                }}
+                                data={data}
                             >
-                                {/* <Label value="2025" position="center" dy={30} /> */}
-                            </XAxis>
+                                <CartesianGrid strokeDasharray="3 3" />
 
-                            <YAxis
-                                domain={[0, 150]}
-                                padding={{ top: 10, bottom: 10 }}
-                                tickFormatter={(value) => Math.round(value)}
-                                tickCount={8}
-                            >
-                                {/* <Label value="Number of pages" angle={-90} position="center" dx={-25} /> */}
-                            </YAxis>
+                                <Line
+                                    type="monotone"
+                                    dataKey="Current"
+                                    stroke="#5d95fc"
+                                    strokeWidth={2}
+                                    dot={false}
+                                />
 
-                            <Tooltip
-                                labelFormatter={dateFormatterDayMonthYear}
-                                itemStyle={{'margin': 0}}
-                                formatter={(value, name) => [`${Math.round(value)} pages`, name]}
-                            />
-                        </LineChart>
-                    </ResponsiveContainer>
+                                <Line
+                                    type="monotone"
+                                    dataKey="Estimation"
+                                    stroke="#acc5f2"
+                                    strokeWidth={2}
+                                    dot={false}
+                                    strokeDasharray="5 5"
+                                />
+
+                                <Line
+                                    type="monotone"
+                                    dataKey="Objective"
+                                    stroke="#fc9090"
+                                    strokeWidth={2}
+                                    dot={false}
+                                />
+
+                                <Legend />
+
+                                <XAxis
+                                    dataKey={'date'}
+                                    domain={[monthTicks[0], monthTicks[monthTicks.length - 1]]}
+                                    scale="time"
+                                    type="number"
+                                    tickFormatter={dateFormatterMonth}
+                                    padding={{ left: 10, right: 10 }}
+                                    ticks={monthTicks}
+                                >
+                                    {/* <Label value="2025" position="center" dy={30} /> */}
+                                </XAxis>
+
+                                <YAxis
+                                    domain={[0, 150]}
+                                    padding={{ top: 10, bottom: 10 }}
+                                    tickFormatter={(value) => Math.round(value)}
+                                    tickCount={8}
+                                >
+                                    {/* <Label value="Number of pages" angle={-90} position="center" dx={-25} /> */}
+                                </YAxis>
+
+                                <Tooltip
+                                    labelFormatter={dateFormatterDayMonthYear}
+                                    itemStyle={{'margin': 0}}
+                                    formatter={(value, name) => [`${Math.round(value)} pages`, name]}
+                                />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
                 ) : (
                     <div>Unable to retrieve page number history...</div>
                 )}
