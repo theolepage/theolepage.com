@@ -109,7 +109,7 @@ const generateData = (data) => {
 
     res.forEach((entry) => {
         const daysElapsed = (entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
-        entry.Estimation = Math.max(0, m * daysElapsed + b)
+        entry.Estimation = Math.min(Math.max(0, m * daysElapsed + b), PAGE_COUNT_OBJECTIVE)
     })
 
     return { res, ETA }
@@ -138,7 +138,10 @@ const PhdThesisPage = () => {
                 {data.length > 0 ? (
                     <div>
                         <p>
-                            <b>Number of pages:</b> {data.findLast(item => item.Current !== null).Current} / {PAGE_COUNT_OBJECTIVE} <br />
+                            <b>Number of pages:</b>
+                            {' '}{data.findLast(item => item.Current !== null).Current} / {PAGE_COUNT_OBJECTIVE}
+                            {' '}(~{Math.round((data.findLast(item => item.Current !== null).Current / PAGE_COUNT_OBJECTIVE) * 100)}%)
+                            <br />
                             <b>Estimated end date:</b> {dateFormatterDayMonthYear(ETA)}
                         </p>
                         <ResponsiveContainer height={550}>
