@@ -1,3 +1,13 @@
+const lepage2025SSPS = `
+@Article{lepage2025SSPS,
+    title     = {SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification},
+    author    = {Lepage, Theo and Dehak, Reda},
+    year      = {2025},
+    journal   = {Interspeech 2025},
+    url       = {https://arxiv.org/abs/2505.14561},
+}
+`
+
 const lepage2025SSLSVBootstrappedPositiveSampling = `
 @Article{lepage2025SSLSVBootstrappedPositiveSampling,
     title     = {Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling},
@@ -69,6 +79,16 @@ const lepage2022LabelEfficientSelfSupervisedSV = `
 `
 
 export const PUBLICATIONS = [
+    {
+        name: 'SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification',
+        authors: 'Theo Lepage, and Reda Dehak',
+        journal: 'Preprint (accepted to Interspeech 2025)',
+        actions: [
+            { name: 'Article', url: 'https://arxiv.org/abs/2505.14561' },
+            { name: 'Code', url: 'https://github.com/theolepage/sslsv' }
+        ],
+        bib: lepage2025SSPS
+    },
     {
         name: 'Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling',
         authors: 'Theo Lepage, and Reda Dehak',
