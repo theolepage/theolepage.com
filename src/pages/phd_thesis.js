@@ -19,7 +19,7 @@ import Section from "../components/section"
 const API_ENDPOINT = "https://lab.theolepage.com/phd_thesis_progress/"
 const START_DATE = "2025-01-01"
 const END_DATE = "2025-09-01"
-const PAGE_COUNT_OBJECTIVE = 150
+const PAGE_COUNT_OBJECTIVE = 175
 
 
 const dateFormatterMonth = date => {
@@ -85,12 +85,10 @@ const generateData = (data) => {
         
         if (count !== null) {
             lastCount = count
-            if (count !== 0) {
-                regressionData.push({
-                    x: (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
-                    y: count
-                })
-            }
+            regressionData.push({
+                x: (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
+                y: count
+            })
         }
         
         const objective = objective_alpha * (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
