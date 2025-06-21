@@ -32,7 +32,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const SiteTitle = styled(Link)`
-  font-size: 22px;
+  font-size: 20px;
   font-family: "Questrial", sans-serif;
 `;
 
@@ -40,6 +40,8 @@ const HomepageLink = styled(Link)`
   color: rgb(120, 120, 120);
 
   transition: color 0.3s;
+
+  font-size: 14px;
 
   &:hover {
     color: rgb(0, 0, 0);

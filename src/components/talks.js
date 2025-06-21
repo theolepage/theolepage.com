@@ -68,14 +68,13 @@ const Talks = ({ data }) => {
   return (
     <Section title="Talks">
       {sortedTalks.map((talk) => {
-        const dateString = formatDate(talk);
+        console.log(talk);
         return (
           <Block
             key={talk.id}
             title={talk.frontmatter.name}
-            info={dateString + " @ " + talk.frontmatter.location}
+            info={formatDate(talk) + " @ " + talk.frontmatter.location}
             url={talk.frontmatter.link}
-            wide_info
           />
         );
       })}

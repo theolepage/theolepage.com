@@ -23,24 +23,20 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 - [X] Generates publication previews
 
-- [ ] Misc [4h]
+- [ ] Misc
     - [X] Fix cite (no download)
     - [X] Publication authors as list
     - [X] Change publications keys
     - [X] Commit & push
     - [X] Resume: use React components
     - [X] Publications: generate bib automatically
-    - [X] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
+    - [X] Publications: host articles + naming
     - [X] Coding style
     - [X] Projects: get number of stars and forks
+    - [X] Warnings
+    - [X] Publications: redesign (no border, two rows)
 
-    - [ ] Warnings
-        - [ ] Still warnings
-
-    - [ ] Publications: redesign (no border, two rows)
     - [ ] Publications: stack multiple pages preview
-    - [ ] Publications: short abstract
-
     - [ ] Listing of all publications, projects, talks
     - [ ] Projects: show stars and forks
     - [ ] Fix grids / spacing

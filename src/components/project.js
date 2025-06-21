@@ -56,11 +56,11 @@ const Project = ({ project }) => {
     <Block
       key={project.id}
       title={name}
-      description={description}
       url={url}
       corner={color}
-      info={githubStarsCount && githubStarsCount}
+      // info={githubStarsCount && githubStarsCount}
     >
+      {description}
       <Icons>{isUnderDevelopment && <UnderDevelopment />}</Icons>
     </Block>
   );

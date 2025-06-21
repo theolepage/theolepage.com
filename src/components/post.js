@@ -7,10 +7,11 @@ const Post = ({ post }) => {
     <Block
       title={post.frontmatter.title}
       info={post.frontmatter.date}
-      description={post.excerpt}
       url={"/" + post.fields.slug}
       corner={post.frontmatter.color}
-    />
+    >
+      {post.excerpt}
+    </Block>
   );
 };
 

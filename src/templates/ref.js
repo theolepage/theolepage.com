@@ -52,6 +52,7 @@ const BIBTEX_FIELD_ORDER = [
   "booktitle",
   "journal",
   "institution",
+  "type",
   "pages",
   "doi",
   "url",

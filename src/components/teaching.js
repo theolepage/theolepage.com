@@ -7,7 +7,7 @@ import Block from "./block";
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px;
+  column-gap: 15px;
 
   margin-bottom: 15px;
 
@@ -35,14 +35,12 @@ const Teaching = ({ data }) => {
           const dateString = formatDate(
             course.frontmatter.startYear,
             course.frontmatter.endYear,
-            course.frontmatter.semester,
+            course.frontmatter.semester
           );
           return (
-            <Block
-              key={course.id}
-              title={course.frontmatter.name}
-              description={dateString + " @ " + course.frontmatter.location}
-            />
+            <Block key={course.id} title={course.frontmatter.name}>
+              {dateString} @ {course.frontmatter.location}
+            </Block>
           );
         })}
       </BlocksGrid>
