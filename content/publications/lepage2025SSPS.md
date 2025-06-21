@@ -6,6 +6,7 @@ authors:
 source: "Interspeech 2025"
 year: 2025
 type: "conference"
+showcased: true
 resources:
   - name: "Document"
     url: "https://arxiv.org/pdf/2505.14561"

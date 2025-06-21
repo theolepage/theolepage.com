@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
 import styled from "@emotion/styled";
+import { Files } from "lucide-react";
 
 import Section from "./section";
 import Block from "./block";
 import Link from "./link";
+import Button from "./button";
 
 const BlocksGrid = styled.div`
   margin: 32px 0;
@@ -84,9 +86,28 @@ const PublicationActions = ({ resources }) => {
   );
 };
 
-const Publications = ({ data }) => {
+const PublicationsIcon = styled(Files)`
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  margin: 0 8px 0 0px;
+  width: 16px;
+  height: 16px;
+  color: rgb(60, 60, 60);
+`;
+
+const Publications = ({ data, listing }) => {
   const publications = useMemo(() => {
-    return data.nodes.map((node) => {
+    let filteredNodes = data.nodes;
+
+    // If not in listing mode, only show showcased publications
+    if (!listing) {
+      filteredNodes = data.nodes.filter((node) => {
+        return node.frontmatter.showcased === true;
+      });
+    }
+
+    return filteredNodes.map((node) => {
       const { frontmatter, fileAbsolutePath } = node;
 
       const filename = fileAbsolutePath.split("/").pop().replace(".md", "");
@@ -114,7 +135,7 @@ const Publications = ({ data }) => {
 
       return publication;
     });
-  }, [data.nodes]);
+  }, [data.nodes, listing]);
 
   return (
     <Section title="Publications">
@@ -135,6 +156,13 @@ const Publications = ({ data }) => {
           </Block>
         ))}
       </BlocksGrid>
+
+      {!listing && (
+        <Button to={"/publications"}>
+          <PublicationsIcon />
+          See all publications
+        </Button>
+      )}
     </Section>
   );
 };

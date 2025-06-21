@@ -6,6 +6,7 @@ authors:
 source: "The Speaker and Language Recognition Workshop (Odyssey 2024)"
 year: 2024
 type: "conference"
+showcased: true
 bib_entries:
   pages: "38--42"
   doi: "10.21437/odyssey.2024-6"

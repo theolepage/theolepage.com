@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { FolderOpen } from "lucide-react";
 
 import Section from "./section";
 import Project from "./project";
@@ -18,6 +19,16 @@ const ProjectsGrid = styled.div`
   }
 `;
 
+const ProjectsIcon = styled(FolderOpen)`
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  margin: 0 8px 0 0px;
+  width: 16px;
+  height: 16px;
+  color: rgb(60, 60, 60);
+`;
+
 const GithubIcon = styled.div`
   display: inline-block;
 
@@ -34,8 +45,15 @@ const GithubIcon = styled.div`
   mask: url(/images/icon-github.png) no-repeat center / contain;
 `;
 
-const Projects = ({ data }) => {
+const Projects = ({ data, listing }) => {
   let projects = data.nodes;
+
+  // If not in listing mode, only show showcased projects
+  if (!listing) {
+    projects = data.nodes.filter((project) => {
+      return project.frontmatter.showcased === true;
+    });
+  }
 
   return (
     <Section title="Projects">
@@ -45,9 +63,16 @@ const Projects = ({ data }) => {
         ))}
       </ProjectsGrid>
 
+      {!listing && (
+        <Button css={{ marginRight: "16px" }} to={"/projects"}>
+          <ProjectsIcon />
+          See all projects
+        </Button>
+      )}
+
       <Button to={"https://github.com/theolepage"}>
         <GithubIcon />
-        See all projects on GitHub
+        Browse my GitHub
       </Button>
     </Section>
   );

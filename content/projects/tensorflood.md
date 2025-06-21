@@ -4,4 +4,5 @@ description: "Tiny automatic differentiation (autodiff) engine for NumPy tensors
 url: "https://github.com/theolepage/tensorflood"
 color: "#fc8d53"
 order: 3
+showcased: true
 ---

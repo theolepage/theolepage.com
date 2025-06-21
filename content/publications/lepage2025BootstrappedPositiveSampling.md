@@ -6,6 +6,7 @@ authors:
 source: "Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
 year: 2025
 type: "journal"
+showcased: true
 bib_entries:
   journal: "arXiv preprint library"
 resources:

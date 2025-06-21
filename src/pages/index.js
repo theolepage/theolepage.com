@@ -66,6 +66,7 @@ export const query = graphql`
           source
           year
           type
+          showcased
           bib_entries
           resources {
             name
@@ -87,6 +88,7 @@ export const query = graphql`
           url
           color
           order
+          showcased
         }
         fields {
           githubStarsCount

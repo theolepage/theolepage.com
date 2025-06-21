@@ -184,6 +184,7 @@ exports.createSchemaCustomization = ({ actions }) => {
             source: String
             year: Int
             type: String
+            showcased: Boolean
             bib_entries: JSON
             resources: [MarkdownRemarkFrontmatterResources]
         }

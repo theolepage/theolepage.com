@@ -23,7 +23,7 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 - [X] Generates publication previews
 
-- [ ] Misc
+- [X] Misc
     - [X] Fix cite (no download)
     - [X] Publication authors as list
     - [X] Change publications keys
@@ -37,19 +37,7 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [X] Publications: redesign (no border, two rows)
     - [X] Fix grids / spacing
     - [X] Projects: show stars and forks
-
-    - [ ] Improve listing
-        - [ ] Publications: show `showcased` only on home 
-        - [ ] Publications: create page to see all
-        - [ ] Publications: add button to see all
-        
-        - [ ] Projects: show `showcased` only on home 
-        - [ ] Projects: create page to see all
-        - [ ] Projects: add button to see all
-
-        - [ ] Talks: show last 2 years only on home 
-        - [ ] Talks: create page to see all
-        - [ ] Talks: add button to see all
+    - [X] Improve listing (publications, projects, talks)
     
 ---
 
