@@ -12,54 +12,50 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [X] Source from files
-    - [X] Talks
-    - [X] Projects
-    - [X] Teaching
-    - [X] Alert
-    - [X] Contact
-    - [X] About
-    - [X] Publications
+- [x] Source from files
 
-- [X] Generates publication previews
+  - [x] Talks
+  - [x] Projects
+  - [x] Teaching
+  - [x] Alert
+  - [x] Contact
+  - [x] About
+  - [x] Publications
+
+- [x] Generates publication previews
 
 - [ ] Misc [4h]
-    - [X] Fix cite (no download)
-    - [X] Publication authors as list
-    - [X] Change publications keys
-    - [X] Commit & push
-
-    - [X] Resume: use React components
-
-    - [X] Publications: generate bib automatically
-    - [X] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
-    
-    - [ ] Coding style
-    
-    - [ ] Publications: redesign (no border, two rows)
-    - [ ] Publications: stack multiple pages preview
-    - [ ] Publications: short abstract
-    
-    - [ ] Listing of all publications, projects, talks
-    - [ ] Fix grid spacing
-    
-    - [ ] Projects: add number of stars and forks in projects
-        - [ ] Fetch info from github API
-        - [ ] Show stats in block
+  - [x] Fix cite (no download)
+  - [x] Publication authors as list
+  - [x] Change publications keys
+  - [x] Commit & push
+  - [x] Resume: use React components
+  - [x] Publications: generate bib automatically
+  - [x] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
+  - [ ] Coding style
+  - [ ] Publications: redesign (no border, two rows)
+  - [ ] Publications: stack multiple pages preview
+  - [ ] Publications: short abstract
+  - [ ] Listing of all publications, projects, talks
+  - [ ] Fix grid spacing
+  - [ ] Projects: add number of stars and forks in projects
+    - [ ] Fetch info from github API
+    - [ ] Show stats in block
 
 ---
 
 - [ ] Blog: comments
 - [ ] Blog: improve posts
-    - [ ] Code
-        - [ ] Copy to clipboard button
-        - [ ] Header with title and language
-        - [ ] Show line numbers
-    - [ ] Sidenotes
-    - [ ] Blockquotes
-    - [ ] Captions for figures and tables
-    - https://annarossetti.com/
+
+  - [ ] Code
+    - [ ] Copy to clipboard button
+    - [ ] Header with title and language
+    - [ ] Show line numbers
+  - [ ] Sidenotes
+  - [ ] Blockquotes
+  - [ ] Captions for figures and tables
+  - https://annarossetti.com/
 
 - [ ] CSS
-    - [ ] Use lib for icons
-    - [ ] Typography -> review scale/margins/fs/colors (use variables)
+  - [ ] Use lib for icons
+  - [ ] Typography -> review scale/margins/fs/colors (use variables)

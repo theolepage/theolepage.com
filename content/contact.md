@@ -9,4 +9,4 @@ socials:
     url: "https://scholar.google.com/citations?user=q1MqhVgAAAAJ"
   - name: "linkedin"
     url: "https://www.linkedin.com/in/theolepage/"
---- 
+---

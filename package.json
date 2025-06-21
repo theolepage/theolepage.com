@@ -13,7 +13,8 @@
     "prebuild": "node build/renderPublicationPreviews.mjs",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -45,5 +46,8 @@
     "react-typography": "^0.16.20",
     "recharts": "^2.15.1",
     "typography": "^0.16.21"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }
