@@ -77,12 +77,21 @@ const FooterWrapper = styled.div`
   }
 `;
 
-const Page = ({ title, description, children }) => {
+const Page = ({ title, description, children, layout = true }) => {
+  if (!layout) {
+    return (
+      <>
+        {/* eslint-disable-next-line react/jsx-pascal-case */}
+        <SEO title={title} description={description} />
+        {children}
+      </>
+    );
+  }
+
   return (
     <Container>
       {/* eslint-disable-next-line react/jsx-pascal-case */}
       <SEO title={title} description={description} />
-
       <Header>
         <HeaderWrapper>
           <SiteTitle to="/" invisible>
@@ -93,11 +102,9 @@ const Page = ({ title, description, children }) => {
           </HomepageLink>
         </HeaderWrapper>
       </Header>
-
       <Body>
         <BodyWrapper>{children}</BodyWrapper>
       </Body>
-
       <Footer>
         <FooterWrapper>© {new Date().getFullYear()} Theo Lepage</FooterWrapper>
       </Footer>

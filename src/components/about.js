@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 import Section from "./section";
 import Button from "./button";
-import Link from "./link";
 
 const Container = styled.div`
   display: flex;

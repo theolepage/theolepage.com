@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 
-import SEO from "../components/seo";
+import Page from "../components/page";
 
 // Global styles
 const globalStyles = css`
@@ -453,279 +453,278 @@ const PassionItem = ({ icon, text }) => (
 
 const ResumePageComponent = () => {
   return (
-    <ResumeContainer className="resume">
-      <SEO title="Resume" />
-
+    <Page title="Resume" layout={false}>
       <Global styles={globalStyles} />
+      <ResumeContainer className="resume">
+        <ResumePage>
+          <ResumeHeader />
 
-      <ResumePage>
-        <ResumeHeader />
+          <Section>
+            <Title>Education</Title>
 
-        <Section>
-          <Title>Education</Title>
+            <EducationItem
+              institution={{
+                name: "Sorbonne Université",
+                url: "https://www.sorbonne-universite.fr/en",
+              }}
+              degree="Ph.D. in Artificial Intelligence"
+              location="Paris, France"
+              date="Nov. 2022 - Nov. 2025"
+            >
+              <li>
+                Conducting research related to "Learning speech and speaker
+                representations for robust speaker and language recognition"
+              </li>
+              <li>
+                Supported by French ANR 'APATE' project (Forensic Deepfakes
+                Detection Toolbox)
+              </li>
+              <li>
+                Supervised by Dr. Réda Dehak and Pr. Thierry Géraud (LRE-EPITA)
+              </li>
+            </EducationItem>
 
-          <EducationItem
-            institution={{
-              name: "Sorbonne Université",
-              url: "https://www.sorbonne-universite.fr/en",
-            }}
-            degree="Ph.D. in Artificial Intelligence"
-            location="Paris, France"
-            date="Nov. 2022 - Nov. 2025"
-          >
-            <li>
-              Conducting research related to "Learning speech and speaker
-              representations for robust speaker and language recognition"
-            </li>
-            <li>
-              Supported by French ANR 'APATE' project (Forensic Deepfakes
-              Detection Toolbox)
-            </li>
-            <li>
-              Supervised by Dr. Réda Dehak and Pr. Thierry Géraud (LRE-EPITA)
-            </li>
-          </EducationItem>
+            <EducationItem
+              institution={{
+                name: "École Pour l'Informatique et les Techniques Avancées - EPITA",
+                url: "https://www.epita.fr/en/",
+              }}
+              degree="M.Eng. in Computer Science"
+              location="Paris, France"
+              date="Sep. 2017 - Sep. 2022"
+            >
+              <li>
+                Signal processing and machine learning (IMAGE major) +
+                scientific research specialization (RDI major)
+              </li>
+            </EducationItem>
+          </Section>
 
-          <EducationItem
-            institution={{
-              name: "École Pour l'Informatique et les Techniques Avancées - EPITA",
-              url: "https://www.epita.fr/en/",
-            }}
-            degree="M.Eng. in Computer Science"
-            location="Paris, France"
-            date="Sep. 2017 - Sep. 2022"
-          >
-            <li>
-              Signal processing and machine learning (IMAGE major) + scientific
-              research specialization (RDI major)
-            </li>
-          </EducationItem>
-        </Section>
+          <Section>
+            <Title>Experience</Title>
 
-        <Section>
-          <Title>Experience</Title>
+            <ExperienceItem
+              title="Research Scientist Intern"
+              company="Siemens Healthineers"
+              companyUrl="https://www.siemens-healthineers.com/"
+              location="Princeton, USA"
+              date="Feb. 2022 - Sep. 2022"
+              image="/images/resume/shs.png"
+            >
+              <li>
+                Focused on state-of-the-art deep learning models for MR images
+                enhancement (denoising and super-resolution)
+              </li>
+              <li>
+                Designed a CNN architecture that leverages the attention
+                mechanism of Vision Transformers and recovers more details
+                compared to the solution being used in the product
+              </li>
+            </ExperienceItem>
 
-          <ExperienceItem
-            title="Research Scientist Intern"
-            company="Siemens Healthineers"
-            companyUrl="https://www.siemens-healthineers.com/"
-            location="Princeton, USA"
-            date="Feb. 2022 - Sep. 2022"
-            image="/images/resume/shs.png"
-          >
-            <li>
-              Focused on state-of-the-art deep learning models for MR images
-              enhancement (denoising and super-resolution)
-            </li>
-            <li>
-              Designed a CNN architecture that leverages the attention mechanism
-              of Vision Transformers and recovers more details compared to the
-              solution being used in the product
-            </li>
-          </ExperienceItem>
+            <ExperienceItem
+              title="Research Student"
+              company="LRE"
+              companyUrl="https://www.lre.epita.fr/"
+              location="Paris, France"
+              date="Jan. 2020 - Jan. 2022"
+              image="/images/resume/lre.png"
+            >
+              <li>
+                Worked on self-supervised methods applied to speaker and
+                language recognition while doing monthly "lightning" talks about
+                my progress (supervised by Dr. Réda Dehak)
+              </li>
+              <li>
+                Developed a label-efficient non-contrastive speaker verification
+                model that outperforms its supervised counterpart when
+                fine-tuned with only 2% of labeled data
+              </li>
+              <li>
+                Our work led to a publication and an oral presentation at
+                Interspeech 2022 (one of the top conferences in the field)
+              </li>
+            </ExperienceItem>
 
-          <ExperienceItem
-            title="Research Student"
-            company="LRE"
-            companyUrl="https://www.lre.epita.fr/"
-            location="Paris, France"
-            date="Jan. 2020 - Jan. 2022"
-            image="/images/resume/lre.png"
-          >
-            <li>
-              Worked on self-supervised methods applied to speaker and language
-              recognition while doing monthly "lightning" talks about my
-              progress (supervised by Dr. Réda Dehak)
-            </li>
-            <li>
-              Developed a label-efficient non-contrastive speaker verification
-              model that outperforms its supervised counterpart when fine-tuned
-              with only 2% of labeled data
-            </li>
-            <li>
-              Our work led to a publication and an oral presentation at
-              Interspeech 2022 (one of the top conferences in the field)
-            </li>
-          </ExperienceItem>
+            <ExperienceItem
+              title="Software Developer Intern"
+              company="CNRS"
+              companyUrl="https://www.cnrs.fr/en"
+              location="Paris, France"
+              date="Sep. 2020 - Jan. 2021"
+              image="/images/resume/cnrs.png"
+            >
+              <li>
+                Contributed to a real-time digital holography software (C++ /
+                CUDA) used for retinal blood flow analysis in a medical setting
+              </li>
+              <li>
+                Our work resulted in a 20x (500 to 10,000 FPS) speedup which
+                improved substantially output images contrast and quality
+              </li>
+              <li>
+                Our refactoring and the addition of unit tests improved the
+                stability and allowed the project to become open source
+              </li>
+              <li>
+                Founding member of the association 'Digital Holography' created
+                to sustain the development of the software
+              </li>
+            </ExperienceItem>
+          </Section>
 
-          <ExperienceItem
-            title="Software Developer Intern"
-            company="CNRS"
-            companyUrl="https://www.cnrs.fr/en"
-            location="Paris, France"
-            date="Sep. 2020 - Jan. 2021"
-            image="/images/resume/cnrs.png"
-          >
-            <li>
-              Contributed to a real-time digital holography software (C++ /
-              CUDA) used for retinal blood flow analysis in a medical setting
-            </li>
-            <li>
-              Our work resulted in a 20x (500 to 10,000 FPS) speedup which
-              improved substantially output images contrast and quality
-            </li>
-            <li>
-              Our refactoring and the addition of unit tests improved the
-              stability and allowed the project to become open source
-            </li>
-            <li>
-              Founding member of the association 'Digital Holography' created to
-              sustain the development of the software
-            </li>
-          </ExperienceItem>
-        </Section>
+          <Section>
+            <Title>Publications</Title>
 
-        <Section>
-          <Title>Publications</Title>
+            <PublicationItem
+              title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
+              url="https://arxiv.org/pdf/2505.14561"
+              source="Interspeech 2025"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
 
-          <PublicationItem
-            title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
-            url="https://arxiv.org/pdf/2505.14561"
-            source="Interspeech 2025"
-            authors="<b>Theo Lepage</b> and Reda Dehak"
-          />
+            <PublicationItem
+              title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
+              url="https://arxiv.org/pdf/2501.17772"
+              source="Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
 
-          <PublicationItem
-            title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
-            url="https://arxiv.org/pdf/2501.17772"
-            source="Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
-            authors="<b>Theo Lepage</b> and Reda Dehak"
-          />
+            <PublicationItem
+              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
+              url="https://arxiv.org/pdf/2409.05032"
+              source="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)"
+              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
+            />
+          </Section>
+        </ResumePage>
 
-          <PublicationItem
-            title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
-            url="https://arxiv.org/pdf/2409.05032"
-            source="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)"
-            authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
-          />
-        </Section>
-      </ResumePage>
+        <ResumePage>
+          <Section>
+            <PublicationItem
+              title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
+              url="https://arxiv.org/pdf/2306.03664"
+              source="Interspeech 2024"
+              authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
+            />
 
-      <ResumePage>
-        <Section>
-          <PublicationItem
-            title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
-            url="https://arxiv.org/pdf/2306.03664"
-            source="Interspeech 2024"
-            authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
-          />
+            <PublicationItem
+              title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
+              url="https://arxiv.org/pdf/2404.14913"
+              source="The Speaker and Language Recognition Workshop (Odyssey 2024)"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
 
-          <PublicationItem
-            title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
-            url="https://arxiv.org/pdf/2404.14913"
-            source="The Speaker and Language Recognition Workshop (Odyssey 2024)"
-            authors="<b>Theo Lepage</b> and Reda Dehak"
-          />
+            <PublicationItem
+              title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
+              url="https://arxiv.org/pdf/2306.03664"
+              source="Interspeech 2023"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
 
-          <PublicationItem
-            title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
-            url="https://arxiv.org/pdf/2306.03664"
-            source="Interspeech 2023"
-            authors="<b>Theo Lepage</b> and Reda Dehak"
-          />
+            <PublicationItem
+              title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
+              url="https://arxiv.org/pdf/2207.05506"
+              source="Interspeech 2022"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
+          </Section>
 
-          <PublicationItem
-            title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
-            url="https://arxiv.org/pdf/2207.05506"
-            source="Interspeech 2022"
-            authors="<b>Theo Lepage</b> and Reda Dehak"
-          />
-        </Section>
+          <Section>
+            <Title>Projects</Title>
 
-        <Section>
-          <Title>Projects</Title>
-
-          <Cols>
-            <Col>
-              <ProjectItem
-                name="sslsv"
-                url="https://github.com/theolepage/sslsv"
-                description="Framework for training and evaluating self-supervised learning methods for speaker verification."
-              />
-            </Col>
-            <Col>
-              <ProjectItem
-                name="wavlm_ssl_sv"
-                url="https://github.com/theolepage/wavlm_ssl_sv"
-                description="SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model."
-              />
-            </Col>
-          </Cols>
-        </Section>
-
-        <Section>
-          <Title>Skills and interests</Title>
-
-          <Cols>
-            <Col>
-              <SkillsSection
-                title="Programming"
-                items={[
-                  "C",
-                  "C++",
-                  "C#",
-                  "Java",
-                  "Python",
-                  "PHP",
-                  "JS",
-                  "Bash",
-                ]}
-              />
-
-              <SkillsSection
-                title="Certificates"
-                items={["Driving license", "Sailing instructor diploma"]}
-              />
-
-              <SkillsSection
-                title="Languages"
-                items={["English (TOEIC 905)", "French (native)"]}
-              />
-            </Col>
-            <Col>
-              <SkillsSection
-                title="Data Science"
-                items={[
-                  "PyTorch",
-                  "TensorFlow",
-                  "Scikit-learn",
-                  "NumPy",
-                  "Pandas",
-                ]}
-              />
-
-              <Item>
-                <SubSubtitle>Passions and interests</SubSubtitle>
-                <PassionItem
-                  icon="/images/resume/icon-science.svg"
-                  text="Science and AI"
+            <Cols>
+              <Col>
+                <ProjectItem
+                  name="sslsv"
+                  url="https://github.com/theolepage/sslsv"
+                  description="Framework for training and evaluating self-supervised learning methods for speaker verification."
                 />
-                <PassionItem
-                  icon="/images/resume/icon-robotics.svg"
-                  text="Robotics"
+              </Col>
+              <Col>
+                <ProjectItem
+                  name="wavlm_ssl_sv"
+                  url="https://github.com/theolepage/wavlm_ssl_sv"
+                  description="SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model."
                 />
-                <PassionItem
-                  icon="/images/resume/icon-wave.svg"
-                  text="Sailing & windsurfing"
-                />
-              </Item>
-            </Col>
-          </Cols>
-        </Section>
+              </Col>
+            </Cols>
+          </Section>
 
-        <Footer>
-          An up-to-date version of this document is available at{" "}
-          <a
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            href="https://theolepage.com/resume"
-          >
-            theolepage.com/resume
-          </a>
-          .
-        </Footer>
-      </ResumePage>
-    </ResumeContainer>
+          <Section>
+            <Title>Skills and interests</Title>
+
+            <Cols>
+              <Col>
+                <SkillsSection
+                  title="Programming"
+                  items={[
+                    "C",
+                    "C++",
+                    "C#",
+                    "Java",
+                    "Python",
+                    "PHP",
+                    "JS",
+                    "Bash",
+                  ]}
+                />
+
+                <SkillsSection
+                  title="Certificates"
+                  items={["Driving license", "Sailing instructor diploma"]}
+                />
+
+                <SkillsSection
+                  title="Languages"
+                  items={["English (TOEIC 905)", "French (native)"]}
+                />
+              </Col>
+              <Col>
+                <SkillsSection
+                  title="Data Science"
+                  items={[
+                    "PyTorch",
+                    "TensorFlow",
+                    "Scikit-learn",
+                    "NumPy",
+                    "Pandas",
+                  ]}
+                />
+
+                <Item>
+                  <SubSubtitle>Passions and interests</SubSubtitle>
+                  <PassionItem
+                    icon="/images/resume/icon-science.svg"
+                    text="Science and AI"
+                  />
+                  <PassionItem
+                    icon="/images/resume/icon-robotics.svg"
+                    text="Robotics"
+                  />
+                  <PassionItem
+                    icon="/images/resume/icon-wave.svg"
+                    text="Sailing & windsurfing"
+                  />
+                </Item>
+              </Col>
+            </Cols>
+          </Section>
+
+          <Footer>
+            An up-to-date version of this document is available at{" "}
+            <a
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              href="https://theolepage.com/resume"
+            >
+              theolepage.com/resume
+            </a>
+            .
+          </Footer>
+        </ResumePage>
+      </ResumeContainer>
+    </Page>
   );
 };
 

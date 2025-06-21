@@ -71,6 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const postTemplate = path.resolve(`./src/templates/post.js`);
+  const refTemplate = path.resolve(`./src/templates/ref.js`);
 
   const result = await graphql(`
     {
@@ -80,6 +81,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fields {
             slug
           }
+        }
+      }
+      publications: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/publications/" } }
+      ) {
+        nodes {
+          fileAbsolutePath
         }
       }
     }
@@ -94,23 +102,43 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const posts = result.data.allMarkdownRemark.nodes;
+  const publications = result.data.publications.nodes;
 
-  if (posts.length == 0) return;
+  // Create blog post pages
+  if (posts.length > 0) {
+    posts.forEach((post, i) => {
+      const previousPostId = i === 0 ? null : posts[i - 1].id;
+      const nextPostId = i === posts.length - 1 ? null : posts[i + 1].id;
 
-  posts.forEach((post, i) => {
-    const previousPostId = i === 0 ? null : posts[i - 1].id;
-    const nextPostId = i === posts.length - 1 ? null : posts[i + 1].id;
-
-    createPage({
-      path: post.fields.slug,
-      component: postTemplate,
-      context: {
-        id: post.id,
-        previousPostId,
-        nextPostId,
-      },
+      createPage({
+        path: post.fields.slug,
+        component: postTemplate,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+        },
+      });
     });
-  });
+  }
+
+  // Create ref pages for publications
+  if (publications.length > 0) {
+    publications.forEach((publication) => {
+      const filename = publication.fileAbsolutePath
+        .split("/")
+        .pop()
+        .replace(".md", "");
+
+      createPage({
+        path: `/ref/${filename}`,
+        component: refTemplate,
+        context: {
+          filename: filename,
+        },
+      });
+    });
+  }
 };
 
 exports.createSchemaCustomization = ({ actions }) => {

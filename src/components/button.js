@@ -18,6 +18,8 @@ const button = css`
 
   border: 1px solid rgb(235, 235, 235);
 
+  cursor: pointer;
+
   transition:
     0.3s color,
     0.2s background,

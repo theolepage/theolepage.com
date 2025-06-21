@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import SEO from "../components/seo";
 import Link from "../components/link";
+import Page from "../components/page";
 
-const Container = styled.div`
+const Background = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -47,10 +47,8 @@ const Action = styled(Link)``;
 
 const _404Page = () => {
   return (
-    <Container>
-      {/* eslint-disable-next-line react/jsx-pascal-case */}
-      <SEO title={"Page not found"} />
-
+    <Page title={"Page not found"} layout={false}>
+      <Background />
       <Content>
         <Title>Page not found</Title>
         <Description>
@@ -59,7 +57,7 @@ const _404Page = () => {
         </Description>
         <Action to={"/"}>Go to homepage →</Action>
       </Content>
-    </Container>
+    </Page>
   );
 };
 

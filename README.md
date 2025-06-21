@@ -34,12 +34,15 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [X] Coding style
     - [X] Projects: get number of stars and forks
 
-    - [ ] Link warning
+    - [ ] Warnings
+        - [ ] Still warnings
+
     - [ ] Publications: redesign (no border, two rows)
     - [ ] Publications: stack multiple pages preview
     - [ ] Publications: short abstract
-    - [ ] Projects: show stars and forks
+
     - [ ] Listing of all publications, projects, talks
+    - [ ] Projects: show stars and forks
     - [ ] Fix grids / spacing
     
 ---

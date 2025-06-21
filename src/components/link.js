@@ -15,13 +15,13 @@ const style = css`
 const Link = ({ to, onClick, className, invisible, children, ...props }) => {
   if (!to)
     return (
-      <a
+      <button
         onClick={onClick}
         css={{ ...(invisible && style), cursor: "pointer" }}
         className={className}
       >
         {children}
-      </a>
+      </button>
     );
   if (to.charAt(0) !== "/" || to.slice(-4).includes("."))
     return (
