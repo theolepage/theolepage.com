@@ -37,6 +37,37 @@ const Corner = styled.div`
     border-radius: 100%;
 `
 
+const BlockContent = styled.div`
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+`
+
+const BlockText = styled.div`
+    flex: 1;
+`
+
+const PreviewImage = styled.div`
+    flex-shrink: 0;
+    width: 150px;
+    height: 200px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    @media (max-width: 800px) {
+        width: 80px;
+        height: 110px;
+    }
+`
+
 const Header = styled.div`
     display: flex;
     justify-content: space-between;
@@ -76,7 +107,7 @@ const Info = styled.div`
 const Description = styled.div`
     max-width: 600px;
 
-    margin-top: 6px;
+    margin-top: 4px;
     margin-bottom: 2px;
 
     color: rgb(80, 80, 80);
@@ -106,35 +137,48 @@ const ActionSeparator = styled.div`
     color: rgba(55, 125, 255, 0.6);
 `
 
-const Block = ({ title, info, wide_info, description, url, actions, corner, children }) => {
+const Block = ({ title, info, wide_info, description, url, actions, corner, children, previewImage }) => {
+    const content = (
+        <BlockContent>
+            {previewImage && (
+                <PreviewImage>
+                    <img src={previewImage} alt={`Preview of ${title}`} />
+                </PreviewImage>
+            )}
+
+            <BlockText>
+                <Header>
+                    <Title>{title}</Title>
+                    {info && <Info wide={wide_info}>{info}</Info>}
+                </Header>
+
+                {description && <Description dangerouslySetInnerHTML={{ __html: description }} />}
+
+                {actions &&
+                    <Actions>
+                        {actions.map((action, i) =>
+                            <Action key={action.name}>
+                                <ActionLink
+                                    onClick={action.do ? action.do : undefined}
+                                    to={action.url}
+                                >
+                                    {action.name}
+                                </ActionLink>
+                                {i !== actions.length - 1 && <ActionSeparator>/</ActionSeparator>}
+                            </Action>
+                        )}
+                    </Actions>
+                }
+
+                {children}
+            </BlockText>
+        </BlockContent>
+    )
+
     const body = (
         <BlockElement css={url && BlockElement_hover}>
             {corner && <Corner style={{ background: corner }} />}
-
-            <Header>
-                <Title>{title}</Title>
-                {info && <Info wide={wide_info}>{info}</Info>}
-            </Header>
-
-            {description && <Description dangerouslySetInnerHTML={{ __html: description }} />}
-
-            {actions &&
-                <Actions>
-                    {actions.map((action, i) =>
-                        <Action key={action.name}>
-                            <ActionLink
-                                onClick={action.do ? action.do : undefined}
-                                to={action.url}
-                            >
-                                {action.name}
-                            </ActionLink>
-                            {i !== actions.length - 1 && <ActionSeparator>/</ActionSeparator>}
-                        </Action>
-                    )}
-                </Actions>
-            }
-
-            {children}
+            {content}
         </BlockElement>
     )
 

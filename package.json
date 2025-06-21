@@ -8,8 +8,9 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
+    "prebuild": "node build/renderPublicationPreviews.mjs",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -19,7 +20,6 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/open-sans": "^4.5.13",
     "@fontsource/questrial": "^4.5.10",
-    "dotenv": "^16.0.3",
     "gatsby": "^5.0.0",
     "gatsby-plugin-emotion": "^8.0.0",
     "gatsby-plugin-manifest": "^5.0.0",
@@ -36,8 +36,8 @@
     "gatsby-remark-reading-time": "^1.1.0",
     "gatsby-source-filesystem": "^5.0.0",
     "gatsby-transformer-remark": "^6.0.0",
-    "graphql-fetch": "^1.0.1",
     "katex": "^0.13.24",
+    "pdf-to-png-converter": "^3.6.5",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

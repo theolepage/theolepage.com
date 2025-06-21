@@ -68,12 +68,17 @@ const Publications = ({ data }) => {
             // Extract BibTeX from the markdown body
             const bib = rawMarkdownBody
 
+            // Extract filename for preview image 
+            const filename = fileAbsolutePath.split('/').pop().replace('.md', '')
+            const previewImage = `/images/publications/${filename}.png`
+
             const publication = {
                 name: frontmatter.title,
                 authors: frontmatter.authors,
                 journal: frontmatter.source,
                 actions: frontmatter.actions || [],
                 bib: bib,
+                previewImage: previewImage
             }
 
             if (bib && !publication.actions.some(action => action.name === "Cite")) {
@@ -96,6 +101,7 @@ const Publications = ({ data }) => {
                     info={publication.journal}
                     description={formatAuthors(publication.authors)}
                     actions={publication.actions}
+                    previewImage={publication.previewImage}
                 />
             )}
         </Section>
