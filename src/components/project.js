@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 
 import Block from "./block"
@@ -38,40 +37,15 @@ const UnderDevelopment = styled.div`
     }
 `
 
-const parseProjectData = (project) => {
-    // Determine color
-    let color = ''
-    project.repositoryTopics.edges.forEach(topic => {
-        let value = topic.node.topic.name
-        if (value.startsWith('meta-project-color')) {
-            let parts = value.split('-')
-            if (parts.length === 4)
-                color = '#' + parts[3]
-        }
-    })
-
-    // Determine if project is under development
-    const dateLastPush = Date.parse(project.pushedAt)
-    const dateNow = Date.now()
-    const diffTime = Math.abs(dateNow - dateLastPush)
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-    const isUnderDevelopment = diffDays < 30
-
-    return {
-        color: color,
-        underDevelopment: isUnderDevelopment
-    }
-}
-
 const Project = ({ project }) => {
-    const { color, underDevelopment } = parseProjectData(project)
+    const { name, description, url, color, underDevelopment } = project.frontmatter
 
     return (
         <Block
-            key={project.name}
-            title={project.name}
-            description={project.description}
-            url={project.url}
+            key={project.id}
+            title={name}
+            description={description}
+            url={url}
             corner={color}
         >
             <Icons>
@@ -82,24 +56,3 @@ const Project = ({ project }) => {
 }
 
 export default Project
-
-export const query = graphql`
-fragment ProjectInformation on Repository {
-  id
-  name
-  url
-  homepageUrl
-  description
-  pushedAt
-  createdAt
-  repositoryTopics {
-    edges {
-      node {
-        topic {
-          name
-        }
-      }
-    }
-  }
-}
-`

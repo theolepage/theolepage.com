@@ -4,15 +4,13 @@ import styled from "@emotion/styled"
 import Section from "./section"
 import Link from "./link"
 
-import { EMAIL_ADDRESS, SOCIALS } from "../../config/contact"
-
 const ContactBox = styled.p`
     padding: 32px;
 
     text-align: center;
 
-    border: 1px dashed rgb(210, 210, 210);
-    background: rgb(252, 252, 252);
+    border: 1px dashed rgb(200, 200, 200);
+    background: rgb(250, 250, 250);
     border-radius: 6px;
 `
 
@@ -57,14 +55,16 @@ const Social = ({ name, url }) => {
     )
 }
 
-const Contact = () => {
+const Contact = ({ data }) => {
+    const { email, socials } = data.frontmatter
+
     return (
         <Section>
             <ContactBox>
-                Send me an email at <Link to={'mailto:' + EMAIL_ADDRESS}>{EMAIL_ADDRESS}</Link>
+                Send me an email at <Link to={'mailto:' + email}>{email}</Link>
                 {" "}
                 <Socials>
-                    or reach me on {SOCIALS.map(s => <Social key={s.name} name={s.name} url={s.url} />)}.
+                    or reach me on {socials.map(s => <Social key={s.name} name={s.name} url={s.url} />)}
                 </Socials>
             </ContactBox>
         </Section>

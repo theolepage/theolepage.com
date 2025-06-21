@@ -2,6 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 
 import Link from "../components/link"
+
 import SEO from "../components/seo"
 
 const Container = styled.div`
@@ -83,6 +84,7 @@ const FooterWrapper = styled.div`
 const Page = ({ title, description, children }) => {
     return (
         <Container>
+            {/* eslint-disable-next-line react/jsx-pascal-case */}
             <SEO title={title} description={description} />
 
             <Header>

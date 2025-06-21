@@ -1,7 +1,3 @@
-require("dotenv").config({
-    path: `.env`,
-})
-
 module.exports = {
     siteMetadata: {
         title: `Theo Lepage`,
@@ -36,15 +32,7 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/posts`
-            },
-        },
-        {
-            resolve: `gatsby-source-github-repos`,
-            options: {
-                token: process.env.GITHUB_API_TOKEN,
-                query: "user:theolepage topic:meta-project-show fork:true sort:updated-desc",
-                limit: 10
+                path: `${__dirname}/content`
             },
         },
         {
@@ -68,7 +56,7 @@ module.exports = {
                     {
                         resolve: `gatsby-remark-katex`,
                         options: {
-                          strict: `ignore`
+                            strict: `ignore`
                         }
                     },
                     `gatsby-remark-prismjs`,
@@ -80,7 +68,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-simple-analytics',
             options: {
-              trackPageViews: true
+                trackPageViews: true
             }
         }
     ]

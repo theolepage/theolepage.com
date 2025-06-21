@@ -50,8 +50,9 @@ const Action = styled(Link)`
 const _404Page = () => {
     return (
         <Container>
+            {/* eslint-disable-next-line react/jsx-pascal-case */}
             <SEO title={'Page not found'} />
-            
+
             <Content>
                 <Title>Page not found</Title>
                 <Description>Oops! You’ve followed a broken link or entered a URL that doesn’t exist on this site.</Description>

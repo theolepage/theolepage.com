@@ -4,11 +4,9 @@ import styled from "@emotion/styled"
 import Section from "./section"
 import Block from "./block"
 
-import { TEACHING } from "../../config/teaching"
-
 const BlocksGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
 
     margin-bottom: 15px;
@@ -19,17 +17,34 @@ const BlocksGrid = styled.div`
     }
 `
 
-const Teaching = () => {
+const Teaching = ({ data }) => {
+    const teaching = data.nodes
+
+    const formatDate = (startYear, endYear, semester) => {
+        if (startYear === endYear) {
+            return `${semester} ${startYear}`
+        } else {
+            return `${semester} ${startYear} - ${endYear}`
+        }
+    }
+
     return (
         <Section title="Teaching">
             <BlocksGrid>
-                {TEACHING.map(teaching =>
-                    <Block
-                        key={teaching.name}
-                        title={teaching.name}
-                        description={teaching.date + ' @ ' + teaching.location}
-                    />
-                )}
+                {teaching.map(course => {
+                    const dateString = formatDate(
+                        course.frontmatter.startYear,
+                        course.frontmatter.endYear,
+                        course.frontmatter.semester
+                    )
+                    return (
+                        <Block
+                            key={course.id}
+                            title={course.frontmatter.name}
+                            description={dateString + ' @ ' + course.frontmatter.location}
+                        />
+                    )
+                })}
             </BlocksGrid>
         </Section>
     )

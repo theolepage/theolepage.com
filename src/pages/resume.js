@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 const ResumePage = () => {
     return (
         <div class="resume">
+            {/* eslint-disable-next-line react/jsx-pascal-case */}
             <SEO title="Resume" />
 
             <div class="resume-page">
@@ -142,7 +143,7 @@ const ResumePage = () => {
                                 <ul>
                                     <li>Worked on self-supervised methods applied to speaker and language recognition while doing monthly "lightning" talks about my progress (supervised by Dr. Réda Dehak)</li>
                                     <li>Developed a label-efficient non-contrastive speaker verification model that outperforms its supervised counterpart when fine-tuned with only 2% of labeled data</li>
-                                    <li>Our work led to a publication and an oral presentation at INTERSPEECH 2022 (one of the top conferences in the field)</li>
+                                    <li>Our work led to a publication and an oral presentation at Interspeech 2022 (one of the top conferences in the field)</li>
                                 </ul>
                             </div>
                         </div>
@@ -217,39 +218,39 @@ const ResumePage = () => {
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2409.05032">Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection</a>
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2505.14561">SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            Interspeech 2025
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <b>Theo Lepage</b> and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2501.17772">Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            Preprint (accepted with minor revisions at IEEE/ACM TASLP)
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <b>Theo Lepage</b> and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2409.05032">Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
                             The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)
                         </div>
                         <div class="resume-publication-authors resume-text_shift">
-                            Theophile Stourbe, Victor Miara, <u>Theo Lepage</u>, and Reda Dehak
-                        </div>
-                    </div>
-
-                    <div class="resume-item">
-                        <div class="resume-subtitle resume-emphasize">
-                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2306.03664">Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models</a>
-                        </div>
-                        <div class="resume-publication-journal resume-text_shift">
-                            INTERSPEECH 2024
-                        </div>
-                        <div class="resume-publication-authors resume-text_shift">
-                            Victor Miara, <u>Theo Lepage</u>, and Reda Dehak
-                        </div>
-                    </div>
-
-                    <div class="resume-item">
-                        <div class="resume-subtitle resume-emphasize">
-                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2404.14913">Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations</a>
-                        </div>
-                        <div class="resume-publication-journal resume-text_shift">
-                            The Speaker and Language Recognition Workshop (Odyssey 2024)
-                        </div>
-                        <div class="resume-publication-authors resume-text_shift">
-                            <u>Theo Lepage</u>, and Reda Dehak
+                            Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak
                         </div>
                     </div>
                 </div>
@@ -264,26 +265,52 @@ const ResumePage = () => {
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2306.03664">Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification</a>
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2306.03664">Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
-                            INTERSPEECH 2023
+                            Interspeech 2024
                         </div>
                         <div class="resume-publication-authors resume-text_shift">
-                            <u>Theo Lepage</u>, and Reda Dehak
+                            Victor Miara, <b>Theo Lepage</b>, and Reda Dehak
                         </div>
                     </div>
 
                     <div class="resume-item">
                         <div class="resume-subtitle resume-emphasize">
                             <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
-                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/abs/2207.05506">Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning</a>
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2404.14913">Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations</a>
                         </div>
                         <div class="resume-publication-journal resume-text_shift">
-                            INTERSPEECH 2022
+                            The Speaker and Language Recognition Workshop (Odyssey 2024)
                         </div>
                         <div class="resume-publication-authors resume-text_shift">
-                            <u>Theo Lepage</u>, and Reda Dehak
+                            <b>Theo Lepage</b> and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2306.03664">Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            Interspeech 2023
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <b>Theo Lepage</b> and Reda Dehak
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="resume-subtitle resume-emphasize">
+                            <img class="resume-icon" src="/images/resume/icon-publication.svg" alt="icon-publication" />
+                            <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2207.05506">Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning</a>
+                        </div>
+                        <div class="resume-publication-journal resume-text_shift">
+                            Interspeech 2022
+                        </div>
+                        <div class="resume-publication-authors resume-text_shift">
+                            <b>Theo Lepage</b> and Reda Dehak
                         </div>
                     </div>
                 </div>

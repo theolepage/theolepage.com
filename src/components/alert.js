@@ -17,12 +17,18 @@ const AlertElement = styled.div`
     border-radius: 6px;
 `
 
-const Alert = () => {
+const Alert = ({ data }) => {
+    const { enabled, message, linkText, linkTo } = data.frontmatter
+
+    if (!enabled) {
+        return null
+    }
+
     return (
         <Section>
             <AlertElement>
-                I am seeking an internship in Computer Vision or Machine Learning starting in January 2022.
-                {' '}<Link to="/resume">Read my resume →</Link>
+                {message}
+                {' '}<Link to={linkTo}>{linkText}</Link>
             </AlertElement>
         </Section>
     )
