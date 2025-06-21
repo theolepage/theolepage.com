@@ -29,22 +29,25 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [X] Change publications keys
     - [X] Commit & push
 
-    - [ ] Stack multiple page preview publication
-    - [ ] Host articles (+ naming xxx.pdf / xxx_slides.pdf)
-    - [ ] Publication component (no border, two rows)
+    - [X] Resume: use React components
+
+    - [ ] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
+    - [ ] Publications: generate bib automatically
+        - [ ] Don´t provide arXiv url if better url (url = pdf)
+        - [ ] Add field type (conference/journal)
+        - [ ] Add field bib_entries
+        - [ ] Generate bib entry from metadata
     
-    - [ ] Listing of all publications, projects
-    - [ ] Only show showcased on home
-    - [ ] Publications: Short abstract
+    - [ ] Publications: component (no border, two rows)
+    - [ ] Publications: stack multiple pages preview
+    - [ ] Publications: short abstract
+    
+    - [ ] Listing of all publications, projects, talks
     - [ ] Fix grid spacing
     
-    - [ ] Add number of stars and forks in projects
+    - [ ] Projects: add number of stars and forks in projects
         - [ ] Fetch info from github API
         - [ ] Show stats in block
-    
-    - [ ] Publications: generate bib automatically
-
-    - [ ] Resume: use React components
 
 ---
 
