@@ -1,7 +1,14 @@
 import React from "react";
+import styled from "@emotion/styled";
 
 import Section from "./section";
 import Block from "./block";
+
+const BlocksGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+`;
 
 const Talks = ({ data }) => {
   const talks = data.nodes;
@@ -67,17 +74,16 @@ const Talks = ({ data }) => {
 
   return (
     <Section title="Talks">
-      {sortedTalks.map((talk) => {
-        console.log(talk);
-        return (
+      <BlocksGrid>
+        {sortedTalks.map((talk) => (
           <Block
             key={talk.id}
             title={talk.frontmatter.name}
             info={formatDate(talk) + " @ " + talk.frontmatter.location}
             url={talk.frontmatter.link}
           />
-        );
-      })}
+        ))}
+      </BlocksGrid>
     </Section>
   );
 };

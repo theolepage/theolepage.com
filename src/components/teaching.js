@@ -7,13 +7,10 @@ import Block from "./block";
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 15px;
-
-  margin-bottom: 15px;
+  gap: 16px;
 
   @media (max-width: 1000px) {
-    display: block;
-    margin-bottom: 0;
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 

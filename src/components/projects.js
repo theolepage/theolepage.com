@@ -9,13 +9,12 @@ const ProjectsGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(1, 140px);
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 15px;
+  grid-gap: 16px;
 
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 
   @media (max-width: 1000px) {
     display: block;
-    margin-bottom: 0;
   }
 `;
 

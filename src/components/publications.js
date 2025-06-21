@@ -5,6 +5,13 @@ import Section from "./section";
 import Block from "./block";
 import Link from "./link";
 
+const BlocksGrid = styled.div`
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+`;
+
 const PublicationItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,20 +117,22 @@ const Publications = ({ data }) => {
 
   return (
     <Section title="Publications">
-      {publications.map((publication) => (
-        <Block
-          key={publication.name}
-          title={publication.name}
-          image={publication.image}
-          border={false}
-        >
-          <PublicationItem>
-            <PublicationSource>{publication.journal}</PublicationSource>
-            <PublicationAuthors authors={publication.authors} />
-            <PublicationActions resources={publication.resources} />
-          </PublicationItem>
-        </Block>
-      ))}
+      <BlocksGrid>
+        {publications.map((publication) => (
+          <Block
+            key={publication.name}
+            title={publication.name}
+            image={publication.image}
+            border={false}
+          >
+            <PublicationItem>
+              <PublicationSource>{publication.journal}</PublicationSource>
+              <PublicationAuthors authors={publication.authors} />
+              <PublicationActions resources={publication.resources} />
+            </PublicationItem>
+          </Block>
+        ))}
+      </BlocksGrid>
     </Section>
   );
 };

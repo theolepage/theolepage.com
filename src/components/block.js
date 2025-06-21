@@ -7,7 +7,6 @@ import Link from "./link";
 const BlockElement = styled.div`
   position: relative;
 
-  margin-bottom: 15px;
   padding: 18px 22px;
 
   background: #fff;
@@ -20,8 +19,7 @@ const BlockElement = styled.div`
     !props.border &&
     css`
       border: none;
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0;
     `}
 
   ${(props) =>
