@@ -1,12 +1,69 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const fetch = require(`node-fetch`);
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+// Function to extract GitHub repo info from URL
+const extractGitHubInfo = (url) => {
+  if (!url || !url.includes("github.com")) return null;
+
+  const match = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
+  if (!match) return null;
+
+  return match[1];
+};
+
+// Function to fetch GitHub repo data
+const fetchGitHubData = async (repoPath) => {
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repoPath}`);
+    if (!response.ok) {
+      console.warn(`GitHub API error for ${repoPath}: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    return {
+      stars: data.stargazers_count,
+      forks: data.forks_count,
+      pushedAt: data.pushed_at,
+    };
+  } catch (error) {
+    console.warn(`Failed to fetch GitHub data for ${repoPath}:`, error.message);
+    return null;
+  }
+};
+
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = "posts" + createFilePath({ node, getNode });
     createNodeField({ name: `slug`, node, value });
+
+    // Check if this is a project with a GitHub URL
+    if (node.frontmatter && node.frontmatter.url) {
+      const githubInfo = extractGitHubInfo(node.frontmatter.url);
+      if (githubInfo) {
+        const githubData = await fetchGitHubData(githubInfo);
+        if (githubData) {
+          createNodeField({
+            name: `githubStarsCount`,
+            node,
+            value: githubData.stars,
+          });
+          createNodeField({
+            name: `githubForksCount`,
+            node,
+            value: githubData.forks,
+          });
+          createNodeField({
+            name: `githubPushedAt`,
+            node,
+            value: githubData.pushedAt,
+          });
+        }
+      }
+    }
   }
 };
 
@@ -31,7 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      result.errors,
+      result.errors
     );
     return;
   }
@@ -59,13 +116,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
+        type MarkdownRemark implements Node {
+            fields: MarkdownRemarkFields
+        }
+        
+        type MarkdownRemarkFields {
+            slug: String
+            githubStarsCount: Int
+            githubForksCount: Int
+            githubPushedAt: Date
+        }
+        
         type MarkdownRemarkFrontmatter {
             title: String
             description: String
             url: String
             color: String
             order: Int
-            underDevelopment: Boolean
             name: String
             location: String
             link: String

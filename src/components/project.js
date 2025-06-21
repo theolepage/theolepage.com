@@ -45,8 +45,12 @@ const UnderDevelopment = styled.div`
 `;
 
 const Project = ({ project }) => {
-  const { name, description, url, color, underDevelopment } =
-    project.frontmatter;
+  const { name, description, url, color } = project.frontmatter;
+  const { githubStarsCount, githubPushedAt } = project.fields || {};
+
+  const isUnderDevelopment =
+    githubPushedAt &&
+    new Date(githubPushedAt) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
   return (
     <Block
@@ -55,8 +59,9 @@ const Project = ({ project }) => {
       description={description}
       url={url}
       corner={color}
+      info={githubStarsCount && githubStarsCount}
     >
-      <Icons>{underDevelopment && <UnderDevelopment />}</Icons>
+      <Icons>{isUnderDevelopment && <UnderDevelopment />}</Icons>
     </Block>
   );
 };

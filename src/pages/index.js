@@ -87,7 +87,11 @@ export const query = graphql`
           url
           color
           order
-          underDevelopment
+        }
+        fields {
+          githubStarsCount
+          githubForksCount
+          githubPushedAt
         }
       }
     }

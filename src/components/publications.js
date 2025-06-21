@@ -21,7 +21,7 @@ const formatAuthors = (authors) => {
 
   // Bold Theo Lepage's name
   const formattedAuthors = authors.map((author) =>
-    author === "Theo Lepage" ? "<b>Theo Lepage</b>" : author,
+    author === "Theo Lepage" ? "<b>Theo Lepage</b>" : author
   );
 
   // Apply comma logic
@@ -94,7 +94,7 @@ function generateBibTeX({ frontmatter, filename }) {
   // Auto-add URL from "Document" resource if not already in bib_entries
   if (!frontmatter.bib_entries?.url && frontmatter.resources) {
     const documentResource = frontmatter.resources.find(
-      (resource) => resource.name === "Document",
+      (resource) => resource.name === "Document"
     );
     if (documentResource && documentResource.url) {
       fields.push(["url", safe(documentResource.url)]);
@@ -196,7 +196,7 @@ const Publications = ({ data }) => {
 
       if (
         !publication.resources.some(
-          (resource) => resource.name === "Ref (BibTeX)",
+          (resource) => resource.name === "Ref (BibTeX)"
         )
       ) {
         publication.resources.push({
