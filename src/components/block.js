@@ -80,6 +80,8 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    user-select: none;
+    pointer-events: none;
   }
 
   @media (max-width: 800px) {
@@ -95,10 +97,6 @@ const Header = styled.div`
 
   column-gap: 20px;
   row-gap: 6px;
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-  }
 `;
 
 const Title = styled.div`
@@ -108,7 +106,7 @@ const Title = styled.div`
 `;
 
 const Info = styled.div`
-  min-width: 320px;
+  flex-shrink: 0;
 
   text-align: right;
   font-size: 14px;

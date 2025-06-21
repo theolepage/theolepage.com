@@ -49,7 +49,7 @@ function parseFrontmatter(content) {
 
   const frontmatter = frontmatterMatch[1];
   const resourcesMatch = frontmatter.match(
-    /resources:\s*\n((?:\s*-\s*name:\s*"[^"]*"\s*\n\s*url:\s*"[^"]*"\s*\n?)*)/,
+    /resources:\s*\n((?:\s*-\s*name:\s*"[^"]*"\s*\n\s*url:\s*"[^"]*"\s*\n?)*)/
   );
 
   if (!resourcesMatch) return null;
@@ -59,7 +59,7 @@ function parseFrontmatter(content) {
 
   // Parse each action
   const resourceMatches = resourcesText.matchAll(
-    /\s*-\s*name:\s*"([^"]*)"\s*\n\s*url:\s*"([^"]*)"/g,
+    /\s*-\s*name:\s*"([^"]*)"\s*\n\s*url:\s*"([^"]*)"/g
   );
 
   for (const match of resourceMatches) {
@@ -102,7 +102,7 @@ async function main() {
 
       // Look for Document resource
       const documentResource = resources.find(
-        (resource) => resource.name === "Document",
+        (resource) => resource.name === "Document"
       );
 
       if (!documentResource) {
@@ -167,7 +167,7 @@ async function main() {
           const page = pages[0];
           await fs.writeFile(outputFile, page.content);
           console.log(
-            `✓ Generated preview: images/publications/${mdBaseName}.png`,
+            `✓ Generated preview: images/publications/${mdBaseName}.png`
           );
         } else {
           console.error(`✗ No pages returned for ${pdfFileName}`);
@@ -175,7 +175,7 @@ async function main() {
       } catch (error) {
         console.error(
           `✗ Error generating preview for ${pdfFileName}:`,
-          error.message,
+          error.message
         );
       }
     }

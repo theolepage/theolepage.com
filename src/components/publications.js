@@ -9,7 +9,7 @@ const BlocksGrid = styled.div`
   margin: 32px 0;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 24px;
+  gap: 28px;
 `;
 
 const PublicationItem = styled.div`
@@ -17,7 +17,7 @@ const PublicationItem = styled.div`
   flex-direction: column;
   gap: 6px;
 
-  margin-top: 4px;
+  margin-top: 2px;
 `;
 
 const PublicationSource = styled.span`
@@ -93,8 +93,9 @@ const Publications = ({ data }) => {
 
       const publication = {
         name: frontmatter.title,
+        year: frontmatter.year,
         authors: frontmatter.authors,
-        journal: frontmatter.source,
+        source: frontmatter.source,
         type: frontmatter.type,
         resources: frontmatter.resources ? [...frontmatter.resources] : [],
         image: `/images/publications/${filename}.png`,
@@ -122,11 +123,12 @@ const Publications = ({ data }) => {
           <Block
             key={publication.name}
             title={publication.name}
+            info={publication.year}
             image={publication.image}
             border={false}
           >
             <PublicationItem>
-              <PublicationSource>{publication.journal}</PublicationSource>
+              <PublicationSource>{publication.source}</PublicationSource>
               <PublicationAuthors authors={publication.authors} />
               <PublicationActions resources={publication.resources} />
             </PublicationItem>

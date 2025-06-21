@@ -14,7 +14,7 @@ const ProjectsGrid = styled.div`
   margin-bottom: 16px;
 
   @media (max-width: 1000px) {
-    display: block;
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 

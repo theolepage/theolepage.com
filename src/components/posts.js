@@ -5,6 +5,12 @@ import Section from "./section";
 import Post from "./post";
 import Button from "./button";
 
+const BlocksGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+`;
+
 const PostsIcon = styled.div`
   display: inline-block;
 
@@ -28,9 +34,11 @@ const Posts = ({ data, listing }) => {
 
   return (
     <Section title="Posts">
-      {posts.map((post) => (
-        <Post key={post.fields.slug} post={post} />
-      ))}
+      <BlocksGrid>
+        {posts.map((post) => (
+          <Post key={post.fields.slug} post={post} />
+        ))}
+      </BlocksGrid>
 
       {!listing && (
         <Button to={"/posts"}>

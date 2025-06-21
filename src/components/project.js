@@ -1,15 +1,40 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Star, GitFork } from "lucide-react";
 
 import Block from "./block";
 
-const Icons = styled.div`
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+const IconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+`;
 
-  width: 12px;
-  height: 12px;
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgb(150, 150, 150);
+`;
+
+const StarIcon = styled(Star)`
+  width: 14px;
+  height: 14px;
+  color: rgb(150, 150, 150);
+`;
+
+const ForkIcon = styled(GitFork)`
+  width: 14px;
+  height: 14px;
+  color: rgb(150, 150, 150);
+`;
+
+const UnderDevelopmentContainer = styled.div`
+  position: relative;
+
+  width: 14px;
+  height: 14px;
 `;
 
 const UnderDevelopment = styled.div`
@@ -46,7 +71,8 @@ const UnderDevelopment = styled.div`
 
 const Project = ({ project }) => {
   const { name, description, url, color } = project.frontmatter;
-  const { githubStarsCount, githubPushedAt } = project.fields || {};
+  const { githubStarsCount, githubForksCount, githubPushedAt } =
+    project.fields || {};
 
   const isUnderDevelopment =
     githubPushedAt &&
@@ -58,10 +84,29 @@ const Project = ({ project }) => {
       title={name}
       url={url}
       corner={color}
-      // info={githubStarsCount && githubStarsCount}
+      info={
+        <IconsContainer>
+          {isUnderDevelopment && (
+            <UnderDevelopmentContainer>
+              <UnderDevelopment />
+            </UnderDevelopmentContainer>
+          )}
+          {githubStarsCount !== undefined && (
+            <IconContainer>
+              <StarIcon />
+              <span>{githubStarsCount}</span>
+            </IconContainer>
+          )}
+          {githubForksCount !== undefined && (
+            <IconContainer>
+              <ForkIcon />
+              <span>{githubForksCount}</span>
+            </IconContainer>
+          )}
+        </IconsContainer>
+      }
     >
       {description}
-      <Icons>{isUnderDevelopment && <UnderDevelopment />}</Icons>
     </Block>
   );
 };

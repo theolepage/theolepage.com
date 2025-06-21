@@ -14,18 +14,15 @@ const Talks = ({ data }) => {
   const talks = data.nodes;
 
   const formatDate = (talk) => {
+    // Format as "MMM. YYYY"
+    const formatSingleDate = (date) => {
+      return `${date.toLocaleDateString("en-US", { month: "short" })}. ${date.getFullYear()}`;
+    };
+
     // Check if we have startDate and endDate (for date ranges)
     if (talk.frontmatter.startDate && talk.frontmatter.endDate) {
       const start = new Date(talk.frontmatter.startDate);
       const end = new Date(talk.frontmatter.endDate);
-
-      // Format as "MMM. YYYY"
-      const formatSingleDate = (date) => {
-        return date.toLocaleDateString("en-US", {
-          month: "short",
-          year: "numeric",
-        });
-      };
 
       if (talk.frontmatter.startDate === talk.frontmatter.endDate) {
         // Single date
@@ -37,7 +34,7 @@ const Talks = ({ data }) => {
 
         if (start.getFullYear() === end.getFullYear()) {
           // Same year: "Jan. - Sep. 2021"
-          return `${start.toLocaleDateString("en-US", { month: "short" })} - ${end.toLocaleDateString("en-US", { month: "short" })} ${start.getFullYear()}`;
+          return `${start.toLocaleDateString("en-US", { month: "short" })}. - ${end.toLocaleDateString("en-US", { month: "short" })}. ${start.getFullYear()}`;
         } else {
           // Different years: "Jan. 2021 - Sep. 2022"
           return `${startFormatted} - ${endFormatted}`;
@@ -46,10 +43,7 @@ const Talks = ({ data }) => {
     } else if (talk.frontmatter.date) {
       // Single date field
       const date = new Date(talk.frontmatter.date);
-      return date.toLocaleDateString("en-US", {
-        month: "short",
-        year: "numeric",
-      });
+      return formatSingleDate(date);
     }
 
     return "Date not specified";
@@ -79,9 +73,11 @@ const Talks = ({ data }) => {
           <Block
             key={talk.id}
             title={talk.frontmatter.name}
-            info={formatDate(talk) + " @ " + talk.frontmatter.location}
+            info={formatDate(talk)}
             url={talk.frontmatter.link}
-          />
+          >
+            {talk.frontmatter.location}
+          </Block>
         ))}
       </BlocksGrid>
     </Section>

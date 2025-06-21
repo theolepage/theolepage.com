@@ -36,14 +36,25 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [X] Warnings
     - [X] Publications: redesign (no border, two rows)
     - [X] Fix grids / spacing
+    - [X] Projects: show stars and forks
 
-    - [ ] Publications: stack multiple pages preview
-    - [ ] Listing of all publications, projects, talks
-    - [ ] Projects: show stars and forks
+    - [ ] Improve listing
+        - [ ] Publications: show `showcased` only on home 
+        - [ ] Publications: create page to see all
+        - [ ] Publications: add button to see all
+        
+        - [ ] Projects: show `showcased` only on home 
+        - [ ] Projects: create page to see all
+        - [ ] Projects: add button to see all
+
+        - [ ] Talks: show last 2 years only on home 
+        - [ ] Talks: create page to see all
+        - [ ] Talks: add button to see all
     
 ---
 
 - [ ] Blog: comments
+
 - [ ] Blog: improve posts
     - [ ] Code
         - [ ] Copy to clipboard button
@@ -55,5 +66,5 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - https://annarossetti.com/
 
 - [ ] CSS
-    - [ ] Use lib for icons
+    - [ ] Replace icons with lucide
     - [ ] Typography -> review scale/margins/fs/colors (use variables)

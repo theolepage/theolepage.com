@@ -23,6 +23,9 @@ const Photo = styled.img`
 
   border-radius: 100%;
 
+  user-select: none;
+  pointer-events: none;
+
   @media (max-width: 800px) {
     // display: none;
     width: 90px;
