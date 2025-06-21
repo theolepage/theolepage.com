@@ -23,7 +23,7 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 - [X] Generates publication previews
 
-- [ ] Misc
+- [ ] Misc [4h]
     - [X] Fix cite (no download)
     - [X] Publication authors as list
     - [X] Change publications keys
@@ -31,14 +31,12 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
     - [X] Resume: use React components
 
-    - [ ] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
-    - [ ] Publications: generate bib automatically
-        - [ ] Don´t provide arXiv url if better url (url = pdf)
-        - [ ] Add field type (conference/journal)
-        - [ ] Add field bib_entries
-        - [ ] Generate bib entry from metadata
+    - [X] Publications: generate bib automatically
+    - [X] Publications: host articles (+ naming xxx.pdf / xxx_slides.pdf)
     
-    - [ ] Publications: component (no border, two rows)
+    - [ ] Coding style
+    
+    - [ ] Publications: redesign (no border, two rows)
     - [ ] Publications: stack multiple pages preview
     - [ ] Publications: short abstract
     

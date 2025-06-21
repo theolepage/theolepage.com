@@ -46,24 +46,24 @@ function parseFrontmatter(content) {
     if (!frontmatterMatch) return null;
 
     const frontmatter = frontmatterMatch[1];
-    const actionsMatch = frontmatter.match(/actions:\s*\n((?:\s*-\s*name:\s*"[^"]*"\s*\n\s*url:\s*"[^"]*"\s*\n?)*)/);
+    const resourcesMatch = frontmatter.match(/resources:\s*\n((?:\s*-\s*name:\s*"[^"]*"\s*\n\s*url:\s*"[^"]*"\s*\n?)*)/);
 
-    if (!actionsMatch) return null;
+    if (!resourcesMatch) return null;
 
-    const actionsText = actionsMatch[1];
-    const actions = [];
+    const resourcesText = resourcesMatch[1];
+    const resources = [];
 
     // Parse each action
-    const actionMatches = actionsText.matchAll(/\s*-\s*name:\s*"([^"]*)"\s*\n\s*url:\s*"([^"]*)"/g);
+    const resourceMatches = resourcesText.matchAll(/\s*-\s*name:\s*"([^"]*)"\s*\n\s*url:\s*"([^"]*)"/g);
 
-    for (const match of actionMatches) {
-        actions.push({
+    for (const match of resourceMatches) {
+        resources.push({
             name: match[1],
             url: match[2]
         });
     }
 
-    return actions;
+    return resources;
 }
 
 async function main() {
@@ -88,23 +88,21 @@ async function main() {
             const filePath = path.join(publicationsDir, file);
             const content = await fs.readFile(filePath, "utf-8");
 
-            const actions = parseFrontmatter(content);
-            if (!actions) {
-                console.log(`No actions found in ${file}`);
+            const resources = parseFrontmatter(content);
+            if (!resources) {
+                console.log(`No resources found in ${file}`);
                 continue;
             }
 
-            // Look for Article or Report actions
-            const articleAction = actions.find(action =>
-                action.name === "Article" || action.name === "Report"
-            );
+            // Look for Document resource
+            const documentResource = resources.find(resource => resource.name === "Document");
 
-            if (!articleAction) {
-                console.log(`No Article/Report action found in ${file}`);
+            if (!documentResource) {
+                console.log(`No Document resource found in ${file}`);
                 continue;
             }
 
-            const url = articleAction.url;
+            const url = documentResource.url;
             let pdfPath;
             let pdfFileName;
 

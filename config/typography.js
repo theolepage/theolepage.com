@@ -27,6 +27,13 @@ const typography = new Typography({
         return {
             'p': {
                 textAlign: 'justify'
+            },
+            'a': {
+                color: '#377dff',
+                textDecoration: 'none',
+            },
+            'a:hover': {
+                textDecoration: 'underline',
             }
         }
     },

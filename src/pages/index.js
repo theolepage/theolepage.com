@@ -65,12 +65,13 @@ export const query = graphql`
         authors
         source
         year
-        actions {
+        type
+        bib_entries
+        resources {
           name
           url
         }
       }
-      rawMarkdownBody
       fileAbsolutePath
     }
   }

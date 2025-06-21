@@ -89,7 +89,9 @@ exports.createSchemaCustomization = ({ actions }) => {
             authors: [String]
             source: String
             year: Int
-            actions: [MarkdownRemarkFrontmatterActions]
+            type: String
+            bib_entries: JSON
+            resources: [MarkdownRemarkFrontmatterResources]
         }
         
         type MarkdownRemarkFrontmatterSocials {
@@ -97,7 +99,7 @@ exports.createSchemaCustomization = ({ actions }) => {
             url: String
         }
         
-        type MarkdownRemarkFrontmatterActions {
+        type MarkdownRemarkFrontmatterResources {
             name: String
             url: String
         }

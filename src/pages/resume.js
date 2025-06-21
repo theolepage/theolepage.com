@@ -10,15 +10,6 @@ const globalStyles = css`
         box-sizing: border-box;
     }
 
-    a {
-        color: #377dff;
-        text-decoration: none;
-    }
-    
-    a:hover {
-        text-decoration: underline;
-    }
-
     .resume img {
         margin-bottom: 0;
     }
