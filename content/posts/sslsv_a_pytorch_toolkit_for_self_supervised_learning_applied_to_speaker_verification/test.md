@@ -1,5 +1,5 @@
 ---
-title: sslsv: A toolkit for Self-Supervised Learning Speaker Verification
+title: "sslsv: A toolkit for Self-Supervised Learning Speaker Verification"
 date: "2015-05-01T22:12:03.284Z"
 color: "#eee"
 ---
@@ -27,12 +27,14 @@ Oh, and here's a great quote from this Wikipedia on
 > salted duck eggs have a briny aroma, a gelatin-like egg white and a
 > firm-textured, round yolk that is bright orange-red in color.
 
-![Chinese Salty Egg](./salty_egg.jpg)
+![Fig 1. Chinese Salty Egg](./salty_egg.jpg)
 
 You can also write code blocks here!
 
-```js
-const saltyDuckEgg = "chinese preserved food product"
+```py
+saltyDuckEgg = "chinese preserved food product"
+def test(a, b):
+    return a + b
 ```
 
 | Number | Title                                    | Year |
@@ -235,5 +237,7 @@ This paragraph has some `code` in it.
     This paragraph has some `code` in it.
 
 ![Alt Text](https://via.placeholder.com/200x50 "Image Title")
+
+![Alt Text](https://via.placeholder.com/1920x1080 "Image Title")
 
     ![Alt Text](https://via.placeholder.com/200x50 "Image Title")
