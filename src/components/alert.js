@@ -10,11 +10,12 @@ const AlertContainer = styled.div`
 
 const AlertElement = styled.div`
   margin: 0 auto;
-  padding: 12px 64px;
+  padding: 16px 64px;
 
   color: rgb(60, 60, 60);
   line-height: 1.75;
   text-align: center;
+  font-size: 14px;
 
   background: #f2f7ff;
   border: 1px solid rgb(135, 177, 255);
