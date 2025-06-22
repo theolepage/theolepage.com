@@ -1,6 +1,6 @@
 ---
-enabled: false
-message: "I am seeking an internship in Computer Vision or Machine Learning starting in January 2022."
-linkText: "Read my resume →"
-linkTo: "/resume"
+enabled: true
+message: "Currently writing the manuscript of my Ph.D. thesis ."
+linkText: "Follow the progress →"
+linkTo: "/phd_thesis"
 ---

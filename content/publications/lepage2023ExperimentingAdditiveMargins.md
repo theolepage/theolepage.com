@@ -13,7 +13,7 @@ resources:
   - name: "Document"
     url: "https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/lepage2023ExperimentingAdditiveMargins_slides.pdf"
+    url: "/uploads/lepage2023ExperimentingAdditiveMargins_slides.pdf"
   - name: "Code"
     url: "https://github.com/theolepage/sslsv"
 ---

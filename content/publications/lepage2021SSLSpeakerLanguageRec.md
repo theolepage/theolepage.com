@@ -10,9 +10,9 @@ bib_entries:
   type: "Student Research Report"
 resources:
   - name: "Document"
-    url: "https://theolepage.com/uploads/lepage2021SSLSpeakerLanguageRec.pdf"
+    url: "/uploads/lepage2021SSLSpeakerLanguageRec.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/lepage2021SSLSpeakerLanguageRec_slides.pdf"
+    url: "/uploads/lepage2021SSLSpeakerLanguageRec_slides.pdf"
   - name: "Video"
     url: "https://youtu.be/7txwJlIrKO0"
 ---

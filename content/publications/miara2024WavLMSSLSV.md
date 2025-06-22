@@ -15,7 +15,7 @@ resources:
   - name: "Document"
     url: "https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/miara2024WavLMSSLSV_slides.pdf"
+    url: "/uploads/miara2024WavLMSSLSV_slides.pdf"
   - name: "Code"
     url: "https://github.com/theolepage/wavlm_ssl_sv"
 ---

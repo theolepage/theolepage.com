@@ -15,7 +15,7 @@ resources:
   - name: "Document"
     url: "https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/stourbe2024WavLMBackendsSpoofing_slides.pdf"
+    url: "/uploads/stourbe2024WavLMBackendsSpoofing_slides.pdf"
   - name: "Video"
     url: "https://youtu.be/R_U41bzRKSg"
 ---

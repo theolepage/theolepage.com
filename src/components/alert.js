@@ -4,16 +4,20 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Link from "./link";
 
+const AlertContainer = styled.div`
+  display: flex;
+`;
+
 const AlertElement = styled.div`
   margin: 0 auto;
-  padding: 16px 32px;
+  padding: 12px 64px;
 
   color: rgb(60, 60, 60);
   line-height: 1.75;
   text-align: center;
 
   background: #f2f7ff;
-  border-left: 6px solid #377dff;
+  border: 1px solid rgb(135, 177, 255);
   border-radius: 6px;
 `;
 
@@ -26,9 +30,11 @@ const Alert = ({ data }) => {
 
   return (
     <Section>
-      <AlertElement>
-        {message} <Link to={linkTo}>{linkText}</Link>
-      </AlertElement>
+      <AlertContainer>
+        <AlertElement>
+          {message} <Link to={linkTo}>{linkText}</Link>
+        </AlertElement>
+      </AlertContainer>
     </Section>
   );
 };

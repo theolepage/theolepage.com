@@ -56,7 +56,7 @@ const AboutPage = ({ data }) => {
   const { html } = data;
 
   return (
-    <Section title="">
+    <Section>
       <Container>
         <Content>
           <div dangerouslySetInnerHTML={{ __html: html }} />

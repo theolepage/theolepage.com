@@ -13,7 +13,7 @@ resources:
   - name: "Document"
     url: "https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/lepage2022LabelEfficient_slides.pdf"
+    url: "/uploads/lepage2022LabelEfficient_slides.pdf"
   - name: "Video"
     url: "https://youtu.be/Ndhzm6Krj7Q"
   - name: "Code"

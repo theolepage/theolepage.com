@@ -78,7 +78,7 @@ const Image = styled.div`
 
   &:hover {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
-    transform: scale(1.02);
+    transform: scale(1.05);
   }
 
   img {

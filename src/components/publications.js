@@ -78,7 +78,7 @@ const PublicationActions = ({ resources }) => {
     <Actions>
       {resources.map((action, i) => (
         <span key={action.name}>
-          <Link to={action.url}>{action.name}</Link>
+          <Link to={action.url} external>{action.name}</Link>
           {i !== resources.length - 1 && <ActionSeparator>/</ActionSeparator>}
         </span>
       ))}
@@ -129,7 +129,7 @@ const Publications = ({ data, listing }) => {
       ) {
         publication.resources.push({
           name: "Ref (BibTeX)",
-          url: `./ref/${filename}`,
+          url: `/ref/${filename}`,
         });
       }
 

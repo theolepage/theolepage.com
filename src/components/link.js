@@ -15,7 +15,7 @@ const style = css`
   }
 `;
 
-const Link = ({ to, onClick, className, invisible, children, ...props }) => {
+const Link = ({ to, onClick, className, invisible, external, children, ...props }) => {
   if (!to)
     return (
       <button
@@ -26,7 +26,7 @@ const Link = ({ to, onClick, className, invisible, children, ...props }) => {
         {children}
       </button>
     );
-  if (to.charAt(0) !== "/" || to.slice(-4).includes("."))
+  if (external || to.charAt(0) !== "/" || to.slice(-4).includes("."))
     return (
       <a
         css={invisible && style}

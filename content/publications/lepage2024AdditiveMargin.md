@@ -14,7 +14,7 @@ resources:
   - name: "Document"
     url: "https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
   - name: "Slides"
-    url: "https://theolepage.com/uploads/lepage2024AdditiveMargin_slides.pdf"
+    url: "/uploads/lepage2024AdditiveMargin_slides.pdf"
   - name: "Code"
     url: "https://github.com/theolepage/sslsv"
 ---
