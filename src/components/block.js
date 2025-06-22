@@ -67,21 +67,24 @@ const Image = styled.div`
   width: 150px;
   height: 200px;
 
-  border: 1px solid rgb(235, 235, 235);
+  margin: 8px;
+
+  border: 1px solid rgb(240, 240, 240);
   border-radius: 2px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.03);
-  transition: box-shadow 0.2s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.03);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
 
   &:hover {
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
+    transform: scale(1.02);
   }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    user-select: none;
-    pointer-events: none;
   }
 
   @media (max-width: 800px) {
@@ -129,6 +132,7 @@ const Block = ({
   corner,
   children,
   image,
+  imageActionUrl,
   border = true,
 }) => {
   const body = (
@@ -137,9 +141,11 @@ const Block = ({
 
       <BlockContainer>
         {image && (
-          <Image>
-            <img src={image} alt={`Preview`} />
-          </Image>
+          <Link to={imageActionUrl} invisible>
+            <Image>
+              <img src={image} alt={`Preview`} />
+            </Image>
+          </Link>
         )}
 
         <BlockContent>

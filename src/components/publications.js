@@ -17,9 +17,9 @@ const BlocksGrid = styled.div`
 const PublicationItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 
-  margin-top: 2px;
+  margin-top: 4px;
 `;
 
 const PublicationSource = styled.span`
@@ -60,7 +60,7 @@ const PublicationAuthors = ({ authors }) => {
 
 const PublicationActions = ({ resources }) => {
   const Actions = styled.div`
-    margin-top: 8px;
+    // margin-top: 4px;
   `;
 
   const ActionSeparator = styled.div`
@@ -146,6 +146,11 @@ const Publications = ({ data, listing }) => {
             title={publication.name}
             info={publication.year}
             image={publication.image}
+            imageActionUrl={
+              publication.resources.find(
+                (resource) => resource.name === "Document"
+              )?.url
+            }
             border={false}
           >
             <PublicationItem>

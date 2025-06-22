@@ -7,6 +7,9 @@ import { css } from "@emotion/react";
 const style = css`
   color: rgb(0, 0, 0);
 
+  border: 0;
+  background: none;
+
   &:hover {
     text-decoration: none;
   }

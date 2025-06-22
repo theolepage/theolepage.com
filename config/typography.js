@@ -34,6 +34,7 @@ const typography = new Typography({
       },
       "a:hover": {
         textDecoration: "underline",
+        textUnderlineOffset: "2px",
       },
     };
   },
