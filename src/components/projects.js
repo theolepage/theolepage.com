@@ -32,7 +32,7 @@ const GithubIcon = styled.div`
 
   background-color: var(--color-default);
 
-  mask: url(/images/icon-github.png) no-repeat center / contain;
+  mask: url(/images/socials/icon-github.png) no-repeat center / contain;
 `;
 
 const Projects = ({ data, listing }) => {
