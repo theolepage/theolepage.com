@@ -3,7 +3,7 @@ title: "SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speak
 authors:
   - "Theo Lepage"
   - "Reda Dehak"
-source: "Interspeech 2025"
+source: "Preprint (accepted at Interspeech 2025)"
 year: 2025
 type: "conference"
 showcased: true

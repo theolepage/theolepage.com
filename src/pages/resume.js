@@ -579,7 +579,7 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
               url="https://arxiv.org/pdf/2505.14561"
-              source="Interspeech 2025"
+              source="Preprint (accepted at Interspeech 2025)"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
@@ -593,7 +593,7 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
               url="https://arxiv.org/pdf/2409.05032"
-              source="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)"
+              source="Proc. The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
               authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
           </Section>
@@ -604,28 +604,28 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
               url="https://arxiv.org/pdf/2306.03664"
-              source="Interspeech 2024"
+              source="Proc. Interspeech 2024, Sept. 2024, pp. 2660--2664"
               authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
 
             <PublicationItem
               title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
               url="https://arxiv.org/pdf/2404.14913"
-              source="The Speaker and Language Recognition Workshop (Odyssey 2024)"
+              source="Proc. The Speaker and Language Recognition Workshop (Odyssey 2024), Jun. 2024, pp. 38--42"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
               url="https://arxiv.org/pdf/2306.03664"
-              source="Interspeech 2023"
+              source="Proc. Interspeech 2023, Aug. 2023, pp. 4708--4712"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
               url="https://arxiv.org/pdf/2207.05506"
-              source="Interspeech 2022"
+              source="Proc. Interspeech 2022, Sept. 2022, pp. 4018--4022"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
           </Section>

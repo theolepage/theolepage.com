@@ -9,7 +9,7 @@ type: "conference"
 showcased: true
 bib_entries:
   pages: "38--42"
-  doi: "10.21437/odyssey.2024-6"
+  doi: "10.21437/Odyssey.2024-6"
 resources:
   - name: "Document"
     url: "https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
