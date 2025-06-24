@@ -106,7 +106,7 @@ const Label = styled.div`
   margin: 0 4px 0 0;
   padding: 3px 4px 4px 4px;
   font-size: 8px;
-  border: 1px solid rgb(230, 230, 230);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 `;
 

@@ -8,32 +8,27 @@ const button = css`
 
   padding: 12px 16px;
 
-  color: rgb(60, 60, 60);
+  color: var(--color-default);
 
-  background: rgb(255, 255, 255);
-  border-radius: 6px;
-  box-shadow:
-    0px 4px 8px rgba(47, 55, 71, 0.01),
-    0px 1px 3px rgba(47, 55, 71, 0.05);
+  background: var(--background-container);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 
-  border: 1px solid rgb(235, 235, 235);
+  border: 1px solid var(--border-color);
 
   cursor: pointer;
 
   transition:
-    0.3s color,
-    0.2s background,
-    0.2s box-shadow,
-    0.3s transform;
+    var(--transition-duration) color,
+    var(--transition-duration) background,
+    var(--transition-duration) box-shadow,
+    var(--transition-duration) transform;
 
   &:hover {
-    color: rgb(0, 0, 0);
+    color: var(--color-title);
 
-    background: rgb(248, 248, 248);
-    box-shadow:
-      0px 4px 8px rgba(47, 55, 71, 0.02),
-      0px 1px 3px rgba(47, 55, 71, 0.1);
-    // transform: translateY(-2px);
+    background: var(--background-secondary);
+    box-shadow: var(--shadow-hover);
   }
 
   &:active {

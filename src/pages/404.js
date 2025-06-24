@@ -11,7 +11,7 @@ const Background = styled.div`
   left: 0;
   right: 0;
 
-  background-color: rgb(250, 250, 250);
+  background-color: var(--background-secondary);
 `;
 
 const Content = styled.div`
@@ -24,9 +24,9 @@ const Content = styled.div`
 
   padding: 26px;
 
-  background: #fff;
-  border-radius: 6px;
-  border: 1px solid rgb(235, 235, 235);
+  background: var(--background-container);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 
   @media (max-width: 450px) {
     width: 90%;

@@ -10,16 +10,14 @@ const AlertContainer = styled.div`
 
 const AlertElement = styled.div`
   margin: 0 auto;
-  padding: 16px 64px;
+  padding: var(--spacing) 64px;
 
-  color: rgb(60, 60, 60);
-  line-height: 1.75;
   text-align: center;
-  font-size: 14px;
+  font-size: var(--size-small);
 
-  background: #f2f7ff;
-  border: 1px solid rgb(135, 177, 255);
-  border-radius: 6px;
+  background: var(--background-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius);
 `;
 
 const Alert = ({ data }) => {

@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Link from "../components/link";
 
 import SEO from "../components/seo";
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100%;
+
+  background-color: var(--background-primary);
+`;
 
 const Header = styled.div``;
 
@@ -20,7 +25,7 @@ const HeaderWrapper = styled.div`
 
   border-bottom: 1px solid rgba(230, 230, 230, 1);
 
-  padding: 16px 0;
+  padding: var(--spacing) 0;
 
   @media (max-width: 1300px) {
     width: 950px;
@@ -32,19 +37,20 @@ const HeaderWrapper = styled.div`
 `;
 
 const SiteTitle = styled(Link)`
-  font-size: 20px;
+  color: var(--color-title);
+  font-size: var(--size-title);
   font-family: "Questrial", sans-serif;
 `;
 
 const HomepageLink = styled(Link)`
-  color: rgb(120, 120, 120);
+  color: var(--color-muted-2);
 
-  transition: color 0.3s;
+  transition: color var(--transition-duration);
 
-  font-size: 14px;
+  font-size: var(--size-small);
 
   &:hover {
-    color: rgb(0, 0, 0);
+    color: var(--color-title);
   }
 `;
 
@@ -67,10 +73,10 @@ const FooterWrapper = styled.div`
   width: 950px;
 
   margin: auto;
-  padding: 16px 0 26px 0;
+  padding: var(--spacing) 0 calc(var(--spacing) + 6px) 0;
 
-  color: rgb(120, 120, 120);
-  font-size: 15px;
+  color: var(--color-muted-2);
+  font-size: var(--size-small);
 
   border-top: 1px solid rgba(230, 230, 230, 1);
 
@@ -80,6 +86,23 @@ const FooterWrapper = styled.div`
 `;
 
 const Page = ({ title, description, children, layout = true }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          author
+        }
+      }
+    }
+  `);
+
+  // Add fallback values in case siteMetadata is undefined
+  const siteMetadata = data?.site?.siteMetadata || {
+    title: "",
+    author: "",
+  };
+
   if (!layout) {
     return (
       <>
@@ -97,7 +120,7 @@ const Page = ({ title, description, children, layout = true }) => {
       <Header>
         <HeaderWrapper>
           <SiteTitle to="/" invisible>
-            Theo Lepage
+            {siteMetadata.title}
           </SiteTitle>
           <HomepageLink to="/" activeStyle={{ display: "none" }} invisible>
             About
@@ -108,7 +131,9 @@ const Page = ({ title, description, children, layout = true }) => {
         <BodyWrapper>{children}</BodyWrapper>
       </Body>
       <Footer>
-        <FooterWrapper>© {new Date().getFullYear()} Theo Lepage</FooterWrapper>
+        <FooterWrapper>
+          © {new Date().getFullYear()} {siteMetadata.author}
+        </FooterWrapper>
       </Footer>
     </Container>
   );

@@ -30,7 +30,7 @@ const ArticleTag = styled.div`
 
   background: rgb(242, 247, 255);
   border: 1px solid rgb(218, 232, 255);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 `;
 
 const ArticleDate = styled.p`

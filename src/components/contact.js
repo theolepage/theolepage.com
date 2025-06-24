@@ -9,9 +9,9 @@ const ContactBox = styled.p`
 
   text-align: center;
 
-  border: 1px dashed rgb(200, 200, 200);
-  background: rgb(250, 250, 250);
-  border-radius: 6px;
+  border: 1px dashed rgb(180, 180, 180);
+  background: var(--background-secondary);
+  border-radius: var(--border-radius);
 `;
 
 const Socials = styled.span`
@@ -35,7 +35,7 @@ const SocialIcon = styled.img`
   filter: grayscale(100%);
   opacity: 0.5;
 
-  transition: all 0.3s;
+  transition: all var(--transition-duration);
 
   &[src*="github"] {
     opacity: 0.3;

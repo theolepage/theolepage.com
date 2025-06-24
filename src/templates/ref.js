@@ -13,7 +13,7 @@ const Background = styled.div`
   left: 0;
   right: 0;
 
-  background-color: rgb(250, 250, 250);
+  background-color: var(--background-secondary);
 `;
 
 const Content = styled.div`
@@ -32,17 +32,18 @@ const Content = styled.div`
 const BibTeXPre = styled.pre`
   display: block;
   max-width: 1000px;
-  padding: 16px;
-  background-color: white;
+
+  padding: var(--spacing);
+
   white-space: pre;
   overflow-x: auto;
+
   color: black;
   font-family: monospace;
-  font-size: 16px;
-  line-height: 1.5;
-  border-radius: 4px;
-  border: 1px solid rgb(235, 235, 235);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  background-color: white;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 `;
 
 const BIBTEX_FIELD_ORDER = [

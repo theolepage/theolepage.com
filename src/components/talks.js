@@ -9,8 +9,8 @@ import Button from "./button";
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
 `;
 
 const TalksIcon = styled(Presentation)`
@@ -18,9 +18,9 @@ const TalksIcon = styled(Presentation)`
   position: relative;
   top: 2px;
   margin: 0 8px 0 0px;
-  width: 16px;
-  height: 16px;
-  color: rgb(60, 60, 60);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--color-default);
 `;
 
 const Talks = ({ data, listing }) => {

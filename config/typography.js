@@ -11,8 +11,8 @@ const typography = new Typography({
   headerFontFamily: ["Questrial", "sans-serif"],
   headerWeight: "normal",
   bodyFontFamily: ["Open Sans", "sans-serif"],
-  bodyColor: "rgb(60, 60, 60)",
-  headerColor: "rgb(0, 0, 0)",
+  bodyColor: "var(--color-default)",
+  headerColor: "var(--color-title)",
   googleFonts: [
     {
       name: "Open Sans",
@@ -23,13 +23,13 @@ const typography = new Typography({
       styles: ["400"],
     },
   ],
-  overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => {
+  overrideStyles: () => {
     return {
       p: {
         textAlign: "justify",
       },
       a: {
-        color: "#377dff",
+        color: "var(--color-accent)",
         textDecoration: "none",
       },
       "a:hover": {

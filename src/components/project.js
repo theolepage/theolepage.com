@@ -8,33 +8,31 @@ const IconsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: var(--size-tiny);
 `;
 
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
-  color: rgb(150, 150, 150);
+  color: var(--color-muted-2);
 `;
 
 const StarIcon = styled(Star)`
   width: 14px;
   height: 14px;
-  color: rgb(150, 150, 150);
 `;
 
 const ForkIcon = styled(GitFork)`
   width: 14px;
   height: 14px;
-  color: rgb(150, 150, 150);
 `;
 
 const UnderDevelopmentContainer = styled.div`
   position: relative;
 
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 `;
 
 const UnderDevelopment = styled.div`
@@ -42,7 +40,7 @@ const UnderDevelopment = styled.div`
   height: 100%;
 
   border-radius: 100%;
-  border: 3px solid rgb(245, 245, 245);
+  border: 2px solid rgb(220, 220, 220);
 
   &:after {
     position: absolute;
@@ -53,8 +51,8 @@ const UnderDevelopment = styled.div`
     content: "";
 
     border-radius: 100%;
-    border: 3px solid transparent;
-    border-top-color: rgb(200, 200, 200);
+    border: 2px solid transparent;
+    border-top-color: var(--color-muted-2);
 
     animation: spin 2s infinite;
   }

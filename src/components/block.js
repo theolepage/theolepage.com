@@ -9,9 +9,9 @@ const BlockElement = styled.div`
 
   padding: 18px 22px;
 
-  background: #fff;
-  border-radius: 6px;
-  border: 1px solid rgb(235, 235, 235);
+  background: var(--background-container);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 
   overflow: hidden;
 
@@ -26,13 +26,11 @@ const BlockElement = styled.div`
     props.hover &&
     css`
       transition:
-        0.2s box-shadow,
-        0.3s transform;
+        var(--transition-duration) box-shadow,
+        var(--transition-duration) transform;
 
       &:hover {
-        box-shadow:
-          0px 4px 8px rgba(47, 55, 71, 0.02),
-          0px 1px 3px rgba(47, 55, 71, 0.1);
+        box-shadow: var(--shadow-hover);
         transform: translateY(-2px);
       }
     `}
@@ -51,7 +49,7 @@ const Corner = styled.div`
 
 const BlockContainer = styled.div`
   display: flex;
-  column-gap: 32px;
+  gap: calc(var(--spacing) + 10px);
   align-items: center;
   height: 100%;
 `;
@@ -69,15 +67,14 @@ const Image = styled.div`
 
   margin: 8px;
 
-  border: 1px solid rgb(240, 240, 240);
+  border: 1px solid var(--border-color);
   border-radius: 2px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.03);
   transition:
-    box-shadow 0.2s,
-    transform 0.2s;
+    var(--transition-duration) box-shadow,
+    var(--transition-duration) transform;
 
   &:hover {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-hover);
     transform: scale(1.05);
   }
 
@@ -98,22 +95,19 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: baseline;
 
-  column-gap: 20px;
-  row-gap: 6px;
+  gap: var(--spacing);
 `;
 
 const Title = styled.div`
-  max-width: 95%;
-
-  color: rgb(0, 0, 0);
+  color: var(--color-title);
 `;
 
 const Info = styled.div`
   flex-shrink: 0;
 
   text-align: right;
-  font-size: 14px;
-  color: rgb(80, 80, 80);
+  font-size: var(--size-small);
+  color: var(--color-muted-1);
 
   @media (max-width: 800px) {
     text-align: left;
@@ -121,8 +115,8 @@ const Info = styled.div`
 `;
 
 const Children = styled.div`
-  font-size: 14px;
-  color: rgb(80, 80, 80);
+  font-size: var(--size-small);
+  color: var(--color-muted-1);
 `;
 
 const Block = ({

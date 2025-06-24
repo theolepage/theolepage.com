@@ -6,22 +6,22 @@ import Section from "./section";
 import Project from "./project";
 import Button from "./button";
 
-const Buttons = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-`;
-
 const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+  gap: var(--spacing);
 
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing);
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(1, 1fr);
   }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
 `;
 
 const ProjectsIcon = styled(FolderOpen)`
@@ -29,9 +29,9 @@ const ProjectsIcon = styled(FolderOpen)`
   position: relative;
   top: 2px;
   margin: 0 8px 0 0px;
-  width: 16px;
-  height: 16px;
-  color: rgb(60, 60, 60);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--color-default);
 `;
 
 const GithubIcon = styled.div`
@@ -42,10 +42,10 @@ const GithubIcon = styled.div`
 
   margin: 0 8px 0 0px;
 
-  width: 16px;
-  height: 16px;
+  width: var(--icon-size);
+  height: var(--icon-size);
 
-  background-color: rgb(60, 60, 60);
+  background-color: var(--color-default);
 
   mask: url(/images/icon-github.png) no-repeat center / contain;
 `;

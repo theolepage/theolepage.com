@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 import { Files } from "lucide-react";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Section from "./section";
 import Block from "./block";
@@ -8,10 +9,10 @@ import Link from "./link";
 import Button from "./button";
 
 const BlocksGrid = styled.div`
-  margin: 32px 0;
+  margin: calc(var(--spacing) * 2) 0;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 28px;
+  gap: calc(var(--spacing) * 2 - 4px);
 `;
 
 const PublicationItem = styled.div`
@@ -23,17 +24,32 @@ const PublicationItem = styled.div`
 `;
 
 const PublicationSource = styled.span`
-  color: rgb(80, 80, 80);
+  color: var(--color-muted-1);
   font-weight: 600;
 `;
 
 const PublicationAuthors = ({ authors }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+        }
+      }
+    }
+  `);
+
+  // Add fallback values in case siteMetadata is undefined
+  const siteMetadata = data?.site?.siteMetadata || {
+    author: "",
+  };
+
   const formatAuthors = (authors) => {
     if (!authors || authors.length === 0) return "";
 
-    // Bold Theo Lepage's name
+    // Bold website author's name
     const formattedAuthors = authors.map((author) =>
-      author === "Theo Lepage" ? "<b>Theo Lepage</b>" : author
+      author === siteMetadata.author ? `<b>${author}</b>` : author
     );
 
     // Apply comma logic
@@ -50,7 +66,7 @@ const PublicationAuthors = ({ authors }) => {
   };
 
   const Authors = styled.div`
-    color: rgb(120, 120, 120);
+    color: var(--color-muted-2);
   `;
 
   return (
@@ -78,7 +94,9 @@ const PublicationActions = ({ resources }) => {
     <Actions>
       {resources.map((action, i) => (
         <span key={action.name}>
-          <Link to={action.url} external>{action.name}</Link>
+          <Link to={action.url} external>
+            {action.name}
+          </Link>
           {i !== resources.length - 1 && <ActionSeparator>/</ActionSeparator>}
         </span>
       ))}
@@ -91,9 +109,9 @@ const PublicationsIcon = styled(Files)`
   position: relative;
   top: 2px;
   margin: 0 8px 0 0px;
-  width: 16px;
-  height: 16px;
-  color: rgb(60, 60, 60);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--color-default);
 `;
 
 const Publications = ({ data, listing }) => {

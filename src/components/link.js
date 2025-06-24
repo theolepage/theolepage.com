@@ -5,8 +5,6 @@ import { Link as GatsbyLink } from "gatsby";
 import { css } from "@emotion/react";
 
 const style = css`
-  color: rgb(0, 0, 0);
-
   border: 0;
   background: none;
 
@@ -15,7 +13,15 @@ const style = css`
   }
 `;
 
-const Link = ({ to, onClick, className, invisible, external, children, ...props }) => {
+const Link = ({
+  to,
+  onClick,
+  className,
+  invisible,
+  external,
+  children,
+  ...props
+}) => {
   if (!to)
     return (
       <button

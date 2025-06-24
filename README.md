@@ -12,9 +12,24 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [ ] Blog: comments
+- [X] Use variable for "Theo Lepage"
 
-- [ ] Blog: improve posts
+- [X] Easter egg: "theo" -> rotate avatar
+
+- [X] Design: use global variables
+
+- [ ] Design: add icons: alert, alert link, home
+
+- [ ] Design: use lucide icons
+
+- [ ] Design: handle light/dark themes
+
+- [ ] Content: add more projects
+
+---
+
+- [ ] Blog
+    - [ ] Comments
     - [ ] Code
         - [ ] Copy to clipboard button
         - [ ] Header with title and language
@@ -24,8 +39,4 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [ ] Captions for figures and tables
     - https://annarossetti.com/
 
-- [ ] Resources: search and pagination
-
-- [ ] CSS
-    - [ ] Replace icons with lucide
-    - [ ] Typography -> review scale/margins/fs/colors (use variables)
+- [ ] Search and pagination
