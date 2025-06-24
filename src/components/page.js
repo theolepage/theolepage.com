@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Link from "../components/link";
-
+import Icon from "../components/icon";
 import SEO from "../components/seo";
 
 const Container = styled.div`
@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
 
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 
   border-bottom: 1px solid rgba(230, 230, 230, 1);
 
@@ -43,11 +43,15 @@ const SiteTitle = styled(Link)`
 `;
 
 const HomepageLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   color: var(--color-muted-2);
 
   transition: color var(--transition-duration);
 
-  font-size: var(--size-small);
+  font-size: var(--size-default);
 
   &:hover {
     color: var(--color-title);
@@ -123,7 +127,8 @@ const Page = ({ title, description, children, layout = true }) => {
             {siteMetadata.title}
           </SiteTitle>
           <HomepageLink to="/" activeStyle={{ display: "none" }} invisible>
-            About
+            <Icon name="home" width={16} height={16} />
+            Home
           </HomepageLink>
         </HeaderWrapper>
       </Header>

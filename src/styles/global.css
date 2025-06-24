@@ -1,5 +1,5 @@
 :root {
-  --color-default: rgb(60, 60, 60);
+  --color-default: rgb(50, 50, 50);
   --color-title: rgb(0, 0, 0);
   --color-muted-1: rgb(80, 80, 80);
   --color-muted-2: rgb(120, 120, 120);
@@ -26,6 +26,4 @@
     0px 4px 8px rgba(47, 55, 71, 0.02), 0px 1px 3px rgba(47, 55, 71, 0.1);
 
   --spacing: 16px;
-
-  --icon-size: 16px;
 }

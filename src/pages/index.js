@@ -6,7 +6,7 @@ import Alert from "../components/alert";
 import About from "../components/about";
 import Contact from "../components/contact";
 import Publications from "../components/publications";
-// import Posts from "../components/posts"
+// import Posts from "../components/posts";
 import Projects from "../components/projects";
 import Talks from "../components/talks";
 import Teaching from "../components/teaching";

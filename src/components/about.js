@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import Section from "./section";
 import Button from "./button";
+import Icon from "./icon";
 
 const Container = styled.div`
   display: flex;
@@ -23,32 +24,13 @@ const Photo = styled.img`
 
   border-radius: 100%;
 
-  user-select: none;
   pointer-events: none;
 
   @media (max-width: 800px) {
-    // display: none;
     width: 90px;
 
     margin: 0 auto 32px auto;
   }
-`;
-
-const ResumeIcon = styled.div`
-  display: inline-block;
-
-  position: relative;
-  top: 2px;
-
-  margin: 0 8px 0 0px;
-
-  width: var(--icon-size);
-  height: var(--icon-size);
-
-  background-color: var(--color-default);
-
-  mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtdXNlciI+PHBhdGggZD0iTTE0IDJ2NGEyIDIgMCAwIDAgMiAyaDQiLz48cGF0aCBkPSJNMTUgMThhMyAzIDAgMSAwLTYgMCIvPjxwYXRoIGQ9Ik0xNSAySDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWN3oiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEzIiByPSIyIi8+PC9zdmc+)
-    no-repeat center / contain;
 `;
 
 const AboutPage = ({ data }) => {
@@ -92,7 +74,7 @@ const AboutPage = ({ data }) => {
         <Content>
           <div dangerouslySetInnerHTML={{ __html: html }} />
           <Button to={buttonLink}>
-            <ResumeIcon />
+            <Icon name="resume" />
             {buttonText}
           </Button>
         </Content>

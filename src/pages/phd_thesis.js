@@ -112,7 +112,7 @@ const generateData = (data) => {
       (entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
     entry.Estimation = Math.min(
       Math.max(0, m * daysElapsed + b),
-      PAGE_COUNT_OBJECTIVE,
+      PAGE_COUNT_OBJECTIVE
     );
   });
 
@@ -139,7 +139,7 @@ const PhdThesisPage = () => {
   return (
     <Page title="Ph.D. Thesis">
       <Section title="Ph.D. Thesis">
-        {data.length > 0 ? (
+        {data.length > 0 && (
           <div>
             <p>
               <b>Number of pages:</b>{" "}
@@ -148,7 +148,7 @@ const PhdThesisPage = () => {
               {Math.round(
                 (data.findLast((item) => item.Current !== null).Current /
                   PAGE_COUNT_OBJECTIVE) *
-                  100,
+                  100
               )}
               %)
               <br />
@@ -225,8 +225,6 @@ const PhdThesisPage = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        ) : (
-          <div>Unable to retrieve page number history...</div>
         )}
       </Section>
     </Page>

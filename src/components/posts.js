@@ -4,28 +4,14 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Post from "./post";
 import Button from "./button";
+import Icon from "./icon";
 
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacing);
-`;
 
-const PostsIcon = styled.div`
-  display: inline-block;
-
-  position: relative;
-  top: 2px;
-
-  margin: 0 8px 0 0px;
-
-  width: var(--icon-size);
-  height: var(--icon-size);
-
-  background-color: var(--color-default);
-
-  mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW5ld3NwYXBlciI+PHBhdGggZD0iTTQgMjJoMTZhMiAyIDAgMCAwIDItMlY0YTIgMiAwIDAgMC0yLTJIOGEyIDIgMCAwIDAtMiAydjE2YTIgMiAwIDAgMS0yIDJabTAgMGEyIDIgMCAwIDEtMi0ydi05YzAtMS4xLjktMiAyLTJoMiIvPjxwYXRoIGQ9Ik0xOCAxNGgtOCIvPjxwYXRoIGQ9Ik0xNSAxOGgtNSIvPjxwYXRoIGQ9Ik0xMCA2aDh2NGgtOFY2WiIvPjwvc3ZnPg==)
-    no-repeat center / contain;
+  margin-bottom: var(--spacing);
 `;
 
 const Posts = ({ data, listing }) => {
@@ -42,7 +28,7 @@ const Posts = ({ data, listing }) => {
 
       {!listing && (
         <Button to={"/posts"}>
-          <PostsIcon />
+          <Icon name="posts" />
           See all blog posts
         </Button>
       )}

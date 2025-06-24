@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 import Link from "../components/link";
@@ -36,10 +37,16 @@ const button = css`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
 const Button = ({ children, ...props }) => {
   return (
     <Link invisible css={button} {...props}>
-      {children}
+      <Wrapper>{children}</Wrapper>
     </Link>
   );
 };

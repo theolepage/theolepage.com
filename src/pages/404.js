@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Link from "../components/link";
+import Icon from "../components/icon";
 import Page from "../components/page";
 
 const Background = styled.div`
@@ -39,11 +40,13 @@ const Title = styled.h2`
 
 const Description = styled.p`
   margin-bottom: 20px;
-
-  text-align: left;
 `;
 
-const Action = styled(Link)``;
+const Action = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
 
 const _404Page = () => {
   return (
@@ -55,7 +58,9 @@ const _404Page = () => {
           Oops! You’ve followed a broken link or entered a URL that doesn’t
           exist on this site.
         </Description>
-        <Action to={"/"}>Go to homepage →</Action>
+        <Action to={"/"}>
+          Go to homepage <Icon name="rightArrow" style={{ marginTop: 2 }} />
+        </Action>
       </Content>
     </Page>
   );

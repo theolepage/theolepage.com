@@ -1,26 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Presentation } from "lucide-react";
 
 import Section from "./section";
 import Block from "./block";
 import Button from "./button";
+import Icon from "./icon";
 
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacing);
   margin-bottom: var(--spacing);
-`;
-
-const TalksIcon = styled(Presentation)`
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  margin: 0 8px 0 0px;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  color: var(--color-default);
 `;
 
 const Talks = ({ data, listing }) => {
@@ -113,7 +103,7 @@ const Talks = ({ data, listing }) => {
 
       {!listing && (
         <Button to={"/talks"}>
-          <TalksIcon />
+          <Icon name="talks" />
           See all talks
         </Button>
       )}

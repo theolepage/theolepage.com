@@ -13,20 +13,20 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 ## To-Do
 
 - [X] Use variable for "Theo Lepage"
-
 - [X] Easter egg: "theo" -> rotate avatar
-
 - [X] Design: use global variables
+- [X] Design: use lucide icons
 
-- [ ] Design: add icons: alert, alert link, home
-
-- [ ] Design: use lucide icons
-
-- [ ] Design: handle light/dark themes
+- [ ] Refactor publications
+- [ ] Handle month for order
 
 - [ ] Content: add more projects
 
+- [ ] Commit push
+
 ---
+
+- [ ] Design: handle light/dark themes
 
 - [ ] Blog
     - [ ] Comments

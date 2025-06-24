@@ -303,11 +303,11 @@ const ResumeHeader = () => (
         rel="nofollow noopener noreferrer"
         href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219"
       >
-        <Icon src="/images/resume/icon-map_blue.svg" alt="icon-map" />
+        <Icon src="/images/resume/icons/icon-map_blue.svg" alt="icon-map" />
         Paris, France
       </ContactItem>
       <ContactItem target="_blank" rel="nofollow noopener noreferrer" href="/">
-        <Icon src="/images/resume/icon-website.svg" alt="icon-website" />
+        <Icon src="/images/resume/icons/icon-website.svg" alt="icon-website" />
         theolepage.com
       </ContactItem>
       <ContactItem
@@ -315,7 +315,7 @@ const ResumeHeader = () => (
         rel="nofollow noopener noreferrer"
         href="mailto:theo@theolepage.com"
       >
-        <Icon src="/images/resume/icon-email.svg" alt="icon-email" />
+        <Icon src="/images/resume/icons/icon-email.svg" alt="icon-email" />
         theo@theolepage.com
       </ContactItem>
       <ContactItem
@@ -323,7 +323,10 @@ const ResumeHeader = () => (
         rel="nofollow noopener noreferrer"
         href="https://www.linkedin.com/in/theolepage/"
       >
-        <Icon src="/images/resume/icon-linkedin.svg" alt="icon-linkedin" />
+        <Icon
+          src="/images/resume/icons/icon-linkedin.svg"
+          alt="icon-linkedin"
+        />
         Theo Lepage
       </ContactItem>
     </Contact>
@@ -346,11 +349,14 @@ const EducationItem = ({ institution, degree, location, date, children }) => (
     </Subtitle>
     <EducationIcons>
       <Location>
-        <Icon src="/images/resume/icon-map.svg" alt="icon-map" />
+        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
         {location}
       </Location>
       <Date>
-        <Icon src="/images/resume/icon-calendar.svg" alt="icon-calendar" />
+        <Icon
+          src="/images/resume/icons/icon-calendar.svg"
+          alt="icon-calendar"
+        />
         {date}
       </Date>
     </EducationIcons>
@@ -384,11 +390,14 @@ const ExperienceItem = ({
         </Subtitle>
         <ExperienceIcons>
           <Location>
-            <Icon src="/images/resume/icon-map.svg" alt="icon-map" />
+            <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
             {location}
           </Location>
           <Date>
-            <Icon src="/images/resume/icon-calendar.svg" alt="icon-calendar" />
+            <Icon
+              src="/images/resume/icons/icon-calendar.svg"
+              alt="icon-calendar"
+            />
             {date}
           </Date>
         </ExperienceIcons>
@@ -408,7 +417,7 @@ const PublicationItem = ({ title, url, source, authors }) => (
     <Subtitle>
       <Emphasize>
         <Icon
-          src="/images/resume/icon-publication.svg"
+          src="/images/resume/icons/icon-publication.svg"
           alt="icon-publication"
         />
         <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
@@ -425,7 +434,7 @@ const ProjectItem = ({ name, url, description }) => (
   <Item>
     <Subtitle>
       <Emphasize>
-        <Icon src="/images/resume/icon-project.svg" alt="icon-project" />
+        <Icon src="/images/resume/icons/icon-project.svg" alt="icon-project" />
         <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
           {name}
         </a>
@@ -695,15 +704,15 @@ const ResumePageComponent = () => {
                 <Item>
                   <SubSubtitle>Passions and interests</SubSubtitle>
                   <PassionItem
-                    icon="/images/resume/icon-science.svg"
+                    icon="/images/resume/icons/icon-science.svg"
                     text="Science and AI"
                   />
                   <PassionItem
-                    icon="/images/resume/icon-robotics.svg"
+                    icon="/images/resume/icons/icon-robotics.svg"
                     text="Robotics"
                   />
                   <PassionItem
-                    icon="/images/resume/icon-wave.svg"
+                    icon="/images/resume/icons/icon-wave.svg"
                     text="Sailing & windsurfing"
                   />
                 </Item>

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Star, GitFork } from "lucide-react";
 
 import Block from "./block";
+import Icon from "./icon";
 
 const IconsContainer = styled.div`
   display: flex;
@@ -16,16 +16,6 @@ const IconContainer = styled.div`
   align-items: center;
   gap: 4px;
   color: var(--color-muted-2);
-`;
-
-const StarIcon = styled(Star)`
-  width: 14px;
-  height: 14px;
-`;
-
-const ForkIcon = styled(GitFork)`
-  width: 14px;
-  height: 14px;
 `;
 
 const UnderDevelopmentContainer = styled.div`
@@ -91,13 +81,13 @@ const Project = ({ project }) => {
           )}
           {githubStarsCount !== undefined && (
             <IconContainer>
-              <StarIcon />
+              <Icon name="star" width={14} height={14} />
               <span>{githubStarsCount}</span>
             </IconContainer>
           )}
           {githubForksCount !== undefined && (
             <IconContainer>
-              <ForkIcon />
+              <Icon name="fork" width={14} height={14} />
               <span>{githubForksCount}</span>
             </IconContainer>
           )}

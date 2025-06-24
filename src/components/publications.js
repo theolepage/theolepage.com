@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import styled from "@emotion/styled";
-import { Files } from "lucide-react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Section from "./section";
 import Block from "./block";
 import Link from "./link";
 import Button from "./button";
+import Icon from "./icon";
 
 const BlocksGrid = styled.div`
   margin: calc(var(--spacing) * 2) 0;
@@ -104,16 +104,6 @@ const PublicationActions = ({ resources }) => {
   );
 };
 
-const PublicationsIcon = styled(Files)`
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  margin: 0 8px 0 0px;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  color: var(--color-default);
-`;
-
 const Publications = ({ data, listing }) => {
   const publications = useMemo(() => {
     let filteredNodes = data.nodes;
@@ -182,7 +172,7 @@ const Publications = ({ data, listing }) => {
 
       {!listing && (
         <Button to={"/publications"}>
-          <PublicationsIcon />
+          <Icon name="publications" />
           See all publications
         </Button>
       )}

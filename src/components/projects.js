@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { FolderOpen } from "lucide-react";
 
 import Section from "./section";
 import Project from "./project";
 import Button from "./button";
+import Icon from "./icon";
 
 const ProjectsGrid = styled.div`
   display: grid;
@@ -24,26 +24,11 @@ const Buttons = styled.div`
   gap: var(--spacing);
 `;
 
-const ProjectsIcon = styled(FolderOpen)`
-  display: inline-block;
-  position: relative;
-  top: 2px;
-  margin: 0 8px 0 0px;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  color: var(--color-default);
-`;
-
 const GithubIcon = styled.div`
   display: inline-block;
 
-  position: relative;
-  top: 2px;
-
-  margin: 0 8px 0 0px;
-
-  width: var(--icon-size);
-  height: var(--icon-size);
+  width: 16px;
+  height: 16px;
 
   background-color: var(--color-default);
 
@@ -71,7 +56,7 @@ const Projects = ({ data, listing }) => {
       <Buttons>
         {!listing && (
           <Button to={"/projects"}>
-            <ProjectsIcon />
+            <Icon name="projects" />
             See all projects
           </Button>
         )}

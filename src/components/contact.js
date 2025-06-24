@@ -50,7 +50,10 @@ const SocialIcon = styled.img`
 const Social = ({ name, url }) => {
   return (
     <SocialLink to={url}>
-      <SocialIcon alt={"icon-" + name} src={"/images/icon-" + name + ".png"} />
+      <SocialIcon
+        alt={"icon-" + name}
+        src={"/images/socials/icon-" + name + ".png"}
+      />
     </SocialLink>
   );
 };
@@ -63,7 +66,7 @@ const Contact = ({ data }) => {
       <ContactBox>
         Send me an email at <Link to={"mailto:" + email}>{email}</Link>{" "}
         <Socials>
-          or reach me on{" "}
+          or reach me on
           {socials.map((s) => (
             <Social key={s.name} name={s.name} url={s.url} />
           ))}
