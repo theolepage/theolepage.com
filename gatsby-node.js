@@ -178,8 +178,6 @@ exports.createSchemaCustomization = ({ actions }) => {
             email: String
             socials: [MarkdownRemarkFrontmatterSocials]
             photo: String
-            buttonText: String
-            buttonLink: String
             authors: [String]
             source: String
             year: Int

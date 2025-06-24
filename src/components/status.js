@@ -5,31 +5,32 @@ import Section from "./section";
 import Link from "./link";
 import Icon from "./icon";
 
-const AlertContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const AlertElement = styled.div`
+const Element = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 
-  padding: var(--spacing) calc(var(--spacing) * 2);
+  padding: var(--element-spacing) calc(var(--element-spacing) * 2);
 
   background: var(--background-accent);
   border: 1px solid var(--color-accent);
   border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 `;
 
-const AlertAction = styled(Link)`
+const Action = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 4px;
 `;
 
-const Alert = ({ data }) => {
+const Status = ({ data }) => {
   const { enabled, message, linkText, linkTo } = data.frontmatter;
 
   if (!enabled) {
@@ -38,8 +39,8 @@ const Alert = ({ data }) => {
 
   return (
     <Section>
-      <AlertContainer>
-        <AlertElement>
+      <Container>
+        <Element>
           <Icon
             name="alert"
             width={18}
@@ -48,15 +49,15 @@ const Alert = ({ data }) => {
           />
           <div>
             {message}{" "}
-            <AlertAction to={linkTo}>
+            <Action to={linkTo}>
               {linkText}
               <Icon name="rightArrow" style={{ marginTop: 2 }} />
-            </AlertAction>
+            </Action>
           </div>
-        </AlertElement>
-      </AlertContainer>
+        </Element>
+      </Container>
     </Section>
   );
 };
 
-export default Alert;
+export default Status;

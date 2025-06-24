@@ -2,9 +2,8 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Page from "../components/page";
-import Alert from "../components/alert";
+import Status from "../components/status";
 import About from "../components/about";
-import Contact from "../components/contact";
 import Publications from "../components/publications";
 // import Posts from "../components/posts";
 import Projects from "../components/projects";
@@ -14,9 +13,8 @@ import Teaching from "../components/teaching";
 const IndexPage = ({ data }) => {
   return (
     <Page>
-      <Alert data={data.alert} />
+      <Status data={data.status} />
       <About data={data.about} />
-      <Contact data={data.contact} />
       <Publications data={data.publications} />
       {/* <Posts data={data.posts} /> */}
       <Projects data={data.projects} />
@@ -33,26 +31,20 @@ export const query = graphql`
     about: markdownRemark(fileAbsolutePath: { regex: "/about.md/" }) {
       frontmatter {
         photo
-        buttonText
-        buttonLink
-      }
-      html
-    }
-    alert: markdownRemark(fileAbsolutePath: { regex: "/alert.md/" }) {
-      frontmatter {
-        enabled
-        message
-        linkText
-        linkTo
-      }
-    }
-    contact: markdownRemark(fileAbsolutePath: { regex: "/contact.md/" }) {
-      frontmatter {
         email
         socials {
           name
           url
         }
+      }
+      html
+    }
+    status: markdownRemark(fileAbsolutePath: { regex: "/status.md/" }) {
+      frontmatter {
+        enabled
+        message
+        linkText
+        linkTo
       }
     }
     publications: allMarkdownRemark(

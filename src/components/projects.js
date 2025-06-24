@@ -9,9 +9,9 @@ import Icon from "./icon";
 const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--element-spacing);
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(1, 1fr);
@@ -21,7 +21,7 @@ const ProjectsGrid = styled.div`
 const Buttons = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 `;
 
 const GithubIcon = styled.div`

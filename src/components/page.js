@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
 
   border-bottom: 1px solid rgba(230, 230, 230, 1);
 
-  padding: var(--spacing) 0;
+  padding: var(--element-spacing) 0;
 
   @media (max-width: 1300px) {
     width: 950px;
@@ -77,7 +77,7 @@ const FooterWrapper = styled.div`
   width: 950px;
 
   margin: auto;
-  padding: var(--spacing) 0 calc(var(--spacing) + 6px) 0;
+  padding: var(--element-spacing) 0 calc(var(--element-spacing) + 6px) 0;
 
   color: var(--color-muted-2);
   font-size: var(--size-small);

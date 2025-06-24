@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Copy,
   Check,
+  Mail,
 } from "lucide-react";
 
 const Icons = {
@@ -28,6 +29,7 @@ const Icons = {
   rightArrow: ArrowRight,
   copy: Copy,
   check: Check,
+  email: Mail,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

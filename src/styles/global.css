@@ -25,5 +25,7 @@
   --shadow-hover:
     0px 4px 8px rgba(47, 55, 71, 0.02), 0px 1px 3px rgba(47, 55, 71, 0.1);
 
-  --spacing: 16px;
+  --section-spacing: 100px;
+
+  --element-spacing: 16px;
 }

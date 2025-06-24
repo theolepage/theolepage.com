@@ -7,7 +7,7 @@ import Block from "./block";
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);

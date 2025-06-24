@@ -49,7 +49,7 @@ const Corner = styled.div`
 
 const BlockContainer = styled.div`
   display: flex;
-  gap: calc(var(--spacing) + 10px);
+  gap: calc(var(--element-spacing) + 10px);
   align-items: center;
   height: 100%;
 `;
@@ -95,7 +95,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: baseline;
 
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 `;
 
 const Title = styled.div`

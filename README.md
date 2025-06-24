@@ -12,6 +12,10 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
+- [ ] "See all *" buttons -> links
+
+---
+
 - [ ] Design: handle light/dark themes
 
 - [ ] Blog

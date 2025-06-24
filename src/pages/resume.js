@@ -269,7 +269,6 @@ const PublicationSource = styled.div`
 
 const PublicationAuthors = styled.div`
   margin-top: 2px;
-  font-style: italic;
   color: rgba(0, 0, 0, 0.5);
 `;
 

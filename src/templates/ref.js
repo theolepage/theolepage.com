@@ -34,7 +34,7 @@ const BibTeXPre = styled.pre`
   display: block;
   max-width: 1000px;
 
-  padding: var(--spacing);
+  padding: var(--element-spacing);
 
   white-space: pre;
   overflow-x: auto;

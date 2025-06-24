@@ -9,10 +9,10 @@ import Icon from "./icon";
 import Publication from "./publication";
 
 const BlocksGrid = styled.div`
-  margin: calc(var(--spacing) * 2) 0;
+  margin: calc(var(--element-spacing) * 2) 0;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: calc(var(--spacing) * 2 - 4px);
+  gap: calc(var(--element-spacing) * 2 - 4px);
 `;
 
 const Publications = ({ data, listing }) => {

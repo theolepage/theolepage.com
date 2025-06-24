@@ -9,9 +9,9 @@ import Icon from "./icon";
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacing);
+  gap: var(--element-spacing);
 
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--element-spacing);
 `;
 
 const Posts = ({ data, listing }) => {

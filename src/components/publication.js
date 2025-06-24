@@ -75,29 +75,6 @@ const PublicationActions = ({ resources }) => {
   );
 };
 
-const formatDate = (year, month) => {
-  if (!year) return "";
-
-  if (!month) return year.toString();
-
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
-  return `${monthNames[month - 1]} ${year}`;
-};
-
 const Publication = ({ publication, websiteAuthor }) => {
   const url = publication.frontmatter.resources.find(
     (resource) => resource.name === "Document"
@@ -116,15 +93,10 @@ const Publication = ({ publication, websiteAuthor }) => {
     });
   }
 
-  const formattedDate = formatDate(
-    publication.frontmatter.year,
-    publication.frontmatter.month
-  );
-
   return (
     <Block
       title={publication.frontmatter.title}
-      info={formattedDate}
+      info={publication.frontmatter.year}
       image={`/images/publications/${key}.png`}
       imageActionUrl={url}
       border={false}

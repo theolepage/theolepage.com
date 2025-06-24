@@ -4,10 +4,12 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Button from "./button";
 import Icon from "./icon";
+import Link from "./link";
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: calc(var(--element-spacing) * 3);
 
   @media (max-width: 800px) {
     flex-wrap: wrap;
@@ -15,12 +17,16 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  p {
+    margin-bottom: 0;
+  }
+`;
 
 const Photo = styled.img`
   width: 100px;
 
-  margin: 0 0 0 48px;
+  margin-bottom: 0;
 
   border-radius: 100%;
 
@@ -28,13 +34,93 @@ const Photo = styled.img`
 
   @media (max-width: 800px) {
     width: 90px;
+  }
+`;
 
-    margin: 0 auto 32px auto;
+const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--element-spacing) * 2);
+
+  margin-top: 100px;
+
+  padding: 32px;
+
+  text-align: center;
+
+  border: 1px solid var(--border-color);
+  background: var(--background-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: calc(var(--element-spacing) * 1.5);
+  }
+`;
+
+const ActionSeparator = styled.div`
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color);
+  transform: rotate(20deg);
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const Contact = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 30px;
+
+  color: var(--color-muted-1);
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
+const Socials = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+`;
+
+const SocialLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SocialIcon = styled.img`
+  width: 20px;
+
+  margin-bottom: 0;
+
+  filter: grayscale(100%);
+  opacity: 0.5;
+
+  transition: all var(--transition-duration);
+
+  &[src*="github"] {
+    opacity: 0.3;
+  }
+
+  &:hover {
+    filter: grayscale(0%);
+    opacity: 1;
   }
 `;
 
 const AboutPage = ({ data }) => {
-  const { photo, buttonText, buttonLink } = data.frontmatter;
+  const { photo, email, socials } = data.frontmatter;
   const { html } = data;
 
   const photoRef = useRef(null);
@@ -71,15 +157,35 @@ const AboutPage = ({ data }) => {
   return (
     <Section>
       <Container>
-        <Content>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-          <Button to={buttonLink}>
-            <Icon name="resume" />
-            {buttonText}
-          </Button>
-        </Content>
+        <Content dangerouslySetInnerHTML={{ __html: html }} />
         <Photo src={photo} ref={photoRef} />
       </Container>
+
+      <Actions>
+        <Button to="/resume">
+          <Icon name="resume" />
+          Read my resume
+        </Button>
+        <ActionSeparator />
+        <Button to={"mailto:" + email}>
+          <Icon name="email" />
+          Send me an email
+        </Button>
+      </Actions>
+
+      <Contact>
+        <span>Alternatively, you can explore my profiles on:</span>
+        <Socials>
+          {socials.map((s) => (
+            <SocialLink to={s.url} key={s.name}>
+              <SocialIcon
+                alt={"icon-" + s.name}
+                src={"/images/socials/icon-" + s.name + ".png"}
+              />
+            </SocialLink>
+          ))}
+        </Socials>
+      </Contact>
     </Section>
   );
 };

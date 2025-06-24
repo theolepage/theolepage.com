@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const SectionElement = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: var(--section-spacing);
 `;
 
 const Section = ({ title, children }) => {
