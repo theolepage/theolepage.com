@@ -8,7 +8,7 @@ const Post = ({ post }) => {
       title={post.frontmatter.title}
       info={post.frontmatter.date}
       url={"/" + post.fields.slug}
-      corner={post.frontmatter.color}
+      color={post.frontmatter.color}
     >
       {post.excerpt}
     </Block>

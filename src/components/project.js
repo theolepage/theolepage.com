@@ -71,7 +71,7 @@ const Project = ({ project }) => {
       key={project.id}
       title={name}
       url={url}
-      corner={color}
+      color={color}
       info={
         <IconsContainer>
           {isUnderDevelopment && (
@@ -93,6 +93,7 @@ const Project = ({ project }) => {
           )}
         </IconsContainer>
       }
+      headerAlignItems="center"
     >
       {description}
     </Block>

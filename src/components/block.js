@@ -5,15 +5,11 @@ import { css } from "@emotion/react";
 import Link from "./link";
 
 const BlockElement = styled.div`
-  position: relative;
-
   padding: 18px 22px;
 
   background: var(--background-container);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-
-  overflow: hidden;
 
   ${(props) =>
     !props.border &&
@@ -36,17 +32,6 @@ const BlockElement = styled.div`
     `}
 `;
 
-const Corner = styled.div`
-  position: absolute;
-  top: -28px;
-  left: -28px;
-
-  width: 48px;
-  height: 48px;
-
-  border-radius: 100%;
-`;
-
 const BlockContainer = styled.div`
   display: flex;
   gap: calc(var(--element-spacing) + 10px);
@@ -64,8 +49,6 @@ const BlockContent = styled.div`
 const Image = styled.div`
   width: 150px;
   height: 200px;
-
-  margin: 8px;
 
   border: 1px solid var(--border-color);
   border-radius: 2px;
@@ -93,13 +76,27 @@ const Image = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: ${(props) => props.alignItems};
 
   gap: var(--element-spacing);
 `;
 
 const Title = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   color: var(--color-title);
+`;
+
+const Pastille = styled.div`
+  position: relative;
+  top: 1px;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 100%;
 `;
 
 const Info = styled.div`
@@ -123,16 +120,15 @@ const Block = ({
   title,
   info,
   url,
-  corner,
+  color,
   children,
   image,
   imageActionUrl,
   border = true,
+  headerAlignItems = "baseline",
 }) => {
   const body = (
     <BlockElement hover={url} border={border}>
-      {corner && <Corner style={{ background: corner }} />}
-
       <BlockContainer>
         {image && (
           <Link to={imageActionUrl} invisible>
@@ -143,8 +139,18 @@ const Block = ({
         )}
 
         <BlockContent>
-          <Header>
-            <Title>{title}</Title>
+          <Header alignItems={headerAlignItems}>
+            <Title>
+              {color && (
+                <Pastille
+                  style={{
+                    background: color,
+                    border: `2px solid color-mix(in srgb, ${color} 75%, white)`,
+                  }}
+                />
+              )}
+              {title}
+            </Title>
             {info && <Info>{info}</Info>}
           </Header>
 
