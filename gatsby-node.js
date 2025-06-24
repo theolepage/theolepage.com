@@ -183,6 +183,7 @@ exports.createSchemaCustomization = ({ actions }) => {
             authors: [String]
             source: String
             year: Int
+            month: Int
             type: String
             showcased: Boolean
             bib_entries: JSON

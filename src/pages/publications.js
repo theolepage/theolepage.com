@@ -18,7 +18,7 @@ export const query = graphql`
   {
     publications: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/publications/" } }
-      sort: { frontmatter: { year: DESC } }
+      sort: [{ frontmatter: { year: DESC } }, { frontmatter: { month: DESC } }]
     ) {
       nodes {
         frontmatter {
@@ -26,6 +26,7 @@ export const query = graphql`
           authors
           source
           year
+          month
           type
           showcased
           bib_entries

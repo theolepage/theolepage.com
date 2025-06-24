@@ -6,6 +6,7 @@ authors:
   - "Reda Dehak"
 source: "Interspeech 2024"
 year: 2024
+month: 9
 type: "conference"
 showcased: true
 bib_entries:

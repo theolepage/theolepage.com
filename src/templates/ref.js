@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 
 import Page from "../components/page";
 import Button from "../components/button";
+import Icon from "../components/icon";
 
 const Background = styled.div`
   position: absolute;
@@ -157,7 +158,7 @@ const generateBibTeX = ({ frontmatter, filename }) => {
 
 const RefPage = ({ data, pageContext }) => {
   const { filename } = pageContext;
-  const [buttonText, setButtonText] = useState("Copy to clipboard");
+  const [copied, setCopied] = useState(false);
 
   const publication = data.allMarkdownRemark.nodes.find(
     (node) =>
@@ -177,9 +178,9 @@ const RefPage = ({ data, pageContext }) => {
     e.preventDefault();
     navigator.clipboard.writeText(bibText);
 
-    setButtonText("Copied ✅");
+    setCopied(true);
     setTimeout(() => {
-      setButtonText("Copy to clipboard");
+      setCopied(false);
     }, 3000);
   };
 
@@ -188,7 +189,24 @@ const RefPage = ({ data, pageContext }) => {
       <Background />
       <Content>
         <BibTeXPre>{bibText}</BibTeXPre>
-        <Button onClick={handleCopyClick}>{buttonText}</Button>
+        <Button onClick={handleCopyClick}>
+          {copied ? (
+            <>
+              Copied{" "}
+              <Icon
+                name="check"
+                color="#39bd3f"
+                width={18}
+                height={18}
+                strokeWidth={2.75}
+              />
+            </>
+          ) : (
+            <>
+              Copy to clipboard <Icon name="copy" />
+            </>
+          )}
+        </Button>
       </Content>
     </Page>
   );
@@ -207,6 +225,7 @@ export const query = graphql`
           authors
           source
           year
+          month
           type
           bib_entries
           resources {

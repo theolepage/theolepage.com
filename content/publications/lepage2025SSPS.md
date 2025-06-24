@@ -5,6 +5,7 @@ authors:
   - "Reda Dehak"
 source: "Preprint (accepted at Interspeech 2025)"
 year: 2025
+month: 5
 type: "conference"
 showcased: true
 resources:

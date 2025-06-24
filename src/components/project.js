@@ -18,14 +18,14 @@ const IconContainer = styled.div`
   color: var(--color-muted-2);
 `;
 
-const UnderDevelopmentContainer = styled.div`
+const UnderDevelopmentIconContainer = styled.div`
   position: relative;
 
   width: 12px;
   height: 12px;
 `;
 
-const UnderDevelopment = styled.div`
+const UnderDevelopmentIcon = styled.div`
   width: 100%;
   height: 100%;
 
@@ -75,17 +75,17 @@ const Project = ({ project }) => {
       info={
         <IconsContainer>
           {isUnderDevelopment && (
-            <UnderDevelopmentContainer>
-              <UnderDevelopment />
-            </UnderDevelopmentContainer>
+            <UnderDevelopmentIconContainer>
+              <UnderDevelopmentIcon />
+            </UnderDevelopmentIconContainer>
           )}
-          {githubStarsCount !== undefined && (
+          {githubStarsCount !== null && (
             <IconContainer>
               <Icon name="star" width={14} height={14} />
               <span>{githubStarsCount}</span>
             </IconContainer>
           )}
-          {githubForksCount !== undefined && (
+          {githubForksCount !== null && (
             <IconContainer>
               <Icon name="fork" width={14} height={14} />
               <span>{githubForksCount}</span>

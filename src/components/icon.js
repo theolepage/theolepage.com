@@ -11,6 +11,8 @@ import {
   Newspaper,
   Info,
   ArrowRight,
+  Copy,
+  Check,
 } from "lucide-react";
 
 const Icons = {
@@ -24,6 +26,8 @@ const Icons = {
   posts: Newspaper,
   alert: Info,
   rightArrow: ArrowRight,
+  copy: Copy,
+  check: Check,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

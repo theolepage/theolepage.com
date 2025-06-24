@@ -15,8 +15,7 @@ const BlocksGrid = styled.div`
 `;
 
 const Posts = ({ data, listing }) => {
-  let posts = data.nodes;
-  if (!listing) posts = posts.slice(0, 3);
+  const posts = listing ? data.nodes : data.nodes.slice(0, 3);
 
   return (
     <Section title="Posts">

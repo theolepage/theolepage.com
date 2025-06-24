@@ -7,6 +7,7 @@ authors:
   - "Reda Dehak"
 source: "The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024)"
 year: 2024
+month: 8
 type: "conference"
 bib_entries:
   pages: "72--78"

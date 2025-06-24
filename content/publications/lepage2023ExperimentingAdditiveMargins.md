@@ -5,6 +5,7 @@ authors:
   - "Reda Dehak"
 source: "Interspeech 2023"
 year: 2023
+month: 8
 type: "conference"
 bib_entries:
   pages: "4708--4712"

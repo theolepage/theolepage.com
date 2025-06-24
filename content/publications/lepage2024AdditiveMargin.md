@@ -5,6 +5,7 @@ authors:
   - "Reda Dehak"
 source: "The Speaker and Language Recognition Workshop (Odyssey 2024)"
 year: 2024
+month: 6
 type: "conference"
 showcased: true
 bib_entries:

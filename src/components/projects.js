@@ -36,14 +36,9 @@ const GithubIcon = styled.div`
 `;
 
 const Projects = ({ data, listing }) => {
-  let projects = data.nodes;
-
-  // If not in listing mode, only show showcased projects
-  if (!listing) {
-    projects = data.nodes.filter((project) => {
-      return project.frontmatter.showcased === true;
-    });
-  }
+  const projects = data.nodes.filter((project) => {
+    return listing || project.frontmatter.showcased === true;
+  });
 
   return (
     <Section title="Projects">
@@ -61,10 +56,12 @@ const Projects = ({ data, listing }) => {
           </Button>
         )}
 
-        <Button to={"https://github.com/theolepage"}>
-          <GithubIcon />
-          Browse my GitHub
-        </Button>
+        {listing && (
+          <Button to={"https://github.com/theolepage"}>
+            <GithubIcon />
+            Browse my GitHub
+          </Button>
+        )}
       </Buttons>
     </Section>
   );

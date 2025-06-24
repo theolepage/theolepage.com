@@ -5,6 +5,7 @@ authors:
   - "Reda Dehak"
 source: "Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
 year: 2025
+month: 1
 type: "journal"
 showcased: true
 bib_entries:
