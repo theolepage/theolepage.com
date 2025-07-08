@@ -93,6 +93,8 @@ const Pastille = styled.div`
   position: relative;
   top: 1px;
 
+  flex-shrink: 0;
+
   width: 14px;
   height: 14px;
 

@@ -13,6 +13,7 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 ## To-Do
 
 - [ ] "See all *" buttons -> links
+- [ ] Loading animation for /phd_thesis
 
 ---
 

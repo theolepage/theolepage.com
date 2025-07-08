@@ -3,7 +3,7 @@ title: "Self-Supervised Frameworks for Speaker Verification via Bootstrapped Pos
 authors:
   - "Theo Lepage"
   - "Reda Dehak"
-source: "Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
+source: "IEEE/ACM Transactions on Audio, Speech, and Language Processing"
 year: 2025
 month: 1
 type: "journal"

@@ -585,30 +585,37 @@ const ResumePageComponent = () => {
             <Title>Publications</Title>
 
             <PublicationItem
+              title="Self-Supervised Learning for Speaker Recognition: A Study and Review"
+              url="https://hal.science/hal-05149384v1/file/lepage_2025_specom.pdf"
+              source="Preprint (submitted to Speech Communication)"
+              authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
+
+            <PublicationItem
               title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
               url="https://arxiv.org/pdf/2505.14561"
-              source="Preprint (accepted at Interspeech 2025)"
+              source="Interspeech 2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
               url="https://arxiv.org/pdf/2501.17772"
-              source="Preprint (accepted with minor revisions at IEEE/ACM TASLP)"
+              source="IEEE/ACM Transactions on Audio, Speech, and Language Processing"
               authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
-
-            <PublicationItem
-              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
-              url="https://arxiv.org/pdf/2409.05032"
-              source="Proc. The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
-              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
           </Section>
         </ResumePage>
 
         <ResumePage>
           <Section>
+            <PublicationItem
+              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
+              url="https://arxiv.org/pdf/2409.05032"
+              source="Proc. The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
+              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
+            />
+          
             <PublicationItem
               title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
               url="https://arxiv.org/pdf/2306.03664"
