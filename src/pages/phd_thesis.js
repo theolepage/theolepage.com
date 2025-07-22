@@ -16,8 +16,8 @@ import Section from "../components/section";
 
 const API_ENDPOINT = "https://lab.theolepage.com/phd_thesis_progress/";
 const START_DATE = "2025-01-01";
-const END_DATE = "2025-09-01";
-const PAGE_COUNT_OBJECTIVE = 175;
+const END_DATE = "2025-11-01";
+const PAGE_COUNT_OBJECTIVE = 200;
 
 const dateFormatterMonth = (date) => {
   return new Date(date).toLocaleString("en-GB", { month: "short" });
@@ -85,6 +85,9 @@ const generateData = (data) => {
 
     if (count !== null) {
       lastCount = count;
+    }
+
+    if (date <= new Date()) {
       regressionData.push({
         x: (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
         y: count,
