@@ -5,7 +5,7 @@ authors:
   - "Reda Dehak"
 source: "Preprint (submitted to Speech Communication)"
 year: 2025
-month: 7
+month: 9
 type: "journal"
 showcased: true
 resources:

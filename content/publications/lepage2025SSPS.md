@@ -5,7 +5,7 @@ authors:
   - "Reda Dehak"
 source: "Interspeech 2025"
 year: 2025
-month: 5
+month: 8
 type: "conference"
 showcased: true
 resources:

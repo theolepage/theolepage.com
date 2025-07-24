@@ -601,7 +601,7 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
               url="https://arxiv.org/pdf/2501.17772"
-              source="IEEE/ACM Transactions on Audio, Speech, and Language Processing"
+              source="IEEE Transactions on Audio, Speech and Language Processing, vol. 33, pp. 2932--2945, 2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
           </Section>

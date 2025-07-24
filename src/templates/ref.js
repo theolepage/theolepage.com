@@ -55,6 +55,7 @@ const BIBTEX_FIELD_ORDER = [
   "journal",
   "institution",
   "type",
+  "volume",
   "pages",
   "doi",
   "url",
