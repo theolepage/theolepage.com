@@ -6,6 +6,10 @@ import Page from "../components/page";
 
 // Global styles
 const globalStyles = css`
+  body {
+    background-color: rgb(254, 254, 254);
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -18,7 +22,8 @@ const globalStyles = css`
 // General Components
 const ResumeContainer = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
   padding: 10mm;
   gap: 10mm;
@@ -37,6 +42,13 @@ const ResumeContainer = styled.div`
 
 const ResumePage = styled.div`
   flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10mm;
+
   position: relative;
   width: 210mm;
   height: 296mm;
@@ -46,13 +58,17 @@ const ResumePage = styled.div`
   background: #fff;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.07);
 
+  &:last-child {
+    justify-content: flex-start;
+  }
+
   @media print {
     box-shadow: none;
   }
 `;
 
 const Section = styled.div`
-  margin-bottom: 40px;
+  width: 100%;
 `;
 
 const Title = styled.div`
@@ -131,7 +147,7 @@ const Cols = styled.div`
 `;
 
 const Col = styled.div`
-  width: 310px;
+  width: 330px;
 `;
 
 const Footer = styled.div`
@@ -142,8 +158,7 @@ const Footer = styled.div`
   }
 
   position: absolute;
-  bottom: 5mm;
-  width: 100%;
+  bottom: 8mm;
   text-align: center;
   color: rgb(100, 100, 100);
   font-size: 9px;
@@ -291,7 +306,7 @@ const ResumeHeader = () => (
   <HeaderSection>
     <Name>Theo Lepage</Name>
     <Description>
-      <DescriptionEmphasize>Ph.D. student</DescriptionEmphasize> in{" "}
+      <DescriptionEmphasize>Ph.D. Student</DescriptionEmphasize> in{" "}
       <DescriptionEmphasize>A.I.</DescriptionEmphasize> →{" "}
       <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for{" "}
       <DescriptionEmphasize>Speaker Recognition</DescriptionEmphasize>
@@ -459,6 +474,57 @@ const PassionItem = ({ icon, text }) => (
   </Passion>
 );
 
+const TalkItem = ({ title, location, date }) => (
+  <Item>
+    <Subtitle>
+      <Emphasize>
+        <Icon src="/images/resume/icons/icon-talk.svg" alt="icon-talk" />
+        {title}
+      </Emphasize>
+    </Subtitle>
+    <EducationIcons>
+      <Location>
+        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
+        {location}
+      </Location>
+      <Date>
+        <Icon
+          src="/images/resume/icons/icon-calendar.svg"
+          alt="icon-calendar"
+        />
+        {date}
+      </Date>
+    </EducationIcons>
+  </Item>
+);
+
+const TeachingItem = ({ title, period, institution }) => (
+  <Item>
+    <Subtitle>
+      <Emphasize>
+        <Icon
+          src="/images/resume/icons/icon-teaching.svg"
+          alt="icon-teaching"
+        />
+        {title}
+      </Emphasize>
+    </Subtitle>
+    <EducationIcons>
+      <Location>
+        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
+        {institution}
+      </Location>
+      <Date>
+        <Icon
+          src="/images/resume/icons/icon-calendar.svg"
+          alt="icon-calendar"
+        />
+        {period}
+      </Date>
+    </EducationIcons>
+  </Item>
+);
+
 const ResumePageComponent = () => {
   return (
     <Page title="Resume" layout={false}>
@@ -480,15 +546,14 @@ const ResumePageComponent = () => {
               date="Nov. 2022 - Nov. 2025"
             >
               <li>
-                Conducting research related to "Learning speech and speaker
-                representations for robust speaker and language recognition"
-              </li>
-              <li>
-                Supported by French ANR 'APATE' project (Forensic Deepfakes
-                Detection Toolbox)
+                Thesis: "Self-Supervised Learning for Speaker Recognition"
               </li>
               <li>
                 Supervised by Dr. Réda Dehak and Pr. Thierry Géraud (LRE-EPITA)
+              </li>
+              <li>
+                Supported by the French ANR 'APATE' project (Forensic Deepfakes
+                Detection Toolbox)
               </li>
             </EducationItem>
 
@@ -502,14 +567,45 @@ const ResumePageComponent = () => {
               date="Sep. 2017 - Sep. 2022"
             >
               <li>
-                Signal processing and machine learning (IMAGE major) +
-                scientific research specialization (RDI major)
+                Major: IMAGE (Machine Learning, Deep Learning, Signal
+                Processing, Probability & Statistics, Linear Algebra,
+                Optimization)
+              </li>
+              <li>
+                Specialization: Research (RDI) on Speaker Recognition
+                (supervised by Dr. Réda Dehak) → publication at Interspeech 2022
               </li>
             </EducationItem>
           </Section>
 
           <Section>
             <Title>Experience</Title>
+
+            <ExperienceItem
+              title="Ph.D. Student"
+              company="EPITA Research Laboratory (LRE)"
+              companyUrl="https://www.lre.epita.fr/"
+              location="Paris, France"
+              date="Nov. 2022 - Nov. 2025"
+              image="/images/resume/lre.png"
+            >
+              <li>
+                Published 7+ papers at top conferences and journals
+                (Interspeech, Odyssey, IEEE TASLP)
+              </li>
+              <li>
+                Developed and maintained <i>sslsv</i>, a toolkit for training
+                and evaluating self-supervised speaker verification models
+              </li>
+              <li>
+                Supervised an M.Eng. student leading to a co-authored
+                publication at Interspeech 2024
+              </li>
+              <li>
+                Teaching assistant at EPITA for "Intro to Deep Neural Networks"
+                and "Python for Data Science" (2023–2025)
+              </li>
+            </ExperienceItem>
 
             <ExperienceItem
               title="Research Scientist Intern"
@@ -527,30 +623,6 @@ const ResumePageComponent = () => {
                 Designed a CNN architecture that leverages the attention
                 mechanism of Vision Transformers and recovers more details
                 compared to the solution being used in the product
-              </li>
-            </ExperienceItem>
-
-            <ExperienceItem
-              title="Research Student"
-              company="LRE"
-              companyUrl="https://www.lre.epita.fr/"
-              location="Paris, France"
-              date="Jan. 2020 - Jan. 2022"
-              image="/images/resume/lre.png"
-            >
-              <li>
-                Worked on self-supervised methods applied to speaker and
-                language recognition while doing monthly "lightning" talks about
-                my progress (supervised by Dr. Réda Dehak)
-              </li>
-              <li>
-                Developed a label-efficient non-contrastive speaker verification
-                model that outperforms its supervised counterpart when
-                fine-tuned with only 2% of labeled data
-              </li>
-              <li>
-                Our work led to a publication and an oral presentation at
-                Interspeech 2022 (one of the top conferences in the field)
               </li>
             </ExperienceItem>
 
@@ -612,35 +684,35 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
               url="https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
-              source="Proc. The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
+              source="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
               authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
-          
+
             <PublicationItem
               title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
               url="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
-              source="Proc. Interspeech 2024, Sept. 2024, pp. 2660--2664"
+              source="Interspeech 2024, Sept. 2024, pp. 2660--2664"
               authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
 
             <PublicationItem
               title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
               url="https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
-              source="Proc. The Speaker and Language Recognition Workshop (Odyssey 2024), Jun. 2024, pp. 38--42"
+              source="The Speaker and Language Recognition Workshop (Odyssey 2024), Jun. 2024, pp. 38--42"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
               url="https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf"
-              source="Proc. Interspeech 2023, Aug. 2023, pp. 4708--4712"
+              source="Interspeech 2023, Aug. 2023, pp. 4708--4712"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
               url="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf"
-              source="Proc. Interspeech 2022, Sept. 2022, pp. 4018--4022"
+              source="Interspeech 2022, Sept. 2022, pp. 4018--4022"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
           </Section>
@@ -653,7 +725,7 @@ const ResumePageComponent = () => {
                 <ProjectItem
                   name="sslsv"
                   url="https://github.com/theolepage/sslsv"
-                  description="Framework for training and evaluating self-supervised learning methods for speaker verification."
+                  description="Toolkit for training and evaluating Self-Supervised Learning (SSL) frameworks for Speaker Verification (SV)."
                 />
               </Col>
               <Col>
@@ -661,6 +733,87 @@ const ResumePageComponent = () => {
                   name="wavlm_ssl_sv"
                   url="https://github.com/theolepage/wavlm_ssl_sv"
                   description="SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model."
+                />
+              </Col>
+            </Cols>
+          </Section>
+
+          <Section>
+            <Title>Talks</Title>
+
+            <TalkItem
+              title="Self-Supervised Learning for Speaker Recognition"
+              location="Inria — Paris, France"
+              date="Mar. 2025"
+            />
+
+            <TalkItem
+              title="Self-Supervised Learning for Speaker Recognition"
+              location="Callyope — Paris, France"
+              date="Dec. 2024"
+            />
+
+            <TalkItem
+              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
+              location="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024) — Kos, Greece"
+              date="Aug. 2024"
+            />
+
+            <TalkItem
+              title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
+              location="The Speaker and Language Recognition Workshop (Odyssey 2024) — Quebec, Canada"
+              date="Jun. 2024"
+            />
+
+            <TalkItem
+              title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
+              location="Interspeech 2023 — Dublin, Ireland"
+              date="Aug. 2023"
+            />
+
+            <TalkItem
+              title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
+              location="Interspeech 2022 — Incheon, South Korea"
+              date="Sep. 2022"
+            />
+
+            <TalkItem
+              title="Lightning Talks on SSL applied to Speaker and Language Recognition"
+              location="LRDE — Paris, France"
+              date="Jan. - Sep. 2021"
+            />
+          </Section>
+        </ResumePage>
+
+        <ResumePage>
+          <Section>
+            <Title>Teaching</Title>
+
+            <Cols>
+              <Col>
+                <TeachingItem
+                  title="Intro to Deep Neural Networks"
+                  period="Spring 2023 - 2025"
+                  institution="EPITA"
+                />
+
+                <TeachingItem
+                  title="Rust Programming"
+                  period="Spring 2020"
+                  institution="EPITA"
+                />
+              </Col>
+              <Col>
+                <TeachingItem
+                  title="Python for Data Science"
+                  period="Spring 2023 - 2025"
+                  institution="EPITA"
+                />
+
+                <TeachingItem
+                  title="Unix / C Programming"
+                  period="Fall 2019"
+                  institution="EPITA"
                 />
               </Col>
             </Cols>
@@ -680,22 +833,11 @@ const ResumePageComponent = () => {
                     "Java",
                     "Python",
                     "PHP",
-                    "JS",
+                    "JavaScript",
                     "Bash",
                   ]}
                 />
 
-                <SkillsSection
-                  title="Certificates"
-                  items={["Driving license", "Sailing instructor diploma"]}
-                />
-
-                <SkillsSection
-                  title="Languages"
-                  items={["English (TOEIC 905)", "French (native)"]}
-                />
-              </Col>
-              <Col>
                 <SkillsSection
                   title="Data Science"
                   items={[
@@ -705,6 +847,17 @@ const ResumePageComponent = () => {
                     "NumPy",
                     "Pandas",
                   ]}
+                />
+
+                {/* <SkillsSection
+                  title="Certificates"
+                  items={["Driving license", "Sailing instructor diploma"]}
+                /> */}
+              </Col>
+              <Col>
+                <SkillsSection
+                  title="Languages"
+                  items={["English (TOEIC 905)", "French (native)"]}
                 />
 
                 <Item>
