@@ -96,8 +96,16 @@ const generateBibTeX = ({ frontmatter, filename }) => {
     frontmatter.authors &&
     frontmatter.authors.length > 0 &&
     !frontmatter.bib_entries?.author
-  )
-    fields.push(["author", frontmatter.authors.join(" and ")]);
+  ) {
+    const bibtexAuthors = frontmatter.authors.map(name => {
+      const parts = name.trim().split(/\s+/);
+      const first = parts.slice(0, -1).join(' ');
+      const last = parts.slice(-1)[0];
+      return `${last}, ${first}`;
+    }).join(" and ");
+
+    fields.push(["author", bibtexAuthors]);
+  }
   if (frontmatter.year && !frontmatter.bib_entries?.year)
     fields.push(["year", frontmatter.year]);
 

@@ -157,7 +157,8 @@ async function main() {
       console.log(`Generating preview for ${pdfFileName}...`);
 
       try {
-        const pageToProcess = url.includes("hal.science") ? 2 : 1;
+        const pageToProcess = 1;
+        // const pageToProcess = url.includes("hal.science") ? 2 : 1;
         const pages = await pdfToPng(pdfPath, {
           pagesToProcess: [pageToProcess],
           strictPagesToProcess: true,

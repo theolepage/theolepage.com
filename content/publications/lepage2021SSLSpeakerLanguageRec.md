@@ -9,6 +9,7 @@ type: "report"
 bib_entries:
   institution: "EPITA Research and Development Laboratory (LRDE)"
   type: "Student Research Report"
+  url: "https://theolepage.com/uploads/lepage2021SSLSpeakerLanguageRec.pdf"
 resources:
   - name: "Document"
     url: "/uploads/lepage2021SSLSpeakerLanguageRec.pdf"

@@ -665,8 +665,8 @@ const ResumePageComponent = () => {
 
             <PublicationItem
               title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
-              url="https://arxiv.org/pdf/2505.14561"
-              source="Interspeech 2025"
+              url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
+              source="Interspeech 2025, Aug. 2025, pp. 1098--1102"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
@@ -740,6 +740,12 @@ const ResumePageComponent = () => {
 
           <Section>
             <Title>Talks</Title>
+
+            <TalkItem
+              title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
+              location="Interspeech 2025 — Rotterdam, The Netherlands"
+              date="Aug. 2025"
+            />
 
             <TalkItem
               title="Self-Supervised Learning for Speaker Recognition"
