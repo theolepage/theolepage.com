@@ -8,7 +8,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
+  ReferenceLine,
+  Label
 } from "recharts";
 
 import Page from "../components/page";
@@ -42,31 +43,9 @@ const generateMonthTicks = (startDate, endDate) => {
   return ticks;
 };
 
-const linearRegression = (data) => {
-  if (data.length === 0) return { m: 0, b: 0 };
-
-  const n = data.length;
-  const sumX = data.reduce((sum, point) => sum + point.x, 0);
-  const sumY = data.reduce((sum, point) => sum + point.y, 0);
-  const sumXY = data.reduce((sum, point) => sum + point.x * point.y, 0);
-  const sumX2 = data.reduce((sum, point) => sum + point.x * point.x, 0);
-
-  const denominator = n * sumX2 - sumX * sumX;
-  if (denominator === 0) return { m: 0, b: sumY / n }; // Prevent division by zero
-
-  const m = (n * sumXY - sumX * sumY) / denominator;
-  const b = (sumY - m * sumX) / n;
-
-  return { m, b };
-};
-
 const generateData = (data) => {
   const startDate = new Date(START_DATE);
   const endDate = new Date(END_DATE);
-
-  const objective_alpha =
-    PAGE_COUNT_OBJECTIVE /
-    ((endDate - startDate.getTime()) / (1000 * 60 * 60 * 24));
 
   const res = [];
   let lastCount = 0;
@@ -94,47 +73,26 @@ const generateData = (data) => {
       });
     }
 
-    const objective =
-      (objective_alpha * (date.getTime() - startDate.getTime())) /
-      (1000 * 60 * 60 * 24);
-
     res.push({
       date: new Date(date),
       Current: count,
-      Objective: objective,
     });
   }
 
-  const { m, b } = linearRegression(regressionData);
-
-  const ETA = new Date(startDate);
-  ETA.setDate(startDate.getDate() + Math.round((PAGE_COUNT_OBJECTIVE - b) / m));
-
-  res.forEach((entry) => {
-    const daysElapsed =
-      (entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
-    entry.Estimation = Math.min(
-      Math.max(0, m * daysElapsed + b),
-      PAGE_COUNT_OBJECTIVE
-    );
-  });
-
-  return { res, ETA };
+  return { res };
 };
 
 const PhdThesisPage = () => {
   const monthTicks = generateMonthTicks(START_DATE, END_DATE);
 
   const [data, setData] = useState([]);
-  const [ETA, setETA] = useState([]);
 
   useEffect(() => {
     fetch(API_ENDPOINT)
       .then((response) => response.json())
       .then((jsonData) => {
-        const { res, ETA } = generateData(jsonData);
+        const { res } = generateData(jsonData);
         setData(res);
-        setETA(ETA);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -144,19 +102,6 @@ const PhdThesisPage = () => {
       <Section title="Ph.D. Thesis">
         {data.length > 0 && (
           <div>
-            <p>
-              <b>Number of pages:</b>{" "}
-              {data.findLast((item) => item.Current !== null).Current} /{" "}
-              {PAGE_COUNT_OBJECTIVE} (~
-              {Math.round(
-                (data.findLast((item) => item.Current !== null).Current /
-                  PAGE_COUNT_OBJECTIVE) *
-                  100
-              )}
-              %)
-              <br />
-              <b>Estimated end date:</b> {dateFormatterDayMonthYear(ETA)}
-            </p>
             <ResponsiveContainer height={550}>
               <LineChart
                 margin={{
@@ -173,28 +118,26 @@ const PhdThesisPage = () => {
                   type="monotone"
                   dataKey="Current"
                   stroke="#5d95fc"
-                  strokeWidth={2}
+                  strokeWidth={1.75}
                   dot={false}
                 />
 
-                <Line
-                  type="monotone"
-                  dataKey="Estimation"
-                  stroke="#acc5f2"
-                  strokeWidth={2}
-                  dot={false}
-                  strokeDasharray="5 5"
-                />
+                <ReferenceLine
+                  y={200}
+                  stroke="#fd6d6dff"
+                  strokeDasharray="10 10"
+                  strokeWidth={1.25}
+                >
+                  <Label
+                    fill="#ff5555ff"
+                    fontSize={14}
+                    dy={-16}
+                  >
+                      200 pages 🎉
+                  </Label>
+                </ReferenceLine>
 
-                <Line
-                  type="monotone"
-                  dataKey="Objective"
-                  stroke="#fc9090"
-                  strokeWidth={2}
-                  dot={false}
-                />
-
-                <Legend />
+                {/* <Legend /> */}
 
                 <XAxis
                   dataKey={"date"}
@@ -204,17 +147,17 @@ const PhdThesisPage = () => {
                   tickFormatter={dateFormatterMonth}
                   padding={{ left: 10, right: 10 }}
                   ticks={monthTicks}
+                  stroke="#aaaaaaff"
                 >
-                  {/* <Label value="2025" position="center" dy={30} /> */}
                 </XAxis>
 
                 <YAxis
-                  domain={[0, 150]}
+                  domain={[0, PAGE_COUNT_OBJECTIVE + 50]}
                   padding={{ top: 10, bottom: 10 }}
                   tickFormatter={(value) => Math.round(value)}
-                  tickCount={8}
+                  tickCount={(PAGE_COUNT_OBJECTIVE + 50) / 50 + 1}
+                  stroke="#aaaaaaff"
                 >
-                  {/* <Label value="Number of pages" angle={-90} position="center" dx={-25} /> */}
                 </YAxis>
 
                 <Tooltip
@@ -222,7 +165,7 @@ const PhdThesisPage = () => {
                   itemStyle={{ margin: 0 }}
                   formatter={(value, name) => [
                     `${Math.round(value)} pages`,
-                    name,
+                    null,
                   ]}
                 />
               </LineChart>
