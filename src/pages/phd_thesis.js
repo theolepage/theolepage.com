@@ -49,14 +49,17 @@ const generateData = (data) => {
 
   const res = [];
   let lastCount = 0;
-  let regressionData = [];
 
   for (
     let date = new Date(startDate);
     date <= endDate;
     date.setDate(date.getDate() + 1)
   ) {
-    let count = data[date.toISOString().split("T")[0]]?.page_count ?? null;
+    let key = date.getFullYear() + "-" +
+                   String(date.getMonth() + 1).padStart(2, "0") + "-" +
+                   String(date.getDate()).padStart(2, "0");
+
+    let count = data[key]?.page_count ?? null;
 
     if (count === null && date < new Date(Object.keys(data).at(-1))) {
       count = lastCount;
@@ -64,13 +67,6 @@ const generateData = (data) => {
 
     if (count !== null) {
       lastCount = count;
-    }
-
-    if (date <= new Date()) {
-      regressionData.push({
-        x: (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
-        y: count,
-      });
     }
 
     res.push({
