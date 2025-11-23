@@ -17,8 +17,8 @@ import Section from "../components/section";
 
 const API_ENDPOINT = "https://lab.theolepage.com/phd_thesis_progress/";
 const START_DATE = "2025-01-01";
-const END_DATE = "2025-11-01";
-const PAGE_COUNT_OBJECTIVE = 200;
+const END_DATE = "2026-01-01";
+const PAGE_COUNT_OBJECTIVE = 250;
 
 const dateFormatterMonth = (date) => {
   return new Date(date).toLocaleString("en-GB", { month: "short" });
@@ -118,7 +118,7 @@ const PhdThesisPage = () => {
                   dot={false}
                 />
 
-                <ReferenceLine
+                {/* <ReferenceLine
                   y={200}
                   stroke="#fd6d6dff"
                   strokeDasharray="10 10"
@@ -131,7 +131,7 @@ const PhdThesisPage = () => {
                   >
                       200 pages 🎉
                   </Label>
-                </ReferenceLine>
+                </ReferenceLine> */}
 
                 {/* <Legend /> */}
 
