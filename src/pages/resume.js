@@ -590,8 +590,8 @@ const ResumePageComponent = () => {
               image="/images/resume/lre.png"
             >
               <li>
-                Published 7+ papers at top conferences and journals
-                (Interspeech, Odyssey, IEEE TASLP)
+                Published 8 peer-reviewed papers at top conferences and journals
+                (Interspeech, Odyssey, IEEE TASLP, Speech Comm.)
               </li>
               <li>
                 Developed and maintained <i>sslsv</i>, a toolkit for training
