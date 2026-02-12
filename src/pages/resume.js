@@ -658,7 +658,7 @@ const ResumePageComponent = () => {
 
             <PublicationItem
               title="Self-Supervised Learning for Speaker Recognition: A study and review"
-              url="https://hal.science/hal-05149384v1/file/lepage_2025_specom.pdf"
+              url="https://arxiv.org/pdf/2602.10829"
               source="Speech Communication, vol. 176, pp. 103333, 2026"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />

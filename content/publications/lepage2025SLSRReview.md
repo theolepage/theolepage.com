@@ -15,7 +15,7 @@ bib_entries:
   doi: "10.1016/j.specom.2025.103333"
 resources:
   - name: "Document"
-    url: "https://hal.science/hal-05149384v1/file/lepage_2025_specom.pdf"
+    url: "https://arxiv.org/pdf/2602.10829"
   - name: "Code"
     url: "https://github.com/theolepage/sslsv"
 ---
