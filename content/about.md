@@ -12,4 +12,4 @@ socials:
     url: "https://www.linkedin.com/in/theolepage/"
 ---
 
-I am Theo Lepage, a **Ph.D. student** in **Artificial Intelligence** at [Sorbonne University](https://www.sorbonne-universite.fr/en) and [EPITA Research Laboratory](https://www.lre.epita.fr/), based in Paris, France. My research focuses on **Self-Supervised Learning** frameworks to develop robust representations for **Speaker and Language Recognition**. Through these methods, my onjective to enhance speech processing as a proxy for advancing human-computer communication.
+My name is **Theo Lepage**. I hold a **Ph.D. in Artificial Intelligence** from [Sorbonne University](https://www.sorbonne-universite.fr/en) and an **M.Eng. in Computer Science** from [EPITA](https://www.epita.fr/en/). My research focuses on **Deep Learning for Speech Processing**, notably *self-supervised learning*, *speaker and language recognition*, and *speech anti-spoofing & deepfake detection*. Through my work, I aim to advance speech technologies for improving human-computer communication.
