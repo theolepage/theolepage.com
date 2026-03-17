@@ -9,8 +9,8 @@ import Icon from "../components/icon";
 import Link from "../components/link";
 
 
-const MANUSCRIPT_URL = "FIXME";
-const SLIDES_URL = "FIXME";
+const THESIS_URL = "https://theses.hal.science/tel-05558165v1/file/159344_LEPAGE_2026_archivage.pdf";
+const SLIDES_URL = "/uploads/phd_defense_presentation_theo_lepage_2026.pdf";
 const CODE_URL = "https://github.com/theolepage/sslsv";
 const REF_URL = "/ref/thesis/";
 
@@ -51,7 +51,7 @@ const Actions = styled.div`
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 
-  @media (max-width: 950px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     gap: calc(var(--element-spacing) * 1.5);
   }
@@ -63,7 +63,7 @@ const ActionSeparator = styled.div`
   background-color: var(--border-color);
   transform: rotate(20deg);
 
-  @media (max-width: 950px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -148,7 +148,7 @@ const PhdThesisPage = () => {
         </Description>
         
         <Description>
-          Committee: Benjamin Lecouteux <i>(LIG)</i>, Driss Matrouf <i>(LIA)</i>, Jean-François Bonastre <i>(AMIAD)</i>, Irina Illina <i>(LORIA/Inria)</i>, Anthony Larcher <i>(LIUM)</i>, and Douglas Reynolds <i>(MIT LL)</i> • Advisors: Réda DEHAK <i>(LRE)</i> and Thierry Géraud <i>(LRE)</i>
+          Committee: Jean-François Bonastre <i>(AMIAD)</i>, Benjamin Lecouteux <i>(LIG)</i>, Driss Matrouf <i>(LIA)</i>, Irina Illina <i>(LORIA/Inria)</i>, Anthony Larcher <i>(LIUM)</i>, and Douglas Reynolds <i>(MIT LL)</i> • Advisors: Réda DEHAK <i>(LRE)</i> and Thierry Géraud <i>(LRE)</i>
         </Description>
         
         <Subtitle>Abstract</Subtitle>
@@ -162,14 +162,14 @@ const PhdThesisPage = () => {
 
         <Subtitle>Resources</Subtitle>
         <Actions>
-          <Button to={MANUSCRIPT_URL} external>
+          <Button to={THESIS_URL} external>
             <Icon name="book" />
-            Manuscript
+            Thesis Document
           </Button>
           <ActionSeparator />
           <Button to={SLIDES_URL} external>
             <Icon name="talks" />
-            Slides of defense
+            Defense Slides
           </Button>
           <ActionSeparator />
           <Button to={CODE_URL} external>
@@ -202,8 +202,8 @@ const PhdThesisPage = () => {
             Benchmark and study SSL frameworks (e.g., SimCLR, MoCo, DINO) on SV under controlled conditions<br />
             → Identify the role and limitations of positive sampling in modeling intra-speaker variability
           </p>
-          <div><IconInline name="publication" /> Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning <Link to="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf" external>(PDF)</Link></div>
-          <div><IconInline name="publication" /> Self-Supervised Learning for Speaker Recognition: A study and review <Link to="https://arxiv.org/pdf/2602.10829" external>(PDF)</Link></div>
+          <p><IconInline name="publication" /> Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning <Link to="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf" external>(PDF)</Link></p>
+          <p><IconInline name="publication" /> Self-Supervised Learning for Speaker Recognition: A study and review <Link to="https://arxiv.org/pdf/2602.10829" external>(PDF)</Link></p>
         </Contribution>
 
         <Contribution>

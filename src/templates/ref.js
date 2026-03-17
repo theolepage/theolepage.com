@@ -61,9 +61,11 @@ const BIBTEX_FIELD_ORDER = [
   "url",
 ];
 
-const generateBibTeX = ({ frontmatter, filename }) => {
+const generateBibTeX = ({ frontmatter, filename, siteUrl }) => {
   // Helper: BibTeX-safe string
   const safe = (str) => (str ? str.replace(/[{}]/g, "") : "");
+  const toAbsoluteUrl = (url) =>
+      url?.startsWith("/") ? `${siteUrl.replace(/\/$/, "")}${url}` : url;
 
   // BibTeX type
   let bibType = "Misc";
@@ -89,7 +91,7 @@ const generateBibTeX = ({ frontmatter, filename }) => {
     Object.entries(frontmatter.bib_entries).forEach(([key, value]) => {
       // Skip empty values
       if (!value || value.trim() === "") return;
-      fields.push([key, safe(value)]);
+      fields.push([key, key === "url" ? safe(toAbsoluteUrl(value)) : safe(value)]);
     });
   }
 
@@ -133,7 +135,7 @@ const generateBibTeX = ({ frontmatter, filename }) => {
       (resource) => resource.name === "Document"
     );
     if (documentResource && documentResource.url) {
-      fields.push(["url", safe(documentResource.url)]);
+      fields.push(["url", safe(toAbsoluteUrl(documentResource.url))]);
     }
   }
 
@@ -185,7 +187,9 @@ const RefPage = ({ data, pageContext }) => {
 
   const { frontmatter } = publication;
 
-  const bibText = generateBibTeX({ frontmatter, filename });
+  const siteUrl = data.site.siteMetadata.siteUrl;
+
+  const bibText = generateBibTeX({ frontmatter, filename, siteUrl });
 
   const handleCopyClick = (e) => {
     e.preventDefault();
@@ -229,6 +233,11 @@ export default RefPage;
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/publications/" } }
     ) {

@@ -10,9 +10,7 @@ bib_entries:
   institution: "Sorbonne Université"
 resources:
   - name: "Document"
-    url: "FIXME"
+    url: "https://theses.hal.science/tel-05558165v1/file/159344_LEPAGE_2026_archivage.pdf"
   - name: "Resources"
     url: "/phd_thesis"
-  - name: "Code"
-    url: "https://github.com/theolepage/sslsv"
 ---
