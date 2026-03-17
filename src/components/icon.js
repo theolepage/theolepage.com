@@ -3,6 +3,7 @@ import React from "react";
 import {
   Home,
   Files,
+  File,
   Star,
   GitFork,
   Package,
@@ -14,11 +15,14 @@ import {
   Copy,
   Check,
   Mail,
+  BookText,
+  Share
 } from "lucide-react";
 
 const Icons = {
   home: Home,
   publications: Files,
+  publication: File,
   star: Star,
   fork: GitFork,
   projects: Package,
@@ -30,6 +34,8 @@ const Icons = {
   copy: Copy,
   check: Check,
   email: Mail,
+  book: BookText,
+  share: Share,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

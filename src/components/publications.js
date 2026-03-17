@@ -29,7 +29,7 @@ const Publications = ({ data, listing }) => {
   const websiteAuthor = query?.site?.siteMetadata?.author || "";
 
   const publications = data.nodes.filter((publication) => {
-    return listing || publication.frontmatter.showcased === true;
+    return publication.frontmatter.type !== "thesis" && (listing || publication.frontmatter.showcased === true);
   });
 
   return (

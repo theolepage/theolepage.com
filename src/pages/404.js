@@ -40,6 +40,8 @@ const Title = styled.h2`
 
 const Description = styled.p`
   margin-bottom: 20px;
+
+  text-align: left;
 `;
 
 const Action = styled(Link)`

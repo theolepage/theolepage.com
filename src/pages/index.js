@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import Page from "../components/page";
 import Status from "../components/status";
 import About from "../components/about";
+import Thesis from "../components/thesis";
 import Publications from "../components/publications";
 // import Posts from "../components/posts";
 import Projects from "../components/projects";
@@ -15,6 +16,7 @@ const IndexPage = ({ data }) => {
     <Page>
       <Status data={data.status} />
       <About data={data.about} />
+      <Thesis data={data.publications} />
       <Publications data={data.publications} />
       {/* <Posts data={data.posts} /> */}
       <Projects data={data.projects} />

@@ -70,9 +70,13 @@ const generateBibTeX = ({ frontmatter, filename }) => {
   if (frontmatter.type === "conference") bibType = "InProceedings";
   else if (frontmatter.type === "journal") bibType = "Article";
   else if (frontmatter.type === "report") bibType = "TechReport";
+  else if (frontmatter.type === "thesis") bibType = "Thesis";
 
   // BibTeX key: basename of markdown file
-  const bibKey = filename;
+  let bibKey = filename;
+  if (frontmatter.key) {
+    bibKey = frontmatter.key;
+  }
 
   // Start BibTeX entry
   let bib = `@${bibType}{${bibKey},\n`;
@@ -170,10 +174,10 @@ const RefPage = ({ data, pageContext }) => {
   const [copied, setCopied] = useState(false);
 
   const publication = data.allMarkdownRemark.nodes.find(
-    (node) =>
-      node.fileAbsolutePath.split("/").pop().replace(".md", "") === filename
-  );
-
+          (node) =>
+            node.fileAbsolutePath.split("/").pop().replace(".md", "") === filename
+        );
+  
   if (!publication) {
     navigate("/404");
     return null;
@@ -230,6 +234,7 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
+          key  
           title
           authors
           source

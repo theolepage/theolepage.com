@@ -61,7 +61,7 @@ const Actions = styled.div`
 `;
 
 const ActionSeparator = styled.div`
-  width: 1px;
+  width: 2px;
   height: 24px;
   background-color: var(--border-color);
   transform: rotate(20deg);

@@ -689,7 +689,7 @@ const ResumePageComponent = () => {
             />
 
             <PublicationItem
-              title="Towards Supervised Performance on Speaker Verification with Self-Supervised Learning by Leveraging Large-Scale ASR Models"
+              title="Towards Supervised Performance on Speaker Verification with SSL by Leveraging Large-Scale ASR Models"
               url="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
               source="Interspeech 2024, Sept. 2024, pp. 2660--2664"
               authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
