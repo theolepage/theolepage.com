@@ -110,6 +110,10 @@ const Emphasize = styled.span`
   font-weight: 600;
 `;
 
+const Deemphasize = styled.span`
+  font-size: 10px;
+`;
+
 const Icon = styled.img`
   display: inline-block;
   vertical-align: baseline;
@@ -185,21 +189,21 @@ const DescriptionEmphasize = styled.span`
   color: rgba(0, 0, 0, 0.8);
 `;
 
+const DescriptionSeparator = styled.span`
+  display: inline-block;
+
+  width: 8px;
+`;
+
 const Contact = styled.div`
   display: flex;
   margin-top: 6px;
 `;
 
-const ContactItem = styled.a`
+const ContactItem = styled.div`
   margin-top: 6px;
   margin-right: 20px;
   font-size: 11px;
-  color: #377dff;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 
   ${Icon} {
     position: relative;
@@ -268,23 +272,40 @@ const ExperienceImage = styled.div`
 
   img {
     width: 100%;
+
+    border-radius: 4px;
   }
 
   /* Special case for CNRS logo */
   img[alt="CNRS logo"] {
-    width: 75%;
+    width: 80%;
+  }
+
+  /* Special case for LRE logo */
+  img[alt="EPITA Research Laboratory (LRE) logo"] {
+    width: 80%;
   }
 `;
 
 // Publication Components
-const PublicationSource = styled.div`
+const PublicationInfo = styled.div`
   margin-top: 4px;
+`;
+
+const PublicationSeparator = styled.span`
+  margin: 0 6px;
+
+  color: rgba(0, 0, 0, 0.7);
+`;
+
+const PublicationSource = styled.span`
   color: rgba(0, 0, 0, 0.8);
 `;
 
-const PublicationAuthors = styled.div`
-  margin-top: 2px;
+const PublicationAuthors = styled.span`
   color: rgba(0, 0, 0, 0.5);
+
+  font-size: 11px;
 `;
 
 // Skills Components
@@ -306,42 +327,54 @@ const ResumeHeader = () => (
   <HeaderSection>
     <Name>Theo Lepage</Name>
     <Description>
-      <DescriptionEmphasize>Ph.D. Student</DescriptionEmphasize> in{" "}
-      <DescriptionEmphasize>A.I.</DescriptionEmphasize> →{" "}
+      <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in{" "}
+      <DescriptionEmphasize>AI</DescriptionEmphasize> ▹{" "}
       <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for{" "}
       <DescriptionEmphasize>Speaker Recognition</DescriptionEmphasize>
+      <DescriptionSeparator />|<DescriptionSeparator />
+      Open to <DescriptionEmphasize>Research Scientist / Engineer</DescriptionEmphasize> Roles
     </Description>
     <Contact>
-      <ContactItem
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-        href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219"
-      >
-        <Icon src="/images/resume/icons/icon-map_blue.svg" alt="icon-map" />
-        Paris, France
+      <ContactItem>
+        <a
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219"
+        >
+          <Icon src="/images/resume/icons/icon-map_blue.svg" alt="icon-map" />
+          Paris, France
+        </a>
+        {' '}
+        <Deemphasize>(open to relocation, EU & US)</Deemphasize>
       </ContactItem>
-      <ContactItem target="_blank" rel="nofollow noopener noreferrer" href="/">
-        <Icon src="/images/resume/icons/icon-website.svg" alt="icon-website" />
-        theolepage.com
+      <ContactItem>
+        <a target="_blank" rel="nofollow noopener noreferrer" href="/">
+          <Icon src="/images/resume/icons/icon-website.svg" alt="icon-website" />
+          theolepage.com
+        </a>
       </ContactItem>
-      <ContactItem
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-        href="mailto:theo@theolepage.com"
-      >
-        <Icon src="/images/resume/icons/icon-email.svg" alt="icon-email" />
-        theo@theolepage.com
+      <ContactItem>
+        <a
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          href="mailto:theo@theolepage.com"
+        >
+          <Icon src="/images/resume/icons/icon-email.svg" alt="icon-email" />
+          theo@theolepage.com
+        </a>
       </ContactItem>
-      <ContactItem
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-        href="https://www.linkedin.com/in/theolepage/"
-      >
-        <Icon
-          src="/images/resume/icons/icon-linkedin.svg"
-          alt="icon-linkedin"
-        />
-        Theo Lepage
+      <ContactItem>
+        <a
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          href="https://www.linkedin.com/in/theolepage/"
+        >
+          <Icon
+            src="/images/resume/icons/icon-linkedin.svg"
+            alt="icon-linkedin"
+          />
+          Theo Lepage
+        </a>
       </ContactItem>
     </Contact>
   </HeaderSection>
@@ -359,7 +392,7 @@ const EducationItem = ({ institution, degree, location, date, children }) => (
           {institution.name}
         </a>
       </Emphasize>
-      &nbsp;({degree})
+      {' '}({degree})
     </Subtitle>
     <EducationIcons>
       <Location>
@@ -439,8 +472,11 @@ const PublicationItem = ({ title, url, source, authors }) => (
         </a>
       </Emphasize>
     </Subtitle>
-    <PublicationSource>{source}</PublicationSource>
-    <PublicationAuthors dangerouslySetInnerHTML={{ __html: authors }} />
+    <PublicationInfo>
+      <PublicationSource>{source}</PublicationSource>
+      <PublicationSeparator>•</PublicationSeparator>
+      <PublicationAuthors dangerouslySetInnerHTML={{ __html: authors }} />
+    </PublicationInfo>
   </Item>
 );
 
@@ -474,57 +510,6 @@ const PassionItem = ({ icon, text }) => (
   </Passion>
 );
 
-const TalkItem = ({ title, location, date }) => (
-  <Item>
-    <Subtitle>
-      <Emphasize>
-        <Icon src="/images/resume/icons/icon-talk.svg" alt="icon-talk" />
-        {title}
-      </Emphasize>
-    </Subtitle>
-    <EducationIcons>
-      <Location>
-        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
-        {location}
-      </Location>
-      <Date>
-        <Icon
-          src="/images/resume/icons/icon-calendar.svg"
-          alt="icon-calendar"
-        />
-        {date}
-      </Date>
-    </EducationIcons>
-  </Item>
-);
-
-const TeachingItem = ({ title, period, institution }) => (
-  <Item>
-    <Subtitle>
-      <Emphasize>
-        <Icon
-          src="/images/resume/icons/icon-teaching.svg"
-          alt="icon-teaching"
-        />
-        {title}
-      </Emphasize>
-    </Subtitle>
-    <EducationIcons>
-      <Location>
-        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
-        {institution}
-      </Location>
-      <Date>
-        <Icon
-          src="/images/resume/icons/icon-calendar.svg"
-          alt="icon-calendar"
-        />
-        {period}
-      </Date>
-    </EducationIcons>
-  </Item>
-);
-
 const ResumePageComponent = () => {
   return (
     <Page title="Resume" layout={false}>
@@ -532,6 +517,84 @@ const ResumePageComponent = () => {
       <ResumeContainer className="resume">
         <ResumePage>
           <ResumeHeader />
+
+          <Section>
+            <Title>Experience</Title>
+
+            <ExperienceItem
+              title="Ph.D. Researcher"
+              company="EPITA Research Laboratory (LRE)"
+              companyUrl="https://www.lre.epita.fr/"
+              location="Paris, France"
+              date="Nov. 2022 - Feb. 2026"
+              image="/images/resume/epita_v2.jpg"
+            >
+              <li>
+                Published 8 papers at top peer-reviewed venues
+                (IEEE TASLP, Speech Communication, Interspeech)
+              </li>
+              <li>
+                Proposed novel methods for self-supervised speaker recognition → SOTA performance (1.06% EER on VoxCeleb1-O)
+              </li>
+              <li>
+                Introduced a latent-space positive sampling strategy (SSPS) → reducing intra-speaker variability (-58% EER for SimCLR)
+              </li>
+              <li>
+                Developed and maintained "sslsv", an open-source PyTorch toolkit for self-supervised speaker verification
+              </li>
+              <li>
+                Teaching assistant at EPITA for "Intro to Deep Neural Networks"
+                and "Python for Data Science" (2023-2025)
+              </li>
+              {/* <li>
+                Supervised an M.Eng. student, leading to a co-authored
+                publication (Interspeech 2024)
+              </li> */}
+            </ExperienceItem>
+
+            <ExperienceItem
+              title="Research Scientist Intern"
+              company="Siemens Healthineers"
+              companyUrl="https://www.siemens-healthineers.com/"
+              location="Princeton, USA"
+              date="Feb. 2022 - Sep. 2022"
+              image="/images/resume/shs.png"
+            >
+              <li>
+                Developed deep learning models for MR image enhancement
+                (denoising and super-resolution)
+              </li>
+              <li>
+                Designed a CNN architecture with attention mechanisms, improving reconstruction
+                quality over existing solutions
+              </li>
+            </ExperienceItem>
+
+            <ExperienceItem
+              title="Software Developer Intern"
+              company="CNRS"
+              companyUrl="https://www.cnrs.fr/en"
+              location="Paris, France"
+              date="Sep. 2020 - Jan. 2021"
+              image="/images/resume/cnrs.png"
+            >
+              <li>
+                Contributed to a real-time digital holography software (C++/CUDA) for
+                retinal blood flow analysis
+              </li>
+              <li>
+                Achieved a 20× speedup (500 → 10,000 FPS), significantly improving image
+                quality and contrast
+              </li>
+              <li>
+                Improved software reliability through refactoring and unit testing,
+                enabling open-source release
+              </li>
+              <li>
+                Co-founded the "Digital Holography" association to sustain ongoing development
+              </li>
+            </ExperienceItem>
+          </Section>
 
           <Section>
             <Title>Education</Title>
@@ -543,17 +606,20 @@ const ResumePageComponent = () => {
               }}
               degree="Ph.D. in Artificial Intelligence"
               location="Paris, France"
-              date="Nov. 2022 - Nov. 2025"
+              date="Nov. 2022 - Feb. 2026"
             >
               <li>
                 Thesis: "Self-Supervised Learning for Speaker Recognition"
+                (<a
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  href="https://theolepage.com/phd_thesis/"
+                >
+                  theolepage.com/phd_thesis
+                </a>)
               </li>
               <li>
-                Supervised by Dr. Réda Dehak and Pr. Thierry Géraud (LRE-EPITA)
-              </li>
-              <li>
-                Supported by the French ANR 'APATE' project (Forensic Deepfakes
-                Detection Toolbox)
+                Supervised by R. Dehak (LRE-EPITA) and T. Géraud (LRE-EPITA)
               </li>
             </EducationItem>
 
@@ -573,84 +639,9 @@ const ResumePageComponent = () => {
               </li>
               <li>
                 Specialization: Research (RDI) on Speaker Recognition
-                (supervised by Dr. Réda Dehak) → publication at Interspeech 2022
+                (supervised by R. Dehak) → publication at Interspeech 2022
               </li>
             </EducationItem>
-          </Section>
-
-          <Section>
-            <Title>Experience</Title>
-
-            <ExperienceItem
-              title="Ph.D. Student"
-              company="EPITA Research Laboratory (LRE)"
-              companyUrl="https://www.lre.epita.fr/"
-              location="Paris, France"
-              date="Nov. 2022 - Nov. 2025"
-              image="/images/resume/lre.png"
-            >
-              <li>
-                Published 8 peer-reviewed papers at top conferences and journals
-                (Interspeech, Odyssey, IEEE TASLP, Speech Comm.)
-              </li>
-              <li>
-                Developed and maintained <i>sslsv</i>, a toolkit for training
-                and evaluating self-supervised speaker verification models
-              </li>
-              <li>
-                Supervised an M.Eng. student leading to a co-authored
-                publication at Interspeech 2024
-              </li>
-              <li>
-                Teaching assistant at EPITA for "Intro to Deep Neural Networks"
-                and "Python for Data Science" (2023–2025)
-              </li>
-            </ExperienceItem>
-
-            <ExperienceItem
-              title="Research Scientist Intern"
-              company="Siemens Healthineers"
-              companyUrl="https://www.siemens-healthineers.com/"
-              location="Princeton, USA"
-              date="Feb. 2022 - Sep. 2022"
-              image="/images/resume/shs.png"
-            >
-              <li>
-                Focused on state-of-the-art deep learning models for MR images
-                enhancement (denoising and super-resolution)
-              </li>
-              <li>
-                Designed a CNN architecture that leverages the attention
-                mechanism of Vision Transformers and recovers more details
-                compared to the solution being used in the product
-              </li>
-            </ExperienceItem>
-
-            <ExperienceItem
-              title="Software Developer Intern"
-              company="CNRS"
-              companyUrl="https://www.cnrs.fr/en"
-              location="Paris, France"
-              date="Sep. 2020 - Jan. 2021"
-              image="/images/resume/cnrs.png"
-            >
-              <li>
-                Contributed to a real-time digital holography software (C++ /
-                CUDA) used for retinal blood flow analysis in a medical setting
-              </li>
-              <li>
-                Our work resulted in a 20x (500 to 10,000 FPS) speedup which
-                improved substantially output images contrast and quality
-              </li>
-              <li>
-                Our refactoring and the addition of unit tests improved the
-                stability and allowed the project to become open source
-              </li>
-              <li>
-                Founding member of the association 'Digital Holography' created
-                to sustain the development of the software
-              </li>
-            </ExperienceItem>
           </Section>
 
           <Section>
@@ -659,22 +650,29 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Self-Supervised Learning for Speaker Recognition: A study and review"
               url="https://arxiv.org/pdf/2602.10829"
-              source="Speech Communication, vol. 176, pp. 103333, 2026"
+              source="Speech Communication, 2026"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
               url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
-              source="Interspeech 2025, Aug. 2025, pp. 1098--1102"
+              source="Interspeech, 2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
               url="https://arxiv.org/pdf/2501.17772"
-              source="IEEE Transactions on Audio, Speech and Language Processing, vol. 33, pp. 2932--2945, 2025"
+              source="IEEE TASLP, 2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
+            />
+
+            <PublicationItem
+              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
+              url="https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
+              source="ASVspoof Workshop, 2024"
+              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
           </Section>
         </ResumePage>
@@ -682,37 +680,30 @@ const ResumePageComponent = () => {
         <ResumePage>
           <Section>
             <PublicationItem
-              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
-              url="https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
-              source="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024), Aug. 2024, pp. 72--78"
-              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
-            />
-
-            <PublicationItem
               title="Towards Supervised Performance on Speaker Verification with SSL by Leveraging Large-Scale ASR Models"
               url="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
-              source="Interspeech 2024, Sept. 2024, pp. 2660--2664"
+              source="Interspeech, 2024"
               authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
 
             <PublicationItem
               title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
               url="https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
-              source="The Speaker and Language Recognition Workshop (Odyssey 2024), Jun. 2024, pp. 38--42"
+              source="Odyssey Workshop, 2024"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
               url="https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf"
-              source="Interspeech 2023, Aug. 2023, pp. 4708--4712"
+              source="Interspeech, 2023"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
               url="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf"
-              source="Interspeech 2022, Sept. 2022, pp. 4018--4022"
+              source="Interspeech, 2022"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
           </Section>
@@ -725,120 +716,30 @@ const ResumePageComponent = () => {
                 <ProjectItem
                   name="sslsv"
                   url="https://github.com/theolepage/sslsv"
-                  description="Toolkit for training and evaluating Self-Supervised Learning (SSL) frameworks for Speaker Verification (SV)."
+                  description="Deep learning toolkit based on PyTorch for training and evaluating self-supervised models for speaker verification and other speaker-related downstream tasks."
                 />
               </Col>
               <Col>
                 <ProjectItem
                   name="wavlm_ssl_sv"
                   url="https://github.com/theolepage/wavlm_ssl_sv"
-                  description="SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model."
+                  description="Self-supervised iterative pseudo-labeling framework to fine-tune a speech foundation model (WavLM) from a DINO-based model for speaker verification, achieving SOTA performance."
                 />
               </Col>
             </Cols>
           </Section>
 
           <Section>
-            <Title>Talks</Title>
-
-            <TalkItem
-              title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
-              location="Interspeech 2025 — Rotterdam, The Netherlands"
-              date="Aug. 2025"
-            />
-
-            <TalkItem
-              title="Self-Supervised Learning for Speaker Recognition"
-              location="Inria — Paris, France"
-              date="Mar. 2025"
-            />
-
-            <TalkItem
-              title="Self-Supervised Learning for Speaker Recognition"
-              location="Callyope — Paris, France"
-              date="Dec. 2024"
-            />
-
-            <TalkItem
-              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
-              location="The Automatic Speaker Verification Spoofing Countermeasures Workshop (ASVspoof 2024) — Kos, Greece"
-              date="Aug. 2024"
-            />
-
-            <TalkItem
-              title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
-              location="The Speaker and Language Recognition Workshop (Odyssey 2024) — Quebec, Canada"
-              date="Jun. 2024"
-            />
-
-            <TalkItem
-              title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
-              location="Interspeech 2023 — Dublin, Ireland"
-              date="Aug. 2023"
-            />
-
-            <TalkItem
-              title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
-              location="Interspeech 2022 — Incheon, South Korea"
-              date="Sep. 2022"
-            />
-
-            <TalkItem
-              title="Lightning Talks on SSL applied to Speaker and Language Recognition"
-              location="LRDE — Paris, France"
-              date="Jan. - Sep. 2021"
-            />
-          </Section>
-        </ResumePage>
-
-        <ResumePage>
-          <Section>
-            <Title>Teaching</Title>
-
-            <Cols>
-              <Col>
-                <TeachingItem
-                  title="Intro to Deep Neural Networks"
-                  period="Spring 2023 - 2025"
-                  institution="EPITA"
-                />
-
-                <TeachingItem
-                  title="Rust Programming"
-                  period="Spring 2020"
-                  institution="EPITA"
-                />
-              </Col>
-              <Col>
-                <TeachingItem
-                  title="Python for Data Science"
-                  period="Spring 2023 - 2025"
-                  institution="EPITA"
-                />
-
-                <TeachingItem
-                  title="Unix / C Programming"
-                  period="Fall 2019"
-                  institution="EPITA"
-                />
-              </Col>
-            </Cols>
-          </Section>
-
-          <Section>
-            <Title>Skills and interests</Title>
+            <Title>Skills & Interests</Title>
 
             <Cols>
               <Col>
                 <SkillsSection
                   title="Programming"
                   items={[
+                    "Python",
                     "C",
                     "C++",
-                    "C#",
-                    "Java",
-                    "Python",
-                    "PHP",
                     "JavaScript",
                     "Bash",
                   ]}
