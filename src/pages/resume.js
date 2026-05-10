@@ -11,6 +11,9 @@ const globalStyles = css`
   }
 
   * {
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0;
+
     box-sizing: border-box;
   }
 
@@ -283,7 +286,7 @@ const ExperienceImage = styled.div`
 
   /* Special case for LRE logo */
   img[alt="EPITA Research Laboratory (LRE) logo"] {
-    width: 80%;
+    width: 90%;
   }
 `;
 
@@ -527,7 +530,7 @@ const ResumePageComponent = () => {
               companyUrl="https://www.lre.epita.fr/"
               location="Paris, France"
               date="Nov. 2022 - Feb. 2026"
-              image="/images/resume/epita_v2.jpg"
+              image="/images/resume/epita.png"
             >
               <li>
                 Published 8 papers at top peer-reviewed venues
@@ -615,7 +618,7 @@ const ResumePageComponent = () => {
                   rel="nofollow noopener noreferrer"
                   href="https://theolepage.com/phd_thesis/"
                 >
-                  theolepage.com/phd_thesis
+                  https://theolepage.com/phd_thesis
                 </a>)
               </li>
               <li>
