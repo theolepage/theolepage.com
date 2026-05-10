@@ -88,6 +88,8 @@ const Subtitle = styled.div`
 `;
 
 const SubSubtitle = styled.div`
+  min-width: 70px;
+
   font-size: 10px;
   font-weight: 600;
 `;
@@ -195,7 +197,11 @@ const DescriptionEmphasize = styled.span`
 const DescriptionSeparator = styled.span`
   display: inline-block;
 
-  width: 8px;
+  width: 17px;
+
+  text-align: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 const Contact = styled.div`
@@ -305,6 +311,12 @@ const PublicationSource = styled.span`
   color: rgba(0, 0, 0, 0.8);
 `;
 
+const PublicationYear = styled.span`
+  color: rgba(0, 0, 0, 0.8);
+
+  font-size: 11px;
+`;
+
 const PublicationAuthors = styled.span`
   color: rgba(0, 0, 0, 0.5);
 
@@ -331,11 +343,12 @@ const ResumeHeader = () => (
     <Name>Theo Lepage</Name>
     <Description>
       <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in{" "}
-      <DescriptionEmphasize>AI</DescriptionEmphasize> ▹{" "}
+      <DescriptionEmphasize>AI</DescriptionEmphasize>
+      <DescriptionSeparator>•</DescriptionSeparator>
       <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for{" "}
-      <DescriptionEmphasize>Speaker Recognition</DescriptionEmphasize>
-      <DescriptionSeparator />|<DescriptionSeparator />
-      Open to <DescriptionEmphasize>Research Scientist / Engineer</DescriptionEmphasize> Roles
+      <DescriptionEmphasize>Speech & Speaker Recognition</DescriptionEmphasize>
+      <DescriptionSeparator>•</DescriptionSeparator>
+      Open to <DescriptionEmphasize>Research Scientist</DescriptionEmphasize> Roles
     </Description>
     <Contact>
       <ContactItem>
@@ -377,6 +390,19 @@ const ResumeHeader = () => (
             alt="icon-linkedin"
           />
           Theo Lepage
+        </a>
+      </ContactItem>
+      <ContactItem>
+        <a
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          href="https://github.com/theolepage/"
+        >
+          <Icon
+            src="/images/resume/icons/icon-github.svg"
+            alt="icon-github"
+          />
+          theolepage
         </a>
       </ContactItem>
     </Contact>
@@ -423,13 +449,14 @@ const ExperienceItem = ({
   location,
   date,
   image,
+  internship,
   children,
 }) => (
   <Experience>
     <ExperienceContent>
       <ExperienceHeader>
         <Subtitle>
-          <Emphasize>{title}</Emphasize> at{" "}
+          <Emphasize>{title}</Emphasize> {internship && '(Internship)'} at{" "}
           <a
             target="_blank"
             rel="nofollow noopener noreferrer"
@@ -462,7 +489,7 @@ const ExperienceItem = ({
   </Experience>
 );
 
-const PublicationItem = ({ title, url, source, authors }) => (
+const PublicationItem = ({ title, url, source, year, authors }) => (
   <Item>
     <Subtitle>
       <Emphasize>
@@ -477,6 +504,8 @@ const PublicationItem = ({ title, url, source, authors }) => (
     </Subtitle>
     <PublicationInfo>
       <PublicationSource>{source}</PublicationSource>
+      <PublicationSeparator>•</PublicationSeparator>
+      <PublicationYear>{year}</PublicationYear>
       <PublicationSeparator>•</PublicationSeparator>
       <PublicationAuthors dangerouslySetInnerHTML={{ __html: authors }} />
     </PublicationInfo>
@@ -556,30 +585,35 @@ const ResumePageComponent = () => {
             </ExperienceItem>
 
             <ExperienceItem
-              title="Research Scientist Intern"
+              title="Research Scientist"
               company="Siemens Healthineers"
               companyUrl="https://www.siemens-healthineers.com/"
               location="Princeton, USA"
               date="Feb. 2022 - Sep. 2022"
               image="/images/resume/shs.png"
+              internship
             >
               <li>
-                Developed deep learning models for MR image enhancement
-                (denoising and super-resolution)
+                Developed deep learning models for end-to-end MR image enhancement
+                (denoising & super-resolution)
               </li>
               <li>
                 Designed a CNN architecture with attention mechanisms, improving reconstruction
                 quality over existing solutions
               </li>
+              <li>
+                Explored generative approaches (GANs) to synthesize MR images for training data augmentation
+              </li>
             </ExperienceItem>
 
             <ExperienceItem
-              title="Software Developer Intern"
+              title="Software Engineer"
               company="CNRS"
               companyUrl="https://www.cnrs.fr/en"
               location="Paris, France"
               date="Sep. 2020 - Jan. 2021"
               image="/images/resume/cnrs.png"
+              internship
             >
               <li>
                 Contributed to a real-time digital holography software (C++/CUDA) for
@@ -636,13 +670,10 @@ const ResumePageComponent = () => {
               date="Sep. 2017 - Sep. 2022"
             >
               <li>
-                Major: IMAGE (Machine Learning, Deep Learning, Signal
-                Processing, Probability & Statistics, Linear Algebra,
-                Optimization)
+                Major: Signal Processing, Computer Vision, Machine Learning & Deep Learning  (GPA: 3.9/4.0)
               </li>
               <li>
-                Specialization: Research (RDI) on Speaker Recognition
-                (supervised by R. Dehak) → publication at Interspeech 2022
+                Research student (supervised by R. Dehak); Teaching assistant (Unix, C, Rust); Exchange semester at CSUMB (Spring 2019) 
               </li>
             </EducationItem>
           </Section>
@@ -653,28 +684,32 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Self-Supervised Learning for Speaker Recognition: A study and review"
               url="https://arxiv.org/pdf/2602.10829"
-              source="Speech Communication, 2026"
+              source="Speech Communication"
+              year="2026"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
               url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
-              source="Interspeech, 2025"
+              source="Interspeech"
+              year="2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
               url="https://arxiv.org/pdf/2501.17772"
-              source="IEEE TASLP, 2025"
+              source="IEEE TASLP"
+              year="2025"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
               url="https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
-              source="ASVspoof Workshop, 2024"
+              source="ASVspoof Workshop"
+              year="2024"
               authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
           </Section>
@@ -685,28 +720,32 @@ const ResumePageComponent = () => {
             <PublicationItem
               title="Towards Supervised Performance on Speaker Verification with SSL by Leveraging Large-Scale ASR Models"
               url="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
-              source="Interspeech, 2024"
+              source="Interspeech"
+              year="2024"
               authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
             />
 
             <PublicationItem
               title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
               url="https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
-              source="Odyssey Workshop, 2024"
+              source="Odyssey Workshop"
+              year="2024"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
               url="https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf"
-              source="Interspeech, 2023"
+              source="Interspeech"
+              year="2023"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
 
             <PublicationItem
               title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
               url="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf"
-              source="Interspeech, 2022"
+              source="Interspeech"
+              year="2022"
               authors="<b>Theo Lepage</b> and Reda Dehak"
             />
           </Section>
@@ -743,6 +782,8 @@ const ResumePageComponent = () => {
                     "Python",
                     "C",
                     "C++",
+                    "CUDA",
+                    "Java",
                     "JavaScript",
                     "Bash",
                   ]}
@@ -756,6 +797,17 @@ const ResumePageComponent = () => {
                     "Scikit-learn",
                     "NumPy",
                     "Pandas",
+                  ]}
+                />
+
+                <SkillsSection
+                  title="Tools"
+                  items={[
+                    "Git",
+                    "LaTex",
+                    "Docker",
+                    "Slurm",
+                    "SQL"
                   ]}
                 />
 
