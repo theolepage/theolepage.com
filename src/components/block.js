@@ -84,7 +84,7 @@ const Header = styled.div`
 const Title = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
   color: var(--color-title);
 `;

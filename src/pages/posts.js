@@ -21,7 +21,7 @@ export const query = graphql`
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
-        excerpt
+        excerpt(pruneLength: 260)
         fields {
           slug
         }

@@ -6,7 +6,7 @@ import Status from "../components/status";
 import About from "../components/about";
 import Thesis from "../components/thesis";
 import Publications from "../components/publications";
-// import Posts from "../components/posts";
+import Posts from "../components/posts";
 import Projects from "../components/projects";
 import Talks from "../components/talks";
 import Teaching from "../components/teaching";
@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => {
       <About data={data.about} />
       <Thesis data={data.publications} />
       <Publications data={data.publications} />
-      {/* <Posts data={data.posts} /> */}
+      <Posts data={data.posts} />
       <Projects data={data.projects} />
       <Talks data={data.talks} />
       <Teaching data={data.teaching} />
@@ -127,7 +127,7 @@ export const query = graphql`
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
-        excerpt
+        excerpt(pruneLength: 260)
         fields {
           slug
         }

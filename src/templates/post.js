@@ -9,27 +9,31 @@ const ArticleHeader = styled.div`
 `;
 
 const ArticleTitle = styled.h1`
-  margin-bottom: 10px;
+  margin-top: 0 !important;
+  margin-bottom: 28px;
 
   font-size: 32px;
 `;
 
 const ArticleTags = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   margin-top: 20px;
   margin-bottom: 16px;
 `;
 
 const ArticleTag = styled.div`
-  margin-right: 8px;
+  margin: 0 8px 8px 0;
   padding: 4px 6px;
 
   font-size: 14px;
   color: rgb(40, 40, 40);
 
+  white-space: nowrap;
+
   background: rgb(242, 247, 255);
-  border: 1px solid rgb(218, 232, 255);
+  border: 1px solid rgb(200, 221, 255);
   border-radius: var(--border-radius);
 `;
 
@@ -46,14 +50,14 @@ const Navigation = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 `;
 
 const NavigationElement = styled.div`
   max-width: 45%;
 `;
 
-const PostTemplate = ({ data: { previous, next, markdownRemark: post } }) => {
+const PostTemplate = ({ data: { site, previous, next, markdownRemark: post } }) => {
   return (
     <Page title={post.frontmatter.title} description={post.excerpt}>
       <article className="post">
@@ -67,29 +71,31 @@ const PostTemplate = ({ data: { previous, next, markdownRemark: post } }) => {
             </ArticleTags>
           )}
           <ArticleDate>
-            {post.frontmatter.date} — {post.fields.readingTime.text}
+            {site.siteMetadata.author} • {post.frontmatter.date} • {post.fields.readingTime.text}
           </ArticleDate>
         </ArticleHeader>
 
         <ArticleBody dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
 
-      <Navigation>
-        <NavigationElement>
-          {previous && (
-            <Link to={"/" + previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </NavigationElement>
-        <NavigationElement>
-          {next && (
-            <Link to={"/" + next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </NavigationElement>
-      </Navigation>
+      {(previous || next) && (
+        <Navigation>
+          <NavigationElement>
+            {previous && (
+              <Link to={"/" + previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </NavigationElement>
+          <NavigationElement>
+            {next && (
+              <Link to={"/" + next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </NavigationElement>
+        </Navigation>
+      )}
     </Page>
   );
 };
@@ -105,11 +111,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        author
       }
     }
     markdownRemark(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
       html
       frontmatter {
         title

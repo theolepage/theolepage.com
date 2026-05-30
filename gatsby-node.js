@@ -37,7 +37,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = "posts" + createFilePath({ node, getNode });
+    const value = createFilePath({ node, getNode });
     createNodeField({ name: `slug`, node, value });
 
     // Check if this is a project with a GitHub URL
@@ -75,7 +75,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      posts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/posts/" } },
+        sort: { frontmatter: { date: ASC } },
+        limit: 1000
+      ) {
         nodes {
           id
           fields {
@@ -101,7 +105,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.nodes;
+  const posts = result.data.posts.nodes;
   const publications = result.data.publications.nodes;
 
   // Create blog post pages

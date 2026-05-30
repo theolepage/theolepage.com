@@ -7,8 +7,9 @@ const Post = ({ post }) => {
     <Block
       title={post.frontmatter.title}
       info={post.frontmatter.date}
-      url={"/" + post.fields.slug}
-      color={post.frontmatter.color}
+      url={post.fields.slug}
+      // color={post.frontmatter.color}
+      // headerAlignItems="center"
     >
       {post.excerpt}
     </Block>
