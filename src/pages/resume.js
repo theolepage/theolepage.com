@@ -153,10 +153,11 @@ const FloatingItem = styled.div`
 const Cols = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 42px;
 `;
 
 const Col = styled.div`
-  width: 330px;
+  flex: 1;
 `;
 
 const Footer = styled.div`
@@ -512,11 +513,15 @@ const PublicationItem = ({ title, url, source, year, authors }) => (
   </Item>
 );
 
-const ProjectItem = ({ name, url, description }) => (
+const ProjectItem = ({ name, url, description, icon }) => (
   <Item>
     <Subtitle>
       <Emphasize>
-        <Icon src="/images/resume/icons/icon-project.svg" alt="icon-project" />
+        <Icon
+          src={`/images/resume/icons/icon-${icon}.svg`}
+          alt="icon-project"
+          style={{position: "relative", top: "1px"}}
+        />
         <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
           {name}
         </a>
@@ -756,16 +761,26 @@ const ResumePageComponent = () => {
             <Cols>
               <Col>
                 <ProjectItem
+                  name="speakerscope.ai"
+                  url="https://speakerscope.ai/"
+                  icon="app"
+                  description="Speaker & language recognition service from the browser or via the API, powered by SOTA AI speech models, with free and pay-as-you-go plans. "
+                />
+              </Col>
+              <Col>
+                <ProjectItem
                   name="sslsv"
                   url="https://github.com/theolepage/sslsv"
-                  description="Deep learning toolkit based on PyTorch for training and evaluating self-supervised models for speaker verification and other speaker-related downstream tasks."
+                  icon="project"
+                  description="Deep learning toolkit based on PyTorch for training & evaluating self-supervised models for speaker verification and other speaker-related tasks."
                 />
               </Col>
               <Col>
                 <ProjectItem
                   name="wavlm_ssl_sv"
                   url="https://github.com/theolepage/wavlm_ssl_sv"
-                  description="Self-supervised iterative pseudo-labeling framework to fine-tune a speech foundation model (WavLM) from a DINO-based model for speaker verification, achieving SOTA performance."
+                  icon="project"
+                  description="Self-supervised framework to fine-tune WavLM for speaker verification via pseudo-labeling, without speaker labels, achieving SOTA on VoxCeleb1-O."
                 />
               </Col>
             </Cols>
