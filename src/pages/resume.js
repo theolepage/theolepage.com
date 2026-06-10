@@ -577,7 +577,7 @@ const ResumePageComponent = () => {
                 Introduced a latent-space positive sampling strategy (SSPS) → reducing intra-speaker variability (-58% EER for SimCLR)
               </li>
               <li>
-                Developed and maintained "sslsv", an open-source PyTorch toolkit for self-supervised speaker verification
+                Developed and maintained <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">sslsv</a>, an open-source PyTorch toolkit for self-supervised speaker verification
               </li>
               <li>
                 Teaching assistant at EPITA for "Intro to Deep Neural Networks"
@@ -632,9 +632,9 @@ const ResumePageComponent = () => {
                 Improved software reliability through refactoring and unit testing,
                 enabling open-source release
               </li>
-              <li>
+              {/* <li>
                 Co-founded the "Digital Holography" association to sustain ongoing development
-              </li>
+              </li> */}
             </ExperienceItem>
           </Section>
 
@@ -661,7 +661,10 @@ const ResumePageComponent = () => {
                 </a>)
               </li>
               <li>
-                Supervised by R. Dehak (LRE-EPITA) and T. Géraud (LRE-EPITA)
+                Advisors: R. Dehak (LRE-EPITA) and T. Géraud (LRE-EPITA)
+              </li>
+              <li>
+                Committee: J.-F. Bonastre, B. Lecouteux, D. Matrouf, I. Illina, A. Larcher, and D. Reynolds 
               </li>
             </EducationItem>
 
@@ -764,7 +767,7 @@ const ResumePageComponent = () => {
                   name="speakerscope.ai"
                   url="https://speakerscope.ai/"
                   icon="app"
-                  description="Speaker & language recognition service from the browser or via the API, powered by SOTA AI speech models, with free and pay-as-you-go plans. "
+                  description="Speaker diarization with identity and language insights, via browser or API, powered by SOTA AI speech models, with usage-based pricing."
                 />
               </Col>
               <Col>
