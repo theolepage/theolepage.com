@@ -20,6 +20,25 @@ const Container = styled.div`
 const Content = styled.div`
   p {
     margin-bottom: 0;
+
+    line-height: 1.8;
+    word-spacing: 2px;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 4px -3px 0;
+
+    border-radius: 3px;
+    object-fit: contain;
+  }
+
+  .nowrap {
+    display: inline-block;
+    text-align: left;
+    white-space: nowrap;
   }
 `;
 

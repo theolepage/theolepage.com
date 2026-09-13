@@ -5,23 +5,29 @@ import Page from "../components/page";
 import Status from "../components/status";
 import About from "../components/about";
 import Thesis from "../components/thesis";
+import Experience from "../components/experience";
+import Education from "../components/education";
 import Publications from "../components/publications";
 import Posts from "../components/posts";
 import Projects from "../components/projects";
 import Talks from "../components/talks";
 import Teaching from "../components/teaching";
+import Misc from "../components/misc";
 
 const IndexPage = ({ data }) => {
   return (
     <Page>
       <Status data={data.status} />
       <About data={data.about} />
-      <Thesis data={data.publications} />
+      {/* <Thesis data={data.publications} /> */}
+      <Experience data={data.experience} />
+      <Education data={data.education} />
       <Publications data={data.publications} />
-      <Posts data={data.posts} />
+      {/* <Posts data={data.posts} /> */}
       <Projects data={data.projects} />
-      <Talks data={data.talks} />
-      <Teaching data={data.teaching} />
+      {/* <Talks data={data.talks} /> */}
+      {/* <Teaching data={data.teaching} /> */}
+      <Misc data={data.misc} teaching={data.teaching} talks={data.talks} />
     </Page>
   );
 };
@@ -41,12 +47,65 @@ export const query = graphql`
       }
       html
     }
+    misc: markdownRemark(fileAbsolutePath: { regex: "/misc.md/" }) {
+      frontmatter {
+        skills {
+          category
+          items
+        }
+        academicService
+        awards
+        languages
+        interests {
+          icon
+          text
+        }
+      }
+    }
     status: markdownRemark(fileAbsolutePath: { regex: "/status.md/" }) {
       frontmatter {
         enabled
         message
         linkText
         linkTo
+      }
+    }
+    experience: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+      sort: { frontmatter: { order: ASC } }
+    ) {
+      nodes {
+        id
+        html
+        frontmatter {
+          title
+          company
+          companyUrl
+          location
+          date
+          image
+          internship
+          order
+        }
+      }
+    }
+    education: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/education/" } }
+      sort: { frontmatter: { order: ASC } }
+    ) {
+      nodes {
+        id
+        html
+        frontmatter {
+          institution
+          institutionUrl
+          image
+          degree
+          location
+          date
+          grade
+          order
+        }
       }
     }
     publications: allMarkdownRemark(
@@ -98,6 +157,7 @@ export const query = graphql`
       nodes {
         id
         frontmatter {
+          event
           name
           location
           date

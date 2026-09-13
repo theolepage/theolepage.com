@@ -3,11 +3,14 @@ import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 
 import Page from "../components/page";
+import LucideIcon from "../components/icon";
+
+const RESUME_FILENAME = "Theo_Lepage_Resume.pdf";
 
 // Global styles
 const globalStyles = css`
   body {
-    background-color: rgb(254, 254, 254);
+    background-color: rgb(252, 252, 252);
   }
 
   * {
@@ -20,22 +23,112 @@ const globalStyles = css`
   .resume img {
     margin-bottom: 0;
   }
+
+  @page {
+    margin: 0;
+    size: A4;
+  }
 `;
 
 // General Components
+const HEADER_HEIGHT = "52px";
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: ${HEADER_HEIGHT};
+
+  padding: 0 24px;
+
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.07);
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: var(--color-default);
+
+  @media print {
+    display: none;
+  }
+`;
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
+
+const downloadBarActionStyle = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+
+  color: var(--color-default);
+  text-decoration: none;
+
+  transition: var(--transition-duration) color;
+
+  &:hover {
+    color: var(--color-title);
+    text-decoration: none;
+  }
+`;
+
+const DownloadLink = styled.a`
+  ${downloadBarActionStyle}
+`;
+
+const PrintButton = styled.button`
+  ${downloadBarActionStyle}
+`;
+
 const ResumeContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 10mm;
-  gap: 10mm;
+  margin-top: ${HEADER_HEIGHT};
   font-family: "Open Sans", sans-serif;
 
   @media (max-width: 220mm) {
-    justify-content: flex-start;
-    padding: 0;
+    width: 100%;
+    overflow-x: auto;
   }
+
+  @media print {
+    display: block;
+    margin-top: 0;
+    overflow-x: visible;
+  }
+`;
+
+const ResumePagesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10mm;
+  padding: 10mm;
+
+  /*
+   * A scroll container drops its own end-side (right/bottom) padding from
+   * the scrollable area, so the padding lives on this overflowing child
+   * instead (width: max-content keeps its box exactly content-sized).
+   */
+  width: max-content;
 
   @media print {
     display: block;
@@ -362,7 +455,7 @@ const ResumeHeader = () => (
           Paris, France
         </a>
         {' '}
-        <Deemphasize>(open to relocation, EU & US)</Deemphasize>
+        <Deemphasize>(open to relocation EU/US)</Deemphasize>
       </ContactItem>
       <ContactItem>
         <a target="_blank" rel="nofollow noopener noreferrer" href="/">
@@ -374,10 +467,10 @@ const ResumeHeader = () => (
         <a
           target="_blank"
           rel="nofollow noopener noreferrer"
-          href="mailto:theo@theolepage.com"
+          href="mailto:contact@theolepage.com"
         >
           <Icon src="/images/resume/icons/icon-email.svg" alt="icon-email" />
-          theo@theolepage.com
+          contact@theolepage.com
         </a>
       </ContactItem>
       <ContactItem>
@@ -551,7 +644,21 @@ const ResumePageComponent = () => {
   return (
     <Page title="Resume" layout={false}>
       <Global styles={globalStyles} />
+      <Header>
+        {RESUME_FILENAME}
+        <HeaderActions>
+          <DownloadLink href="/resume.pdf" download={RESUME_FILENAME}>
+            <LucideIcon name="download" width={14} height={14} />
+            Download
+          </DownloadLink>
+          <PrintButton onClick={() => window.print()}>
+            <LucideIcon name="print" width={14} height={14} />
+            Print
+          </PrintButton>
+        </HeaderActions>
+      </Header>
       <ResumeContainer className="resume">
+        <ResumePagesWrapper>
         <ResumePage>
           <ResumeHeader />
 
@@ -871,6 +978,7 @@ const ResumePageComponent = () => {
             .
           </Footer>
         </ResumePage>
+        </ResumePagesWrapper>
       </ResumeContainer>
     </Page>
   );

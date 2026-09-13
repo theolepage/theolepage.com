@@ -12,8 +12,20 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [ ] "See all *" buttons -> links
-- [ ] Loading animation for /phd_thesis
+- [X] Home: hide Posts, Talks, Teaching, Thesis, Alert
+- [X] Publications: show max 3 recent items
+- [X] Home: simplify bio, change contact email, reorder contact links
+- [X] Resume: download PDF (test)
+- [X] About: institutions icons
+- [X] Home: Experience, Education, Misc
+
+- [ ] Projects: update, image
+    * add dlim, ocr, csd
+    * remove theolepage.com
+
+- [ ] Resume: fit one page
+    * Rename Datascience to ML & Data
+    * Rename Passions and interests -> Interests
 
 ---
 
@@ -30,4 +42,4 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [ ] Captions for figures and tables
     - https://annarossetti.com/
 
-- [ ] Search and pagination
+- [ ] Search/filters/sort + pagination

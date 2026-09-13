@@ -16,7 +16,15 @@ import {
   Check,
   Mail,
   BookText,
-  Share
+  Share,
+  Download,
+  Printer,
+  MapPin,
+  Calendar,
+  Award,
+  FlaskConical,
+  Bot,
+  Sailboat,
 } from "lucide-react";
 
 const Icons = {
@@ -36,6 +44,14 @@ const Icons = {
   email: Mail,
   book: BookText,
   share: Share,
+  download: Download,
+  print: Printer,
+  location: MapPin,
+  calendar: Calendar,
+  award: Award,
+  science: FlaskConical,
+  robotics: Bot,
+  sailing: Sailboat,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

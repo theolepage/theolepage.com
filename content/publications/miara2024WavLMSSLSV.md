@@ -8,7 +8,6 @@ source: "Interspeech 2024"
 year: 2024
 month: 9
 type: "conference"
-showcased: true
 bib_entries:
   pages: "2660--2664"
   doi: "10.21437/Interspeech.2024-486"
