@@ -12,23 +12,9 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [ ] Home: RS
-- [ ] Resume: fit one page
-    * Rename Data Science to ML & Data
-    * Rename Passions and interests -> Interests
-    * Put content of Interests on the right
-    * Remove one line per project desc
-    * Show only 3 publications
-    * Add publications stats in header of Publications
-    * Reduce content in Experience
-    * Reduce content in Education
-    * Remove experience icons
-    * Put GPA in education meta
-    * Remove static/images/resume
-
 ---
 
-- [ ] Design: handle light/dark themes
+- [ ] Handle light/dark themes
 
 - [ ] Search/filters/sort + pagination
 

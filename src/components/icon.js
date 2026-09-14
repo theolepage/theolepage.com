@@ -25,6 +25,10 @@ import {
   FlaskConical,
   Bot,
   Sailboat,
+  Globe,
+  Linkedin,
+  Github,
+  AppWindow,
 } from "lucide-react";
 
 const Icons = {
@@ -52,6 +56,11 @@ const Icons = {
   science: FlaskConical,
   robotics: Bot,
   sailing: Sailboat,
+  website: Globe,
+  linkedin: Linkedin,
+  github: Github,
+  app: AppWindow,
+  package: Package,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

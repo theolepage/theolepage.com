@@ -12,7 +12,7 @@
     "start": "gatsby develop",
     "prebuild": "node build/renderPublicationPreviews.mjs",
     "build": "gatsby build",
-    "postbuild": "node build/renderResumePdf.mjs",
+    "postbuild": "npx puppeteer browsers install chrome && node build/renderResumePdf.mjs",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write ."

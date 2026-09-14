@@ -143,20 +143,16 @@ const ResumePage = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 10mm;
+  gap: 8mm;
 
   position: relative;
   width: 210mm;
   height: 296mm;
-  padding: 14mm 12mm;
+  padding: 12mm 12mm;
   font-size: 12px;
   line-height: 1.45;
   background: #fff;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.07);
-
-  &:last-child {
-    justify-content: flex-start;
-  }
 
   @media print {
     box-shadow: none;
@@ -173,7 +169,7 @@ const Title = styled.div`
 `;
 
 const Item = styled.div`
-  margin-top: 16px;
+  margin-top: 12px;
 `;
 
 const Subtitle = styled.div`
@@ -181,10 +177,18 @@ const Subtitle = styled.div`
 `;
 
 const SubSubtitle = styled.div`
-  min-width: 70px;
+  flex-shrink: 0;
+  width: 100px;
 
   font-size: 10px;
   font-weight: 600;
+`;
+
+/* Narrower than SubSubtitle: "Skills" is alone in its column (no other
+   label to align with there), so it doesn't need the 100px reserved for
+   longer labels like "Academic Service" in the other column. */
+const SkillsLabel = styled(SubSubtitle)`
+  width: 40px;
 `;
 
 const Text = styled.div`
@@ -219,28 +223,84 @@ const Icon = styled.img`
   margin-right: 4px;
 `;
 
+const TitleIcon = styled(LucideIcon)`
+  position: relative;
+  top: 1px;
+  margin-right: 4px;
+`;
+
+const TitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const TitleNote = styled.div`
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+
+  ${Icon} {
+    position: relative;
+    top: 1px;
+  }
+`;
+
 const Label = styled.div`
   display: inline-block;
-  margin: 0 4px 0 0;
-  padding: 3px 4px 4px 4px;
+  margin: 0;
+  padding: 4px;
   font-size: 8px;
+  line-height: 1;
   border: 1px solid var(--border-color);
   border-radius: 4px;
 `;
 
-const FloatingItem = styled.div`
+const MiscRow = styled.div`
   display: flex;
   align-items: baseline;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-top: 10px;
+  min-height: 18px;
+`;
 
-  ${SubSubtitle} {
-    margin-right: 8px;
-  }
+const MiscContent = styled.div`
+  flex: 1;
 
-  /* Add margin to the first FloatingItem to create space after the title */
-  &:first-of-type {
-    margin-top: 16px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 8px;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+`;
+
+const MiscInterest = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+const SkillGroups = styled.div`
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const SkillGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 6px;
+`;
+
+const SkillGroupLabel = styled.span`
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 const Cols = styled.div`
@@ -261,7 +321,7 @@ const Footer = styled.div`
   }
 
   position: absolute;
-  bottom: 8mm;
+  bottom: 5mm;
   text-align: center;
   color: rgb(100, 100, 100);
   font-size: 9px;
@@ -277,7 +337,7 @@ const Name = styled.div`
 `;
 
 const Description = styled.div`
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 14px;
   line-height: 1.4em;
   font-family: "Questrial";
@@ -300,7 +360,7 @@ const DescriptionSeparator = styled.span`
 
 const Contact = styled.div`
   display: flex;
-  margin-top: 6px;
+  margin-top: 2px;
 `;
 
 const ContactItem = styled.div`
@@ -312,6 +372,12 @@ const ContactItem = styled.div`
     position: relative;
     top: 1px;
   }
+`;
+
+const ContactIcon = styled(LucideIcon)`
+  position: relative;
+  top: 1px;
+  margin-right: 4px;
 `;
 
 // Education Components
@@ -338,11 +404,18 @@ const Date = styled.div`
   margin-left: 16px;
 `;
 
-// Experience Components
-const Experience = styled.div`
+const Grade = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-left: 16px;
+`;
+
+const MetaIcon = styled(LucideIcon)`
+  margin-right: 4px;
+`;
+
+// Experience Components
+const Experience = styled.div`
   margin-top: 12px;
 `;
 
@@ -368,68 +441,34 @@ const ExperienceIcons = styled.div`
   }
 `;
 
-const ExperienceImage = styled.div`
-  width: 46px;
-  margin-left: 20px;
-  text-align: center;
-
-  img {
-    width: 100%;
-
-    border-radius: 4px;
-  }
-
-  /* Special case for CNRS logo */
-  img[alt="CNRS logo"] {
-    width: 80%;
-  }
-
-  /* Special case for LRE logo */
-  img[alt="EPITA Research Laboratory (LRE) logo"] {
-    width: 90%;
-  }
+// Publication Components
+const PublicationHeader = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
 `;
 
-// Publication Components
 const PublicationInfo = styled.div`
-  margin-top: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
 `;
 
 const PublicationSeparator = styled.span`
-  margin: 0 6px;
+  margin: 0 4px;
 
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 10px;
 `;
 
 const PublicationSource = styled.span`
   color: rgba(0, 0, 0, 0.8);
+  font-size: 11px;
 `;
 
 const PublicationYear = styled.span`
   color: rgba(0, 0, 0, 0.8);
-
   font-size: 11px;
-`;
-
-const PublicationAuthors = styled.span`
-  color: rgba(0, 0, 0, 0.5);
-
-  font-size: 11px;
-`;
-
-// Skills Components
-const Passion = styled.div`
-  display: inline-block;
-  margin: 6px 16px 0 0;
-  text-align: center;
-  font-size: 10px;
-`;
-
-const PassionIcon = styled(Icon)`
-  position: relative;
-  top: 2px;
-  width: 13px;
-  margin-right: 6px;
 `;
 
 const ResumeHeader = () => (
@@ -451,7 +490,7 @@ const ResumeHeader = () => (
           rel="nofollow noopener noreferrer"
           href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219"
         >
-          <Icon src="/images/resume/icons/icon-map_blue.svg" alt="icon-map" />
+          <ContactIcon name="location" width={10} height={10} color="#377dff" />
           Paris, France
         </a>
         {' '}
@@ -459,7 +498,7 @@ const ResumeHeader = () => (
       </ContactItem>
       <ContactItem>
         <a target="_blank" rel="nofollow noopener noreferrer" href="/">
-          <Icon src="/images/resume/icons/icon-website.svg" alt="icon-website" />
+          <ContactIcon name="website" width={10} height={10} color="#377dff" />
           theolepage.com
         </a>
       </ContactItem>
@@ -469,7 +508,7 @@ const ResumeHeader = () => (
           rel="nofollow noopener noreferrer"
           href="mailto:contact@theolepage.com"
         >
-          <Icon src="/images/resume/icons/icon-email.svg" alt="icon-email" />
+          <ContactIcon name="email" width={10} height={10} color="#377dff" />
           contact@theolepage.com
         </a>
       </ContactItem>
@@ -479,10 +518,7 @@ const ResumeHeader = () => (
           rel="nofollow noopener noreferrer"
           href="https://www.linkedin.com/in/theolepage/"
         >
-          <Icon
-            src="/images/resume/icons/icon-linkedin.svg"
-            alt="icon-linkedin"
-          />
+          <Icon src="/images/socials/icon-linkedin_blue.svg" alt="icon-linkedin" />
           Theo Lepage
         </a>
       </ContactItem>
@@ -492,10 +528,7 @@ const ResumeHeader = () => (
           rel="nofollow noopener noreferrer"
           href="https://github.com/theolepage/"
         >
-          <Icon
-            src="/images/resume/icons/icon-github.svg"
-            alt="icon-github"
-          />
+          <Icon src="/images/socials/icon-github_blue.svg" alt="icon-github" />
           theolepage
         </a>
       </ContactItem>
@@ -503,7 +536,14 @@ const ResumeHeader = () => (
   </HeaderSection>
 );
 
-const EducationItem = ({ institution, degree, location, date, children }) => (
+const EducationItem = ({
+  institution,
+  degree,
+  location,
+  date,
+  grade,
+  children,
+}) => (
   <Item>
     <Subtitle>
       <Emphasize>
@@ -519,19 +559,37 @@ const EducationItem = ({ institution, degree, location, date, children }) => (
     </Subtitle>
     <EducationIcons>
       <Location>
-        <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
+        <MetaIcon
+          name="location"
+          width={8}
+          height={8}
+          color="rgba(0, 0, 0, 0.5)"
+        />
         {location}
       </Location>
       <Date>
-        <Icon
-          src="/images/resume/icons/icon-calendar.svg"
-          alt="icon-calendar"
+        <MetaIcon
+          name="calendar"
+          width={8}
+          height={8}
+          color="rgba(0, 0, 0, 0.5)"
         />
         {date}
       </Date>
+      {grade && (
+        <Grade>
+          <MetaIcon
+            name="award"
+            width={8}
+            height={8}
+            color="rgba(0, 0, 0, 0.5)"
+          />
+          {grade}
+        </Grade>
+      )}
     </EducationIcons>
     <Text>
-      <ul>{children}</ul>
+      {children}
     </Text>
   </Item>
 );
@@ -542,7 +600,6 @@ const ExperienceItem = ({
   companyUrl,
   location,
   date,
-  image,
   internship,
   children,
 }) => (
@@ -561,48 +618,49 @@ const ExperienceItem = ({
         </Subtitle>
         <ExperienceIcons>
           <Location>
-            <Icon src="/images/resume/icons/icon-map.svg" alt="icon-map" />
+            <MetaIcon
+              name="location"
+              width={8}
+              height={8}
+              color="rgba(0, 0, 0, 0.5)"
+            />
             {location}
           </Location>
           <Date>
-            <Icon
-              src="/images/resume/icons/icon-calendar.svg"
-              alt="icon-calendar"
+            <MetaIcon
+              name="calendar"
+              width={8}
+              height={8}
+              color="rgba(0, 0, 0, 0.5)"
             />
             {date}
           </Date>
         </ExperienceIcons>
       </ExperienceHeader>
       <Text>
-        <ul>{children}</ul>
+        {children}
       </Text>
     </ExperienceContent>
-    <ExperienceImage>
-      <img src={image} alt={`${company} logo`} />
-    </ExperienceImage>
   </Experience>
 );
 
-const PublicationItem = ({ title, url, source, year, authors }) => (
+const PublicationItem = ({ title, url, source, year }) => (
   <Item>
-    <Subtitle>
-      <Emphasize>
-        <Icon
-          src="/images/resume/icons/icon-publication.svg"
-          alt="icon-publication"
-        />
-        <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
-          {title}
-        </a>
-      </Emphasize>
-    </Subtitle>
-    <PublicationInfo>
-      <PublicationSource>{source}</PublicationSource>
-      <PublicationSeparator>•</PublicationSeparator>
-      <PublicationYear>{year}</PublicationYear>
-      <PublicationSeparator>•</PublicationSeparator>
-      <PublicationAuthors dangerouslySetInnerHTML={{ __html: authors }} />
-    </PublicationInfo>
+    <PublicationHeader>
+      <Subtitle>
+        <Emphasize>
+          <TitleIcon name="publication" width={10} height={10} color="#4e4e4e" />
+          <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
+            {title}
+          </a>
+        </Emphasize>
+      </Subtitle>
+      <PublicationInfo>
+        <PublicationSource>{source}</PublicationSource>
+        <PublicationSeparator>•</PublicationSeparator>
+        <PublicationYear>{year}</PublicationYear>
+      </PublicationInfo>
+    </PublicationHeader>
   </Item>
 );
 
@@ -610,11 +668,7 @@ const ProjectItem = ({ name, url, description, icon }) => (
   <Item>
     <Subtitle>
       <Emphasize>
-        <Icon
-          src={`/images/resume/icons/icon-${icon}.svg`}
-          alt="icon-project"
-          style={{position: "relative", top: "1px"}}
-        />
+        <TitleIcon name={icon} width={10} height={10} color="#4e4e4e" />
         <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
           {name}
         </a>
@@ -622,22 +676,6 @@ const ProjectItem = ({ name, url, description, icon }) => (
     </Subtitle>
     <Text>{description}</Text>
   </Item>
-);
-
-const SkillsSection = ({ title, items }) => (
-  <FloatingItem>
-    <SubSubtitle>{title}</SubSubtitle>
-    {items.map((item, index) => (
-      <Label key={index}>{item}</Label>
-    ))}
-  </FloatingItem>
-);
-
-const PassionItem = ({ icon, text }) => (
-  <Passion>
-    <PassionIcon src={icon} alt={`icon-${text.toLowerCase()}`} />
-    {text}
-  </Passion>
 );
 
 const ResumePageComponent = () => {
@@ -659,325 +697,271 @@ const ResumePageComponent = () => {
       </Header>
       <ResumeContainer className="resume">
         <ResumePagesWrapper>
-        <ResumePage>
-          <ResumeHeader />
+          <ResumePage>
+            <ResumeHeader />
 
-          <Section>
-            <Title>Experience</Title>
+            <Section>
+              <Title>Experience</Title>
 
-            <ExperienceItem
-              title="Ph.D. Researcher"
-              company="EPITA Research Laboratory (LRE)"
-              companyUrl="https://www.lre.epita.fr/"
-              location="Paris, France"
-              date="Nov. 2022 - Feb. 2026"
-              image="/images/resume/epita.png"
-            >
-              <li>
-                Published 8 papers at top peer-reviewed venues
-                (IEEE TASLP, Speech Communication, Interspeech)
-              </li>
-              <li>
-                Proposed novel methods for self-supervised speaker recognition → SOTA performance (1.06% EER on VoxCeleb1-O)
-              </li>
-              <li>
-                Introduced a latent-space positive sampling strategy (SSPS) → reducing intra-speaker variability (-58% EER for SimCLR)
-              </li>
-              <li>
-                Developed and maintained <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">sslsv</a>, an open-source PyTorch toolkit for self-supervised speaker verification
-              </li>
-              <li>
-                Teaching assistant at EPITA for "Intro to Deep Neural Networks"
-                and "Python for Data Science" (2023-2025)
-              </li>
-              {/* <li>
-                Supervised an M.Eng. student, leading to a co-authored
-                publication (Interspeech 2024)
-              </li> */}
-            </ExperienceItem>
+              <ExperienceItem
+                title="Ph.D. Researcher"
+                company="EPITA Research Laboratory (LRE)"
+                companyUrl="https://www.lre.epita.fr/"
+                location="Paris, France"
+                date="Nov. 2022 - Feb. 2026"
+              >
+                Proposed self-supervised methods for speaker recognition • Published 8 papers at leading speech venues (Interspeech, IEEE TASLP) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf">DINO-WavLM</a> → SOTA performance on VoxCeleb (1.06% EER on Vox1-O) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2501.17772">SSPS</a> → latent-space positive sampling (-58% EER for SimCLR) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">sslsv</a> → open-source PyTorch toolkit for self-supervised speaker verification
+              </ExperienceItem>
 
-            <ExperienceItem
-              title="Research Scientist"
-              company="Siemens Healthineers"
-              companyUrl="https://www.siemens-healthineers.com/"
-              location="Princeton, USA"
-              date="Feb. 2022 - Sep. 2022"
-              image="/images/resume/shs.png"
-              internship
-            >
-              <li>
-                Developed deep learning models for end-to-end MR image enhancement
-                (denoising & super-resolution)
-              </li>
-              <li>
-                Designed a CNN architecture with attention mechanisms, improving reconstruction
-                quality over existing solutions
-              </li>
-              <li>
-                Explored generative approaches (GANs) to synthesize MR images for training data augmentation
-              </li>
-            </ExperienceItem>
+              <ExperienceItem
+                title="Research Scientist"
+                company="Siemens Healthineers"
+                companyUrl="https://www.siemens-healthineers.com/"
+                location="Princeton, USA"
+                date="Feb. 2022 - Sep. 2022"
+                internship
+              >
+                Developed deep learning models (CNN with self-attention) for end-to-end MR image enhancement (denoising & super-resolution)
+              </ExperienceItem>
 
-            <ExperienceItem
-              title="Software Engineer"
-              company="CNRS"
-              companyUrl="https://www.cnrs.fr/en"
-              location="Paris, France"
-              date="Sep. 2020 - Jan. 2021"
-              image="/images/resume/cnrs.png"
-              internship
-            >
-              <li>
-                Contributed to a real-time digital holography software (C++/CUDA) for
-                retinal blood flow analysis
-              </li>
-              <li>
-                Achieved a 20× speedup (500 → 10,000 FPS), significantly improving image
-                quality and contrast
-              </li>
-              <li>
-                Improved software reliability through refactoring and unit testing,
-                enabling open-source release
-              </li>
-              {/* <li>
-                Co-founded the "Digital Holography" association to sustain ongoing development
-              </li> */}
-            </ExperienceItem>
-          </Section>
+              <ExperienceItem
+                title="Software Engineer"
+                company="CNRS"
+                companyUrl="https://www.cnrs.fr/en"
+                location="Paris, France"
+                date="Sep. 2020 - Jan. 2021"
+                internship
+              >
+                Contributed to <a target="_blank" rel="nofollow noopener noreferrer" href="https://holovibes.com/">Holovibes</a>, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
+              </ExperienceItem>
+            </Section>
 
-          <Section>
-            <Title>Education</Title>
+            <Section>
+              <Title>Education</Title>
 
-            <EducationItem
-              institution={{
-                name: "Sorbonne Université",
-                url: "https://www.sorbonne-universite.fr/en",
-              }}
-              degree="Ph.D. in Artificial Intelligence"
-              location="Paris, France"
-              date="Nov. 2022 - Feb. 2026"
-            >
-              <li>
-                Thesis: "Self-Supervised Learning for Speaker Recognition"
-                (<a
+              <EducationItem
+                institution={{
+                  name: "Sorbonne Université",
+                  url: "https://www.sorbonne-universite.fr/en",
+                }}
+                degree="Ph.D. in Artificial Intelligence"
+                location="Paris, France"
+                date="Nov. 2022 - Feb. 2026"
+              >
+                Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA •{" "}
+                <a
                   target="_blank"
                   rel="nofollow noopener noreferrer"
                   href="https://theolepage.com/phd_thesis/"
                 >
-                  https://theolepage.com/phd_thesis
-                </a>)
-              </li>
-              <li>
-                Advisors: R. Dehak (LRE-EPITA) and T. Géraud (LRE-EPITA)
-              </li>
-              <li>
-                Committee: J.-F. Bonastre, B. Lecouteux, D. Matrouf, I. Illina, A. Larcher, and D. Reynolds 
-              </li>
-            </EducationItem>
+                  Learn more at /phd_thesis →
+                </a>
+              </EducationItem>
 
-            <EducationItem
-              institution={{
-                name: "École Pour l'Informatique et les Techniques Avancées - EPITA",
-                url: "https://www.epita.fr/en/",
-              }}
-              degree="M.Eng. in Computer Science"
-              location="Paris, France"
-              date="Sep. 2017 - Sep. 2022"
-            >
-              <li>
-                Major: Signal Processing, Computer Vision, Machine Learning & Deep Learning  (GPA: 3.9/4.0)
-              </li>
-              <li>
-                Research student (supervised by R. Dehak); Teaching assistant (Unix, C, Rust); Exchange semester at CSUMB (Spring 2019) 
-              </li>
-            </EducationItem>
-          </Section>
+              <EducationItem
+                institution={{
+                  name: "École Pour l'Informatique et les Techniques Avancées - EPITA",
+                  url: "https://www.epita.fr/en/",
+                }}
+                degree="M.Eng. in Computer Science"
+                location="Paris, France"
+                date="Sep. 2017 - Sep. 2022"
+                grade="GPA: 3.9/4.0"
+              >
+                Major: AI/ML for Computer Vision • Research student @ LRDE (<a target="_blank"
+                  rel="nofollow noopener noreferrer" href="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf">IS2022</a>) • Teaching assistant (C & Unix) • Exchange semester at CSUMB
+              </EducationItem>
+            </Section>
 
-          <Section>
-            <Title>Publications</Title>
+            <Section>
+              <TitleRow>
+                <Title>Publications</Title>
+                <TitleNote>
+                  Selected first-author articles •
+                  Full list on{" "}
+                  <a
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    href="https://scholar.google.com/citations?user=q1MqhVgAAAAJ"
+                  >
+                    <Icon
+                      src="/images/socials/icon-scholar.png"
+                      alt="icon-scholar"
+                      style={{marginLeft: 2}}
+                    />
+                    Google Scholar
+                  </a>
+                </TitleNote>
+              </TitleRow>
 
-            <PublicationItem
-              title="Self-Supervised Learning for Speaker Recognition: A study and review"
-              url="https://arxiv.org/pdf/2602.10829"
-              source="Speech Communication"
-              year="2026"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
+              <PublicationItem
+                title="Self-Supervised Learning for Speaker Recognition: A study and review"
+                url="https://arxiv.org/pdf/2602.10829"
+                source="Speech Comm."
+                year="2026"
+              />
 
-            <PublicationItem
-              title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
-              url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
-              source="Interspeech"
-              year="2025"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
+              <PublicationItem
+                title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
+                url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
+                source="Interspeech"
+                year="2025"
+              />
 
-            <PublicationItem
-              title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
-              url="https://arxiv.org/pdf/2501.17772"
-              source="IEEE TASLP"
-              year="2025"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
+              <PublicationItem
+                title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
+                url="https://arxiv.org/pdf/2501.17772"
+                source="IEEE TASLP"
+                year="2025"
+              />
+            </Section>
 
-            <PublicationItem
-              title="Exploring WavLM Back-ends for Speech Spoofing and Deepfake Detection"
-              url="https://www.isca-archive.org/asvspoof_2024/stourbe24_asvspoof.pdf"
-              source="ASVspoof Workshop"
-              year="2024"
-              authors="Theophile Stourbe, Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
-            />
-          </Section>
-        </ResumePage>
+            <Section>
+              <Title>Projects</Title>
 
-        <ResumePage>
-          <Section>
-            <PublicationItem
-              title="Towards Supervised Performance on Speaker Verification with SSL by Leveraging Large-Scale ASR Models"
-              url="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf"
-              source="Interspeech"
-              year="2024"
-              authors="Victor Miara, <b>Theo Lepage</b>, and Reda Dehak"
-            />
-
-            <PublicationItem
-              title="Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations"
-              url="https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf"
-              source="Odyssey Workshop"
-              year="2024"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
-
-            <PublicationItem
-              title="Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification"
-              url="https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf"
-              source="Interspeech"
-              year="2023"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
-
-            <PublicationItem
-              title="Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning"
-              url="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf"
-              source="Interspeech"
-              year="2022"
-              authors="<b>Theo Lepage</b> and Reda Dehak"
-            />
-          </Section>
-
-          <Section>
-            <Title>Projects</Title>
-
-            <Cols>
-              <Col>
-                <ProjectItem
-                  name="speakerscope.ai"
-                  url="https://speakerscope.ai/"
-                  icon="app"
-                  description="Speaker diarization with identity and language insights, via browser or API, powered by SOTA AI speech models, with usage-based pricing."
-                />
-              </Col>
-              <Col>
-                <ProjectItem
-                  name="sslsv"
-                  url="https://github.com/theolepage/sslsv"
-                  icon="project"
-                  description="Deep learning toolkit based on PyTorch for training & evaluating self-supervised models for speaker verification and other speaker-related tasks."
-                />
-              </Col>
-              <Col>
-                <ProjectItem
-                  name="wavlm_ssl_sv"
-                  url="https://github.com/theolepage/wavlm_ssl_sv"
-                  icon="project"
-                  description="Self-supervised framework to fine-tune WavLM for speaker verification via pseudo-labeling, without speaker labels, achieving SOTA on VoxCeleb1-O."
-                />
-              </Col>
-            </Cols>
-          </Section>
-
-          <Section>
-            <Title>Skills & Interests</Title>
-
-            <Cols>
-              <Col>
-                <SkillsSection
-                  title="Programming"
-                  items={[
-                    "Python",
-                    "C",
-                    "C++",
-                    "CUDA",
-                    "Java",
-                    "JavaScript",
-                    "Bash",
-                  ]}
-                />
-
-                <SkillsSection
-                  title="Data Science"
-                  items={[
-                    "PyTorch",
-                    "TensorFlow",
-                    "Scikit-learn",
-                    "NumPy",
-                    "Pandas",
-                  ]}
-                />
-
-                <SkillsSection
-                  title="Tools"
-                  items={[
-                    "Git",
-                    "LaTex",
-                    "Docker",
-                    "Slurm",
-                    "SQL"
-                  ]}
-                />
-
-                {/* <SkillsSection
-                  title="Certificates"
-                  items={["Driving license", "Sailing instructor diploma"]}
-                /> */}
-              </Col>
-              <Col>
-                <SkillsSection
-                  title="Languages"
-                  items={["English (TOEIC 905)", "French (native)"]}
-                />
-
-                <Item>
-                  <SubSubtitle>Passions and interests</SubSubtitle>
-                  <PassionItem
-                    icon="/images/resume/icons/icon-science.svg"
-                    text="Science and AI"
+              <Cols>
+                <Col>
+                  <ProjectItem
+                    name="speakerscope.ai"
+                    url="https://speakerscope.ai/"
+                    icon="app"
+                    description="Speaker diarization with identity and language insights, via browser or API, powered by SOTA AI speech models."
                   />
-                  <PassionItem
-                    icon="/images/resume/icons/icon-robotics.svg"
-                    text="Robotics"
+                </Col>
+                <Col>
+                  <ProjectItem
+                    name="sslsv"
+                    url="https://github.com/theolepage/sslsv"
+                    icon="package"
+                    description="Deep learning toolkit based on PyTorch for training & evaluating self-supervised models for speaker verification."
                   />
-                  <PassionItem
-                    icon="/images/resume/icons/icon-wave.svg"
-                    text="Sailing & windsurfing"
+                </Col>
+                <Col>
+                  <ProjectItem
+                    name="wavlm_ssl_sv"
+                    url="https://github.com/theolepage/wavlm_ssl_sv"
+                    icon="package"
+                    description="Self-supervised framework to fine-tune WavLM for speaker verification, without labels, achieving SOTA on VoxCeleb."
                   />
-                </Item>
-              </Col>
-            </Cols>
-          </Section>
+                </Col>
+              </Cols>
+            </Section>
 
-          <Footer>
-            An up-to-date version of this document is available at{" "}
-            <a
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              href="https://theolepage.com/resume"
-            >
-              theolepage.com/resume
-            </a>
-            .
-          </Footer>
-        </ResumePage>
+            <Section>
+              <Title>Miscellaneous</Title>
+
+              <Cols>
+                <Col>
+                  <MiscRow>
+                    <SkillsLabel>Skills</SkillsLabel>
+                    <SkillGroups>
+                      <SkillGroup>
+                        <SkillGroupLabel>AI/ML:</SkillGroupLabel>
+                        <Label>PyTorch</Label>
+                        <Label>TensorFlow</Label>
+                        <Label>Scikit-learn</Label>
+                        <Label>NumPy</Label>
+                        <Label>Pandas</Label>
+                      </SkillGroup>
+
+                      <SkillGroup>
+                        <SkillGroupLabel>Programming:</SkillGroupLabel>
+                        <Label>Python</Label>
+                        <Label>C</Label>
+                        <Label>C++</Label>
+                        <Label>CUDA</Label>
+                        <Label>JavaScript</Label>
+                        <Label>Bash</Label>
+                      </SkillGroup>
+
+                      <SkillGroup>
+                        <SkillGroupLabel>Tools:</SkillGroupLabel>
+                        <Label>Git</Label>
+                        <Label>LaTex</Label>
+                        <Label>Docker</Label>
+                        <Label>Slurm</Label>
+                        <Label>SQL</Label>
+                      </SkillGroup>
+
+                      <SkillGroup>
+                        <SkillGroupLabel>Languages:</SkillGroupLabel>
+                        <Label>English (fluent)</Label>
+                        <Label>French (native)</Label>
+                      </SkillGroup>
+                    </SkillGroups>
+                  </MiscRow>
+                </Col>
+
+                <Col>
+                  <MiscRow>
+                    <SubSubtitle>Teaching</SubSubtitle>
+                    <MiscContent>
+                      Introduction to Deep Neural Networks<br />
+                      Python for Data Science
+                      <Deemphasize>(2023 - 2025 @ EPITA)</Deemphasize>
+                    </MiscContent>
+                  </MiscRow>
+
+                  <MiscRow>
+                    <SubSubtitle>Awards</SubSubtitle>
+                    <MiscContent>3rd place @ ASVspoof 5 (Track 1)</MiscContent>
+                  </MiscRow>
+
+                  <MiscRow>
+                    <SubSubtitle>Academic Service</SubSubtitle>
+                    <MiscContent>Reviewer for Interspeech</MiscContent>
+                  </MiscRow>
+                </Col>
+              </Cols>
+
+              {/*
+              <MiscRow>
+                <SubSubtitle>Interests</SubSubtitle>
+                <MiscContent>
+                  <MiscInterest>
+                    <LucideIcon
+                      name="science"
+                      width={12}
+                      height={12}
+                      color="#70ba59"
+                    />
+                    Science
+                  </MiscInterest>
+                  <MiscInterest>
+                    <LucideIcon
+                      name="robotics"
+                      width={12}
+                      height={12}
+                      color="#f0655b"
+                    />
+                    Robotics
+                  </MiscInterest>
+                  <MiscInterest>
+                    <LucideIcon
+                      name="sailing"
+                      width={12}
+                      height={12}
+                      color="#377dff"
+                    />
+                    Sailing
+                  </MiscInterest>
+                </MiscContent>
+              </MiscRow>
+              */}
+            </Section>
+
+            <Footer>
+              Up-to-date document at{" "}
+              <a
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                href="https://theolepage.com/resume"
+              >
+                theolepage.com/resume
+              </a>
+              .
+            </Footer>
+          </ResumePage>
         </ResumePagesWrapper>
       </ResumeContainer>
     </Page>
