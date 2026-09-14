@@ -24,10 +24,6 @@ const Logo = styled.img`
 
   object-fit: contain;
   border-radius: 4px;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
 `;
 
 const Content = styled.div`
@@ -46,8 +42,8 @@ const Title = styled.div`
 
 const Meta = styled.div`
   display: flex;
-  flex-shrink: 0;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 4px 14px;
 
   font-size: var(--size-small);
   color: var(--color-muted-2);
@@ -55,8 +51,11 @@ const Meta = styled.div`
 
 const MetaItem = styled.span`
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 4px;
+
+  white-space: nowrap;
 `;
 
 const Details = styled.div`

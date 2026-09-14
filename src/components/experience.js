@@ -24,10 +24,6 @@ const Logo = styled.img`
 
   object-fit: contain;
   border-radius: 4px;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
 `;
 
 const Content = styled.div`

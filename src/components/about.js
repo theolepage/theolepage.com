@@ -29,7 +29,7 @@ const Content = styled.div`
     display: inline-block;
     width: 18px;
     height: 18px;
-    margin: 0 4px -3px 0;
+    margin: 0 6px -3px 3px;
 
     border-radius: 3px;
     object-fit: contain;

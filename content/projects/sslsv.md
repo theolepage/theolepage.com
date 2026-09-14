@@ -6,6 +6,6 @@ target: "/posts/sslsv_a_pytorch_toolkit_for_self_supervised_speaker_verification
 color: "#5fe3c2"
 order: 2
 showcased: true
-image: "https://raw.githubusercontent.com/theolepage/sslsv/refs/heads/main/logo.png"
+image: "/images/projects/sslsv.png"
 imagePadding: 60
 ---

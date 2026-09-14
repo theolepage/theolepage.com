@@ -42,6 +42,10 @@ const Row = styled.div`
   }
 `;
 
+const MoreRow = styled(Row)`
+  margin-top: calc(var(--element-spacing) * 1.2);
+`;
+
 const RowLabel = styled.div`
   flex-shrink: 0;
   width: 150px;
@@ -108,10 +112,27 @@ const Pill = styled.span`
   border-radius: var(--border-radius);
 `;
 
-const Separator = styled.span`
-  margin: 0 8px;
+const EntryList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
-  color: var(--color-muted-2);
+  /* Above this width, flow entries inline with a separator instead of
+     stacking them one per line (which is reserved for smaller screens). */
+  @media (min-width: 801px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 4px;
+    column-gap: 0;
+
+    /* Attached to the end of the preceding entry (not the start of the
+       next) so a wrapped line never begins with an orphaned separator. */
+    > *:not(:last-of-type)::after {
+      content: "•";
+      margin: 0 8px;
+      color: var(--color-muted-2);
+    }
+  }
 `;
 
 const Interests = styled.div`
@@ -124,13 +145,6 @@ const Interest = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-`;
-
-const Footnote = styled.div`
-  margin-top: calc(var(--element-spacing) * 1.2);
-
-  font-size: var(--size-small);
-  color: var(--color-muted-1);
 `;
 
 const formatList = (items) => {
@@ -149,9 +163,9 @@ const INTEREST_ICON_COLORS = {
 
 const formatTeachingDate = ({ semester, startYear, endYear }) => {
   if (startYear === endYear) {
-    return `${semester} ${startYear}`;
+    return `${startYear}`;
   }
-  return `${semester} ${startYear} - ${endYear}`;
+  return `${startYear} - ${endYear}`;
 };
 
 const formatTalkDate = (date) => {
@@ -218,54 +232,43 @@ const Misc = ({ data, teaching, talks, posts }) => {
       <Row>
         <RowLabel>Teaching</RowLabel>
         <RowContent>
-          <div>
-            {allTeaching.map((course, i) => {
+          <EntryList>
+            {allTeaching.map((course) => {
               const { name, location } = course.frontmatter;
               const label = `${name} (${formatTeachingDate(course.frontmatter)} @ ${location})`;
-              return (
-                <React.Fragment key={course.id}>
-                  {i > 0 && <Separator>•</Separator>}
-                  {label}
-                </React.Fragment>
-              );
+              return <div key={course.id}>{label}</div>;
             })}
-          </div>
+          </EntryList>
         </RowContent>
       </Row>
 
       <Row>
         <RowLabel>Talks</RowLabel>
         <RowContent>
-          <div>
-            {recentTalks.map((talk, i) => {
+          <EntryList>
+            {recentTalks.map((talk) => {
               const { event, date } = talk.frontmatter;
               const label = `${event} (${formatTalkDate(date)})`;
-              return (
-                <React.Fragment key={talk.id}>
-                  {i > 0 && <Separator>•</Separator>}
-                  {label}
-                </React.Fragment>
-              );
+              return <div key={talk.id}>{label}</div>;
             })}
-            <Separator>•</Separator>
-            <Link to="/talks">See all talks →</Link>
-          </div>
+            <div>
+              <Link to="/talks">See all talks →</Link>
+            </div>
+          </EntryList>
         </RowContent>
       </Row>
 
       <Row>
         <RowLabel>Posts</RowLabel>
         <RowContent>
-          <div>
-            {recentPosts.map((post, i) => (
-              <React.Fragment key={post.id}>
-                {i > 0 && <Separator>•</Separator>}
-                {post.frontmatter.title}
-              </React.Fragment>
+          <EntryList>
+            {recentPosts.map((post) => (
+              <div key={post.id}>{post.frontmatter.title}</div>
             ))}
-            <Separator>•</Separator>
-            <Link to="/posts">See all posts →</Link>
-          </div>
+            <div>
+              <Link to="/posts">See all posts →</Link>
+            </div>
+          </EntryList>
         </RowContent>
       </Row>
       </FullWidthRows>
@@ -332,11 +335,20 @@ const Misc = ({ data, teaching, talks, posts }) => {
       )}
 
       {hiddenSections.length > 0 && (
-        <Footnote>
-          {formatList(hiddenSections)}{" "}
-          {hiddenSections.length === 1 ? "is" : "are"} listed in my{" "}
-          <Link to="/resume">resume</Link>.
-        </Footnote>
+        <MoreRow>
+          <RowLabel>More</RowLabel>
+          <RowContent>
+            <span>
+              {formatList(
+                hiddenSections.map((label, i) =>
+                  i === 0 ? label : label.toLowerCase()
+                )
+              )}{" "}
+              {hiddenSections.length === 1 ? "is" : "are"} listed in my{" "}
+              <Link to="/resume">resume</Link>.
+            </span>
+          </RowContent>
+        </MoreRow>
       )}
     </Section>
   );

@@ -12,23 +12,6 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [X] Home: hide Posts, Talks, Teaching, Thesis, Alert
-- [X] Publications: show max 3 recent items
-- [X] Home: simplify bio, change contact email, reorder contact links
-- [X] Resume: download PDF (test)
-- [X] About: institutions icons
-- [X] Home: Experience, Education, Misc
-- [X] Projects: update, image
-
-- [X] Placeholder alt
-- [X] Create image for ssl-for-slr
-- [X] Create image for prophecy
-- [X] Order projects
-- [X] sslsv project -> blog post
-- [X] Hover transition publication
-- [X] Misc: hide secondary attributes, add posts, ref to resume 
-- [ ] Deploy + test
-
 - [ ] Home: RS
 - [ ] Resume: fit one page
     * Rename Data Science to ML & Data
@@ -47,6 +30,8 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 - [ ] Design: handle light/dark themes
 
+- [ ] Search/filters/sort + pagination
+
 - [ ] Blog
     - [ ] Comments
     - [ ] Code
@@ -57,5 +42,3 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [ ] Blockquotes
     - [ ] Captions for figures and tables
     - https://annarossetti.com/
-
-- [ ] Search/filters/sort + pagination

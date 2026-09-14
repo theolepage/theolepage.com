@@ -5,6 +5,6 @@ url: "https://github.com/theolepage/wavlm_ssl_sv"
 color: "#8877f4"
 order: 3
 showcased: true
-image: "https://raw.githubusercontent.com/theolepage/wavlm_ssl_sv/refs/heads/main/training_framework.svg"
+image: "/images/projects/wavlm_ssl_sv.svg"
 imagePadding: 4
 ---
