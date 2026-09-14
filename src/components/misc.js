@@ -126,6 +126,20 @@ const Interest = styled.span`
   gap: 6px;
 `;
 
+const Footnote = styled.div`
+  margin-top: calc(var(--element-spacing) * 1.2);
+
+  font-size: var(--size-small);
+  color: var(--color-muted-1);
+`;
+
+const formatList = (items) => {
+  if (items.length === 0) return "";
+  if (items.length === 1) return items[0];
+  if (items.length === 2) return items.join(" and ");
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+};
+
 // Same colors as the resume's interest icons (icon-science.svg, icon-robotics.svg, icon-wave.svg)
 const INTEREST_ICON_COLORS = {
   science: "#70ba59",
@@ -145,23 +159,47 @@ const formatTalkDate = (date) => {
   return `${parsed.toLocaleDateString("en-US", { month: "short" })}. ${parsed.getFullYear()}`;
 };
 
-const Misc = ({ data, teaching, talks }) => {
+const Misc = ({ data, teaching, talks, posts }) => {
   const {
     skills,
     languages,
     interests,
     academicService,
     awards,
+    showSkills,
+    showAcademicService,
+    showAwards,
+    showLanguages,
+    showInterests,
   } = data.frontmatter;
+
+  const displaySkills = showSkills !== false;
+  const displayAcademicService = showAcademicService !== false;
+  const displayAwards = showAwards !== false;
+  const displayLanguages = showLanguages !== false;
+  const displayInterests = showInterests !== false;
+
+  const showLeftColumn = displayAcademicService || displayAwards;
+  const showRightColumn = displayLanguages || displayInterests;
+
+  const hiddenSections = [
+    !displaySkills && "Skills",
+    !displayAcademicService && "Academic Service",
+    !displayAwards && "Awards",
+    !displayLanguages && "Languages",
+    !displayInterests && "Interests",
+  ].filter(Boolean);
 
   const allTeaching = teaching.nodes;
   const recentTalks = [...talks.nodes]
     .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
     .slice(0, 3);
+  const recentPosts = posts.nodes.slice(0, 3);
 
   return (
     <Section title="Miscellaneous">
       <FullWidthRows>
+      {displaySkills && (
       <Row>
         <RowLabel>Skills</RowLabel>
         <SkillsContent>
@@ -175,6 +213,7 @@ const Misc = ({ data, teaching, talks }) => {
           ))}
         </SkillsContent>
       </Row>
+      )}
 
       <Row>
         <RowLabel>Teaching</RowLabel>
@@ -213,22 +252,47 @@ const Misc = ({ data, teaching, talks }) => {
           </div>
         </RowContent>
       </Row>
+
+      <Row>
+        <RowLabel>Posts</RowLabel>
+        <RowContent>
+          <div>
+            {recentPosts.map((post, i) => (
+              <React.Fragment key={post.id}>
+                {i > 0 && <Separator>•</Separator>}
+                {post.frontmatter.title}
+              </React.Fragment>
+            ))}
+            <Separator>•</Separator>
+            <Link to="/posts">See all posts →</Link>
+          </div>
+        </RowContent>
+      </Row>
       </FullWidthRows>
 
+      {(showLeftColumn || showRightColumn) && (
       <Columns>
+        {showLeftColumn && (
         <Column>
+          {displayAcademicService && (
           <Row>
             <RowLabel>Academic Service</RowLabel>
             <RowContent>{academicService}</RowContent>
           </Row>
+          )}
 
+          {displayAwards && (
           <Row>
             <RowLabel>Awards</RowLabel>
             <RowContent>{awards}</RowContent>
           </Row>
+          )}
         </Column>
+        )}
 
+        {showRightColumn && (
         <Column>
+          {displayLanguages && (
           <Row>
             <RowLabel>Languages</RowLabel>
             <RowContent>
@@ -239,7 +303,9 @@ const Misc = ({ data, teaching, talks }) => {
               </Pills>
             </RowContent>
           </Row>
+          )}
 
+          {displayInterests && (
           <Row>
             <RowLabel>Interests</RowLabel>
             <RowContent>
@@ -259,8 +325,19 @@ const Misc = ({ data, teaching, talks }) => {
               </Interests>
             </RowContent>
           </Row>
+          )}
         </Column>
+        )}
       </Columns>
+      )}
+
+      {hiddenSections.length > 0 && (
+        <Footnote>
+          {formatList(hiddenSections)}{" "}
+          {hiddenSections.length === 1 ? "is" : "are"} listed in my{" "}
+          <Link to="/resume">resume</Link>.
+        </Footnote>
+      )}
     </Section>
   );
 };

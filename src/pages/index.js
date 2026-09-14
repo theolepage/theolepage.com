@@ -27,7 +27,12 @@ const IndexPage = ({ data }) => {
       <Projects data={data.projects} />
       {/* <Talks data={data.talks} /> */}
       {/* <Teaching data={data.teaching} /> */}
-      <Misc data={data.misc} teaching={data.teaching} talks={data.talks} />
+      <Misc
+        data={data.misc}
+        teaching={data.teaching}
+        talks={data.talks}
+        posts={data.posts}
+      />
     </Page>
   );
 };
@@ -60,6 +65,11 @@ export const query = graphql`
           icon
           text
         }
+        showSkills
+        showAcademicService
+        showAwards
+        showLanguages
+        showInterests
       }
     }
     status: markdownRemark(fileAbsolutePath: { regex: "/status.md/" }) {
@@ -132,14 +142,17 @@ export const query = graphql`
     }
     projects: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { frontmatter: { order: ASC } }
     ) {
       nodes {
         id
         frontmatter {
           name
           description
+          image
+          imagePadding
+          imagePosition
           url
+          target
           color
           order
           showcased
@@ -187,6 +200,7 @@ export const query = graphql`
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
+        id
         excerpt(pruneLength: 260)
         fields {
           slug

@@ -18,14 +18,17 @@ export const query = graphql`
   {
     projects: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { frontmatter: { order: ASC } }
     ) {
       nodes {
         id
         frontmatter {
           name
           description
+          image
+          imagePadding
+          imagePosition
           url
+          target
           color
           order
           showcased

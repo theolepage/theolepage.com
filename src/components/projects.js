@@ -35,10 +35,31 @@ const GithubIcon = styled.div`
   mask: url(/images/socials/icon-github.png) no-repeat center / contain;
 `;
 
-const Projects = ({ data, listing }) => {
-  const projects = data.nodes.filter((project) => {
-    return listing || project.frontmatter.showcased === true;
+// Explicit `order` takes priority (ascending) over everything else;
+// projects without an `order` fall back to the GitHub repo's last push
+// date (most recently active first).
+const sortProjects = (projects) =>
+  [...projects].sort((a, b) => {
+    const { order: orderA } = a.frontmatter;
+    const { order: orderB } = b.frontmatter;
+
+    if (orderA != null || orderB != null) {
+      if (orderA == null) return 1;
+      if (orderB == null) return -1;
+      return orderA - orderB;
+    }
+
+    const pushedAtA = a.fields?.githubPushedAt;
+    const pushedAtB = b.fields?.githubPushedAt;
+    return new Date(pushedAtB) - new Date(pushedAtA);
   });
+
+const Projects = ({ data, listing }) => {
+  const projects = sortProjects(
+    data.nodes.filter((project) => {
+      return listing || project.frontmatter.showcased === true;
+    })
+  );
 
   return (
     <Section title="Projects">

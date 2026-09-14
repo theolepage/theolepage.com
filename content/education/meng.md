@@ -1,7 +1,7 @@
 ---
 institution: "École Pour l'Informatique et les Techniques Avancées - EPITA"
 institutionUrl: "https://www.epita.fr/en/"
-image: "/images/resume/epita_v2.jpg"
+image: "/images/resume/epita.png"
 degree: "M.Eng. in Computer Science"
 location: "Paris, France"
 date: "Sep. 2017 - Sep. 2022"

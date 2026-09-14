@@ -1,4 +1,9 @@
 ---
+showSkills: false
+showAcademicService: false
+showAwards: false
+showLanguages: false
+showInterests: false
 skills:
   - category: "ML & Data"
     items: ["PyTorch", "TensorFlow", "Scikit-learn", "NumPy", "Pandas"]

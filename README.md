@@ -18,14 +18,30 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 - [X] Resume: download PDF (test)
 - [X] About: institutions icons
 - [X] Home: Experience, Education, Misc
+- [X] Projects: update, image
 
-- [ ] Projects: update, image
-    * add dlim, ocr, csd
-    * remove theolepage.com
+- [X] Placeholder alt
+- [X] Create image for ssl-for-slr
+- [X] Create image for prophecy
+- [X] Order projects
+- [X] sslsv project -> blog post
+- [X] Hover transition publication
+- [X] Misc: hide secondary attributes, add posts, ref to resume 
+- [ ] Deploy + test
 
+- [ ] Home: RS
 - [ ] Resume: fit one page
-    * Rename Datascience to ML & Data
+    * Rename Data Science to ML & Data
     * Rename Passions and interests -> Interests
+    * Put content of Interests on the right
+    * Remove one line per project desc
+    * Show only 3 publications
+    * Add publications stats in header of Publications
+    * Reduce content in Experience
+    * Reduce content in Education
+    * Remove experience icons
+    * Put GPA in education meta
+    * Remove static/images/resume
 
 ---
 

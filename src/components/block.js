@@ -58,7 +58,7 @@ const Image = styled.div`
 
   &:hover {
     box-shadow: var(--shadow-hover);
-    transform: scale(1.05);
+    transform: translateY(-2px);
   }
 
   img {
@@ -130,7 +130,7 @@ const Block = ({
   headerAlignItems = "baseline",
 }) => {
   const body = (
-    <BlockElement hover={url} border={border}>
+    <BlockElement hover={url && !image} border={border}>
       <BlockContainer>
         {image && (
           <Link to={imageActionUrl} invisible>
