@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Icon from "./icon";
 import Link from "./link";
+import { RESOURCE_ICONS } from "./resourceActions";
 
 const FullWidthRows = styled.div`
   display: flex;
@@ -137,6 +138,34 @@ const Interest = styled.span`
   gap: 6px;
 `;
 
+const EntryResourceIcons = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+`;
+
+const EntryResources = ({ resources }) => {
+  if (!resources || resources.length === 0) return null;
+
+  return (
+    <EntryResourceIcons>
+      {resources.map((resource) => (
+        <Link
+          key={resource.name}
+          to={resource.url}
+          external
+          variant="secondary"
+          title={resource.name}
+        >
+          <Icon name={RESOURCE_ICONS[resource.name]} width={12} height={12} />
+        </Link>
+      ))}
+    </EntryResourceIcons>
+  );
+};
+
 // Same colors as the resume's interest icons (icon-science.svg, icon-robotics.svg, icon-wave.svg)
 const INTEREST_ICON_COLORS = {
   science: "#70ba59",
@@ -239,10 +268,18 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
         <RowContent>
           <EntryList>
             {allTeaching.map((course) => {
-              const { name, location } = course.frontmatter;
+              const { name, location, resources } = course.frontmatter;
               const label = `${name} (${formatTeachingDate(course.frontmatter)} @ ${location})`;
-              return <div key={course.id}>{label}</div>;
+              return (
+                <div key={course.id}>
+                  {label}
+                  <EntryResources resources={resources} />
+                </div>
+              );
             })}
+            <div>
+              <Link to="/teaching" variant="secondary">See all teaching →</Link>
+            </div>
           </EntryList>
         </RowContent>
       </Row>
@@ -254,9 +291,14 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
         <RowContent>
           <EntryList>
             {recentTalks.map((talk) => {
-              const { event, date } = talk.frontmatter;
+              const { event, date, resources } = talk.frontmatter;
               const label = `${event} (${formatTalkDate(date)})`;
-              return <div key={talk.id}>{label}</div>;
+              return (
+                <div key={talk.id}>
+                  {label}
+                  <EntryResources resources={resources} />
+                </div>
+              );
             })}
             <div>
               <Link to="/talks" variant="secondary">See all talks →</Link>

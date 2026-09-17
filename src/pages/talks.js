@@ -27,7 +27,10 @@ export const query = graphql`
           date
           startDate
           endDate
-          link
+          resources {
+            name
+            url
+          }
         }
       }
     }

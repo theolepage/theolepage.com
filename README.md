@@ -20,27 +20,23 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 - [X] Source /phd_thesis from md file
 - [X] Show params for components of home
 - [X] Commits
-
 - [X] See all + copy buttons -> links
-- [ ] Publications: add icons for actions
-15h
-
-- [ ] Talks: add resources
-- [ ] Teaching: add resources
-- [ ] Talks: improve listing
-- [ ] Teaching: improve listing
-- [ ] Misc: show ressources of Talks/Teaching
-16h
+- [X] Publications: add icons for actions
+- [X] Talks: add resources
+- [X] Teaching: add resources
+- [X] Talks: improve listing
+- [X] Teaching: improve listing + create page
+- [X] Misc: show ressources
 
 - [ ] Posts: add preview image
 - [ ] Blog sslsv: add larger banner to github
-17h
+16h00
 
 - [ ] Experience: Resources (image + link)
-18h
+16h30
 
 - [ ] theole.page: remove desc, one bottom link to theolepage.com, background animation, no select, dark
-19h
+17h30
 
 ---
 

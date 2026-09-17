@@ -4,12 +4,19 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Block from "./block";
 import Link from "./link";
+import ResourceActions from "./resourceActions";
 
 const BlocksGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--element-spacing);
   margin-bottom: var(--element-spacing);
+`;
+
+const TalkItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 const Talks = ({ data, listing }) => {
@@ -93,9 +100,12 @@ const Talks = ({ data, listing }) => {
             key={talk.id}
             title={talk.frontmatter.name}
             info={formatDate(talk)}
-            url={talk.frontmatter.link}
+            minimal
           >
-            {talk.frontmatter.location}
+            <TalkItem>
+              <div>{talk.frontmatter.location}</div>
+              <ResourceActions resources={talk.frontmatter.resources} />
+            </TalkItem>
           </Block>
         ))}
       </BlocksGrid>

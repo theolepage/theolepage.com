@@ -209,7 +209,10 @@ export const query = graphql`
           date
           startDate
           endDate
-          link
+          resources {
+            name
+            url
+          }
         }
       }
     }
@@ -225,6 +228,10 @@ export const query = graphql`
           startYear
           endYear
           semester
+          resources {
+            name
+            url
+          }
         }
       }
     }

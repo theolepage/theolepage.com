@@ -19,6 +19,16 @@ const BlockElement = styled.div`
     `}
 
   ${(props) =>
+    props.minimal &&
+    css`
+      border: none;
+      border-left: 3px solid var(--border-color);
+      border-radius: 0;
+      background: none;
+      padding: 8px 0 8px 18px;
+    `}
+
+  ${(props) =>
     props.hover &&
     css`
       transition:
@@ -127,10 +137,11 @@ const Block = ({
   image,
   imageActionUrl,
   border = true,
+  minimal = false,
   headerAlignItems = "baseline",
 }) => {
   const body = (
-    <BlockElement hover={url && !image} border={border}>
+    <BlockElement hover={url && !image} border={border} minimal={minimal}>
       <BlockContainer>
         {image && (
           <Link to={imageActionUrl} invisible>
