@@ -84,6 +84,8 @@ export const query = graphql`
     }
     misc: markdownRemark(fileAbsolutePath: { regex: "/misc.md/" }) {
       frontmatter {
+        showTeaching
+        showTalks
         attributes {
           name
           show

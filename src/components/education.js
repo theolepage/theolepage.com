@@ -73,7 +73,7 @@ const Education = ({ data }) => {
   const education = data.nodes;
 
   return (
-    <Section title="Education">
+    <Section title="Education" icon="education">
       <List>
         {education.map((item) => {
           const { institution, institutionUrl, image, degree, location, date, grade } =

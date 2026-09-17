@@ -72,7 +72,7 @@ const Experience = ({ data }) => {
   const experiences = data.nodes;
 
   return (
-    <Section title="Experience">
+    <Section title="Experience" icon="experience">
       <List>
         {experiences.map((item) => {
           const { title, company, companyUrl, location, date, image, internship } =

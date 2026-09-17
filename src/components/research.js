@@ -13,7 +13,7 @@ const Research = ({ data }) => {
   const { html } = data;
 
   return (
-    <Section title="Research">
+    <Section title="Research" icon="research">
       <Content dangerouslySetInnerHTML={{ __html: html }} />
     </Section>
   );

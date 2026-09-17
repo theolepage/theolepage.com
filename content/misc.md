@@ -1,4 +1,6 @@
 ---
+showTeaching: true
+showTalks: true
 attributes:
   - name: "Academic Service"
     show: false

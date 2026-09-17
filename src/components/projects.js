@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 
 import Section from "./section";
 import Project from "./project";
-import Button from "./button";
-import Icon from "./icon";
+import Link from "./link";
 
 const ProjectsGrid = styled.div`
   display: grid;
@@ -18,12 +17,6 @@ const ProjectsGrid = styled.div`
   }
 `;
 
-const Buttons = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--element-spacing);
-`;
-
 const GithubIcon = styled.div`
   display: inline-block;
 
@@ -31,8 +24,15 @@ const GithubIcon = styled.div`
   height: 16px;
 
   background-color: var(--color-default);
+  opacity: 0.6;
+
+  transition: opacity var(--transition-duration);
 
   mask: url(/images/socials/icon-github.png) no-repeat center / contain;
+
+  a:hover & {
+    opacity: 1;
+  }
 `;
 
 // Explicit `order` takes priority (ascending) over everything else;
@@ -62,28 +62,22 @@ const Projects = ({ data, listing }) => {
   );
 
   return (
-    <Section title="Projects">
+    <Section title="Projects" icon="projects">
       <ProjectsGrid>
         {projects.map((project) => (
           <Project key={project.id} project={project} />
         ))}
       </ProjectsGrid>
 
-      <Buttons>
-        {!listing && (
-          <Button to={"/projects"}>
-            <Icon name="projects" />
-            See all projects
-          </Button>
-        )}
+      {!listing && (
+        <Link to="/projects" variant="secondary">See all projects →</Link>
+      )}
 
-        {listing && (
-          <Button to={"https://github.com/theolepage"}>
-            <GithubIcon />
-            Browse my GitHub
-          </Button>
-        )}
-      </Buttons>
+      {listing && (
+        <Link to="https://github.com/theolepage" external variant="secondary">
+          Browse my GitHub <GithubIcon />
+        </Link>
+      )}
     </Section>
   );
 };

@@ -4,7 +4,7 @@ import { navigate } from "gatsby";
 import styled from "@emotion/styled";
 
 import Page from "../components/page";
-import Button from "../components/button";
+import Link from "../components/link";
 import Icon from "../components/icon";
 import { generateBibTeX } from "../utils/bibtex";
 
@@ -83,10 +83,10 @@ const RefPage = ({ data, pageContext }) => {
       <Background />
       <Content>
         <BibTeXPre>{bibText}</BibTeXPre>
-        <Button onClick={handleCopyClick}>
+        <Link onClick={handleCopyClick} variant="secondary">
           {copied ? (
             <>
-              Copied{" "}
+              Copied
               <Icon
                 name="check"
                 color="#39bd3f"
@@ -100,7 +100,7 @@ const RefPage = ({ data, pageContext }) => {
               Copy to clipboard <Icon name="copy" />
             </>
           )}
-        </Button>
+        </Link>
       </Content>
     </Page>
   );

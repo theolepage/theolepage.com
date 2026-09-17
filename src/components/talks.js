@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 
 import Section from "./section";
 import Block from "./block";
-import Button from "./button";
-import Icon from "./icon";
+import Link from "./link";
 
 const BlocksGrid = styled.div`
   display: grid;
@@ -87,7 +86,7 @@ const Talks = ({ data, listing }) => {
   });
 
   return (
-    <Section title="Talks">
+    <Section title="Talks" icon="talks">
       <BlocksGrid>
         {sortedTalks.map((talk) => (
           <Block
@@ -102,10 +101,7 @@ const Talks = ({ data, listing }) => {
       </BlocksGrid>
 
       {!listing && (
-        <Button to={"/talks"}>
-          <Icon name="talks" />
-          See all talks
-        </Button>
+        <Link to="/talks" variant="secondary">See all talks →</Link>
       )}
     </Section>
   );

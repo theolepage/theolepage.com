@@ -6,6 +6,6 @@ showPublications: true
 showProjects: true
 showPosts: true
 showMisc: true
-showTalks: false
-showTeaching: false
+showTalks: true
+showTeaching: true
 ---

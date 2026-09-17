@@ -30,6 +30,13 @@ import {
   Github,
   AppWindow,
   X,
+  Microscope,
+  Briefcase,
+  GraduationCap,
+  LayoutGrid,
+  School,
+  SquarePlay,
+  Code
 } from "lucide-react";
 
 const Icons = {
@@ -63,6 +70,13 @@ const Icons = {
   app: AppWindow,
   package: Package,
   close: X,
+  research: Microscope,
+  experience: Briefcase,
+  education: GraduationCap,
+  misc: LayoutGrid,
+  teaching: School,
+  video: SquarePlay,
+  code: Code,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

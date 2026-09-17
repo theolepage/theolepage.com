@@ -4,8 +4,17 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Block from "./block";
 import Link from "./link";
+import Icon from "./icon";
 import BibtexModal from "./bibtexModal";
 import { generateBibTeX } from "../utils/bibtex";
+
+const RESOURCE_ICONS = {
+  Document: "book",
+  Slides: "talks",
+  Code: "code",
+  Video: "video",
+  "Ref (BibTeX)": "share",
+};
 
 const PublicationItem = styled.div`
   display: flex;
@@ -55,6 +64,10 @@ const PublicationAuthors = ({ authors, websiteAuthor }) => {
 // config/typography.js's global `a` styles), since a native <button> has
 // none of that styling by default.
 const ActionButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
   border: 0;
   background: none;
   padding: 0;
@@ -70,11 +83,17 @@ const ActionButton = styled.button`
   }
 `;
 
+const ActionLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+`;
+
 const PublicationActions = ({ resources }) => {
   const ActionSeparator = styled.div`
     display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 8px;
+    margin-right: 8px;
     // color: rgba(55, 125, 255, 0.6);
     color: color-mix(in srgb, var(--color-accent) 50%, white);
   `;
@@ -85,18 +104,28 @@ const PublicationActions = ({ resources }) => {
 
   return (
     <div>
-      {resources.map((action, i) => (
-        <span key={action.name}>
-          {action.onClick ? (
-            <ActionButton onClick={action.onClick}>{action.name}</ActionButton>
-          ) : (
-            <Link to={action.url} external>
-              {action.name}
-            </Link>
-          )}
-          {i !== resources.length - 1 && <ActionSeparator>/</ActionSeparator>}
-        </span>
-      ))}
+      {resources.map((action, i) => {
+        const iconName = RESOURCE_ICONS[action.name];
+        const label = (
+          <>
+            {iconName && <Icon name={iconName} width={13} height={13} />}
+            {action.name}
+          </>
+        );
+
+        return (
+          <span key={action.name}>
+            {action.onClick ? (
+              <ActionButton onClick={action.onClick}>{label}</ActionButton>
+            ) : (
+              <ActionLink to={action.url} external>
+                {label}
+              </ActionLink>
+            )}
+            {i !== resources.length - 1 && <ActionSeparator>/</ActionSeparator>}
+          </span>
+        );
+      })}
     </div>
   );
 };

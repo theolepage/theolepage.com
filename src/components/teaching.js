@@ -6,12 +6,8 @@ import Block from "./block";
 
 const BlocksGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--element-spacing);
-
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
@@ -30,7 +26,7 @@ const Teaching = ({ data }) => {
   };
 
   return (
-    <Section title="Teaching">
+    <Section title="Teaching" icon="teaching">
       <BlocksGrid>
         {teaching.map((course) => {
           const dateString = formatDate(

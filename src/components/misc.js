@@ -196,7 +196,7 @@ const Attribute = ({ name, entries }) => {
 };
 
 const Misc = ({ data, skillsData, teaching, talks }) => {
-  const { attributes = [] } = data.frontmatter;
+  const { attributes = [], showTeaching, showTalks } = data.frontmatter;
   const { show: displaySkills, skills } = skillsData.frontmatter;
 
   const visibleAttributes = attributes.filter(
@@ -215,7 +215,7 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
     .slice(0, 3);
 
   return (
-    <Section title="Miscellaneous">
+    <Section title="Miscellaneous" icon="misc">
       <FullWidthRows>
       {displaySkills && (
       <Row>
@@ -233,6 +233,7 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
       </Row>
       )}
 
+      {showTeaching && (
       <Row>
         <RowLabel>Teaching</RowLabel>
         <RowContent>
@@ -245,7 +246,9 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
           </EntryList>
         </RowContent>
       </Row>
+      )}
 
+      {showTalks && (
       <Row>
         <RowLabel>Talks</RowLabel>
         <RowContent>
@@ -256,11 +259,12 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
               return <div key={talk.id}>{label}</div>;
             })}
             <div>
-              <Link to="/talks">See all talks →</Link>
+              <Link to="/talks" variant="secondary">See all talks →</Link>
             </div>
           </EntryList>
         </RowContent>
       </Row>
+      )}
       </FullWidthRows>
 
       {visibleAttributes.length > 0 && (

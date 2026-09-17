@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 
 import Section from "./section";
 import Post from "./post";
-import Button from "./button";
-import Icon from "./icon";
+import Link from "./link";
 
 const BlocksGrid = styled.div`
   display: grid;
@@ -18,7 +17,7 @@ const Posts = ({ data, listing }) => {
   const posts = listing ? data.nodes : data.nodes.slice(0, 3);
 
   return (
-    <Section title="Posts">
+    <Section title="Posts" icon="posts">
       <BlocksGrid>
         {posts.map((post) => (
           <Post key={post.fields.slug} post={post} />
@@ -26,10 +25,7 @@ const Posts = ({ data, listing }) => {
       </BlocksGrid>
 
       {!listing && (
-        <Button to={"/posts"}>
-          <Icon name="posts" />
-          See all blog posts
-        </Button>
+        <Link to="/posts" variant="secondary">See all blog posts →</Link>
       )}
     </Section>
   );

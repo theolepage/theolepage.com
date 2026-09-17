@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 import Modal from "./modal";
-import Button from "./button";
+import Link from "./link";
 import Icon from "./icon";
 
 const BibTeXPre = styled.pre`
@@ -37,10 +37,10 @@ const BibtexModal = ({ bibText, onClose }) => {
   return (
     <Modal title="BibTeX" onClose={onClose}>
       <BibTeXPre>{bibText}</BibTeXPre>
-      <Button onClick={handleCopyClick}>
+      <Link onClick={handleCopyClick} variant="secondary">
         {copied ? (
           <>
-            Copied{" "}
+            Copied
             <Icon
               name="check"
               color="#39bd3f"
@@ -54,7 +54,7 @@ const BibtexModal = ({ bibText, onClose }) => {
             Copy to clipboard <Icon name="copy" />
           </>
         )}
-      </Button>
+      </Link>
     </Modal>
   );
 };

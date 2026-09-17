@@ -4,12 +4,11 @@ import styled from "@emotion/styled";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Section from "./section";
-import Button from "./button";
-import Icon from "./icon";
+import Link from "./link";
 import Publication from "./publication";
 
 const BlocksGrid = styled.div`
-  margin: calc(var(--element-spacing) * 2) 0;
+  margin-bottom: var(--element-spacing);
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: calc(var(--element-spacing) * 2 - 4px);
@@ -33,7 +32,7 @@ const Publications = ({ data, listing }) => {
   });
 
   return (
-    <Section title="Publications">
+    <Section title="Publications" icon="publications">
       <BlocksGrid>
         {publications.map((publication) => (
           <Publication
@@ -45,10 +44,7 @@ const Publications = ({ data, listing }) => {
       </BlocksGrid>
 
       {!listing && (
-        <Button to={"/publications"}>
-          <Icon name="publications" />
-          See all publications
-        </Button>
+        <Link to="/publications" variant="secondary">See all publications →</Link>
       )}
     </Section>
   );
