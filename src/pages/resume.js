@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 
@@ -10,6 +10,7 @@ const RESUME_FILENAME = "Theo_Lepage_Resume.pdf";
 // Global styles
 const globalStyles = css`
   body {
+    margin: 0;
     background-color: rgb(252, 252, 252);
   }
 
@@ -34,21 +35,18 @@ const globalStyles = css`
 const HEADER_HEIGHT = "52px";
 
 const Header = styled.div`
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   height: ${HEADER_HEIGHT};
 
   padding: 0 24px;
 
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-color);
+  // background: #fff;
+  // border-bottom: 1px solid var(--border-color);
   // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.07);
 
   font-family: "Open Sans", sans-serif;
@@ -60,10 +58,29 @@ const Header = styled.div`
   }
 `;
 
+const HeaderTitle = styled.h1`
+  margin: 0;
+
+  font-size: 16px;
+`;
+
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
+`;
+
+const DevFitToggle = styled.label`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
 `;
 
 const downloadBarActionStyle = css`
@@ -101,13 +118,8 @@ const ResumeContainer = styled.div`
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: ${HEADER_HEIGHT};
-  font-family: "Open Sans", sans-serif;
 
-  @media (max-width: 220mm) {
-    width: 100%;
-    overflow-x: auto;
-  }
+  font-family: "Open Sans", sans-serif;
 
   @media print {
     display: block;
@@ -116,12 +128,34 @@ const ResumeContainer = styled.div`
   }
 `;
 
+const ResumeViewport = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+  height: calc(100vh - ${HEADER_HEIGHT});
+  overflow: hidden;
+
+  ${(props) =>
+    props.disableFit &&
+    css`
+      height: auto;
+      overflow: visible;
+    `}
+
+  @media print {
+    height: auto;
+    overflow: visible;
+  }
+`;
+
 const ResumePagesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10mm;
-  padding: 10mm;
+  padding: 4mm 0 16mm 0;
 
   /*
    * A scroll container drops its own end-side (right/bottom) padding from
@@ -130,9 +164,12 @@ const ResumePagesWrapper = styled.div`
    */
   width: max-content;
 
+  transform-origin: top center;
+
   @media print {
     display: block;
     padding: 0;
+    transform: none !important;
   }
 `;
 
@@ -475,13 +512,12 @@ const ResumeHeader = () => (
   <HeaderSection>
     <Name>Theo Lepage</Name>
     <Description>
+      <DescriptionEmphasize>???</DescriptionEmphasize> <DescriptionEmphasize>(???)</DescriptionEmphasize> @ <DescriptionEmphasize>???</DescriptionEmphasize>
+      <DescriptionSeparator>•</DescriptionSeparator>
+      <DescriptionEmphasize>Speech</DescriptionEmphasize> & <DescriptionEmphasize>Speaker Recognition</DescriptionEmphasize>
+      <DescriptionSeparator>•</DescriptionSeparator>
       <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in{" "}
       <DescriptionEmphasize>AI</DescriptionEmphasize>
-      <DescriptionSeparator>•</DescriptionSeparator>
-      <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for{" "}
-      <DescriptionEmphasize>Speech & Speaker Recognition</DescriptionEmphasize>
-      <DescriptionSeparator>•</DescriptionSeparator>
-      Open to <DescriptionEmphasize>Research Scientist</DescriptionEmphasize> Roles
     </Description>
     <Contact>
       <ContactItem>
@@ -608,13 +644,15 @@ const ExperienceItem = ({
       <ExperienceHeader>
         <Subtitle>
           <Emphasize>{title}</Emphasize> {internship && '(Internship)'} at{" "}
-          <a
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            href={companyUrl}
-          >
-            {company}
-          </a>
+          <Emphasize>
+            <a
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              href={companyUrl}
+            >
+              {company}
+            </a>
+          </Emphasize>
         </Subtitle>
         <ExperienceIcons>
           <Location>
@@ -678,25 +716,74 @@ const ProjectItem = ({ name, url, description, icon }) => (
   </Item>
 );
 
+// Keeps a visual gutter around the shrunk resume on narrow viewports, since
+// a transform-scaled child doesn't respect its parent's padding on its own.
+const VIEWPORT_HORIZONTAL_MARGIN = 24;
+
+const isDev = process.env.NODE_ENV === "development";
+
 const ResumePageComponent = () => {
+  const viewportRef = useRef(null);
+  const pagesRef = useRef(null);
+  const [scale, setScale] = useState(1);
+  const [disableFit, setDisableFit] = useState(false);
+
+  useLayoutEffect(() => {
+    if (disableFit) {
+      setScale(1);
+      return;
+    }
+
+    const updateScale = () => {
+      const viewport = viewportRef.current;
+      const pages = pagesRef.current;
+      if (!viewport || !pages) return;
+
+      const nextScale = Math.min(
+        (viewport.clientWidth - VIEWPORT_HORIZONTAL_MARGIN * 2) / pages.offsetWidth,
+        viewport.clientHeight / pages.offsetHeight,
+        1
+      );
+
+      setScale(nextScale);
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, [disableFit]);
+
   return (
     <Page title="Resume" layout={false}>
       <Global styles={globalStyles} />
       <Header>
-        {RESUME_FILENAME}
+        <HeaderTitle>
+          Resume
+        </HeaderTitle>
+        {isDev && (
+          <DevFitToggle>
+            <input
+              type="checkbox"
+              checked={disableFit}
+              onChange={(e) => setDisableFit(e.target.checked)}
+            />
+            Disable fit to screen
+          </DevFitToggle>
+        )}
         <HeaderActions>
           <DownloadLink href="/resume.pdf" download={RESUME_FILENAME}>
             <LucideIcon name="download" width={14} height={14} />
-            Download
+            Download (.pdf)
           </DownloadLink>
-          <PrintButton onClick={() => window.print()}>
+          {/* <PrintButton onClick={() => window.print()}>
             <LucideIcon name="print" width={14} height={14} />
             Print
-          </PrintButton>
+          </PrintButton> */}
         </HeaderActions>
       </Header>
       <ResumeContainer className="resume">
-        <ResumePagesWrapper>
+        <ResumeViewport ref={viewportRef} disableFit={disableFit}>
+        <ResumePagesWrapper ref={pagesRef} style={{ transform: `scale(${scale})` }}>
           <ResumePage>
             <ResumeHeader />
 
@@ -704,13 +791,13 @@ const ResumePageComponent = () => {
               <Title>Experience</Title>
 
               <ExperienceItem
-                title="Ph.D. Researcher"
-                company="EPITA Research Laboratory (LRE)"
-                companyUrl="https://www.lre.epita.fr/"
+                title="???"
+                company="???"
+                companyUrl="https://theolepage.com"
                 location="Paris, France"
-                date="Nov. 2022 - Feb. 2026"
+                date="Oct. 2026 - Present"
               >
-                Proposed self-supervised methods for speaker recognition • Published 8 papers at leading speech venues (Interspeech, IEEE TASLP) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf">DINO-WavLM</a> → SOTA performance on VoxCeleb (1.06% EER on Vox1-O) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://arxiv.org/pdf/2501.17772">SSPS</a> → latent-space positive sampling (-58% EER for SimCLR) • <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/theolepage/sslsv">sslsv</a> → open-source PyTorch toolkit for self-supervised speaker verification
+                ...
               </ExperienceItem>
 
               <ExperienceItem
@@ -732,7 +819,7 @@ const ResumePageComponent = () => {
                 date="Sep. 2020 - Jan. 2021"
                 internship
               >
-                Contributed to <a target="_blank" rel="nofollow noopener noreferrer" href="https://holovibes.com/">Holovibes</a>, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
+                Contributed to Holovibes, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
               </ExperienceItem>
             </Section>
 
@@ -748,14 +835,7 @@ const ResumePageComponent = () => {
                 location="Paris, France"
                 date="Nov. 2022 - Feb. 2026"
               >
-                Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA •{" "}
-                <a
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  href="https://theolepage.com/phd_thesis/"
-                >
-                  Learn more at /phd_thesis →
-                </a>
+                Thesis: <a target="_blank" rel="nofollow noopener noreferrer" href="https://theolepage.com/phd_thesis/">Self-Supervised Learning for Speaker Recognition</a> • Supervised by Reda Dehak @ LRE-EPITA • Proposed self-supervised methods for speaker verification • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication)
               </EducationItem>
 
               <EducationItem
@@ -768,8 +848,7 @@ const ResumePageComponent = () => {
                 date="Sep. 2017 - Sep. 2022"
                 grade="GPA: 3.9/4.0"
               >
-                Major: AI/ML for Computer Vision • Research student @ LRDE (<a target="_blank"
-                  rel="nofollow noopener noreferrer" href="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf">IS2022</a>) • Teaching assistant (C & Unix) • Exchange semester at CSUMB
+                Major: AI/ML for Computer Vision • Research student • Teaching assistant (C & Unix) • Exchange semester at CSUMB
               </EducationItem>
             </Section>
 
@@ -963,6 +1042,7 @@ const ResumePageComponent = () => {
             </Footer>
           </ResumePage>
         </ResumePagesWrapper>
+        </ResumeViewport>
       </ResumeContainer>
     </Page>
   );
