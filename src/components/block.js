@@ -47,8 +47,8 @@ const BlockContent = styled.div`
 `;
 
 const Image = styled.div`
-  width: 150px;
-  height: 200px;
+  width: 140px;
+  height: 185px;
 
   border: 1px solid var(--border-color);
   border-radius: 2px;

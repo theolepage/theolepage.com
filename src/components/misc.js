@@ -42,10 +42,6 @@ const Row = styled.div`
   }
 `;
 
-const MoreRow = styled(Row)`
-  margin-top: calc(var(--element-spacing) * 1.2);
-`;
-
 const RowLabel = styled.div`
   flex-shrink: 0;
   width: 150px;
@@ -96,12 +92,6 @@ const SkillGroupLabel = styled.span`
   }
 `;
 
-const Pills = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-`;
-
 const Pill = styled.span`
   padding: 3px 8px;
 
@@ -147,13 +137,6 @@ const Interest = styled.span`
   gap: 6px;
 `;
 
-const formatList = (items) => {
-  if (items.length === 0) return "";
-  if (items.length === 1) return items[0];
-  if (items.length === 2) return items.join(" and ");
-  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
-};
-
 // Same colors as the resume's interest icons (icon-science.svg, icon-robotics.svg, icon-wave.svg)
 const INTEREST_ICON_COLORS = {
   science: "#70ba59",
@@ -173,42 +156,63 @@ const formatTalkDate = (date) => {
   return `${parsed.toLocaleDateString("en-US", { month: "short" })}. ${parsed.getFullYear()}`;
 };
 
-const Misc = ({ data, teaching, talks, posts }) => {
-  const {
-    skills,
-    languages,
-    interests,
-    academicService,
-    awards,
-    showSkills,
-    showAcademicService,
-    showAwards,
-    showLanguages,
-    showInterests,
-  } = data.frontmatter;
+// A generic misc attribute: entries with an icon render like Interests
+// (icon + label), entries without one render as a plain bullet-separated
+// list (e.g. Academic Service, Awards).
+const Attribute = ({ name, entries }) => {
+  const hasIcons = entries.some((entry) => entry.icon);
 
-  const displaySkills = showSkills !== false;
-  const displayAcademicService = showAcademicService !== false;
-  const displayAwards = showAwards !== false;
-  const displayLanguages = showLanguages !== false;
-  const displayInterests = showInterests !== false;
+  return (
+    <Row>
+      <RowLabel>{name}</RowLabel>
+      <RowContent>
+        {hasIcons ? (
+          <Interests>
+            {entries.map((entry) => (
+              <Interest key={entry.text}>
+                {entry.icon && (
+                  <Icon
+                    name={entry.icon}
+                    width={16}
+                    height={16}
+                    color={INTEREST_ICON_COLORS[entry.icon]}
+                    strokeWidth={2.25}
+                  />
+                )}
+                {entry.text}
+              </Interest>
+            ))}
+          </Interests>
+        ) : (
+          <EntryList>
+            {entries.map((entry) => (
+              <div key={entry.text}>{entry.text}</div>
+            ))}
+          </EntryList>
+        )}
+      </RowContent>
+    </Row>
+  );
+};
 
-  const showLeftColumn = displayAcademicService || displayAwards;
-  const showRightColumn = displayLanguages || displayInterests;
+const Misc = ({ data, skillsData, teaching, talks }) => {
+  const { attributes = [] } = data.frontmatter;
+  const { show: displaySkills, skills } = skillsData.frontmatter;
 
-  const hiddenSections = [
-    !displaySkills && "Skills",
-    !displayAcademicService && "Academic Service",
-    !displayAwards && "Awards",
-    !displayLanguages && "Languages",
-    !displayInterests && "Interests",
-  ].filter(Boolean);
+  const visibleAttributes = attributes.filter(
+    (attribute) => attribute.show !== false
+  );
+
+  // Alternate attributes between the two columns so any number of them
+  // (Academic Service, Awards, Interests, or whatever gets added later)
+  // stays balanced without hardcoding which ones go where.
+  const leftAttributes = visibleAttributes.filter((_, i) => i % 2 === 0);
+  const rightAttributes = visibleAttributes.filter((_, i) => i % 2 === 1);
 
   const allTeaching = teaching.nodes;
   const recentTalks = [...talks.nodes]
     .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
     .slice(0, 3);
-  const recentPosts = posts.nodes.slice(0, 3);
 
   return (
     <Section title="Miscellaneous">
@@ -257,98 +261,26 @@ const Misc = ({ data, teaching, talks, posts }) => {
           </EntryList>
         </RowContent>
       </Row>
-
-      <Row>
-        <RowLabel>Posts</RowLabel>
-        <RowContent>
-          <EntryList>
-            {recentPosts.map((post) => (
-              <div key={post.id}>{post.frontmatter.title}</div>
-            ))}
-            <div>
-              <Link to="/posts">See all posts →</Link>
-            </div>
-          </EntryList>
-        </RowContent>
-      </Row>
       </FullWidthRows>
 
-      {(showLeftColumn || showRightColumn) && (
+      {visibleAttributes.length > 0 && (
       <Columns>
-        {showLeftColumn && (
+        {leftAttributes.length > 0 && (
         <Column>
-          {displayAcademicService && (
-          <Row>
-            <RowLabel>Academic Service</RowLabel>
-            <RowContent>{academicService}</RowContent>
-          </Row>
-          )}
-
-          {displayAwards && (
-          <Row>
-            <RowLabel>Awards</RowLabel>
-            <RowContent>{awards}</RowContent>
-          </Row>
-          )}
+          {leftAttributes.map((attribute) => (
+            <Attribute key={attribute.name} {...attribute} />
+          ))}
         </Column>
         )}
 
-        {showRightColumn && (
+        {rightAttributes.length > 0 && (
         <Column>
-          {displayLanguages && (
-          <Row>
-            <RowLabel>Languages</RowLabel>
-            <RowContent>
-              <Pills>
-                {languages.map((language) => (
-                  <Pill key={language}>{language}</Pill>
-                ))}
-              </Pills>
-            </RowContent>
-          </Row>
-          )}
-
-          {displayInterests && (
-          <Row>
-            <RowLabel>Interests</RowLabel>
-            <RowContent>
-              <Interests>
-                {interests.map((interest) => (
-                  <Interest key={interest.text}>
-                    <Icon
-                      name={interest.icon}
-                      width={16}
-                      height={16}
-                      color={INTEREST_ICON_COLORS[interest.icon]}
-                      strokeWidth={2.25}
-                    />
-                    {interest.text}
-                  </Interest>
-                ))}
-              </Interests>
-            </RowContent>
-          </Row>
-          )}
+          {rightAttributes.map((attribute) => (
+            <Attribute key={attribute.name} {...attribute} />
+          ))}
         </Column>
         )}
       </Columns>
-      )}
-
-      {hiddenSections.length > 0 && (
-        <MoreRow>
-          <RowLabel>More</RowLabel>
-          <RowContent>
-            <span>
-              {formatList(
-                hiddenSections.map((label, i) =>
-                  i === 0 ? label : label.toLowerCase()
-                )
-              )}{" "}
-              {hiddenSections.length === 1 ? "is" : "are"} listed in my{" "}
-              <Link to="/resume">resume</Link>.
-            </span>
-          </RowContent>
-        </MoreRow>
       )}
     </Section>
   );

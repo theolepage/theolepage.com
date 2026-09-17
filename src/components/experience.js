@@ -87,9 +87,11 @@ const Experience = ({ data }) => {
                   <Title>
                     <b>{title}</b>
                     {internship && " (Internship)"} at{" "}
-                    <Link to={companyUrl} external>
-                      {company}
-                    </Link>
+                    <b>
+                      <Link to={companyUrl} external>
+                        {company}
+                      </Link>
+                    </b>
                   </Title>
                   <Meta>
                     <MetaItem>

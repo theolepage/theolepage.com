@@ -190,15 +190,71 @@ exports.createSchemaCustomization = ({ actions }) => {
             showcased: Boolean
             bib_entries: JSON
             resources: [MarkdownRemarkFrontmatterResources]
+            show: Boolean
+            skills: [MarkdownRemarkFrontmatterSkills]
+            attributes: [MarkdownRemarkFrontmatterAttributes]
+            defenseInfo: String
+            committee: [MarkdownRemarkFrontmatterPerson]
+            advisors: [MarkdownRemarkFrontmatterPerson]
+            thesisUrl: String
+            slidesUrl: String
+            codeUrl: String
+            videoUrl: String
+            contributions: [MarkdownRemarkFrontmatterContributions]
+            showResearch: Boolean
+            showExperience: Boolean
+            showEducation: Boolean
+            showPublications: Boolean
+            showProjects: Boolean
+            showPosts: Boolean
+            showMisc: Boolean
+            showTalks: Boolean
+            showTeaching: Boolean
         }
-        
+
         type MarkdownRemarkFrontmatterSocials {
             name: String
             url: String
         }
-        
+
         type MarkdownRemarkFrontmatterResources {
             name: String
+            url: String
+        }
+
+        type MarkdownRemarkFrontmatterSkills {
+            category: String
+            items: [String]
+        }
+
+        type MarkdownRemarkFrontmatterAttributes {
+            name: String
+            show: Boolean
+            entries: [MarkdownRemarkFrontmatterAttributesEntries]
+        }
+
+        type MarkdownRemarkFrontmatterAttributesEntries {
+            icon: String
+            text: String
+        }
+
+        type MarkdownRemarkFrontmatterPerson {
+            name: String
+            affiliation: String
+        }
+
+        type MarkdownRemarkFrontmatterContributions {
+            tag: String
+            tagVariant: String
+            title: String
+            description: String
+            result: String
+            resultUrl: String
+            publications: [MarkdownRemarkFrontmatterContributionsPublications]
+        }
+
+        type MarkdownRemarkFrontmatterContributionsPublications {
+            title: String
             url: String
         }
     `;

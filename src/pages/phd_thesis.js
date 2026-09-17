@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "@emotion/styled";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 
 import Page from "../components/page";
 import Section from "../components/section";
 import Button from "../components/button";
 import Icon from "../components/icon";
 import Link from "../components/link";
-
-
-const THESIS_URL = "https://theses.hal.science/tel-05558165v1/file/159344_LEPAGE_2026_archivage.pdf";
-const SLIDES_URL = "/uploads/phd_defense_presentation_theo_lepage_2026.pdf";
-const CODE_URL = "https://github.com/theolepage/sslsv";
-const REF_URL = "/ref/thesis/";
+import BibtexModal from "../components/bibtexModal";
+import { generateBibTeX } from "../utils/bibtex";
 
 
 const Title = styled.h1`
@@ -74,7 +71,7 @@ const VideoContainer = styled.div`
   overflow: hidden;
 
   margin-top: 24px;
-  
+
   iframe {
     width: 100%;
     height: 100%;
@@ -114,7 +111,7 @@ const Tag = styled.div(({ variant = "green" }) => {
   return {
     display: "inline-block",
     // marginLeft: 8,
-    marginRight: 8,
+    marginRight: 12,
     verticalAlign: 1,
     padding: "5px 8px",
     fontFamily: "Open Sans, sans-serif",
@@ -136,48 +133,132 @@ const Tag = styled.div(({ variant = "green" }) => {
   };
 });
 
+// Same comma/"and" list formatting as PublicationAuthors in publication.js,
+// with an italicized affiliation appended to each name instead of bolding.
+const formatPeopleList = (people) => {
+  const formatted = people.map((p) => `${p.name} <i>(${p.affiliation})</i>`);
+
+  if (formatted.length === 1) return formatted[0];
+  if (formatted.length === 2) return formatted.join(" and ");
+
+  const allButLast = formatted.slice(0, -1);
+  const last = formatted[formatted.length - 1];
+  return allButLast.join(", ") + ", and " + last;
+};
 
 const PhdThesisPage = () => {
+  const [showBibtex, setShowBibtex] = useState(false);
+
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+      thesisContent: markdownRemark(fileAbsolutePath: { regex: "/content/phd_thesis.md/" }) {
+        html
+        frontmatter {
+          enabled
+          title
+          defenseInfo
+          committee {
+            name
+            affiliation
+          }
+          advisors {
+            name
+            affiliation
+          }
+          thesisUrl
+          slidesUrl
+          codeUrl
+          videoUrl
+          contributions {
+            tag
+            tagVariant
+            title
+            description
+            result
+            resultUrl
+            publications {
+              title
+              url
+            }
+          }
+        }
+      }
+      thesisPublication: markdownRemark(fileAbsolutePath: { regex: "/content/publications/thesis.md/" }) {
+        fileAbsolutePath
+        frontmatter {
+          key
+          title
+          authors
+          source
+          year
+          month
+          type
+          bib_entries
+          resources {
+            name
+            url
+          }
+        }
+      }
+    }
+  `);
+
+  const thesis = data.thesisContent.frontmatter;
+
+  if (!thesis.enabled) {
+    navigate("/404");
+    return null;
+  }
+
+  const publication = data.thesisPublication;
+  const filename = publication.fileAbsolutePath.split("/").pop().replace(".md", "");
+  const bibText = generateBibTeX({
+    frontmatter: publication.frontmatter,
+    filename,
+    siteUrl: data.site.siteMetadata.siteUrl,
+  });
+
   return (
-    <Page title="Self-Supervised Learning for Speaker Recognition (Ph.D. Thesis)">
+    <Page title={thesis.title}>
       <Section>
-        <Title>Self-Supervised Learning for Speaker Recognition (Ph.D. Thesis)</Title>
+        <Title>{thesis.title}</Title>
 
         <Description>
-          Ph.D. thesis defense held on February 13, 2026, at EPITA Paris, for the doctoral degree from Sorbonne University
+          {thesis.defenseInfo}
         </Description>
-        
-        <Description>
-          Committee: Jean-François Bonastre <i>(AMIAD)</i>, Benjamin Lecouteux <i>(LIG)</i>, Driss Matrouf <i>(LIA)</i>, Irina Illina <i>(LORIA/Inria)</i>, Anthony Larcher <i>(LIUM)</i>, and Douglas Reynolds <i>(MIT LL)</i> • Advisors: Réda DEHAK <i>(LRE)</i> and Thierry Géraud <i>(LRE)</i>
-        </Description>
-        
+
+        <Description
+          dangerouslySetInnerHTML={{
+            __html: `Committee: ${formatPeopleList(thesis.committee)} • Advisors: ${formatPeopleList(thesis.advisors)}`,
+          }}
+        />
+
         <Subtitle>Abstract</Subtitle>
-        <p>
-          Advances in Artificial Intelligence, driven by developments in Deep Learning, have led to tremendous progress in Speech Processing. In the context of Speaker Recognition (SR), the training objective is to associate an audio sample with the corresponding speaker identity. However, the performance of such supervised systems is highly dependent on the amount of labeled data available.
-
-          This inherent reliance on human supervision is a major limitation since annotations are expensive and time-consuming to obtain, prone to bias, and often limited in scope, all of which can hinder scalability and generalization. This poses a particular challenge in speech domains, where collecting labeled audio across all languages (with over 7,000 dialects spoken worldwide), speaker profiles (e.g., age, gender), and conditions (e.g., recording device, environmental noise) is not feasible.
-
-          Self-Supervised Learning (SSL) has recently emerged as a promising approach for learning relevant representations without human annotations, drawing inspiration from how humans learn through patterns and context rather than explicit labels. While SSL has proven effective across many downstream tasks, several applications remain underexplored. This thesis contributes to this fast-evolving paradigm for SR, toward greater generalization and reduced reliance on labeled data.
-        </p>
+        <div dangerouslySetInnerHTML={{ __html: data.thesisContent.html }} />
 
         <Subtitle>Resources</Subtitle>
         <Actions>
-          <Button to={THESIS_URL} external>
+          <Button to={thesis.thesisUrl} external>
             <Icon name="book" />
             Thesis Document
           </Button>
           <ActionSeparator />
-          <Button to={SLIDES_URL} external>
+          <Button to={thesis.slidesUrl} external>
             <Icon name="talks" />
             Defense Slides
           </Button>
           <ActionSeparator />
-          <Button to={CODE_URL} external>
+          <Button to={thesis.codeUrl} external>
             <Icon name="projects" />
             Toolkit (sslsv)
           </Button>
           <ActionSeparator />
-          <Button to={REF_URL} external>
+          <Button onClick={() => setShowBibtex(true)}>
             <Icon name="share" />
             Ref (BibTeX)
           </Button>
@@ -186,7 +267,7 @@ const PhdThesisPage = () => {
         <Subtitle>Video</Subtitle>
         <VideoContainer>
           <iframe
-            src="https://www.youtube.com/embed/PIApBAIWPrg?si=V_aOgARePdCaHMQb"
+            src={thesis.videoUrl}
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -196,53 +277,34 @@ const PhdThesisPage = () => {
         </VideoContainer>
 
         <Subtitle>Contributions</Subtitle>
-        <Contribution>
-          <h3><Tag variant="green">SSLSV</Tag> Application and Study of SSL for SV</h3>
-          <p>
-            Benchmark and study SSL frameworks (e.g., SimCLR, MoCo, DINO) on SV under controlled conditions<br />
-            → Identify the role and limitations of positive sampling in modeling intra-speaker variability
-          </p>
-          <p><IconInline name="publication" /> Label-Efficient Self-Supervised Speaker Verification With Information Maximization and Contrastive Learning <Link to="https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf" external>(PDF)</Link></p>
-          <p><IconInline name="publication" /> Self-Supervised Learning for Speaker Recognition: A study and review <Link to="https://arxiv.org/pdf/2602.10829" external>(PDF)</Link></p>
-        </Contribution>
-
-        <Contribution>
-          <h3><Tag variant="red">Margins</Tag> Margins in Self-Supervised Contrastive Frameworks</h3>
-          <p>
-            Integrate CosFace, ArcFace, AdaFace, and other margin-based constraints into SimCLR and MoCo<br />
-            → Improve speaker separability in fully self-supervised settings
-          </p>
-          <p><IconInline name="publication" /> Experimenting with Additive Margins for Contrastive Self-Supervised Speaker Verification <Link to="https://www.isca-archive.org/interspeech_2023/lepage23_interspeech.pdf" external>(PDF)</Link></p>
-          <p><IconInline name="publication" /> Additive Margin in Contrastive Self-Supervised Frameworks to Learn Discriminative Speaker Representations <Link to="https://www.isca-archive.org/odyssey_2024/lepage24_odyssey.pdf" external>(PDF)</Link></p>
-        </Contribution>
-
-        <Contribution>
-          <h3><Tag variant="blue">SSPS</Tag> Self-Supervised Positive Sampling (SSPS) from Latent Space</h3>
-          <p>
-            Exploit latent-space proximity to sample cross-recording pseudo-positives<br />
-            → Reduce intra-speaker variability and improve SV performance across frameworks (-58% EER for SimCLR)
-          </p>
-          <p><IconInline name="publication" /> Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling <Link to="https://arxiv.org/pdf/2501.17772" external>(PDF)</Link></p>
-          <p><IconInline name="publication" /> SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification <Link to="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf" external>(PDF)</Link></p>
-        </Contribution>
-        
-        <Contribution>
-          <h3><Tag variant="yellow">Foundation</Tag> Speech Foundation Models for SV without Labels</h3>
-          <p>
-            Develop an iterative pseudo-labeling approach to enable WavLM fine-tuning from a DINO-based model<br />
-            → 1.06% EER on VoxCeleb1-O, setting a new SOTA and approaching supervised performance
-          </p>
-          <p><IconInline name="publication" /> Towards Supervised Performance on Speaker Verification with SSL by Leveraging Large-Scale ASR Models <Link to="https://www.isca-archive.org/interspeech_2024/miara24_interspeech.pdf" external>(PDF)</Link></p>
-        </Contribution>
-
-        <Contribution>
-          <h3>sslsv: Open-Source PyTorch Toolkit for Self-Supervised SV</h3>
-          <p>
-            Release a PyTorch toolkit to support reproducibility and future research in the field<br />
-            → <Link to="https://github.com/theolepage/sslsv">https://github.com/theolepage/sslsv</Link>
-          </p>
-        </Contribution>
+        {thesis.contributions.map((contribution) => (
+          <Contribution key={contribution.title}>
+            <h3>
+              {contribution.tag && (
+                <Tag variant={contribution.tagVariant}>{contribution.tag}</Tag>
+              )}
+              {contribution.title}
+            </h3>
+            <p>
+              {contribution.description}<br />
+              {contribution.result && `→ ${contribution.result}`}
+              {contribution.resultUrl && (
+                <>→ <Link to={contribution.resultUrl}>{contribution.resultUrl}</Link></>
+              )}
+            </p>
+            {contribution.publications?.map((pub) => (
+              <p key={pub.url}>
+                <IconInline name="publication" /> {pub.title}{" "}
+                <Link to={pub.url} external>(PDF)</Link>
+              </p>
+            ))}
+          </Contribution>
+        ))}
       </Section>
+
+      {showBibtex && (
+        <BibtexModal bibText={bibText} onClose={() => setShowBibtex(false)} />
+      )}
     </Page>
   );
 };

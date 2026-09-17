@@ -1,7 +1,6 @@
 ---
 title: "sslsv: A PyTorch Toolkit for Self-Supervised Speaker Verification"
 date: "2026-03-20T12:00:00"
-color: "#6ee5c7"
 tags: ["Self-Supervised Learning", "Speaker Verification", "Speaker Recognition", "PyTorch"]
 ---
 

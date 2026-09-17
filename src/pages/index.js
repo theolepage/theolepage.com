@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Page from "../components/page";
 import Status from "../components/status";
 import About from "../components/about";
-import Thesis from "../components/thesis";
+import Research from "../components/research";
 import Experience from "../components/experience";
 import Education from "../components/education";
 import Publications from "../components/publications";
@@ -15,24 +15,38 @@ import Teaching from "../components/teaching";
 import Misc from "../components/misc";
 
 const IndexPage = ({ data }) => {
+  const {
+    showResearch,
+    showExperience,
+    showEducation,
+    showPublications,
+    showProjects,
+    showPosts,
+    showMisc,
+    showTalks,
+    showTeaching,
+  } = data.home.frontmatter;
+
   return (
     <Page>
       <Status data={data.status} />
       <About data={data.about} />
-      {/* <Thesis data={data.publications} /> */}
-      <Experience data={data.experience} />
-      <Education data={data.education} />
-      <Publications data={data.publications} />
-      {/* <Posts data={data.posts} /> */}
-      <Projects data={data.projects} />
-      {/* <Talks data={data.talks} /> */}
-      {/* <Teaching data={data.teaching} /> */}
-      <Misc
-        data={data.misc}
-        teaching={data.teaching}
-        talks={data.talks}
-        posts={data.posts}
-      />
+      {showResearch && <Research data={data.research} />}
+      {showExperience && <Experience data={data.experience} />}
+      {showEducation && <Education data={data.education} />}
+      {showPublications && <Publications data={data.publications} />}
+      {showProjects && <Projects data={data.projects} />}
+      {showPosts && <Posts data={data.posts} />}
+      {showTalks && <Talks data={data.talks} />}
+      {showTeaching && <Teaching data={data.teaching} />}
+      {showMisc && (
+        <Misc
+          data={data.misc}
+          skillsData={data.skills}
+          teaching={data.teaching}
+          talks={data.talks}
+        />
+      )}
     </Page>
   );
 };
@@ -52,24 +66,41 @@ export const query = graphql`
       }
       html
     }
+    research: markdownRemark(fileAbsolutePath: { regex: "/research.md/" }) {
+      html
+    }
+    home: markdownRemark(fileAbsolutePath: { regex: "/content/home.md/" }) {
+      frontmatter {
+        showResearch
+        showExperience
+        showEducation
+        showPublications
+        showProjects
+        showPosts
+        showMisc
+        showTalks
+        showTeaching
+      }
+    }
     misc: markdownRemark(fileAbsolutePath: { regex: "/misc.md/" }) {
       frontmatter {
+        attributes {
+          name
+          show
+          entries {
+            icon
+            text
+          }
+        }
+      }
+    }
+    skills: markdownRemark(fileAbsolutePath: { regex: "/skills.md/" }) {
+      frontmatter {
+        show
         skills {
           category
           items
         }
-        academicService
-        awards
-        languages
-        interests {
-          icon
-          text
-        }
-        showSkills
-        showAcademicService
-        showAwards
-        showLanguages
-        showInterests
       }
     }
     status: markdownRemark(fileAbsolutePath: { regex: "/status.md/" }) {
