@@ -220,6 +220,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         type MarkdownRemarkFrontmatterResources {
             name: String
             url: String
+            image: String
         }
 
         type MarkdownRemarkFrontmatterSkills {

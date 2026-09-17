@@ -129,6 +129,11 @@ export const query = graphql`
           image
           internship
           order
+          resources {
+            name
+            url
+            image
+          }
         }
       }
     }
@@ -148,6 +153,11 @@ export const query = graphql`
           date
           grade
           order
+          resources {
+            name
+            url
+            image
+          }
         }
       }
     }

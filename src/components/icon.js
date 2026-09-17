@@ -36,7 +36,8 @@ import {
   LayoutGrid,
   School,
   SquarePlay,
-  Code
+  Code,
+  ExternalLink,
 } from "lucide-react";
 
 const Icons = {
@@ -77,6 +78,7 @@ const Icons = {
   teaching: School,
   video: SquarePlay,
   code: Code,
+  external: ExternalLink,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

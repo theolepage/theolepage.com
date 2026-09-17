@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Icon from "./icon";
 import Link from "./link";
+import ResourceCards from "./resourceCards";
 
 const List = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ const Education = ({ data }) => {
     <Section title="Education" icon="education">
       <List>
         {education.map((item) => {
-          const { institution, institutionUrl, image, degree, location, date, grade } =
+          const { institution, institutionUrl, image, degree, location, date, grade, resources } =
             item.frontmatter;
 
           return (
@@ -110,6 +111,8 @@ const Education = ({ data }) => {
                 </Header>
 
                 <Details dangerouslySetInnerHTML={{ __html: item.html }} />
+
+                <ResourceCards resources={resources} />
               </Content>
             </Item>
           );

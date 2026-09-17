@@ -29,12 +29,9 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 - [X] Misc: show ressources
 - [X] Posts: add preview image
 - [X] Blog sslsv: add larger banner to github
-
-- [ ] Experience: Resources (image + link)
-17h30
+- [X] Experience: Resources (image + link)
 
 - [ ] theole.page: remove desc, one bottom link to theolepage.com, background animation, no select, dark, redirect
-18h00
 
 ---
 
