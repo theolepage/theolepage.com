@@ -29,6 +29,7 @@ import {
   Linkedin,
   Github,
   AppWindow,
+  X,
 } from "lucide-react";
 
 const Icons = {
@@ -61,6 +62,7 @@ const Icons = {
   github: Github,
   app: AppWindow,
   package: Package,
+  close: X,
 };
 
 const Icon = ({ name, width = 16, height = 16, color, ...props }) => {

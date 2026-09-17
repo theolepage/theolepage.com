@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Block from "./block";
 import Link from "./link";
+import BibtexModal from "./bibtexModal";
+import { generateBibTeX } from "../utils/bibtex";
 
 const PublicationItem = styled.div`
   display: flex;
@@ -48,6 +51,25 @@ const PublicationAuthors = ({ authors, websiteAuthor }) => {
   );
 };
 
+// Styled to match the plain-text <a> links rendered alongside it (see
+// config/typography.js's global `a` styles), since a native <button> has
+// none of that styling by default.
+const ActionButton = styled.button`
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+
+  color: var(--color-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+`;
+
 const PublicationActions = ({ resources }) => {
   const ActionSeparator = styled.div`
     display: inline-block;
@@ -65,9 +87,13 @@ const PublicationActions = ({ resources }) => {
     <div>
       {resources.map((action, i) => (
         <span key={action.name}>
-          <Link to={action.url} external>
-            {action.name}
-          </Link>
+          {action.onClick ? (
+            <ActionButton onClick={action.onClick}>{action.name}</ActionButton>
+          ) : (
+            <Link to={action.url} external>
+              {action.name}
+            </Link>
+          )}
           {i !== resources.length - 1 && <ActionSeparator>/</ActionSeparator>}
         </span>
       ))}
@@ -76,40 +102,62 @@ const PublicationActions = ({ resources }) => {
 };
 
 const Publication = ({ publication, websiteAuthor }) => {
+  const [showBibtex, setShowBibtex] = useState(false);
+
+  const query = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `);
+  const siteUrl = query?.site?.siteMetadata?.siteUrl || "";
+
   const url = publication.frontmatter.resources.find(
     (resource) => resource.name === "Document"
   )?.url;
 
   const key = publication.fileAbsolutePath.split("/").pop().replace(".md", "");
 
-  if (
-    !publication.frontmatter.resources.some(
-      (resource) => resource.name === "Ref (BibTeX)"
-    )
-  ) {
-    publication.frontmatter.resources.push({
-      name: "Ref (BibTeX)",
-      url: `/ref/${key}`,
-    });
-  }
+  const resources = publication.frontmatter.resources.some(
+    (resource) => resource.name === "Ref (BibTeX)"
+  )
+    ? publication.frontmatter.resources
+    : [
+        ...publication.frontmatter.resources,
+        { name: "Ref (BibTeX)", onClick: () => setShowBibtex(true) },
+      ];
+
+  const bibText = generateBibTeX({
+    frontmatter: publication.frontmatter,
+    filename: key,
+    siteUrl,
+  });
 
   return (
-    <Block
-      title={publication.frontmatter.title}
-      info={publication.frontmatter.year}
-      image={`/images/publications/${key}.png`}
-      imageActionUrl={url}
-      border={false}
-    >
-      <PublicationItem>
-        <PublicationSource>{publication.frontmatter.source}</PublicationSource>
-        <PublicationAuthors
-          authors={publication.frontmatter.authors}
-          websiteAuthor={websiteAuthor}
-        />
-        <PublicationActions resources={publication.frontmatter.resources} />
-      </PublicationItem>
-    </Block>
+    <>
+      <Block
+        title={publication.frontmatter.title}
+        info={publication.frontmatter.year}
+        image={`/images/publications/${key}.png`}
+        imageActionUrl={url}
+        border={false}
+      >
+        <PublicationItem>
+          <PublicationSource>{publication.frontmatter.source}</PublicationSource>
+          <PublicationAuthors
+            authors={publication.frontmatter.authors}
+            websiteAuthor={websiteAuthor}
+          />
+          <PublicationActions resources={resources} />
+        </PublicationItem>
+      </Block>
+      {showBibtex && (
+        <BibtexModal bibText={bibText} onClose={() => setShowBibtex(false)} />
+      )}
+    </>
   );
 };
 
