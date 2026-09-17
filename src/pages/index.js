@@ -241,7 +241,7 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 260)
+        excerpt(pruneLength: 200)
         fields {
           slug
         }
@@ -249,6 +249,7 @@ export const query = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           color
+          image
         }
       }
     }

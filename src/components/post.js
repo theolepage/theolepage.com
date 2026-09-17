@@ -8,7 +8,8 @@ const Post = ({ post }) => {
       title={post.frontmatter.title}
       info={post.frontmatter.date}
       url={post.fields.slug}
-      // color={post.frontmatter.color}
+      image={post.frontmatter.image}
+      imageLandscape
       // headerAlignItems="center"
     >
       {post.excerpt}

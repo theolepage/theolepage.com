@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Link from "../components/link";
@@ -12,7 +13,13 @@ const Container = styled.div`
   background-color: var(--background-primary);
 `;
 
-const Header = styled.div``;
+const HEADER_BORDER = css`
+  border-bottom: 1px solid rgba(230, 230, 230, 1);
+`;
+
+const Header = styled.div`
+  ${(props) => props.fullWidthBorder && HEADER_BORDER}
+`;
 
 const HeaderWrapper = styled.div`
   width: 1250px;
@@ -23,9 +30,9 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 1px solid rgba(230, 230, 230, 1);
-
   padding: var(--element-spacing) 0;
+
+  ${(props) => !props.fullWidthBorder && HEADER_BORDER}
 
   @media (max-width: 1300px) {
     width: 950px;
@@ -89,7 +96,13 @@ const FooterWrapper = styled.div`
   }
 `;
 
-const Page = ({ title, description, children, layout = true }) => {
+const Page = ({
+  title,
+  description,
+  children,
+  layout = true,
+  fullWidthHeaderBorder = false,
+}) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -121,8 +134,8 @@ const Page = ({ title, description, children, layout = true }) => {
     <Container>
       {/* eslint-disable-next-line react/jsx-pascal-case */}
       <SEO title={title} description={description} />
-      <Header>
-        <HeaderWrapper>
+      <Header fullWidthBorder={fullWidthHeaderBorder}>
+        <HeaderWrapper fullWidthBorder={fullWidthHeaderBorder}>
           <SiteTitle to="/" invisible>
             {siteMetadata.title}
           </SiteTitle>

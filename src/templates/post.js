@@ -1,11 +1,83 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 import Page from "../components/page";
 
+const HERO_IMAGE_HEIGHT = 360;
+
+const Article = styled.article`
+  position: relative;
+  z-index: 1;
+
+  margin: 0 -80px;
+  padding: 0 80px;
+
+  background: white;
+  border-radius: 0;
+
+  ${(props) =>
+    props.hasImage &&
+    css`
+      padding-top: 60px;
+      border-top: 4px solid ${props.color || "black"};
+    `}
+`;
+
 const ArticleHeader = styled.div`
   margin-bottom: 50px;
+`;
+
+const HeroSection = styled.div`
+  position: relative;
+
+  ${(props) =>
+    props.hasImage &&
+    css`
+      padding-top: 60px;
+    `}
+`;
+
+const ArticleImageWrapper = styled.div`
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100vw;
+  height: ${HERO_IMAGE_HEIGHT}px;
+
+  overflow: hidden;
+
+  background: rgb(250, 250, 250);
+  opacity: 0.75;
+`;
+
+const ArticleImage = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+
+  user-select: none;
+  -webkit-user-drag: none;
+`;
+
+const ArticleImageFade = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--background-primary) 0%, transparent) 0%,
+    var(--background-primary) 100%
+  );
+  pointer-events: none;
 `;
 
 const ArticleTitle = styled.h1`
@@ -59,24 +131,40 @@ const NavigationElement = styled.div`
 
 const PostTemplate = ({ data: { site, previous, next, markdownRemark: post } }) => {
   return (
-    <Page title={post.frontmatter.title} description={post.excerpt}>
-      <article className="post">
-        <ArticleHeader>
-          <ArticleTitle>{post.frontmatter.title}</ArticleTitle>
-          {post.frontmatter.tags && (
-            <ArticleTags>
-              {post.frontmatter.tags.map((tag, index) => (
-                <ArticleTag key={index}>{tag}</ArticleTag>
-              ))}
-            </ArticleTags>
-          )}
-          <ArticleDate>
-            {site.siteMetadata.author} • {post.frontmatter.date} • {post.fields.readingTime.text}
-          </ArticleDate>
-        </ArticleHeader>
+    <Page
+      title={post.frontmatter.title}
+      description={post.excerpt}
+      fullWidthHeaderBorder={!!post.frontmatter.image}
+    >
+      <HeroSection hasImage={!!post.frontmatter.image}>
+        {post.frontmatter.image && (
+          <ArticleImageWrapper>
+            <ArticleImage src={post.frontmatter.image} alt="" draggable={false} />
+            <ArticleImageFade />
+          </ArticleImageWrapper>
+        )}
+        <Article
+          className="post"
+          hasImage={!!post.frontmatter.image}
+          color={post.frontmatter.color}
+        >
+          <ArticleHeader>
+            <ArticleTitle>{post.frontmatter.title}</ArticleTitle>
+            {post.frontmatter.tags && (
+              <ArticleTags>
+                {post.frontmatter.tags.map((tag, index) => (
+                  <ArticleTag key={index}>{tag}</ArticleTag>
+                ))}
+              </ArticleTags>
+            )}
+            <ArticleDate>
+              {site.siteMetadata.author} • {post.frontmatter.date} • {post.fields.readingTime.text}
+            </ArticleDate>
+          </ArticleHeader>
 
-        <ArticleBody dangerouslySetInnerHTML={{ __html: post.html }} />
-      </article>
+          <ArticleBody dangerouslySetInnerHTML={{ __html: post.html }} />
+        </Article>
+      </HeroSection>
 
       {(previous || next) && (
         <Navigation>
@@ -122,6 +210,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         color
         tags
+        image
       }
       fields {
         readingTime {

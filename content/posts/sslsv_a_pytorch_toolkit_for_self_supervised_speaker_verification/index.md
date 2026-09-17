@@ -2,6 +2,7 @@
 title: "sslsv: A PyTorch Toolkit for Self-Supervised Speaker Verification"
 date: "2026-03-20T12:00:00"
 tags: ["Self-Supervised Learning", "Speaker Verification", "Speaker Recognition", "PyTorch"]
+image: "/images/posts/sslsv.png"
 ---
 
 
@@ -13,8 +14,11 @@ However, experimenting with self-supervised methods quickly became challenging. 
 As my research progressed, I repeatedly found myself re-implementing methods, reproducing experiments, and building tooling around training, evaluation, and reproducibility. What started as research code gradually evolved into **`sslsv`**, an open-source PyTorch toolkit dedicated to self-supervised learning (**`ssl`**) for speaker verification (**`sv`**).
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 34px 0 28px 0;">
-    <img src="https://github.com/theolepage/sslsv/raw/main/logo.png" width="160" alt="Logo" style="margin-bottom: 16px;" />
-    <a href="https://github.com/theolepage/sslsv" target="_blank" rel="noopener noreferrer">https://github.com/theolepage/sslsv</a>
+    <img src="https://github.com/theolepage/sslsv/raw/main/logo.png" width="160" alt="Logo" style="margin-bottom: 24px;" />
+    <a href="https://github.com/theolepage/sslsv" target="_blank" rel="noopener noreferrer" class="github-banner">
+        <img src="/images/socials/icon-github.png" width="20" height="20" alt="" />
+        View the project on GitHub
+    </a>
 </div>
 
 The main objective behind `sslsv` was twofold: (1) provide implementations of major **state-of-the-art self-supervised frameworks adapted to speaker recognition**; and (2) evaluate them within a **consistent, reproducible, and comparable environment**. Over time, the toolkit grew to support multiple speaker encoders, training setups, evaluation protocols, benchmarks across several speaker-related downstream tasks, and research contributions developed during my PhD.

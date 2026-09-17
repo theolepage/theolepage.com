@@ -26,6 +26,12 @@ const BlockElement = styled.div`
       border-radius: 0;
       background: none;
       padding: 8px 0 8px 18px;
+
+      transition: border-color var(--transition-duration);
+
+      &:hover {
+        border-left-color: var(--color-muted-3);
+      }
     `}
 
   ${(props) =>
@@ -47,6 +53,17 @@ const BlockContainer = styled.div`
   gap: calc(var(--element-spacing) + 10px);
   align-items: center;
   height: 100%;
+
+  /* On narrow screens, a wide landscape thumbnail reads better stacked
+     above the text than squeezed beside it. */
+  ${(props) =>
+    props.landscape &&
+    css`
+      @media (max-width: 800px) {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    `}
 `;
 
 const BlockContent = styled.div`
@@ -81,6 +98,31 @@ const Image = styled.div`
     height: 100px;
     width: 75px;
   }
+
+  /* Wide thumbnail (e.g. blog post previews) instead of the tall
+     portrait shape sized for PDF-like previews (publications). No border/
+     shadow/transform of its own — the whole block (Post) already has its
+     own hover animation, so this avoids a redundant, misaligned second
+     lift effect confined to just the image. */
+  ${(props) =>
+    props.landscape &&
+    css`
+      width: 150px;
+      height: 70px;
+
+      border: none;
+      transition: none;
+
+      &:hover {
+        box-shadow: none;
+        transform: none;
+      }
+
+      @media (max-width: 800px) {
+        width: 100%;
+        height: 140px;
+      }
+    `}
 `;
 
 const Header = styled.div`
@@ -136,19 +178,30 @@ const Block = ({
   children,
   image,
   imageActionUrl,
+  imageLandscape = false,
   border = true,
   minimal = false,
   headerAlignItems = "baseline",
 }) => {
   const body = (
-    <BlockElement hover={url && !image} border={border} minimal={minimal}>
-      <BlockContainer>
+    <BlockElement hover={!!url} border={border} minimal={minimal}>
+      <BlockContainer landscape={imageLandscape}>
         {image && (
-          <Link to={imageActionUrl} invisible>
-            <Image>
+          // When `url` is set, the whole block (image included) is already
+          // wrapped in a Link below — nesting another one here would put an
+          // <a> inside an <a>. Only wrap the image on its own otherwise
+          // (e.g. Publication, where only the image links out).
+          imageActionUrl && !url ? (
+            <Link to={imageActionUrl} invisible>
+              <Image landscape={imageLandscape}>
+                <img src={image} alt={`Preview`} />
+              </Image>
+            </Link>
+          ) : (
+            <Image landscape={imageLandscape}>
               <img src={image} alt={`Preview`} />
             </Image>
-          </Link>
+          )
         )}
 
         <BlockContent>

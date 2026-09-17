@@ -38,3 +38,30 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.post .github-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 16px;
+
+  background: rgb(245, 245, 245);
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 8px;
+
+  color: rgb(30, 30, 30);
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background 0.2s;
+}
+
+.post .github-banner:hover {
+  background: rgb(235, 235, 235);
+  text-decoration: none;
+}
+
+.post .github-banner img {
+  margin-bottom: 0;
+}
