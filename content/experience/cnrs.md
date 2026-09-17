@@ -9,4 +9,4 @@ internship: true
 order: 3
 ---
 
-Contributed to [Holovibes](https://holovibes.com/), real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
+Contributed to Holovibes, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)

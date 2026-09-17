@@ -8,4 +8,4 @@ date: "Nov. 2022 - Feb. 2026"
 order: 1
 ---
 
-Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA • [Learn more at /phd_thesis →](https://theolepage.com/phd_thesis/)
+Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA • Proposed self-supervised methods for speaker verification • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication)

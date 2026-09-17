@@ -9,4 +9,4 @@ grade: "GPA: 3.9/4.0"
 order: 2
 ---
 
-AI/ML for Computer Vision • Research student @ LRDE ([IS2022](https://www.isca-archive.org/interspeech_2022/lepage22_interspeech.pdf)) • Teaching assistant (C & Unix) • Exchange semester at CSUMB
+Major: AI/ML for Computer Vision • Research student • Teaching assistant (C & Unix) • Exchange semester at CSUMB
