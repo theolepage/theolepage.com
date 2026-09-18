@@ -40,12 +40,7 @@ const IndexPage = ({ data }) => {
       {showTalks && <Talks data={data.talks} />}
       {showTeaching && <Teaching data={data.teaching} />}
       {showMisc && (
-        <Misc
-          data={data.misc}
-          skillsData={data.skills}
-          teaching={data.teaching}
-          talks={data.talks}
-        />
+        <Misc data={data.misc} teaching={data.teaching} talks={data.talks} />
       )}
     </Page>
   );
@@ -84,6 +79,11 @@ export const query = graphql`
     }
     misc: markdownRemark(fileAbsolutePath: { regex: "/misc.md/" }) {
       frontmatter {
+        showSkills
+        skills {
+          category
+          items
+        }
         showTeaching
         showTalks
         attributes {
@@ -93,15 +93,6 @@ export const query = graphql`
             icon
             text
           }
-        }
-      }
-    }
-    skills: markdownRemark(fileAbsolutePath: { regex: "/skills.md/" }) {
-      frontmatter {
-        show
-        skills {
-          category
-          items
         }
       }
     }

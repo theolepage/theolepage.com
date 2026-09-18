@@ -512,12 +512,11 @@ const ResumeHeader = () => (
   <HeaderSection>
     <Name>Theo Lepage</Name>
     <Description>
-      <DescriptionEmphasize>???</DescriptionEmphasize> <DescriptionEmphasize>(???)</DescriptionEmphasize> @ <DescriptionEmphasize>???</DescriptionEmphasize>
+      <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in <DescriptionEmphasize>AI</DescriptionEmphasize>
       <DescriptionSeparator>•</DescriptionSeparator>
-      <DescriptionEmphasize>Speech</DescriptionEmphasize> & <DescriptionEmphasize>Speaker Recognition</DescriptionEmphasize>
+      <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for <DescriptionEmphasize>Speech & Speaker Recognition</DescriptionEmphasize>
       <DescriptionSeparator>•</DescriptionSeparator>
-      <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in{" "}
-      <DescriptionEmphasize>AI</DescriptionEmphasize>
+      Open to <DescriptionEmphasize>Research Scientist</DescriptionEmphasize> Roles
     </Description>
     <Contact>
       <ContactItem>
@@ -791,13 +790,13 @@ const ResumePageComponent = () => {
               <Title>Experience</Title>
 
               <ExperienceItem
-                title="???"
-                company="???"
-                companyUrl="https://theolepage.com"
+                title="Ph.D. Researcher"
+                company="EPITA Research Laboratory (LRE)"
+                companyUrl="https://www.lre.epita.fr/"
                 location="Paris, France"
-                date="Oct. 2026 - Present"
+                date="Nov. 2022 - May. 2026"
               >
-                ...
+                Proposed self-supervised methods for speaker recognition • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication) • DINO-WavLM → SOTA performance on VoxCeleb (1.06% EER on Vox1-O) • SSPS → latent-space positive sampling (-58% EER for SimCLR) • sslsv → open-source PyTorch toolkit for self-supervised speaker verification
               </ExperienceItem>
 
               <ExperienceItem
@@ -835,7 +834,7 @@ const ResumePageComponent = () => {
                 location="Paris, France"
                 date="Nov. 2022 - Feb. 2026"
               >
-                Thesis: <a target="_blank" rel="nofollow noopener noreferrer" href="https://theolepage.com/phd_thesis/">Self-Supervised Learning for Speaker Recognition</a> • Supervised by Reda Dehak @ LRE-EPITA • Proposed self-supervised methods for speaker verification • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication)
+                Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA • Proposed self-supervised methods for speaker verification • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication)
               </EducationItem>
 
               <EducationItem
@@ -982,13 +981,13 @@ const ResumePageComponent = () => {
                   </MiscRow>
 
                   <MiscRow>
-                    <SubSubtitle>Awards</SubSubtitle>
+                    <SubSubtitle>Awards & Honors</SubSubtitle>
                     <MiscContent>3rd place @ ASVspoof 5 (Track 1)</MiscContent>
                   </MiscRow>
 
                   <MiscRow>
                     <SubSubtitle>Academic Service</SubSubtitle>
-                    <MiscContent>Reviewer for Interspeech</MiscContent>
+                    <MiscContent>Reviewer for Interspeech & ICASSP</MiscContent>
                   </MiscRow>
                 </Col>
               </Cols>

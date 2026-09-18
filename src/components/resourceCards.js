@@ -15,8 +15,8 @@ const ResourcesRow = styled.div`
 const ResourceImage = styled.img`
   flex-shrink: 0;
 
-  width: 90px;
-  height: 50px;
+  width: 100px;
+  height: 55px;
   margin-bottom: 0;
 
   object-fit: cover;
@@ -28,18 +28,19 @@ const ResourceImage = styled.img`
 `;
 
 const ResourceTitle = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-
   font-size: var(--size-tiny);
   color: var(--color-muted-1);
-
-  white-space: nowrap;
 
   font-weight: 600;
 
   transition: color var(--transition-duration);
+
+  svg {
+    margin-left: 4px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
 `;
 
 const ResourceCard = styled(Link)`

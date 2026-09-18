@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Block from "./block";
 import Link from "./link";
+import Icon from "./icon";
 import ResourceActions from "./resourceActions";
 
 const BlocksGrid = styled.div`
@@ -26,6 +27,7 @@ const CourseItem = styled.div`
 
 const Teaching = ({ data, listing }) => {
   const teaching = listing ? data.nodes : data.nodes.slice(0, 4);
+  const hasMore = data.nodes.length > teaching.length;
 
   const formatDate = (startYear, endYear, semester) => {
     if (startYear === endYear) {
@@ -57,8 +59,10 @@ const Teaching = ({ data, listing }) => {
         })}
       </BlocksGrid>
 
-      {!listing && (
-        <Link to="/teaching" variant="secondary">See all teaching →</Link>
+      {hasMore && (
+        <Link to="/teaching" variant="secondary">
+          See all teaching <Icon name="rightArrow" width={14} height={14} style={{ marginTop: 2 }} />
+        </Link>
       )}
     </Section>
   );

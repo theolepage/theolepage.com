@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Project from "./project";
 import Link from "./link";
+import Icon from "./icon";
 
 const ProjectsGrid = styled.div`
   display: grid;
@@ -60,6 +61,7 @@ const Projects = ({ data, listing }) => {
       return listing || project.frontmatter.showcased === true;
     })
   );
+  const hasMore = data.nodes.length > projects.length;
 
   return (
     <Section title="Projects" icon="projects">
@@ -69,8 +71,10 @@ const Projects = ({ data, listing }) => {
         ))}
       </ProjectsGrid>
 
-      {!listing && (
-        <Link to="/projects" variant="secondary">See all projects →</Link>
+      {hasMore && (
+        <Link to="/projects" variant="secondary">
+          See all projects <Icon name="rightArrow" width={14} height={14} style={{ marginTop: 2 }} />
+        </Link>
       )}
 
       {listing && (

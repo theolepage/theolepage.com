@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Post from "./post";
 import Link from "./link";
+import Icon from "./icon";
 
 const BlocksGrid = styled.div`
   display: grid;
@@ -15,6 +16,7 @@ const BlocksGrid = styled.div`
 
 const Posts = ({ data, listing }) => {
   const posts = listing ? data.nodes : data.nodes.slice(0, 3);
+  const hasMore = data.nodes.length > posts.length;
 
   return (
     <Section title="Posts" icon="posts">
@@ -24,8 +26,10 @@ const Posts = ({ data, listing }) => {
         ))}
       </BlocksGrid>
 
-      {!listing && (
-        <Link to="/posts" variant="secondary">See all blog posts →</Link>
+      {hasMore && (
+        <Link to="/posts" variant="secondary">
+          See all blog posts <Icon name="rightArrow" width={14} height={14} style={{ marginTop: 2 }} />
+        </Link>
       )}
     </Section>
   );

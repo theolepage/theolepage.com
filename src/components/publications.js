@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Section from "./section";
 import Link from "./link";
+import Icon from "./icon";
 import Publication from "./publication";
 
 const BlocksGrid = styled.div`
@@ -27,9 +28,13 @@ const Publications = ({ data, listing }) => {
 
   const websiteAuthor = query?.site?.siteMetadata?.author || "";
 
-  const publications = data.nodes.filter((publication) => {
-    return publication.frontmatter.type !== "thesis" && (listing || publication.frontmatter.showcased === true);
-  });
+  const nonThesisPublications = data.nodes.filter(
+    (publication) => publication.frontmatter.type !== "thesis"
+  );
+  const publications = nonThesisPublications.filter(
+    (publication) => listing || publication.frontmatter.showcased === true
+  );
+  const hasMore = nonThesisPublications.length > publications.length;
 
   return (
     <Section title="Publications" icon="publications">
@@ -43,8 +48,10 @@ const Publications = ({ data, listing }) => {
         ))}
       </BlocksGrid>
 
-      {!listing && (
-        <Link to="/publications" variant="secondary">See all publications →</Link>
+      {hasMore && (
+        <Link to="/publications" variant="secondary">
+          See all publications <Icon name="rightArrow" width={14} height={14} style={{ marginTop: 2 }} />
+        </Link>
       )}
     </Section>
   );

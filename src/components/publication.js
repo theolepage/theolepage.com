@@ -72,12 +72,12 @@ const Publication = ({ publication, websiteAuthor }) => {
   const key = publication.fileAbsolutePath.split("/").pop().replace(".md", "");
 
   const resources = publication.frontmatter.resources.some(
-    (resource) => resource.name === "Ref (BibTeX)"
+    (resource) => resource.name === "Ref"
   )
     ? publication.frontmatter.resources
     : [
         ...publication.frontmatter.resources,
-        { name: "Ref (BibTeX)", onClick: () => setShowBibtex(true) },
+        { name: "Ref", onClick: () => setShowBibtex(true) },
       ];
 
   const bibText = generateBibTeX({
@@ -101,7 +101,10 @@ const Publication = ({ publication, websiteAuthor }) => {
             authors={publication.frontmatter.authors}
             websiteAuthor={websiteAuthor}
           />
-          <ResourceActions resources={resources} />
+          <ResourceActions
+            resources={resources}
+            type={publication.frontmatter.type}
+          />
         </PublicationItem>
       </Block>
       {showBibtex && (

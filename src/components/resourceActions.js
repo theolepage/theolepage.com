@@ -10,7 +10,14 @@ export const RESOURCE_ICONS = {
   Code: "code",
   Video: "video",
   Website: "website",
-  "Ref (BibTeX)": "share",
+  Ref: "share",
+};
+
+const DOCUMENT_LABELS = {
+  thesis: "Thesis",
+  conference: "Article",
+  journal: "Article",
+  report: "Report",
 };
 
 // Styled to match the plain-text <a> links rendered alongside it (see
@@ -49,7 +56,7 @@ const ActionSeparator = styled.div`
   color: color-mix(in srgb, var(--color-accent) 50%, white);
 `;
 
-const ResourceActions = ({ resources }) => {
+const ResourceActions = ({ resources, type }) => {
   if (!resources || resources.length === 0) {
     return null;
   }
@@ -58,10 +65,14 @@ const ResourceActions = ({ resources }) => {
     <div>
       {resources.map((action, i) => {
         const iconName = RESOURCE_ICONS[action.name];
+        const displayName =
+          action.name === "Document"
+            ? DOCUMENT_LABELS[type] || action.name
+            : action.name;
         const label = (
           <>
             {iconName && <Icon name={iconName} width={13} height={13} />}
-            {action.name}
+            {displayName}
           </>
         );
 

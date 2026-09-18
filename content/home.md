@@ -4,7 +4,7 @@ showExperience: true
 showEducation: true
 showPublications: true
 showProjects: true
-showPosts: true
+showPosts: false
 showTalks: true
 showTeaching: true
 showMisc: true

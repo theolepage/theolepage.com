@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Section from "./section";
 import Block from "./block";
 import Link from "./link";
+import Icon from "./icon";
 import ResourceActions from "./resourceActions";
 
 const BlocksGrid = styled.div`
@@ -92,6 +93,8 @@ const Talks = ({ data, listing }) => {
     return dateB - dateA;
   });
 
+  const hasMore = talks.length > sortedTalks.length;
+
   return (
     <Section title="Talks" icon="talks">
       <BlocksGrid>
@@ -110,8 +113,10 @@ const Talks = ({ data, listing }) => {
         ))}
       </BlocksGrid>
 
-      {!listing && (
-        <Link to="/talks" variant="secondary">See all talks →</Link>
+      {hasMore && (
+        <Link to="/talks" variant="secondary">
+          See all talks <Icon name="rightArrow" width={14} height={14} style={{ marginTop: 2 }} />
+        </Link>
       )}
     </Section>
   );

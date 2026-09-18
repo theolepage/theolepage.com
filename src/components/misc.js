@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 import Section from "./section";
 import Icon from "./icon";
@@ -15,7 +16,15 @@ const FullWidthRows = styled.div`
 const Columns = styled.div`
   display: flex;
   gap: calc(var(--element-spacing) * 2);
-  margin-top: calc(var(--element-spacing) * 1.2);
+
+  /* Only when FullWidthRows actually has rows to separate from — otherwise
+     (Skills/Teaching/Talks all hidden) this is the first thing under the
+     section title and the margin just reads as a stray gap. */
+  ${(props) =>
+    props.withTopMargin &&
+    css`
+      margin-top: calc(var(--element-spacing) * 1.2);
+    `}
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -68,29 +77,39 @@ const RowContent = styled.div`
   color: var(--color-muted-1);
 `;
 
+// 2 columns, filled column-major (top-to-bottom, then next column) so
+// e.g. ML & Data/Programming land in column 1 and Tools/Languages in
+// column 2, rather than reading left-to-right across rows.
 const SkillsContent = styled.div`
   flex: 1;
 
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px;
+  display: grid;
+  /* max-content, not 1fr: an even 50/50 split forces column 1 (longer
+     lists like ML & Data/Programming) to wrap while column 2 (shorter
+     ones like Tools/Languages) sits with unused room. Sizing each column
+     to its own content lets column 1 take exactly the space it needs. */
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  gap: 6px 32px;
 
   font-size: var(--size-small);
   color: var(--color-muted-1);
 `;
 
+const SkillGroupCell = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+`;
+
 const SkillGroupLabel = styled.span`
   flex-shrink: 0;
-  margin-left: 16px;
 
   font-size: var(--size-tiny);
   font-weight: 600;
   color: var(--color-muted-2);
-
-  &:first-of-type {
-    margin-left: 0;
-  }
 `;
 
 const Pill = styled.span`
@@ -224,9 +243,9 @@ const Attribute = ({ name, entries }) => {
   );
 };
 
-const Misc = ({ data, skillsData, teaching, talks }) => {
-  const { attributes = [], showTeaching, showTalks } = data.frontmatter;
-  const { show: displaySkills, skills } = skillsData.frontmatter;
+const Misc = ({ data, teaching, talks }) => {
+  const { attributes = [], showTeaching, showTalks, showSkills, skills } =
+    data.frontmatter;
 
   const visibleAttributes = attributes.filter(
     (attribute) => attribute.show !== false
@@ -238,25 +257,32 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
   const leftAttributes = visibleAttributes.filter((_, i) => i % 2 === 0);
   const rightAttributes = visibleAttributes.filter((_, i) => i % 2 === 1);
 
-  const allTeaching = teaching.nodes;
+  // Query already sorts by endYear DESC, so this is just the 4 most recent.
+  const recentTeaching = teaching.nodes.slice(0, 4);
+  const hasMoreTeaching = teaching.nodes.length > recentTeaching.length;
+
   const recentTalks = [...talks.nodes]
     .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
     .slice(0, 3);
+  const hasMoreTalks = talks.nodes.length > recentTalks.length;
+
+  const hasFullWidthRows = showSkills || showTeaching || showTalks;
 
   return (
     <Section title="Miscellaneous" icon="misc">
+      {hasFullWidthRows && (
       <FullWidthRows>
-      {displaySkills && (
+      {showSkills && (
       <Row>
         <RowLabel>Skills</RowLabel>
         <SkillsContent>
           {skills.map((group) => (
-            <React.Fragment key={group.category}>
+            <SkillGroupCell key={group.category}>
               <SkillGroupLabel>{group.category}:</SkillGroupLabel>
               {group.items.map((item) => (
                 <Pill key={item}>{item}</Pill>
               ))}
-            </React.Fragment>
+            </SkillGroupCell>
           ))}
         </SkillsContent>
       </Row>
@@ -267,7 +293,7 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
         <RowLabel>Teaching</RowLabel>
         <RowContent>
           <EntryList>
-            {allTeaching.map((course) => {
+            {recentTeaching.map((course) => {
               const { name, location, resources } = course.frontmatter;
               const label = `${name} (${formatTeachingDate(course.frontmatter)} @ ${location})`;
               return (
@@ -277,9 +303,13 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
                 </div>
               );
             })}
-            <div>
-              <Link to="/teaching" variant="secondary">See all teaching →</Link>
-            </div>
+            {hasMoreTeaching && (
+              <div>
+                <Link to="/teaching" variant="secondary">
+                  See all teaching <Icon name="rightArrow" width={12} height={12} style={{ marginTop: 2 }} />
+                </Link>
+              </div>
+            )}
           </EntryList>
         </RowContent>
       </Row>
@@ -300,17 +330,22 @@ const Misc = ({ data, skillsData, teaching, talks }) => {
                 </div>
               );
             })}
-            <div>
-              <Link to="/talks" variant="secondary">See all talks →</Link>
-            </div>
+            {hasMoreTalks && (
+              <div>
+                <Link to="/talks" variant="secondary">
+                  See all talks <Icon name="rightArrow" width={12} height={12} style={{ marginTop: 2 }} />
+                </Link>
+              </div>
+            )}
           </EntryList>
         </RowContent>
       </Row>
       )}
       </FullWidthRows>
+      )}
 
       {visibleAttributes.length > 0 && (
-      <Columns>
+      <Columns withTopMargin={hasFullWidthRows}>
         {leftAttributes.length > 0 && (
         <Column>
           {leftAttributes.map((attribute) => (
