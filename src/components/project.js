@@ -148,6 +148,8 @@ const UnderDevelopmentIcon = styled.div`
 const Description = styled.div`
   font-size: var(--size-small);
   color: var(--color-muted-1);
+
+  text-align: justify;
 `;
 
 const Project = ({ project }) => {

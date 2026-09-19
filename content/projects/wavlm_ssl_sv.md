@@ -1,6 +1,6 @@
 ---
 name: "wavlm_ssl_sv"
-description: "SOTA method for self-supervised speaker verification leveraging a large-scale pretrained ASR model."
+description: "Self-supervised framework to fine-tune WavLM for speaker verification, without labels, achieving SOTA on VoxCeleb."
 url: "https://github.com/theolepage/wavlm_ssl_sv"
 color: "#8877f4"
 order: 3

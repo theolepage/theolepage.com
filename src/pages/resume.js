@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
+import { graphql } from "gatsby";
 
 import Page from "../components/page";
 import LucideIcon from "../components/icon";
@@ -44,10 +45,6 @@ const Header = styled.div`
   height: ${HEADER_HEIGHT};
 
   padding: 0 24px;
-
-  // background: #fff;
-  // border-bottom: 1px solid var(--border-color);
-  // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.07);
 
   font-family: "Open Sans", sans-serif;
   font-size: 13px;
@@ -233,6 +230,10 @@ const Text = styled.div`
   text-align: justify;
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
+
+  p {
+    margin: 0;
+  }
 
   ul {
     margin-top: 4px;
@@ -508,76 +509,59 @@ const PublicationYear = styled.span`
   font-size: 11px;
 `;
 
-const ResumeHeader = () => (
+// Renders **bold** parts of a description segment as emphasized text.
+const renderEmphasis = (text) =>
+  text
+    .split(/\*\*(.+?)\*\*/)
+    .map((part, i) =>
+      i % 2 === 1 ? (
+        <DescriptionEmphasize key={i}>{part}</DescriptionEmphasize>
+      ) : (
+        part
+      )
+    );
+
+const ResumeHeader = ({ name, description = "", contact = [] }) => (
   <HeaderSection>
-    <Name>Theo Lepage</Name>
+    <Name>{name}</Name>
     <Description>
-      <DescriptionEmphasize>Ph.D.</DescriptionEmphasize> in <DescriptionEmphasize>AI</DescriptionEmphasize>
-      <DescriptionSeparator>•</DescriptionSeparator>
-      <DescriptionEmphasize>Self-Supervised Learning</DescriptionEmphasize> for <DescriptionEmphasize>Speech & Speaker Recognition</DescriptionEmphasize>
-      <DescriptionSeparator>•</DescriptionSeparator>
-      Open to <DescriptionEmphasize>Research Scientist</DescriptionEmphasize> Roles
+      {description.split(" • ").map((segment, i) => (
+        <React.Fragment key={segment}>
+          {i > 0 && <DescriptionSeparator>•</DescriptionSeparator>}
+          {renderEmphasis(segment)}
+        </React.Fragment>
+      ))}
     </Description>
     <Contact>
-      <ContactItem>
-        <a
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          href="https://www.google.com/maps/place/Paris/@48.864872,2.2183041,11z/data=!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219"
-        >
-          <ContactIcon name="location" width={10} height={10} color="#377dff" />
-          Paris, France
-        </a>
-        {' '}
-        <Deemphasize>(open to relocation EU/US)</Deemphasize>
-      </ContactItem>
-      <ContactItem>
-        <a target="_blank" rel="nofollow noopener noreferrer" href="/">
-          <ContactIcon name="website" width={10} height={10} color="#377dff" />
-          theolepage.com
-        </a>
-      </ContactItem>
-      <ContactItem>
-        <a
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          href="mailto:contact@theolepage.com"
-        >
-          <ContactIcon name="email" width={10} height={10} color="#377dff" />
-          contact@theolepage.com
-        </a>
-      </ContactItem>
-      <ContactItem>
-        <a
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          href="https://www.linkedin.com/in/theolepage/"
-        >
-          <Icon src="/images/socials/icon-linkedin_blue.svg" alt="icon-linkedin" />
-          Theo Lepage
-        </a>
-      </ContactItem>
-      <ContactItem>
-        <a
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          href="https://github.com/theolepage/"
-        >
-          <Icon src="/images/socials/icon-github_blue.svg" alt="icon-github" />
-          theolepage
-        </a>
-      </ContactItem>
+      {contact.map(({ icon, image, text, url, note }) => (
+        <ContactItem key={url}>
+          <a target="_blank" rel="nofollow noopener noreferrer" href={url}>
+            {icon && (
+              <ContactIcon name={icon} width={10} height={10} color="#377dff" />
+            )}
+            {image && <Icon src={image} alt="" />}
+            {text}
+          </a>
+          {note && (
+            <>
+              {" "}
+              <Deemphasize>{note}</Deemphasize>
+            </>
+          )}
+        </ContactItem>
+      ))}
     </Contact>
   </HeaderSection>
 );
 
 const EducationItem = ({
   institution,
+  institutionUrl,
   degree,
   location,
   date,
   grade,
-  children,
+  html,
 }) => (
   <Item>
     <Subtitle>
@@ -585,9 +569,9 @@ const EducationItem = ({
         <a
           target="_blank"
           rel="nofollow noopener noreferrer"
-          href={institution.url}
+          href={institutionUrl}
         >
-          {institution.name}
+          {institution}
         </a>
       </Emphasize>
       {' '}({degree})
@@ -623,9 +607,7 @@ const EducationItem = ({
         </Grade>
       )}
     </EducationIcons>
-    <Text>
-      {children}
-    </Text>
+    <Text dangerouslySetInnerHTML={{ __html: html }} />
   </Item>
 );
 
@@ -636,7 +618,7 @@ const ExperienceItem = ({
   location,
   date,
   internship,
-  children,
+  html,
 }) => (
   <Experience>
     <ExperienceContent>
@@ -674,9 +656,7 @@ const ExperienceItem = ({
           </Date>
         </ExperienceIcons>
       </ExperienceHeader>
-      <Text>
-        {children}
-      </Text>
+      <Text dangerouslySetInnerHTML={{ __html: html }} />
     </ExperienceContent>
   </Experience>
 );
@@ -721,11 +701,81 @@ const VIEWPORT_HORIZONTAL_MARGIN = 24;
 
 const isDev = process.env.NODE_ENV === "development";
 
-const ResumePageComponent = () => {
+const getId = (node) =>
+  node.fileAbsolutePath.split("/").pop().replace(".md", "");
+
+// Picks nodes by file name, in the order given (unknown ids are skipped).
+const pickByIds = (nodes, ids, label) => {
+  const byId = Object.fromEntries(nodes.map((node) => [getId(node), node]));
+  return (ids || [])
+    .map((id) => {
+      if (!byId[id]) console.warn(`resume.md: unknown ${label} "${id}"`);
+      return byId[id];
+    })
+    .filter(Boolean);
+};
+
+const formatTeachingDate = ({ startYear, endYear }) =>
+  startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
+
+// Same colors as the home page's interest icons.
+const INTEREST_ICON_COLORS = {
+  science: "#70ba59",
+  robotics: "#f0655b",
+  sailing: "#377dff",
+};
+
+const MiscAttribute = ({ name, entries }) => {
+  const hasIcons = entries.some((entry) => entry.icon);
+
+  return (
+    <MiscRow>
+      <SubSubtitle>{name}</SubSubtitle>
+      <MiscContent>
+        {hasIcons
+          ? entries.map((entry) => (
+              <MiscInterest key={entry.text}>
+                {entry.icon && (
+                  <LucideIcon
+                    name={entry.icon}
+                    width={11}
+                    height={11}
+                    color={INTEREST_ICON_COLORS[entry.icon]}
+                    strokeWidth={2.25}
+                  />
+                )}
+                {entry.text}
+              </MiscInterest>
+            ))
+          : entries.map((entry) => entry.text).join(" • ")}
+      </MiscContent>
+    </MiscRow>
+  );
+};
+
+const ResumePageComponent = ({ data }) => {
   const viewportRef = useRef(null);
   const pagesRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [disableFit, setDisableFit] = useState(false);
+
+  const config = data.resume.frontmatter;
+  const experience = pickByIds(data.experience.nodes, config.experience, "experience");
+  const education = pickByIds(data.education.nodes, config.education, "education");
+  const projects = pickByIds(data.projects.nodes, config.projects, "project");
+  const publications = pickByIds(data.publications.nodes, config.publications, "publication");
+
+  const misc = config.misc || {};
+  const skills = misc.skills ? data.misc.frontmatter.skills : [];
+  const teaching = pickByIds(data.teaching.nodes, misc.teaching, "teaching");
+  const attributes = (misc.attributes || [])
+    .map((name) => {
+      const attribute = data.misc.frontmatter.attributes.find((a) => a.name === name);
+      if (!attribute) console.warn(`resume.md: unknown misc attribute "${name}"`);
+      return attribute;
+    })
+    .filter(Boolean);
+  const hasMiscOtherRows = teaching.length > 0 || attributes.length > 0;
 
   useLayoutEffect(() => {
     if (disableFit) {
@@ -784,249 +834,150 @@ const ResumePageComponent = () => {
         <ResumeViewport ref={viewportRef} disableFit={disableFit}>
         <ResumePagesWrapper ref={pagesRef} style={{ transform: `scale(${scale})` }}>
           <ResumePage>
-            <ResumeHeader />
+            <ResumeHeader {...config} />
 
-            <Section>
-              <Title>Experience</Title>
+            {experience.length > 0 && (
+              <Section>
+                <Title>Experience</Title>
 
-              <ExperienceItem
-                title="Ph.D. Researcher"
-                company="EPITA Research Laboratory (LRE)"
-                companyUrl="https://www.lre.epita.fr/"
-                location="Paris, France"
-                date="Nov. 2022 - May. 2026"
-              >
-                Proposed self-supervised methods for speaker recognition • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication) • DINO-WavLM → SOTA performance on VoxCeleb (1.06% EER on Vox1-O) • SSPS → latent-space positive sampling (-58% EER for SimCLR) • sslsv → open-source PyTorch toolkit for self-supervised speaker verification
-              </ExperienceItem>
-
-              <ExperienceItem
-                title="Research Scientist"
-                company="Siemens Healthineers"
-                companyUrl="https://www.siemens-healthineers.com/"
-                location="Princeton, USA"
-                date="Feb. 2022 - Sep. 2022"
-                internship
-              >
-                Developed deep learning models (CNN with self-attention) for end-to-end MR image enhancement (denoising & super-resolution)
-              </ExperienceItem>
-
-              <ExperienceItem
-                title="Software Engineer"
-                company="CNRS"
-                companyUrl="https://www.cnrs.fr/en"
-                location="Paris, France"
-                date="Sep. 2020 - Jan. 2021"
-                internship
-              >
-                Contributed to Holovibes, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
-              </ExperienceItem>
-            </Section>
-
-            <Section>
-              <Title>Education</Title>
-
-              <EducationItem
-                institution={{
-                  name: "Sorbonne Université",
-                  url: "https://www.sorbonne-universite.fr/en",
-                }}
-                degree="Ph.D. in Artificial Intelligence"
-                location="Paris, France"
-                date="Nov. 2022 - Feb. 2026"
-              >
-                Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak @ LRE-EPITA • Proposed self-supervised methods for speaker verification • Published 8 papers at top venues (Interspeech, IEEE TASLP, Speech Communication)
-              </EducationItem>
-
-              <EducationItem
-                institution={{
-                  name: "École Pour l'Informatique et les Techniques Avancées - EPITA",
-                  url: "https://www.epita.fr/en/",
-                }}
-                degree="M.Eng. in Computer Science"
-                location="Paris, France"
-                date="Sep. 2017 - Sep. 2022"
-                grade="GPA: 3.9/4.0"
-              >
-                Major: AI/ML for Computer Vision • Research student • Teaching assistant (C & Unix) • Exchange semester at CSUMB
-              </EducationItem>
-            </Section>
-
-            <Section>
-              <TitleRow>
-                <Title>Publications</Title>
-                <TitleNote>
-                  Selected first-author articles •
-                  Full list on{" "}
-                  <a
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    href="https://scholar.google.com/citations?user=q1MqhVgAAAAJ"
-                  >
-                    <Icon
-                      src="/images/socials/icon-scholar.png"
-                      alt="icon-scholar"
-                      style={{marginLeft: 2}}
-                    />
-                    Google Scholar
-                  </a>
-                </TitleNote>
-              </TitleRow>
-
-              <PublicationItem
-                title="Self-Supervised Learning for Speaker Recognition: A study and review"
-                url="https://arxiv.org/pdf/2602.10829"
-                source="Speech Comm."
-                year="2026"
-              />
-
-              <PublicationItem
-                title="SSPS: Self-Supervised Positive Sampling for Robust Self-Supervised Speaker Verification"
-                url="https://www.isca-archive.org/interspeech_2025/lepage25_interspeech.pdf"
-                source="Interspeech"
-                year="2025"
-              />
-
-              <PublicationItem
-                title="Self-Supervised Frameworks for Speaker Verification via Bootstrapped Positive Sampling"
-                url="https://arxiv.org/pdf/2501.17772"
-                source="IEEE TASLP"
-                year="2025"
-              />
-            </Section>
-
-            <Section>
-              <Title>Projects</Title>
-
-              <Cols>
-                <Col>
-                  <ProjectItem
-                    name="speakerscope.ai"
-                    url="https://speakerscope.ai/"
-                    icon="app"
-                    description="Speaker diarization with identity and language insights, via browser or API, powered by SOTA AI speech models."
+                {experience.map((node) => (
+                  <ExperienceItem
+                    key={node.fileAbsolutePath}
+                    {...node.frontmatter}
+                    html={node.html}
                   />
-                </Col>
-                <Col>
-                  <ProjectItem
-                    name="sslsv"
-                    url="https://github.com/theolepage/sslsv"
-                    icon="package"
-                    description="Deep learning toolkit based on PyTorch for training & evaluating self-supervised models for speaker verification."
+                ))}
+              </Section>
+            )}
+
+            {education.length > 0 && (
+              <Section>
+                <Title>Education</Title>
+
+                {education.map((node) => (
+                  <EducationItem
+                    key={node.fileAbsolutePath}
+                    {...node.frontmatter}
+                    html={node.html}
                   />
-                </Col>
-                <Col>
-                  <ProjectItem
-                    name="wavlm_ssl_sv"
-                    url="https://github.com/theolepage/wavlm_ssl_sv"
-                    icon="package"
-                    description="Self-supervised framework to fine-tune WavLM for speaker verification, without labels, achieving SOTA on VoxCeleb."
+                ))}
+              </Section>
+            )}
+
+            {publications.length > 0 && (
+              <Section>
+                <TitleRow>
+                  <Title>Publications</Title>
+                  <TitleNote>
+                    Selected first-author articles •
+                    Full list on{" "}
+                    <a
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      href="https://scholar.google.com/citations?user=q1MqhVgAAAAJ"
+                    >
+                      <Icon
+                        src="/images/socials/icon-scholar.png"
+                        alt="icon-scholar"
+                        style={{marginLeft: 2}}
+                      />
+                      Google Scholar
+                    </a>
+                  </TitleNote>
+                </TitleRow>
+
+                {publications.map((node) => (
+                  <PublicationItem
+                    key={node.fileAbsolutePath}
+                    title={node.frontmatter.title}
+                    url={
+                      node.frontmatter.resources.find(
+                        (resource) => resource.name === "Document"
+                      )?.url
+                    }
+                    source={node.frontmatter.shortSource || node.frontmatter.source}
+                    year={node.frontmatter.year}
                   />
-                </Col>
-              </Cols>
-            </Section>
+                ))}
+              </Section>
+            )}
 
-            <Section>
-              <Title>Miscellaneous</Title>
+            {projects.length > 0 && (
+              <Section>
+                <Title>Projects</Title>
 
-              <Cols>
-                <Col>
-                  <MiscRow>
-                    <SkillsLabel>Skills</SkillsLabel>
-                    <SkillGroups>
-                      <SkillGroup>
-                        <SkillGroupLabel>AI/ML:</SkillGroupLabel>
-                        <Label>PyTorch</Label>
-                        <Label>TensorFlow</Label>
-                        <Label>Scikit-learn</Label>
-                        <Label>NumPy</Label>
-                        <Label>Pandas</Label>
-                      </SkillGroup>
+                <Cols>
+                  {projects.map((node) => (
+                    <Col key={node.fileAbsolutePath}>
+                      <ProjectItem
+                        name={node.frontmatter.name}
+                        url={node.frontmatter.url}
+                        icon={
+                          node.frontmatter.url?.includes("github.com")
+                            ? "package"
+                            : "app"
+                        }
+                        description={node.frontmatter.description}
+                      />
+                    </Col>
+                  ))}
+                </Cols>
+              </Section>
+            )}
 
-                      <SkillGroup>
-                        <SkillGroupLabel>Programming:</SkillGroupLabel>
-                        <Label>Python</Label>
-                        <Label>C</Label>
-                        <Label>C++</Label>
-                        <Label>CUDA</Label>
-                        <Label>JavaScript</Label>
-                        <Label>Bash</Label>
-                      </SkillGroup>
+            {(skills.length > 0 || hasMiscOtherRows) && (
+              <Section>
+                <Title>Miscellaneous</Title>
 
-                      <SkillGroup>
-                        <SkillGroupLabel>Tools:</SkillGroupLabel>
-                        <Label>Git</Label>
-                        <Label>LaTex</Label>
-                        <Label>Docker</Label>
-                        <Label>Slurm</Label>
-                        <Label>SQL</Label>
-                      </SkillGroup>
+                <Cols>
+                  {skills.length > 0 && (
+                    <Col>
+                      <MiscRow>
+                        <SkillsLabel>Skills</SkillsLabel>
+                        <SkillGroups>
+                          {skills.map((group) => (
+                            <SkillGroup key={group.category}>
+                              <SkillGroupLabel>{group.category}:</SkillGroupLabel>
+                              {group.items.map((item) => (
+                                <Label key={item}>{item}</Label>
+                              ))}
+                            </SkillGroup>
+                          ))}
+                        </SkillGroups>
+                      </MiscRow>
+                    </Col>
+                  )}
 
-                      <SkillGroup>
-                        <SkillGroupLabel>Languages:</SkillGroupLabel>
-                        <Label>English (fluent)</Label>
-                        <Label>French (native)</Label>
-                      </SkillGroup>
-                    </SkillGroups>
-                  </MiscRow>
-                </Col>
+                  {hasMiscOtherRows && (
+                    <Col>
+                      {teaching.length > 0 && (
+                        <MiscRow>
+                          <SubSubtitle>Teaching</SubSubtitle>
+                          <MiscContent>
+                            <div>
+                              {teaching.map((node, i) => (
+                                <React.Fragment key={node.fileAbsolutePath}>
+                                  {i > 0 && " • "}
+                                  {node.frontmatter.name}{" "}
+                                  <Deemphasize style={{ whiteSpace: "nowrap" }}>
+                                    ({formatTeachingDate(node.frontmatter)} @{" "}
+                                    {node.frontmatter.location})
+                                  </Deemphasize>
+                                </React.Fragment>
+                              ))}
+                            </div>
+                          </MiscContent>
+                        </MiscRow>
+                      )}
 
-                <Col>
-                  <MiscRow>
-                    <SubSubtitle>Teaching</SubSubtitle>
-                    <MiscContent>
-                      Introduction to Deep Neural Networks<br />
-                      Python for Data Science
-                      <Deemphasize>(2023 - 2025 @ EPITA)</Deemphasize>
-                    </MiscContent>
-                  </MiscRow>
-
-                  <MiscRow>
-                    <SubSubtitle>Awards & Honors</SubSubtitle>
-                    <MiscContent>3rd place @ ASVspoof 5 (Track 1)</MiscContent>
-                  </MiscRow>
-
-                  <MiscRow>
-                    <SubSubtitle>Academic Service</SubSubtitle>
-                    <MiscContent>Reviewer for Interspeech & ICASSP</MiscContent>
-                  </MiscRow>
-                </Col>
-              </Cols>
-
-              {/*
-              <MiscRow>
-                <SubSubtitle>Interests</SubSubtitle>
-                <MiscContent>
-                  <MiscInterest>
-                    <LucideIcon
-                      name="science"
-                      width={12}
-                      height={12}
-                      color="#70ba59"
-                    />
-                    Science
-                  </MiscInterest>
-                  <MiscInterest>
-                    <LucideIcon
-                      name="robotics"
-                      width={12}
-                      height={12}
-                      color="#f0655b"
-                    />
-                    Robotics
-                  </MiscInterest>
-                  <MiscInterest>
-                    <LucideIcon
-                      name="sailing"
-                      width={12}
-                      height={12}
-                      color="#377dff"
-                    />
-                    Sailing
-                  </MiscInterest>
-                </MiscContent>
-              </MiscRow>
-              */}
-            </Section>
+                      {attributes.map((attribute) => (
+                        <MiscAttribute key={attribute.name} {...attribute} />
+                      ))}
+                    </Col>
+                  )}
+                </Cols>
+              </Section>
+            )}
 
             <Footer>
               Up-to-date document at{" "}
@@ -1048,3 +999,119 @@ const ResumePageComponent = () => {
 };
 
 export default ResumePageComponent;
+
+export const query = graphql`
+  {
+    resume: markdownRemark(fileAbsolutePath: { regex: "/content/resume.md/" }) {
+      frontmatter {
+        name
+        description
+        contact {
+          icon
+          image
+          text
+          url
+          note
+        }
+        experience
+        education
+        publications
+        projects
+        misc {
+          skills
+          teaching
+          attributes
+        }
+      }
+    }
+    experience: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+    ) {
+      nodes {
+        fileAbsolutePath
+        html
+        frontmatter {
+          title
+          company
+          companyUrl
+          location
+          date
+          internship
+        }
+      }
+    }
+    education: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/education/" } }
+    ) {
+      nodes {
+        fileAbsolutePath
+        html
+        frontmatter {
+          institution
+          institutionUrl
+          degree
+          location
+          date
+          grade
+        }
+      }
+    }
+    publications: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/publications/" } }
+    ) {
+      nodes {
+        fileAbsolutePath
+        frontmatter {
+          title
+          source
+          shortSource
+          year
+          resources {
+            name
+            url
+          }
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+    ) {
+      nodes {
+        fileAbsolutePath
+        frontmatter {
+          name
+          description
+          url
+        }
+      }
+    }
+    teaching: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/teaching/" } }
+    ) {
+      nodes {
+        fileAbsolutePath
+        frontmatter {
+          name
+          location
+          startYear
+          endYear
+        }
+      }
+    }
+    misc: markdownRemark(fileAbsolutePath: { regex: "/content/misc.md/" }) {
+      frontmatter {
+        skills {
+          category
+          items
+        }
+        attributes {
+          name
+          entries {
+            icon
+            text
+          }
+        }
+      }
+    }
+  }
+`;

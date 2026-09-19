@@ -4,6 +4,7 @@ authors:
   - "Theo Lepage"
   - "Reda Dehak"
 source: "IEEE Transactions on Audio, Speech and Language Processing"
+shortSource: "IEEE TASLP"
 year: 2025
 month: 7
 type: "journal"

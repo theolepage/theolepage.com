@@ -4,6 +4,7 @@ authors:
   - "Theo Lepage"
   - "Reda Dehak"
 source: "Interspeech 2025"
+shortSource: "Interspeech"
 year: 2025
 month: 8
 type: "conference"

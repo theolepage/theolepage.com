@@ -4,6 +4,7 @@ authors:
   - "Theo Lepage"
   - "Reda Dehak"
 source: "Speech Communication"
+shortSource: "Speech Comm."
 year: 2026
 month: 01
 type: "journal"

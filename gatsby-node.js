@@ -184,6 +184,7 @@ exports.createSchemaCustomization = ({ actions }) => {
             photo: String
             authors: [String]
             source: String
+            shortSource: String
             year: Int
             month: Int
             type: String
@@ -210,6 +211,26 @@ exports.createSchemaCustomization = ({ actions }) => {
             showMisc: Boolean
             showTalks: Boolean
             showTeaching: Boolean
+            contact: [MarkdownRemarkFrontmatterResumeContact]
+            experience: [String]
+            education: [String]
+            publications: [String]
+            projects: [String]
+            misc: MarkdownRemarkFrontmatterResumeMisc
+        }
+
+        type MarkdownRemarkFrontmatterResumeContact {
+            icon: String
+            image: String
+            text: String
+            url: String
+            note: String
+        }
+
+        type MarkdownRemarkFrontmatterResumeMisc {
+            skills: Boolean
+            teaching: [String]
+            attributes: [String]
         }
 
         type MarkdownRemarkFrontmatterSocials {

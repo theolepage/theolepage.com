@@ -3,7 +3,7 @@ showSkills: false
 showTeaching: false
 showTalks: false
 skills:
-  - category: "ML & Data"
+  - category: "AI/ML"
     items: ["PyTorch", "TensorFlow", "Scikit-learn", "NumPy", "Pandas"]
   - category: "Programming"
     items: ["Python", "C", "C++", "CUDA", "JavaScript", "Bash"]
@@ -19,7 +19,7 @@ attributes:
   - name: "Awards & Honors"
     show: true
     entries:
-      - text: "3rd place @ ASVspoof 5 (Track 1)"
+      - text: "3rd place @ ASVspoof 5 (Track 1, Open)"
   - name: "Interests"
     show: false
     entries:

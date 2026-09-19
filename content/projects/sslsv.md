@@ -1,6 +1,6 @@
 ---
 name: "sslsv"
-description: "Toolkit for training and evaluating Self-Supervised Learning (SSL) frameworks for Speaker Verification (SV)."
+description: "Deep learning toolkit based on PyTorch for training & evaluating self-supervised models for speaker verification."
 url: "https://github.com/theolepage/sslsv"
 target: "/posts/sslsv_a_pytorch_toolkit_for_self_supervised_speaker_verification/"
 color: "#5fe3c2"
