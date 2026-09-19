@@ -1,6 +1,6 @@
 ---
 name: "Theo Lepage"
-description: "**Ph.D.** in **AI** • **Self-Supervised Learning** for **Speech & Speaker Recognition** • Open to **Research Scientist** Roles"
+description: "**Speech**/**Voice AI Researcher** • **Ph.D.** in **AI** • **Self-Supervised Learning** & **Speaker Recognition**"
 contact:
   - icon: "location"
     text: "Paris, France"
@@ -24,6 +24,6 @@ publications: [lepage2025SLSRReview, lepage2025SSPS, lepage2025BootstrappedPosit
 projects: [speakerscopeai, sslsv, wavlm_ssl_sv]
 misc:
   skills: true
-  teaching: [introduction-to-deep-neural-networks, python-for-data-science]
+  teaching: [intro-to-deep-learning, python-for-data-science]
   attributes: ["Awards & Honors", "Academic Service"]
 ---

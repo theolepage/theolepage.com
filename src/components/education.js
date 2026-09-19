@@ -20,8 +20,8 @@ const Item = styled.div`
 const Logo = styled.img`
   flex-shrink: 0;
 
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
 
   object-fit: contain;
   border-radius: 4px;
@@ -60,7 +60,7 @@ const MetaItem = styled.span`
 `;
 
 const Details = styled.div`
-  margin-top: 6px;
+  margin-top: 3px;
 
   font-size: var(--size-small);
   color: var(--color-muted-1);

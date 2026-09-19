@@ -9,4 +9,4 @@ grade: "GPA: 3.9/4.0"
 order: 2
 ---
 
-Major: AI/ML for Computer Vision • Research student • Teaching assistant (C & Unix) • Exchange semester at CSUMB
+Major: AI/ML for Computer Vision • Research student • Teaching assistant (C, Unix) • International section • Exchange semester @ CSUMB

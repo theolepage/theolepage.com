@@ -1,7 +1,7 @@
 ---
 enabled: true
 title: "Self-Supervised Learning for Speaker Recognition (Ph.D. Thesis)"
-defenseInfo: "Ph.D. thesis defense held on February 13, 2026, at EPITA Paris, for the doctoral degree from Sorbonne University"
+defenseInfo: "Ph.D. thesis defense held on February 13, 2026, at EPITA Paris, for the doctoral degree from Sorbonne Université"
 committee:
   - name: "Jean-François Bonastre"
     affiliation: "AMIAD"

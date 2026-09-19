@@ -236,13 +236,31 @@ const Text = styled.div`
   }
 
   ul {
-    margin-top: 4px;
-    margin-left: 12px;
-    margin-bottom: 0;
+    margin: 4px 0 0;
+    padding: 0;
+
+    list-style: none;
   }
 
   li {
+    position: relative;
+
     margin: 1px 0;
+    padding-left: 12px;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      top: calc(0.725em - 2px);
+
+      width: 6px;
+      height: 6px;
+
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><circle cx='3' cy='3' r='2' fill='%23323232'/></svg>")
+        no-repeat center / contain;
+    }
   }
 `;
 
@@ -259,6 +277,22 @@ const Icon = styled.img`
   vertical-align: baseline;
   width: 10px;
   margin-right: 4px;
+`;
+
+const Logo = styled.img`
+  display: inline-block;
+  vertical-align: -2px;
+  width: auto;
+  max-width: 22px;
+  height: 14px;
+  margin-right: 5px;
+
+  object-fit: contain;
+  border-radius: 2px;
+`;
+
+const InlineLogo = styled(Logo)`
+  margin-left: 3px;
 `;
 
 const TitleIcon = styled(LucideIcon)`
@@ -557,6 +591,7 @@ const ResumeHeader = ({ name, description = "", contact = [] }) => (
 const EducationItem = ({
   institution,
   institutionUrl,
+  image,
   degree,
   location,
   date,
@@ -571,6 +606,7 @@ const EducationItem = ({
           rel="nofollow noopener noreferrer"
           href={institutionUrl}
         >
+          {image && <Logo src={image} alt="" />}
           {institution}
         </a>
       </Emphasize>
@@ -615,6 +651,7 @@ const ExperienceItem = ({
   title,
   company,
   companyUrl,
+  image,
   location,
   date,
   internship,
@@ -631,6 +668,7 @@ const ExperienceItem = ({
               rel="nofollow noopener noreferrer"
               href={companyUrl}
             >
+              {image && <InlineLogo src={image} alt="" />}
               {company}
             </a>
           </Emphasize>
@@ -716,7 +754,7 @@ const pickByIds = (nodes, ids, label) => {
 };
 
 const formatTeachingDate = ({ startYear, endYear }) =>
-  startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
+  startYear === endYear ? `${startYear}` : `${startYear}-${endYear}`;
 
 // Same colors as the home page's interest icons.
 const INTEREST_ICON_COLORS = {
@@ -955,15 +993,16 @@ const ResumePageComponent = ({ data }) => {
                           <SubSubtitle>Teaching</SubSubtitle>
                           <MiscContent>
                             <div>
-                              {teaching.map((node, i) => (
-                                <React.Fragment key={node.fileAbsolutePath}>
-                                  {i > 0 && " • "}
+                              {teaching.map((node) => (
+                                <div
+                                  key={node.fileAbsolutePath}
+                                >
                                   {node.frontmatter.name}{" "}
-                                  <Deemphasize style={{ whiteSpace: "nowrap" }}>
+                                  <Deemphasize>
                                     ({formatTeachingDate(node.frontmatter)} @{" "}
                                     {node.frontmatter.location})
                                   </Deemphasize>
-                                </React.Fragment>
+                                </div>
                               ))}
                             </div>
                           </MiscContent>
@@ -979,7 +1018,7 @@ const ResumePageComponent = ({ data }) => {
               </Section>
             )}
 
-            <Footer>
+            {/* <Footer>
               Up-to-date document at{" "}
               <a
                 target="_blank"
@@ -989,7 +1028,7 @@ const ResumePageComponent = ({ data }) => {
                 theolepage.com/resume
               </a>
               .
-            </Footer>
+            </Footer> */}
           </ResumePage>
         </ResumePagesWrapper>
         </ResumeViewport>
@@ -1034,6 +1073,7 @@ export const query = graphql`
           title
           company
           companyUrl
+          image
           location
           date
           internship
@@ -1049,6 +1089,7 @@ export const query = graphql`
         frontmatter {
           institution
           institutionUrl
+          image
           degree
           location
           date

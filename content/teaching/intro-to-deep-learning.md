@@ -1,5 +1,5 @@
 ---
-name: "Introduction to Deep Neural Networks"
+name: "Intro to Deep Learning"
 location: "EPITA"
 startYear: 2023
 endYear: 2025

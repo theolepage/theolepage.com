@@ -13,4 +13,4 @@ resources:
     image: "/images/experience/holovibes.png"
 ---
 
-Contributed to Holovibes, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
+- Contributed to Holovibes, real-time digital holography software for retinal blood flow analysis → 20× input throughput (10,000 FPS)
