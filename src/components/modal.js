@@ -34,7 +34,7 @@ const Content = styled.div`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: var(--element-spacing);
+  top: calc(var(--element-spacing) + 4px);
   right: var(--element-spacing);
 
   display: flex;
@@ -55,7 +55,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const Title = styled.h3`
+const Title = styled.h2`
   margin: 0 0 var(--element-spacing) 0;
 
   padding-right: 24px;

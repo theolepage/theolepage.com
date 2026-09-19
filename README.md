@@ -12,10 +12,9 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
+- [ ] Source Resume content from gatsby
 
 ---
-
-- [ ] Source Resume content from gatsby
 
 - [ ] Search/filters/sort + pagination
 

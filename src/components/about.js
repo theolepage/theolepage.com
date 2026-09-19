@@ -107,15 +107,31 @@ const Contact = styled.div`
 
 const Socials = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 8px 20px;
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
 `;
 
 const SocialLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+
+  // font-size: var(--size-small);
+  color: var(--color-muted-2);
+
+  transition: color var(--transition-duration);
+
+  &:hover {
+    color: var(--color-title);
+    text-decoration: none;
+  }
 `;
 
 const SocialIcon = styled.img`
@@ -132,11 +148,18 @@ const SocialIcon = styled.img`
     opacity: 0.3;
   }
 
-  &:hover {
+  ${SocialLink}:hover & {
     filter: grayscale(0%);
     opacity: 1;
   }
 `;
+
+const SOCIAL_LABELS = {
+  github: "GitHub",
+  scholar: "Google Scholar",
+  linkedin: "LinkedIn",
+  twitter: "Twitter",
+};
 
 const AboutPage = ({ data }) => {
   const { photo, email, socials } = data.frontmatter;
@@ -193,10 +216,11 @@ const AboutPage = ({ data }) => {
       </Actions>
 
       <Contact>
-        <span>Alternatively, you can explore my profiles on:</span>
+        <span>Explore my profiles on:</span>
         <Socials>
           {socials.map((s) => (
             <SocialLink to={s.url} key={s.name}>
+              {SOCIAL_LABELS[s.name] || s.name}
               <SocialIcon
                 alt={"icon-" + s.name}
                 src={"/images/socials/icon-" + s.name + ".png"}
