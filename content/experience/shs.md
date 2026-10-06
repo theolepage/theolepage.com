@@ -13,4 +13,4 @@ resources:
     image: "/images/experience/deep-resolve.png"
 ---
 
-- Developed deep learning models (CNN with self-attention) for end-to-end MR image enhancement (denoising & super-resolution)
+Developed deep learning models for end-to-end MR image enhancement (denoising & super-resolution)

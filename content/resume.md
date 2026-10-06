@@ -1,6 +1,6 @@
 ---
 name: "Theo Lepage"
-description: "**Speech**/**Voice AI Researcher** • **Ph.D.** in **AI** • **Self-Supervised Learning** & **Speaker Recognition**"
+description: "**Speech** & **Voice AI Researcher** • **Speaker Recognition** & **Speech Anti-Spoofing** • **Ph.D.**"
 contact:
   - icon: "location"
     text: "Paris, France"
@@ -18,7 +18,7 @@ contact:
   - image: "/images/socials/icon-github_blue.svg"
     text: "theolepage"
     url: "https://github.com/theolepage/"
-experience: [lre, shs, cnrs]
+experience: [pyannote, lre, shs, cnrs]
 education: [phd, meng]
 publications: [lepage2025SLSRReview, lepage2025SSPS, lepage2025BootstrappedPositiveSampling]
 projects: [speakerscopeai, sslsv, wavlm_ssl_sv]

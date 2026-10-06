@@ -1,4 +1,5 @@
 ---
+enabled: false
 title: "Ph.D. Researcher"
 company: "Sorbonne Université / LRE-EPITA"
 companyUrl: "https://www.lre.epita.fr/"

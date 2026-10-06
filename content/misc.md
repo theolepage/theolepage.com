@@ -15,7 +15,7 @@ attributes:
   - name: "Academic Service"
     show: true
     entries:
-      - text: "Reviewer for Interspeech & ICASSP"
+      - text: "Reviewer for Interspeech, ICASSP & TASLP"
   - name: "Awards & Honors"
     show: true
     entries:

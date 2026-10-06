@@ -12,4 +12,4 @@ resources:
     image: "/images/education/phd_thesis.png"
 ---
 
-Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by Reda Dehak and Thierry Géraud @ LRE-EPITA
+Thesis: Self-Supervised Learning for Speaker Recognition • Supervised by R. Dehak and T. Géraud @ LRE-EPITA • Proposed self-supervised speaker verification methods achieving SOTA on VoxCeleb • Published 8 papers in leading speech venues (Interspeech, IEEE TASLP, ...)
