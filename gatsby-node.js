@@ -202,7 +202,7 @@ exports.createSchemaCustomization = ({ actions }) => {
             codeUrl: String
             videoUrl: String
             contributions: [MarkdownRemarkFrontmatterContributions]
-            showResearch: Boolean
+            showPhdThesis: Boolean
             showExperience: Boolean
             showEducation: Boolean
             showPublications: Boolean
@@ -213,7 +213,9 @@ exports.createSchemaCustomization = ({ actions }) => {
             showTeaching: Boolean
             contact: [MarkdownRemarkFrontmatterResumeContact]
             experience: [String]
+            showExperienceIcons: Boolean
             education: [String]
+            showEducationIcons: Boolean
             publications: [String]
             projects: [String]
             misc: MarkdownRemarkFrontmatterResumeMisc

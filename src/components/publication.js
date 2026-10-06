@@ -93,6 +93,7 @@ const Publication = ({ publication, websiteAuthor }) => {
         info={publication.frontmatter.year}
         image={`/images/publications/${key}.png`}
         imageActionUrl={url}
+        imageTop
         border={false}
       >
         <PublicationItem>

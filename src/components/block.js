@@ -51,7 +51,7 @@ const BlockElement = styled.div`
 const BlockContainer = styled.div`
   display: flex;
   gap: calc(var(--element-spacing) + 10px);
-  align-items: center;
+  align-items: ${(props) => (props.imageTop ? "flex-start" : "center")};
   height: 100%;
 
   /* On narrow screens, a wide landscape thumbnail reads better stacked
@@ -179,13 +179,14 @@ const Block = ({
   image,
   imageActionUrl,
   imageLandscape = false,
+  imageTop = false,
   border = true,
   minimal = false,
   headerAlignItems = "baseline",
 }) => {
   const body = (
     <BlockElement hover={!!url} border={border} minimal={minimal}>
-      <BlockContainer landscape={imageLandscape}>
+      <BlockContainer landscape={imageLandscape} imageTop={imageTop}>
         {image && (
           // When `url` is set, the whole block (image included) is already
           // wrapped in a Link below — nesting another one here would put an

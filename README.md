@@ -12,6 +12,11 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
+- [ ] Vertical fixed nav
+- [ ] Highlight actions
+
+---
+
 - [ ] Search/filters/sort + pagination
 
 - [ ] Blog

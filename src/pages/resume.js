@@ -882,6 +882,11 @@ const ResumePageComponent = ({ data }) => {
                   <ExperienceItem
                     key={node.fileAbsolutePath}
                     {...node.frontmatter}
+                    image={
+                      config.showExperienceIcons !== false
+                        ? node.frontmatter.image
+                        : undefined
+                    }
                     html={node.html}
                   />
                 ))}
@@ -896,6 +901,11 @@ const ResumePageComponent = ({ data }) => {
                   <EducationItem
                     key={node.fileAbsolutePath}
                     {...node.frontmatter}
+                    image={
+                      config.showEducationIcons !== false
+                        ? node.frontmatter.image
+                        : undefined
+                    }
                     html={node.html}
                   />
                 ))}
@@ -1053,7 +1063,9 @@ export const query = graphql`
           note
         }
         experience
+        showExperienceIcons
         education
+        showEducationIcons
         publications
         projects
         misc {
@@ -1064,7 +1076,10 @@ export const query = graphql`
       }
     }
     experience: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/experience/" }
+        frontmatter: { enabled: { ne: false } }
+      }
     ) {
       nodes {
         fileAbsolutePath
@@ -1081,7 +1096,10 @@ export const query = graphql`
       }
     }
     education: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/education/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/education/" }
+        frontmatter: { enabled: { ne: false } }
+      }
     ) {
       nodes {
         fileAbsolutePath

@@ -113,7 +113,7 @@ const Socials = styled.div`
   gap: 8px 20px;
 
   @media (max-width: 520px) {
-    flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -131,6 +131,12 @@ const SocialLink = styled(Link)`
   &:hover {
     color: var(--color-title);
     text-decoration: none;
+  }
+`;
+
+const SocialLabel = styled.span`
+  @media (max-width: 520px) {
+    display: none;
   }
 `;
 
@@ -216,11 +222,10 @@ const AboutPage = ({ data }) => {
       </Actions>
 
       <Contact>
-        <span>Explore my profiles on:</span>
         <Socials>
           {socials.map((s) => (
             <SocialLink to={s.url} key={s.name}>
-              {SOCIAL_LABELS[s.name] || s.name}
+              <SocialLabel>{SOCIAL_LABELS[s.name] || s.name}</SocialLabel>
               <SocialIcon
                 alt={"icon-" + s.name}
                 src={"/images/socials/icon-" + s.name + ".png"}

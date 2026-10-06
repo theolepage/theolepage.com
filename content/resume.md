@@ -19,7 +19,9 @@ contact:
     text: "theolepage"
     url: "https://github.com/theolepage/"
 experience: [pyannote, lre, shs, cnrs]
+showExperienceIcons: true
 education: [phd, meng]
+showEducationIcons: false
 publications: [lepage2025SLSRReview, lepage2025SSPS, lepage2025BootstrappedPositiveSampling]
 projects: [speakerscopeai, sslsv, wavlm_ssl_sv]
 misc:

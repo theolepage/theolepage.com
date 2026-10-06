@@ -76,7 +76,7 @@ const Details = styled.div`
     padding: 0;
   }
 
-  li p {
+  p {
     margin: 0;
   }
 

@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Page from "../components/page";
 import Status from "../components/status";
 import About from "../components/about";
-import Research from "../components/research";
+import PhdThesisPreview from "../components/phdThesisPreview";
 import Experience from "../components/experience";
 import Education from "../components/education";
 import Publications from "../components/publications";
@@ -16,7 +16,7 @@ import Misc from "../components/misc";
 
 const IndexPage = ({ data }) => {
   const {
-    showResearch,
+    showPhdThesis,
     showExperience,
     showEducation,
     showPublications,
@@ -31,9 +31,9 @@ const IndexPage = ({ data }) => {
     <Page>
       <Status data={data.status} />
       <About data={data.about} />
-      {showResearch && <Research data={data.research} />}
       {showExperience && <Experience data={data.experience} />}
       {showEducation && <Education data={data.education} />}
+      {showPhdThesis && <PhdThesisPreview data={data.phdThesisPreview} />}
       {showPublications && <Publications data={data.publications} />}
       {showProjects && <Projects data={data.projects} />}
       {showPosts && <Posts data={data.posts} />}
@@ -61,12 +61,14 @@ export const query = graphql`
       }
       html
     }
-    research: markdownRemark(fileAbsolutePath: { regex: "/research.md/" }) {
+    phdThesisPreview: markdownRemark(
+      fileAbsolutePath: { regex: "/phd_thesis_preview.md/" }
+    ) {
       html
     }
     home: markdownRemark(fileAbsolutePath: { regex: "/content/home.md/" }) {
       frontmatter {
-        showResearch
+        showPhdThesis
         showExperience
         showEducation
         showPublications
@@ -105,7 +107,10 @@ export const query = graphql`
       }
     }
     experience: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/experience/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/experience/" }
+        frontmatter: { enabled: { ne: false } }
+      }
       sort: { frontmatter: { order: ASC } }
     ) {
       nodes {
@@ -129,7 +134,10 @@ export const query = graphql`
       }
     }
     education: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/education/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/education/" }
+        frontmatter: { enabled: { ne: false } }
+      }
       sort: { frontmatter: { order: ASC } }
     ) {
       nodes {

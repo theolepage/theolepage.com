@@ -30,7 +30,6 @@ import {
   Github,
   AppWindow,
   X,
-  Microscope,
   Briefcase,
   GraduationCap,
   LayoutGrid,
@@ -38,6 +37,7 @@ import {
   SquarePlay,
   Code,
   ExternalLink,
+  BookMarked,
 } from "lucide-react";
 
 const Icons = {
@@ -71,7 +71,7 @@ const Icons = {
   app: AppWindow,
   package: Package,
   close: X,
-  research: Microscope,
+  bookmark: BookMarked,
   experience: Briefcase,
   education: GraduationCap,
   misc: LayoutGrid,
