@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
+import styled from "@emotion/styled";
 
 import Page from "../components/page";
 import Status from "../components/status";
 import About from "../components/about";
+import HomeNav from "../components/homeNav";
 import PhdThesisPreview from "../components/phdThesisPreview";
 import Experience from "../components/experience";
 import Education from "../components/education";
@@ -13,6 +15,12 @@ import Projects from "../components/projects";
 import Talks from "../components/talks";
 import Teaching from "../components/teaching";
 import Misc from "../components/misc";
+
+// Scroll target for HomeNav: a little breathing room above the section
+// instead of scrolling it flush against the top of the viewport.
+const HomeSection = styled.div`
+  scroll-margin-top: 24px;
+`;
 
 const IndexPage = ({ data }) => {
   const {
@@ -27,20 +35,67 @@ const IndexPage = ({ data }) => {
     showTeaching,
   } = data.home.frontmatter;
 
+  const navVisibility = {
+    experience: showExperience,
+    education: showEducation,
+    "phd-thesis": showPhdThesis,
+    publications: showPublications,
+    projects: showProjects,
+    posts: showPosts,
+    talks: showTalks,
+    teaching: showTeaching,
+    misc: showMisc,
+  };
+
   return (
     <Page>
+      <HomeNav visibility={navVisibility} />
       <Status data={data.status} />
       <About data={data.about} />
-      {showExperience && <Experience data={data.experience} />}
-      {showEducation && <Education data={data.education} />}
-      {showPhdThesis && <PhdThesisPreview data={data.phdThesisPreview} />}
-      {showPublications && <Publications data={data.publications} />}
-      {showProjects && <Projects data={data.projects} />}
-      {showPosts && <Posts data={data.posts} />}
-      {showTalks && <Talks data={data.talks} />}
-      {showTeaching && <Teaching data={data.teaching} />}
+      {showExperience && (
+        <HomeSection id="experience">
+          <Experience data={data.experience} />
+        </HomeSection>
+      )}
+      {showEducation && (
+        <HomeSection id="education">
+          <Education data={data.education} />
+        </HomeSection>
+      )}
+      {showPhdThesis && (
+        <HomeSection id="phd-thesis">
+          <PhdThesisPreview data={data.phdThesisPreview} />
+        </HomeSection>
+      )}
+      {showPublications && (
+        <HomeSection id="publications">
+          <Publications data={data.publications} />
+        </HomeSection>
+      )}
+      {showProjects && (
+        <HomeSection id="projects">
+          <Projects data={data.projects} />
+        </HomeSection>
+      )}
+      {showPosts && (
+        <HomeSection id="posts">
+          <Posts data={data.posts} />
+        </HomeSection>
+      )}
+      {showTalks && (
+        <HomeSection id="talks">
+          <Talks data={data.talks} />
+        </HomeSection>
+      )}
+      {showTeaching && (
+        <HomeSection id="teaching">
+          <Teaching data={data.teaching} />
+        </HomeSection>
+      )}
       {showMisc && (
-        <Misc data={data.misc} teaching={data.teaching} talks={data.talks} />
+        <HomeSection id="misc">
+          <Misc data={data.misc} teaching={data.teaching} talks={data.talks} />
+        </HomeSection>
       )}
     </Page>
   );

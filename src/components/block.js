@@ -51,8 +51,16 @@ const BlockElement = styled.div`
 const BlockContainer = styled.div`
   display: flex;
   gap: calc(var(--element-spacing) + 10px);
-  align-items: ${(props) => (props.imageTop ? "flex-start" : "center")};
+  align-items: center;
   height: 100%;
+
+  ${(props) =>
+    props.imageTop &&
+    css`
+      @media (max-width: 800px) {
+        align-items: flex-start;
+      }
+    `}
 
   /* On narrow screens, a wide landscape thumbnail reads better stacked
      above the text than squeezed beside it. */

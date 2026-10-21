@@ -34,7 +34,7 @@ const HeaderWrapper = styled.div`
 
   ${(props) => !props.fullWidthBorder && HEADER_BORDER}
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1500px) {
     width: 950px;
   }
 

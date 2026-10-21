@@ -8,7 +8,7 @@ image: "/images/experience/pyannoteai.png"
 internship: false
 order: 0
 resources:
-  - name: "pyannoteAI | Speaker Diarization & Conversation Intelligence"
+  - name: "pyannoteAI – Speaker Diarization & Conversation Intelligence"
     url: "https://www.pyannote.ai/"
     image: "/images/experience/pyannoteai-example.png"
 ---

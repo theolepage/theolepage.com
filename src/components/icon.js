@@ -38,6 +38,7 @@ import {
   Code,
   ExternalLink,
   BookMarked,
+  Menu,
 } from "lucide-react";
 
 const Icons = {
@@ -71,6 +72,7 @@ const Icons = {
   app: AppWindow,
   package: Package,
   close: X,
+  menu: Menu,
   bookmark: BookMarked,
   experience: Briefcase,
   education: GraduationCap,

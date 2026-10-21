@@ -12,11 +12,6 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
 
 ## To-Do
 
-- [ ] Vertical fixed nav
-- [ ] Highlight actions
-
----
-
 - [ ] Search/filters/sort + pagination
 
 - [ ] Blog
@@ -29,5 +24,3 @@ My personal static website built with [Gatsby](https://www.gatsbyjs.com/).
     - [ ] Blockquotes
     - [ ] Captions for figures and tables
     - https://annarossetti.com/
-
-- [ ] Handle light/dark themes

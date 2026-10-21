@@ -31,6 +31,7 @@ const Content = styled.div`
     height: 18px;
     margin: 0 6px -3px 3px;
 
+    background: var(--background-primary);
     border-radius: 3px;
     object-fit: contain;
   }
@@ -44,15 +45,18 @@ const Content = styled.div`
 
 const Photo = styled.img`
   width: 100px;
+  height: 100px;
 
   margin-bottom: 0;
 
+  background: var(--background-secondary);
   border-radius: 100%;
 
   pointer-events: none;
 
   @media (max-width: 800px) {
     width: 90px;
+    height: 90px;
   }
 `;
 
